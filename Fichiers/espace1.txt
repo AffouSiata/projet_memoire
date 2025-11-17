@@ -1,0 +1,155 @@
+
+
+
+*****. Fonctionnalités bonus qui feront la différence
+
+Tu peux ajouter des fonctionnalités originales pour impressionner :
+
+📅 Calendrier interactif (vue par jour/semaine/mois).
+
+💬 Chat patient-médecin (même simplifié).
+
+📊 Statistiques visuelles (graphiques avec nombre de rendez-vous).
+
+📱 Mode sombre.
+
+🔍 Filtrage des médecins par spécialité ou disponibilité
+
+
+
+(diagrammes UML + base de données + architecture technique + maquettes à présenter + plan de soutenance)
+
+
+
+
+####### LOGIQUE TECHNIQUE #######
+Exemple de scénario complet :
+
+Le patient se connecte.
+
+Il choisit “Prendre un rendez-vous”.
+
+Il sélectionne une spécialité, un médecin, une date et une heure.
+
+Le backend (Node.js ou Laravel) :
+
+Vérifie si le créneau est libre.
+
+Enregistre le rendez-vous avec status = pending.
+
+Envoie un email de notification au médecin.
+
+Le médecin confirme → le patient reçoit une notification “rendez-vous confirmé”
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+************************** - Tableau de bord **************************
+
+Header / Entête – Tableau de bord patient
+Contenu
+
+Message de bienvenue
+
+Texte dynamique :
+“Bonjour [Nom du patient], bienvenue sur votre espace santé !”
+
+Position : en haut à gauche, police moderne, légèrement plus grande que le reste.
+
+Heure et date du jour
+
+Affichage dynamique :
+
+Ex : “Lundi 04 Novembre 2025, 09:30”
+
+Position : à côté ou sous le message de bienvenue, couleur plus claire pour ne pas gêner la lecture.
+
+Icônes discrètes en haut à droite
+
+Profil 👤 : permet de visualiser le nom/photo du patient (ici juste affichage, pas d’interaction sur ce dashboard statique)
+
+Notifications 🔔 : montre le nombre de notifications non lues (badge rouge), sans interaction possible sur ce dashboard
+
+--------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+----N°	Carte	Information affichée	Icône / Couleur
+
+1	Prochain rendez-vous	Date et heure du prochain rendez-vous	
+2	Rendez-vous à venir	    Nombre total de rendez-vous futurs	
+3	Rendez-vous passés	    Nombre total de rendez-vous déjà effectués	
+4	Rendez-vous annulés	    Nombre total de rendez-vous annulés	
+
+
+----Mini-calendrier interactif
+
+Affiche les jours du mois avec :
+
+🔵 Rendez-vous confirmés
+
+🟠 Rendez-vous en attente
+
+🔴 Rendez-vous annulés
+
+Interaction :
+
+Cliquer sur un jour → affiche les rendez-vous de ce jour dans un petit popup
+
+-----Graphiques / Statistiques
+
+Graphique 1 : Nombre de rendez-vous par mois
+
+Type : barres ou lignes
+
+Affiche le mois sur l’axe X et le nombre de rendez-vous sur l’axe Y
+
+Graphique 2 : Répartition par spécialité ou par médecin
+
+Type : camembert ou donut chart
+
+Montre le pourcentage de rendez-vous par spécialité (ex : Cardiologie 40%, Pédiatrie 30%, Autres 30%)
+
+
+------Bloc recommandations intelligentes
+
+Texte dynamique :
+
+“Vous n’avez pas pris de rendez-vous depuis 3 mois. Pensez à un contrôle !”
+
+“Votre dernier rendez-vous avec le Dr. Koné remonte à 6 mois.”
+
+Option interaction : bouton “Prendre rendez-vous” directement dans le bloc
+
+
+------Rendez-vous à venir
+
+Liste des 3-5 prochains rendez-vous
+
+Colonne info :
+
+Date, Heure
+
+Médecin et spécialité
+
+Statut
+
+Bouton “Voir détails” (popup ou redirection)
+

@@ -1,0 +1,1382 @@
+{
+  "common": {
+    "welcome": "مرحباً",
+    "loading": "جار التحميل...",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "close": "إغلاق",
+    "confirm": "تأكيد",
+    "search": "بحث",
+    "filter": "تصفية",
+    "seeAll": "عرض الكل",
+    "logout": "تسجيل الخروج",
+    "confirmLogout": "تأكيد تسجيل الخروج",
+    "logoutButton": "تسجيل الخروج",
+    "logoutMessage": "هل أنت متأكد من أنك تريد تسجيل الخروج؟ سيتم إعادة توجيهك إلى صفحة تسجيل الدخول.",
+    "consultation": "استشارة",
+    "error": "خطأ",
+    "success": "نجاح",
+    "warning": "تحذير",
+    "info": "معلومات",
+    "ok": "حسناً",
+    "understood": "فهمت",
+    "yes": "نعم",
+    "no": "لا",
+    "keepIt": "الاحتفاظ",
+    "dr": "د.",
+    "doctor": "طبيب",
+    "patient": "مريض",
+    "doctorSpace": "مساحة الطبيب",
+    "online": "متصل"
+  },
+  "nav": {
+    "dashboard": "لوحة التحكم",
+    "appointments": "المواعيد",
+    "patients": "مرضاي",
+    "medicalNotes": "الملاحظات الطبية",
+    "timeSlots": "الفترات الزمنية",
+    "newAppointment": "موعد جديد",
+    "history": "السجل",
+    "notifications": "الإشعارات",
+    "profile": "الملف الشخصي",
+    "settings": "الإعدادات"
+  },
+  "dashboard": {
+    "title": "لوحة التحكم",
+    "subtitle": "نظرة عامة على أنشطتك",
+    "appointmentQuestion": "هل حجزت موعداً هذا الشهر؟",
+    "healthMessage": "اعتن بصحتك من خلال جدولة الاستشارات المنتظمة",
+    "upcomingAppointments": "المواعيد القادمة",
+    "recentActivity": "النشاط الأخير",
+    "nextAppointment": "الموعد التالي",
+    "totalAppointments": "إجمالي المواعيد",
+    "healthScore": "درجة الصحة",
+    "noData": "لا توجد بيانات",
+    "noRecentConsultation": "لا توجد استشارة حديثة",
+    "noNews": "لا توجد أخبار",
+    "none": "لا يوجد",
+    "appointments": "المواعيد",
+    "stats": {
+      "totalAppointments": "إجمالي المواعيد",
+      "pending": "قيد الانتظار",
+      "confirmed": "مؤكدة",
+      "cancelled": "ملغاة",
+      "nextAppointment": "الموعد التالي",
+      "upcoming": "المواعيد القادمة",
+      "completed": "المواعيد المكتملة",
+      "finished": "منتهية"
+    },
+    "noAppointments": "لا توجد مواعيد قادمة",
+    "viewAll": "عرض الكل",
+    "quickActions": "إجراءات سريعة",
+    "bookAppointment": "حجز موعد",
+    "viewHistory": "عرض السجل",
+    "date": "التاريخ",
+    "time": "الوقت",
+    "day": "اليوم",
+    "notifications": "الإشعارات",
+    "noNewNotifications": "لا توجد أخبار",
+    "excellentDay": "يوم ممتاز لك!",
+    "monthlyChart": "المواعيد حسب الشهر",
+    "specialtyChart": "التوزيع حسب التخصص",
+    "recentConsultations": "استشاراتك الأخيرة",
+    "nextCheckup": "الفحص التالي",
+    "generalPractitioner": "طبيب عام",
+    "healthTip": "نصيحة اليوم الصحية",
+    "newNotifications": "جديدة",
+    "newNotificationsPlural": "جديدة",
+    "healthMessages": {
+      "excellent": "متابعة طبية ممتازة!",
+      "good": "متابعة جيدة، استمر",
+      "improve": "اعتن بنفسك"
+    },
+    "healthTips": [
+      "💧 اشرب ما لا يقل عن 1.5 لتر من الماء يومياً للبقاء رطباً.",
+      "🚶‍♂️ 30 دقيقة من المشي اليومي تحسن صحة القلب والأوعية الدموية.",
+      "🥗 فضّل الفواكه والخضروات الطازجة للحصول على الفيتامينات.",
+      "😴 النوم من 7 إلى 8 ساعات في الليلة يقوي جهاز المناعة.",
+      "🧘‍♀️ خصص 10 دقائق يومياً للتأمل وتقليل التوتر.",
+      "🏃‍♂️ النشاط البدني المنتظم يحسن صحتك العامة.",
+      "🌞 تعرض لأشعة الشمس 15 دقيقة يومياً للحصول على فيتامين د.",
+      "📱 قلل من وقت الشاشة قبل النوم لنوم أفضل.",
+      "🍎 تناول 5 حصص على الأقل من الفواكه والخضروات يومياً.",
+      "🧠 حافظ على نشاطك الذهني بالألغاز أو القراءة."
+    ]
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "subtitle": "تخصيص تجربتك",
+    "language": {
+      "title": "اللغة",
+      "description": "اختر لغتك المفضلة",
+      "french": "Français",
+      "english": "English",
+      "arabic": "العربية"
+    },
+    "notifications": {
+      "title": "الإشعارات",
+      "description": "إدارة تفضيلات الإشعارات",
+      "email": "إشعارات البريد الإلكتروني",
+      "emailDesc": "تلقي الإشعارات عبر البريد الإلكتروني",
+      "sms": "إشعارات الرسائل القصيرة",
+      "smsDesc": "تلقي الإشعارات عبر الرسائل القصيرة",
+      "reminders": "تذكيرات المواعيد",
+      "remindersDesc": "تلقي التذكيرات قبل مواعيدك",
+      "newAppointments": "مواعيد جديدة",
+      "newAppointmentsDesc": "تلقي إشعارات بالمواعيد الجديدة المحجوزة",
+      "cancellations": "الإلغاءات",
+      "cancellationsDesc": "تلقي إشعارات عند إلغاء المواعيد",
+      "promotional": "رسائل ترويجية",
+      "promotionalDesc": "تلقي العروض والترويجات"
+    },
+    "appearance": {
+      "title": "المظهر",
+      "description": "تخصيص مظهر التطبيق",
+      "darkMode": "الوضع الداكن",
+      "darkModeDesc": "تفعيل السمة الداكنة"
+    },
+    "availability": {
+      "title": "التوفر",
+      "description": "إدارة جدولك ومدى توفرك",
+      "consultationDuration": "مدة الاستشارة",
+      "pauseBetween": "استراحة بين الاستشارات",
+      "workingDays": "أيام العمل",
+      "noteTitle": "ملاحظة مهمة",
+      "noteMessage": "لتكوين فترات وقتك المفصلة، انتقل إلى قسم \"الفترات الزمنية\" في القائمة الرئيسية.",
+      "duration": {
+        "15min": "15 دقيقة",
+        "20min": "20 دقيقة",
+        "30min": "30 دقيقة",
+        "45min": "45 دقيقة",
+        "1hour": "ساعة واحدة"
+      },
+      "pause": {
+        "none": "بدون استراحة",
+        "5min": "5 دقائق",
+        "10min": "10 دقائق",
+        "15min": "15 دقيقة"
+      }
+    },
+    "security": {
+      "title": "الأمان",
+      "description": "تعزيز أمان حسابك",
+      "twoFactor": "المصادقة الثنائية",
+      "twoFactorDesc": "إضافة طبقة أمان إضافية",
+      "biometric": "المصادقة البيومترية",
+      "biometricDesc": "استخدام بصمة الإصبع أو Face ID",
+      "tip": "نصيحة أمنية",
+      "tipDesc": "لحماية حسابك، نوصي بتفعيل المصادقة الثنائية وتغيير كلمة المرور بانتظام."
+    },
+    "saveChanges": "حفظ التغييرات",
+    "saveButton": "حفظ الإعدادات",
+    "saving": "جار الحفظ...",
+    "saved": "تم حفظ الإعدادات بنجاح!",
+    "saveSuccess": "تم حفظ الإعدادات بنجاح!",
+    "error": "خطأ",
+    "loadError": "تعذر تحميل الإعدادات",
+    "saveError": "تعذر حفظ الإعدادات",
+    "professionalTip": "نصيحة احترافية",
+    "professionalTipMessage": "قم بتكوين تفضيلات الإشعارات وجداول التوفر بشكل صحيح لإدارة أفضل لعيادتك."
+  },
+  "appointments": {
+    "title": "مواعيدي",
+    "newAppointment": "موعد جديد",
+    "upcoming": "القادمة",
+    "past": "السابقة",
+    "cancelled": "الملغاة",
+    "status": {
+      "confirmed": "مؤكد",
+      "pending": "قيد الانتظار",
+      "cancelled": "ملغي",
+      "completed": "مكتمل"
+    },
+    "date": "التاريخ",
+    "time": "الوقت",
+    "doctor": "الطبيب",
+    "specialty": "التخصص",
+    "reason": "السبب",
+    "actions": "الإجراءات",
+    "cancel": "إلغاء الموعد",
+    "reschedule": "إعادة الجدولة",
+    "details": "التفاصيل",
+    "noAppointments": "لم يتم العثور على مواعيد"
+  },
+  "booking": {
+    "title": "حجز موعد",
+    "newAppointment": "موعد جديد",
+    "subtitle": "اعثر بسرعة على فترة متاحة مع أطبائنا الخبراء",
+    "selectDoctor": "اختر طبيباً",
+    "selectDate": "اختر تاريخاً",
+    "selectTime": "اختر وقتاً",
+    "reason": "سبب الاستشارة",
+    "reasonPlaceholder": "صف باختصار سبب زيارتك",
+    "confirm": "تأكيد الموعد",
+    "success": "تم تأكيد الموعد بنجاح!",
+    "error": "خطأ في حجز الموعد",
+    "years": "سنوات",
+    "steps": {
+      "specialty": "التخصص",
+      "doctor": "الطبيب",
+      "dateTime": "التاريخ والوقت",
+      "step": "خطوة"
+    },
+    "specialties": {
+      "title": "اختر التخصص",
+      "description": "حدد نوع الاستشارة التي تحتاجها",
+      "cardiology": "أمراض القلب",
+      "pediatrics": "طب الأطفال",
+      "dermatology": "الأمراض الجلدية",
+      "neurology": "طب الأعصاب",
+      "ophthalmology": "طب العيون",
+      "dentistry": "طب الأسنان",
+      "popular": "شائع",
+      "selected": "محدد"
+    },
+    "doctors": {
+      "title": "اختر طبيبك",
+      "available": "أطباء متاحون في",
+      "experience": "من الخبرة",
+      "selected": "محدد"
+    },
+    "dateTime": {
+      "title": "اختر التاريخ والوقت",
+      "description": "حدد فترة متاحة",
+      "selectDate": "اختر تاريخاً",
+      "availableSlots": "الأوقات المتاحة",
+      "days": {
+        "sun": "الأحد",
+        "mon": "الإثنين",
+        "tue": "الثلاثاء",
+        "wed": "الأربعاء",
+        "thu": "الخميس",
+        "fri": "الجمعة",
+        "sat": "السبت"
+      }
+    },
+    "navigation": {
+      "previous": "السابق",
+      "next": "التالي",
+      "confirm": "تأكيد الموعد",
+      "creating": "جاري الإنشاء..."
+    },
+    "successModal": {
+      "title": "تم تأكيد الموعد!",
+      "message": "تم إنشاء موعدك بنجاح. ستتلقى إشعار تأكيد عبر البريد الإلكتروني.",
+      "button": "عرض مواعيدي"
+    },
+    "errors": {
+      "sessionExpired": "انتهت صلاحية جلستك. يرجى تسجيل الدخول مرة أخرى.",
+      "createError": "خطأ في إنشاء الموعد. يرجى المحاولة مرة أخرى.",
+      "loadDoctorsError": "خطأ في تحميل الأطباء"
+    }
+  },
+  "profile": {
+    "title": "ملفي الشخصي",
+    "personalInfo": "المعلومات الشخصية",
+    "firstName": "الاسم الأول",
+    "lastName": "اسم العائلة",
+    "email": "البريد الإلكتروني",
+    "phone": "الهاتف",
+    "dateOfBirth": "تاريخ الميلاد",
+    "address": "العنوان",
+    "city": "المدينة",
+    "postalCode": "الرمز البريدي",
+    "medicalInfo": "المعلومات الطبية",
+    "bloodType": "فصيلة الدم",
+    "allergies": "الحساسية",
+    "medications": "الأدوية",
+    "editProfile": "تعديل الملف الشخصي",
+    "saveChanges": "حفظ التغييرات",
+    "changePassword": "تغيير كلمة المرور"
+  },
+  "notifications": {
+    "title": "الإشعارات",
+    "markAllRead": "وضع علامة مقروء على الكل",
+    "noNotifications": "لا توجد إشعارات",
+    "types": {
+      "appointment": "موعد",
+      "reminder": "تذكير",
+      "system": "نظام",
+      "message": "رسالة"
+    }
+  },
+  "specialties": {
+    "cardiology": "أمراض القلب",
+    "pediatrics": "طب الأطفال",
+    "dermatology": "الأمراض الجلدية",
+    "ophthalmology": "طب العيون",
+    "orthopedics": "جراحة العظام",
+    "neurology": "طب الأعصاب",
+    "other": "أخرى"
+  },
+  "motifs": {
+    "childVaccination": "تطعيم الأطفال",
+    "routineConsultation": "استشارة روتينية",
+    "followUp": "متابعة"
+  },
+  "mockData": {
+    "notes": {
+      "routine": "استشارة روتينية. ضغط الدم طبيعي.",
+      "vaccine": "تم إعطاء اللقاح. الجرعة التالية خلال 3 أشهر.",
+      "cancelled": "ألغي من قبل المريض.",
+      "ecg": "تم إجراء تخطيط القلب. النتائج طبيعية."
+    }
+  },
+  "history": {
+    "title": "سجل المواعيد",
+    "subtitle": "اطلع على جميع مواعيدك السابقة والقادمة",
+    "yourAppointments": "استشاراتك",
+    "reason": "السبب",
+    "consultationReason": "سبب الاستشارة",
+    "viewMode": {
+      "timeline": "الجدول الزمني",
+      "cards": "البطاقات"
+    },
+    "stats": {
+      "total": "المجموع",
+      "completed": "المكتملة",
+      "upcoming": "القادمة",
+      "cancelled": "الملغاة"
+    },
+    "search": {
+      "placeholder": "البحث حسب الطبيب أو التخصص...",
+      "filters": "التصفية",
+      "statusLabel": "الحالة",
+      "specialtyLabel": "التخصص",
+      "allSpecialties": "جميع التخصصات"
+    },
+    "status": {
+      "all": "الكل",
+      "upcoming": "قادم",
+      "completed": "مكتمل",
+      "cancelled": "ملغي",
+      "unknown": "غير معروف"
+    },
+    "filters": {
+      "all": "الكل",
+      "upcoming": "القادمة",
+      "completed": "المكتملة",
+      "cancelled": "الملغاة"
+    },
+    "pagination": {
+      "showing": "عرض",
+      "of": "من",
+      "results": "نتائج",
+      "previous": "السابق",
+      "next": "التالي"
+    },
+    "results": {
+      "count": "{{count}} موعد",
+      "count_plural": "{{count}} مواعيد"
+    },
+    "actions": {
+      "downloadPrescription": "تحميل الوصفة الطبية",
+      "viewDetails": "عرض التفاصيل",
+      "details": "التفاصيل",
+      "confirm": "تأكيد",
+      "cancel": "إلغاء",
+      "close": "إغلاق",
+      "download": "تحميل",
+      "modify": "تعديل"
+    },
+    "empty": {
+      "title": "لم يتم العثور على مواعيد",
+      "message": "حاول تعديل معايير البحث",
+      "resetFilters": "إعادة تعيين التصفية",
+      "noAppointments": "ليس لديك أي مواعيد بعد",
+      "noResults": "لا توجد مواعيد تطابق معايير البحث",
+      "noFilterResults": "لا توجد مواعيد لهذا الفلتر",
+      "viewAll": "عرض جميع المواعيد"
+    },
+    "detailsModal": {
+      "title": "تفاصيل الموعد",
+      "date": "التاريخ",
+      "time": "الوقت",
+      "reason": "سبب الاستشارة",
+      "consultationNotes": "ملاحظات الاستشارة",
+      "prescriptionAvailable": "الوصفة الطبية متاحة",
+      "prescriptionClick": "انقر للتحميل"
+    },
+    "confirmModal": {
+      "title": "تم تأكيد الموعد!",
+      "message": "تم تأكيد موعدك مع {{doctor}}."
+    },
+    "alerts": {
+      "downloadPrescription": "تحميل الوصفة الطبية لموعد {{date}}",
+      "cancelConfirm": "هل أنت متأكد من أنك تريد إلغاء هذا الموعد؟",
+      "cancelConfirmTitle": "إلغاء الموعد؟",
+      "cancelConfirmMessage": "هل تريد حقاً إلغاء موعدك مع د. {{doctor}} المقرر في {{date}}؟",
+      "cancelButton": "إلغاء الموعد",
+      "keepButton": "لا، الاحتفاظ به",
+      "cancelSuccess": "تم إلغاء الموعد لـ {{date}}",
+      "cancelSuccessTitle": "تم إلغاء الموعد",
+      "cancelSuccessMessage": "تم إلغاء موعدك بنجاح. ستتلقى رسالة تأكيد عبر البريد الإلكتروني.",
+      "downloadTitle": "جار التحميل",
+      "downloadingPrescription": "جار تحميل الوصفة الطبية لـ {{date}}..."
+    }
+  },
+  "login": {
+    "title": "Medical Appointment",
+    "subtitle": "تسجيل الدخول إلى حسابك",
+    "email": "البريد الإلكتروني",
+    "emailPlaceholder": "your-email@example.com",
+    "password": "كلمة المرور",
+    "passwordPlaceholder": "••••••••",
+    "loginButton": "تسجيل الدخول",
+    "loggingIn": "جاري تسجيل الدخول...",
+    "noAccount": "ليس لديك حساب بعد؟",
+    "register": "إنشاء حساب",
+    "testAccounts": "حسابات تجريبية:",
+    "testPassword": "كلمة المرور: password123",
+    "errorConnection": "خطأ في الاتصال"
+  },
+  "medecin": {
+    "dashboard": {
+      "title": "د. {{name}}",
+      "activityOverview": "نظرة عامة على النشاط",
+      "activityDescription": "اطلع على مواعيدك وأدر مرضاك وتابع نشاطك الطبي.",
+      "viewAppointments": "عرض المواعيد",
+      "myPatients": "مرضاي",
+      "todayAppointments": "مواعيد اليوم",
+      "today": "اليوم",
+      "upcoming": "القادمة",
+      "upcomingLabel": "القادمة",
+      "patientsFollowed": "المرضى المتابعون",
+      "patientsLabel": "المرضى",
+      "pending": "قيد الانتظار",
+      "pendingLabel": "قيد الانتظار",
+      "todaySchedule": "مواعيد اليوم",
+      "noAppointmentsToday": "لا توجد مواعيد اليوم",
+      "loadError": "خطأ في تحميل البيانات",
+      "appointmentsByMonth": "المواعيد حسب الشهر",
+      "appointmentsCount": "مواعيد",
+      "noData": "لا توجد بيانات",
+      "monthPlanning": "تخطيط الشهر",
+      "displayed": "معروضة",
+      "moreAppointments": "مواعيد أخرى",
+      "noAppointmentsThisMonth": "لا توجد مواعيد هذا الشهر",
+      "planningFree": "جدولك فارغ",
+      "calendar": "التقويم",
+      "aiAssistant": "مساعد AI",
+      "smartSuggestions": "اقتراحات ذكية",
+      "statusConfirmed": "مؤكدة",
+      "statusPending": "قيد الانتظار",
+      "statusCancelled": "ملغاة",
+      "almostFull": "شبه ممتلئ",
+      "quickAccess": "وصول سريع",
+      "quickAccessAppointments": "المواعيد",
+      "quickAccessAppointmentsDesc": "إدارة الجدول",
+      "quickAccessPatients": "مرضاي",
+      "quickAccessPatientsDesc": "القائمة والملفات",
+      "quickAccessNotes": "الملاحظات الطبية",
+      "quickAccessNotesDesc": "عرض وإنشاء",
+      "activityScore": "نقاط النشاط",
+      "optimizePlanning": "قم بتحسين جدولك لزيادة الكفاءة",
+      "tipOfDay": "نصيحة اليوم",
+      "tipMessage": "تحقق بانتظام من فتراتك الزمنية لتحسين استشاراتك",
+      "inactivePatientsMsg": "{{count}} مرضى لم يستشيروا منذ 3 أشهر",
+      "pendingConfirmation": "{{count}} مواعيد في انتظار التأكيد",
+      "followUpReminder": "جدولة تذكيرات لاستشارات المتابعة"
+    },
+    "appointments": {
+      "badge": "إدارة المواعيد",
+      "title": "مواعيدي",
+      "subtitle": "أدر استشاراتك وتابع حالة مواعيدك",
+      "export": "تصدير",
+      "searchPlaceholder": "ابحث بواسطة المريض والسبب...",
+      "stats": {
+        "total": "الإجمالي",
+        "totalLabel": "المواعيد",
+        "confirmed": "مؤكدة",
+        "confirmedLabel": "معتمدة",
+        "pending": "قيد الانتظار",
+        "pendingLabel": "للتأكيد",
+        "cancelled": "ملغاة",
+        "cancelledLabel": "مهجورة"
+      },
+      "filters": {
+        "allStatuses": "جميع الحالات",
+        "confirmed": "مؤكدة",
+        "pending": "قيد الانتظار",
+        "cancelled": "ملغاة",
+        "allDates": "جميع التواريخ",
+        "today": "اليوم",
+        "thisWeek": "هذا الأسبوع",
+        "thisMonth": "هذا الشهر",
+        "past": "الماضية"
+      },
+      "resultsFound": "{{count}} موعد وجد",
+      "resultsFound_plural": "{{count}} مواعيد وجدت",
+      "page": "صفحة",
+      "of": "من",
+      "showing": "عرض",
+      "outOf": "من",
+      "previous": "السابق",
+      "next": "التالي",
+      "statusConfirmed": "مؤكد",
+      "statusPending": "قيد الانتظار",
+      "statusCancelled": "ملغي",
+      "consultation": "استشارة",
+      "confirm": "تأكيد",
+      "cancel": "إلغاء",
+      "details": "التفاصيل",
+      "viewDetails": "عرض التفاصيل",
+      "noAppointments": "لم يتم العثور على مواعيد",
+      "tryModifyFilters": "حاول تعديل معايير البحث",
+      "modal": {
+        "badge": "موعد",
+        "title": "تفاصيل الاستشارة",
+        "subtitle": "المعلومات الكاملة للموعد الطبي",
+        "patientInfo": "معلومات المريض",
+        "appointmentDetails": "تفاصيل الموعد",
+        "date": "التاريخ",
+        "time": "الوقت",
+        "status": "الحالة",
+        "reason": "السبب",
+        "notProvided": "غير محدد",
+        "generalConsultation": "استشارة عامة",
+        "close": "إغلاق"
+      },
+      "errors": {
+        "loadingError": "خطأ في تحميل المواعيد:",
+        "confirmError": "خطأ في تأكيد الموعد:",
+        "cancelError": "خطأ في إلغاء الموعد:"
+      }
+    },
+    "patients": {
+      "badge": "إدارة المرضى",
+      "title": "مرضاي",
+      "subtitle": "عرض وإدارة مرضاك",
+      "stats": {
+        "total": "إجمالي المرضى",
+        "totalLabel": "في قاعدتك",
+        "recents": "حديث (30 يوم)",
+        "recentsLabel": "نشط",
+        "chronic": "مزمن",
+        "chronicLabel": "متابعة منتظمة",
+        "inactive": "غير نشط (90+ يوم)",
+        "inactiveLabel": "يجب الاتصال مرة أخرى"
+      },
+      "searchPlaceholder": "البحث عن مريض (الاسم، البريد الإلكتروني)...",
+      "filters": {
+        "all": "كل المرضى",
+        "recent": "حديث (30 يوم)",
+        "chronic": "مزمن (3+ مواعيد)"
+      },
+      "resultsFound": "{{count}} مريض",
+      "resultsFound_plural": "{{count}} مرضى",
+      "consultations": "{{count}} استشارة",
+      "consultations_plural": "{{count}} استشارات",
+      "lastVisit": "آخر زيارة",
+      "never": "أبدًا",
+      "nextAppointment": "الموعد التالي",
+      "phone": "الهاتف",
+      "email": "البريد الإلكتروني",
+      "notProvided": "غير محدد",
+      "viewRecord": "عرض السجل",
+      "noPatients": "لم يتم العثور على مرضى",
+      "tryModifyFilters": "حاول تعديل مرشحات البحث",
+      "modal": {
+        "badge": "سجل المريض",
+        "patientSince": "مريض منذ",
+        "totalConsultations": "إجمالي الاستشارات",
+        "confirmed": "مؤكدة",
+        "lastVisit": "آخر زيارة",
+        "contactInfo": "معلومات الاتصال",
+        "birthDate": "تاريخ الميلاد",
+        "gender": "الجنس",
+        "appointmentHistory": "سجل المواعيد",
+        "consultation": "استشارة",
+        "statusConfirmed": "مؤكد",
+        "statusPending": "قيد الانتظار",
+        "statusCancelled": "ملغي",
+        "noAppointments": "لا توجد مواعيد مسجلة",
+        "historyWillAppear": "سيظهر السجل هنا"
+      },
+      "errors": {
+        "loadingError": "خطأ في تحميل المرضى:"
+      }
+    },
+    "notes": {
+      "badge": "السجلات الطبية",
+      "title": "الملاحظات الطبية",
+      "subtitle": "إدارة ملاحظاتك واستشاراتك",
+      "newNote": "ملاحظة جديدة",
+      "stats": {
+        "total": "إجمالي الملاحظات",
+        "totalLabel": "كل الفترات",
+        "active": "الملاحظات النشطة",
+        "activeLabel": "قيد الاستشارة",
+        "archived": "مؤرشفة",
+        "archivedLabel": "السجل",
+        "withAttachments": "مع مرفقات",
+        "withAttachmentsLabel": "ملفات مرفقة"
+      },
+      "searchPlaceholder": "🔍 البحث عن ملاحظة، مريض...",
+      "filters": {
+        "allStatuses": "📋 كل الحالات",
+        "active": "✅ نشطة",
+        "archived": "📦 مؤرشفة"
+      },
+      "resultsFound": "{{count}} ملاحظة",
+      "resultsFound_plural": "{{count}} ملاحظات",
+      "attachments": "{{count}} مرفق",
+      "attachments_plural": "{{count}} مرفقات",
+      "statusActive": "✅ ملاحظة نشطة",
+      "statusArchived": "📦 ملاحظة مؤرشفة",
+      "archivedBadge": "مؤرشفة",
+      "details": "التفاصيل",
+      "archive": "أرشفة",
+      "delete": "حذف",
+      "noNotes": "لم يتم العثور على ملاحظات",
+      "createFirstNote": "أنشئ أول ملاحظة طبية للبدء",
+      "createModal": {
+        "title": "ملاحظة طبية جديدة",
+        "subtitle": "إنشاء ملاحظة لمريض",
+        "patient": "المريض",
+        "selectPatient": "👤 اختر مريضًا",
+        "observation": "الملاحظة الطبية",
+        "observationPlaceholder": "📝 صف ملاحظاتك، التشخيصات، الوصفات...",
+        "cancel": "إلغاء",
+        "create": "إنشاء الملاحظة"
+      },
+      "detailsModal": {
+        "title": "تفاصيل الملاحظة",
+        "subtitle": "معلومات كاملة",
+        "patient": "المريض",
+        "observation": "الملاحظة الطبية",
+        "date": "التاريخ",
+        "doctor": "الطبيب",
+        "attachments": "المرفقات ({{count}})",
+        "close": "إغلاق"
+      },
+      "deleteModal": {
+        "title": "حذف الملاحظة؟",
+        "message": "هل أنت متأكد من حذف هذه الملاحظة الطبية لـ {{patient}}؟ هذا الإجراء لا رجعة فيه.",
+        "confirm": "حذف",
+        "cancel": "إلغاء"
+      },
+      "errors": {
+        "loading": "خطأ في تحميل الملاحظات:",
+        "creating": "خطأ في إنشاء الملاحظة:",
+        "deleting": "خطأ في حذف الملاحظة:",
+        "archiving": "خطأ في أرشفة الملاحظة:"
+      }
+    },
+    "notifications": {
+      "badge": "الإشعارات",
+      "title": "مركز الإشعارات",
+      "emoji": "🔔",
+      "subtitle": "ابقَ على اطلاع بنشاطك الطبي في الوقت الفعلي",
+      "stats": {
+        "totalLabel": "الإجمالي",
+        "totalPlural": "إشعارات",
+        "totalSingular": "إشعار",
+        "unreadLabel": "غير مقروءة",
+        "unreadPlural": "جديدة",
+        "unreadSingular": "جديدة",
+        "todayLabel": "اليوم"
+      },
+      "quickAction": "إجراء سريع",
+      "markAllAsRead": "تعليم الكل كمقروء",
+      "filterTitle": "تصفية حسب الفئة",
+      "filterSubtitle": "حدد نوع الإشعار",
+      "filters": {
+        "all": "الكل",
+        "unread": "غير مقروءة",
+        "reminder": "التذكيرات",
+        "confirmation": "التأكيدات",
+        "cancellation": "الإلغاءات",
+        "recommendation": "التوصيات"
+      },
+      "resultsPlural": "نتائج",
+      "resultsSingular": "نتيجة",
+      "empty": {
+        "title": "لا توجد إشعارات",
+        "message": "أنت محدثة!"
+      },
+      "notification": {
+        "new": "جديد",
+        "markAsRead": "تعليم كمقروء",
+        "delete": "حذف"
+      },
+      "pagination": {
+        "showing": "عرض",
+        "to": "-",
+        "of": "من",
+        "previous": "← السابق",
+        "next": "التالي →"
+      },
+      "timeAgo": {
+        "justNow": "الآن",
+        "hoursAgo": "منذ {{hours}} ساعة",
+        "yesterday": "أمس"
+      },
+      "stats_display": "العرض",
+      "stats_remaining": "متبقي",
+      "stats_remainingPlural": "متبقية",
+      "mockData": {
+        "newAppointment": {
+          "title": "موعد جديد",
+          "message": "حجزت ماري ياو موعدًا معك غدًا في الساعة 2:00 مساءً"
+        },
+        "appointmentCancelled": {
+          "title": "تم إلغاء الموعد",
+          "message": "ألغى المريض كواسي بامبا موعده في 15/01"
+        },
+        "urgentPatient": {
+          "title": "مريض عاجل",
+          "message": "المريضة فاطمة ديالو تحتاج إلى اهتمام خاص"
+        },
+        "consultationReminder": {
+          "title": "تذكير بالاستشارة",
+          "message": "لديك 3 استشارات مجدولة بعد ظهر اليوم"
+        },
+        "appointmentConfirmed": {
+          "title": "تأكيد الموعد",
+          "message": "أكد جان مارتن موعده في 20/01 الساعة 10:00 صباحًا"
+        }
+      }
+    },
+    "creneaux": {
+      "badge": "إدارة التوفر",
+      "title": "الفترات الزمنية",
+      "subtitle": "حدد توفرك للمواعيد",
+      "newSlot": "فترة جديدة",
+      "stats": {
+        "total": "إجمالي الفترات",
+        "totalLabel": "كل الأسابيع",
+        "active": "نشطة",
+        "activeLabel": "متاحة",
+        "inactive": "غير نشطة",
+        "inactiveLabel": "غير متاحة"
+      },
+      "days": {
+        "monday": "الاثنين",
+        "tuesday": "الثلاثاء",
+        "wednesday": "الأربعاء",
+        "thursday": "الخميس",
+        "friday": "الجمعة",
+        "saturday": "السبت",
+        "sunday": "الأحد"
+      },
+      "empty": {
+        "title": "لا توجد فترات زمنية",
+        "message": "لم تحدد توفرك بعد. ابدأ بإنشاء أول فترة زمنية لتسمح للمرضى بحجز المواعيد.",
+        "button": "إنشاء أول فترة زمنية",
+        "tip": "نصيحة",
+        "tipMessage": "حدد ساعات الاستشارة حسب يوم الأسبوع. يمكنك تفعيلها أو تعطيلها في أي وقت بناءً على توفرك."
+      },
+      "slotsList": {
+        "dayLabel": "فترة",
+        "dayLabelPlural": "فترات",
+        "noSlots": "لا توجد فترات محددة لهذا اليوم"
+      },
+      "buttons": {
+        "active": "نشطة",
+        "inactive": "غير نشطة",
+        "delete": "حذف"
+      },
+      "createModal": {
+        "badge": "فترة جديدة",
+        "title": "فترة جديدة",
+        "subtitle": "إضافة توفر",
+        "day": "يوم الأسبوع",
+        "startTime": "وقت البداية",
+        "endTime": "وقت الانتهاء",
+        "cancel": "إلغاء",
+        "create": "إنشاء الفترة"
+      },
+      "deleteModal": {
+        "title": "حذف هذه الفترة؟",
+        "message": "هل أنت متأكد من حذف هذه الفترة؟",
+        "warning": "هذا الإجراء لا رجعة فيه",
+        "cancel": "إلغاء",
+        "confirm": "حذف"
+      },
+      "errorModal": {
+        "title": "فترة غير صحيحة",
+        "duplicate": "هذه الفترة موجودة بالفعل! فترة بنفس اليوم ووقت البداية مسجلة بالفعل.",
+        "overlap": "هذه الفترة تتداخل مع أخرى! الوقت الذي اخترته يتداخل مع فترة موجودة.",
+        "default": "هذه الفترة موجودة بالفعل أو تتداخل مع فترة أخرى. يرجى اختيار وقت أو يوم آخر.",
+        "solutions": "الحلول:",
+        "solution1": "اختر يوماً آخر من الأسبوع",
+        "solution2": "حدد وقت بداية مختلف",
+        "solution3": "تحقق من الفترات الموجودة لهذا اليوم",
+        "understood": "فهمت"
+      }
+    },
+    "profile": {
+      "badge": "ملفي الشخصي",
+      "greeting": "مرحباً د. {{name}}",
+      "greeting_emoji": "👨‍⚕️",
+      "description": "إدارة معلوماتك المهنية وعيادتك",
+      "specialty_label": "التخصص",
+      "edit_button": "تعديل الملف الشخصي",
+      "action_label": "إجراء",
+      "loading": "جار التحميل...",
+      "save_success": "تم تحديث الملف الشخصي بنجاح!",
+      "save_error": "تعذر حفظ الملف الشخصي",
+      "password_error": "كلمات المرور غير متطابقة",
+      "password_min_length": "يجب أن تحتوي كلمة المرور على 6 أحرف على الأقل",
+      "password_change_success": "تم تغيير كلمة المرور بنجاح!",
+      "password_change_error": "تعذر تغيير كلمة المرور",
+      "online": "متصل",
+      "first_name": "الاسم الأول",
+      "last_name": "اسم العائلة",
+      "email": "البريد الإلكتروني",
+      "phone": "الهاتف",
+      "specialty": "التخصص",
+      "office_address": "عنوان العيادة",
+      "not_provided": "غير محدد",
+      "not_filled": "-",
+      "cancel_button": "إلغاء",
+      "save_button": "حفظ",
+      "saving": "جاري الحفظ...",
+      "security_title": "الأمان",
+      "change_password_button": "تغيير كلمة المرور",
+      "professional_summary": "الملخص المهني",
+      "next_appointment": "الموعد التالي",
+      "no_upcoming_appointment": "لا توجد مواعيد قادمة",
+      "this_month": "هذا الشهر",
+      "appointments_label": "مواعيد",
+      "my_patients": "مرضاي",
+      "patients_active": "مرضى نشطون",
+      "password_modal_title": "تغيير كلمة المرور",
+      "current_password": "كلمة المرور الحالية",
+      "new_password": "كلمة المرور الجديدة",
+      "confirm_new_password": "تأكيد كلمة المرور الجديدة",
+      "confirm_button": "تأكيد"
+    }
+  },
+  "admin": {
+    "nav": {
+      "patients": "المرضى",
+      "doctors": "الأطباء",
+      "appointments": "المواعيد",
+      "statistics": "الإحصائيات"
+    },
+    "dashboard": {
+      "title": "الإدارة",
+      "subtitle": "نظرة عامة على المنصة",
+      "totalPatients": "إجمالي المرضى",
+      "totalDoctors": "إجمالي الأطباء",
+      "appointments": "المواعيد",
+      "active": "نشطون",
+      "cancellationRate": "معدل الإلغاء: {{rate}}%",
+      "cancelled": "ملغاة",
+      "satisfaction": "الرضا",
+      "excellent": "ممتاز",
+      "appointmentsPerMonth": "المواعيد حسب الشهر",
+      "appointmentsByStatus": "المواعيد حسب الحالة",
+      "topDoctors": "أفضل الأطباء",
+      "doctorPrefix": "د.",
+      "appointmentsCount": "{{count}} موعد",
+      "loadError": "خطأ في تحميل الإحصائيات",
+      "systemStatus": "حالة النظام",
+      "operational": "يعمل",
+      "quickStats": "إحصائيات سريعة",
+      "confirmedAppointments": "المواعيد المؤكدة",
+      "pendingAppointments": "المواعيد المعلقة",
+      "cancelledAppointments": "المواعيد الملغاة",
+      "viewAllStats": "عرض جميع الإحصائيات",
+      "statusConfirmed": "المواعيد المؤكدة",
+      "statusPending": "في انتظار التأكيد",
+      "statusCancelled": "المواعيد الملغاة"
+    },
+    "patients": {
+      "title": "إدارة المرضى",
+      "subtitle": "{{count}} مريض مسجل",
+      "management": "الإدارة",
+      "manageDescription": "إدارة ملفات المرضى والمواعيد بكفاءة",
+      "searchPlaceholder": "البحث بالاسم أو البريد الإلكتروني...",
+      "searchPlaceholder2": "البحث عن مريض بالاسم أو البريد الإلكتروني...",
+      "all": "الكل",
+      "active": "نشطون",
+      "inactive": "غير نشطين",
+      "noPatients": "لم يتم العثور على مرضى",
+      "noResults": "حاول تعديل مرشحات البحث أو ابحث بطريقة مختلفة",
+      "showing": "عرض {{start}} إلى {{end}} من {{total}} مريض",
+      "activate": "تفعيل",
+      "deactivate": "إلغاء التفعيل",
+      "confirmActivate": "تفعيل هذا المريض؟",
+      "confirmDeactivate": "إلغاء تفعيل هذا المريض؟",
+      "confirmDeactivateTitle": "إلغاء تفعيل المريض؟",
+      "confirmActivateTitle": "تفعيل المريض؟",
+      "stats": {
+        "totalPatients": "إجمالي المرضى",
+        "allProfiles": "جميع الملفات",
+        "activePatients": "المرضى النشطون",
+        "actifs": "نشطون",
+        "inactivePatients": "المرضى غير النشطين",
+        "inactifs": "غير نشطين",
+        "avgAppointments": "متوسط المواعيد / مريض",
+        "activity": "النشاط",
+        "online": "متصل"
+      },
+      "table": {
+        "patient": "المريض",
+        "contact": "جهة الاتصال",
+        "appointments": "المواعيد",
+        "registered": "التسجيل",
+        "registeredOn": "مسجل في",
+        "status": "الحالة",
+        "actions": "الإجراءات",
+        "details": "التفاصيل",
+        "activeStatus": "نشط",
+        "inactiveStatus": "غير نشط"
+      },
+      "pagination": {
+        "previous": "السابق",
+        "next": "التالي"
+      }
+    },
+    "medecins": {
+      "title": "الأطباء",
+      "management": "الإدارة",
+      "manageDescription": "إدارة ملفات الأطباء وجداولهم بكفاءة",
+      "subtitle": "{{count}} طبيب مسجل",
+      "searchPlaceholder": "البحث عن طبيب بالاسم أو البريد الإلكتروني...",
+      "allSpecialties": "جميع التخصصات",
+      "all": "الكل",
+      "active": "نشطون",
+      "inactive": "غير نشطين",
+      "noMedecins": "لم يتم العثور على أطباء",
+      "noResults": "حاول تعديل مرشحات البحث أو ابحث بطريقة مختلفة",
+      "showing": "عرض {{start}} إلى {{end}} من {{total}} طبيب",
+      "activate": "تفعيل",
+      "deactivate": "إلغاء التفعيل",
+      "details": "التفاصيل",
+      "confirmActivate": "تفعيل الطبيب؟",
+      "confirmDeactivate": "إلغاء تفعيل الطبيب؟",
+      "confirmActivateTitle": "تفعيل الطبيب؟",
+      "confirmDeactivateTitle": "إلغاء تفعيل الطبيب؟",
+      "stats": {
+        "totalDoctors": "إجمالي الأطباء",
+        "allProfiles": "جميع الملفات",
+        "activeDoctors": "الأطباء النشطون",
+        "disponibles": "متاحون",
+        "inactiveDoctors": "الأطباء غير النشطين",
+        "notAvailable": "غير متاحين",
+        "avgAppointments": "متوسط المواعيد / طبيب",
+        "performance": "الأداء",
+        "online": "متصل"
+      },
+      "table": {
+        "doctor": "الطبيب",
+        "specialty": "التخصص",
+        "unspecified": "غير محدد",
+        "contact": "جهة الاتصال",
+        "appointments": "المواعيد",
+        "registered": "مسجل في",
+        "status": "الحالة",
+        "actions": "الإجراءات",
+        "activeStatus": "نشط",
+        "inactiveStatus": "غير نشط"
+      },
+      "pagination": {
+        "previous": "السابق",
+        "next": "التالي"
+      }
+    },
+    "rendezvous": {
+      "title": "إدارة المواعيد",
+      "subtitle": "{{count}} موعد إجمالي",
+      "totalAppointments": "إجمالي المواعيد",
+      "noRendezVous": "لم يتم العثور على مواعيد",
+      "noResults": "لا توجد مواعيد تطابق معاييرك",
+      "showing": "عرض {{start}} إلى {{end}} من {{total}} موعد",
+      "details": "التفاصيل",
+      "changeStatus": "تغيير الحالة",
+      "detailsTitle": "تفاصيل الموعد",
+      "detailsSubtitle": "معلومات كاملة عن الموعد",
+      "changeStatusTitle": "تعديل الحالة",
+      "stats": {
+        "total": "الإجمالي",
+        "confirmed": "مؤكدة",
+        "pending": "قيد الانتظار",
+        "cancelled": "ملغاة"
+      },
+      "filters": {
+        "all": "الكل",
+        "confirmed": "مؤكدة",
+        "pending": "قيد الانتظار",
+        "cancelled": "ملغاة"
+      },
+      "status": {
+        "confirmed": "مؤكد",
+        "pending": "قيد الانتظار",
+        "cancelled": "ملغى"
+      },
+      "table": {
+        "date": "التاريخ",
+        "patient": "المريض",
+        "doctor": "الطبيب",
+        "reason": "السبب",
+        "status": "الحالة",
+        "actions": "الإجراءات"
+      }
+    },
+    "statistics": {
+      "title": "الإحصائيات والتحليلات",
+      "analytics": "التحليلات",
+      "subtitle": "تصور وتحليل أداء منصتك"
+    },
+    "notifications": {
+      "title": "الإشعارات",
+      "subtitle": "مركز إشعارات العيادة",
+      "filters": {
+        "all": "الكل",
+        "appointments": "المواعيد",
+        "cancellations": "الإلغاءات",
+        "alerts": "التنبيهات",
+        "info": "معلومات"
+      },
+      "types": {
+        "appointment": "موعد",
+        "cancellation": "إلغاء",
+        "alert": "تنبيه",
+        "info": "معلومة",
+        "notification": "إشعار"
+      },
+      "priority": {
+        "urgent": "عاجل",
+        "high": "مهم",
+        "normal": "عادي",
+        "low": "منخفض"
+      },
+      "actions": {
+        "markAllRead": "وضع علامة مقروء على الكل",
+        "deleteRead": "حذف المقروءة",
+        "markAsRead": "وضع علامة مقروء",
+        "markAsUnread": "وضع علامة غير مقروء"
+      },
+      "timeAgo": {
+        "justNow": "الآن",
+        "minutesAgo": "منذ {{minutes}} دقيقة",
+        "hoursAgo": "منذ {{hours}} ساعة",
+        "yesterday": "أمس",
+        "daysAgo": "منذ {{days}} أيام"
+      },
+      "noNotifications": "لا توجد إشعارات",
+      "noNotificationsMessage": "ليس لديك أي إشعارات في الوقت الحالي",
+      "unreadCount": "{{count}} غير مقروءة",
+      "mockData": {
+        "newAppointment": {
+          "title": "موعد جديد",
+          "message": "طلبت ماري ياو موعدًا في 15 يناير 2025"
+        },
+        "appointmentCancelled": {
+          "title": "تم إلغاء الموعد",
+          "message": "ألغى الدكتور كواديو جان موعده في 15/01"
+        },
+        "newDoctorRegistration": {
+          "title": "طبيب جديد",
+          "message": "أنشأت الدكتورة صوفي كون حسابًا للتو"
+        },
+        "systemUpdate": {
+          "title": "تحديث النظام",
+          "message": "سيتم تحديث النظام الليلة بين الساعة 10 و 11 مساءً"
+        },
+        "patientRegistration": {
+          "title": "مريض جديد",
+          "message": "أنشأت فاطمة ديالو حسابًا للتو"
+        },
+        "lowAvailability": {
+          "title": "توافر منخفض",
+          "message": "لدى الدكتور تراوري مواعيد قليلة متاحة هذا الأسبوع"
+        }
+      }
+    },
+    "statistiques": {
+      "title": "إحصائيات متقدمة",
+      "subtitle": "نظرة تفصيلية على أداء العيادة والاتجاهات",
+      "analytics": "التحليلات",
+      "appointmentsBySpecialty": {
+        "title": "المواعيد حسب التخصص",
+        "subtitle": "توزيع الاستشارات"
+      },
+      "appointmentsByDoctor": {
+        "title": "المواعيد حسب الطبيب",
+        "subtitle": "أداء الممارسين"
+      },
+      "patientsStats": {
+        "title": "المرضى النشطون / غير النشطين",
+        "subtitle": "حالة المرضى",
+        "active": "نشطون",
+        "inactive": "غير نشطين"
+      },
+      "appointmentsRate": {
+        "title": "معدل المواعيد المحترمة مقابل الملغاة",
+        "subtitle": "أداء المواعيد",
+        "honored": "المواعيد المحترمة",
+        "cancelled": "المواعيد الملغاة",
+        "pending": "قيد الانتظار",
+        "honoredCount": "{{count}} موعد من {{total}}",
+        "cancelledCount": "{{count}} موعد من {{total}}"
+      },
+      "aiRecommendations": {
+        "title": "مساعد الذكاء الاصطناعي - التوصيات",
+        "subtitle": "تحليل واقتراحات ذكية",
+        "priorityHigh": "أولوية عالية",
+        "priorityMedium": "أولوية متوسطة",
+        "priorityLow": "معلومة"
+      }
+    },
+    "parametres": {
+      "title": "الإعدادات",
+      "subtitle": "تخصيص وتكوين مساحة الإدارة الخاصة بك",
+      "loading": "جارٍ تحميل الإعدادات...",
+      "error": "خطأ",
+      "save": "حفظ الإعدادات",
+      "saving": "جارٍ الحفظ...",
+      "saved": "تم حفظ الإعدادات بنجاح!",
+      "language": {
+        "title": "اللغة",
+        "description": "اختر لغة الواجهة"
+      },
+      "notifications": {
+        "title": "الإشعارات",
+        "description": "إدارة تفضيلات الإشعارات",
+        "email": "إشعارات البريد الإلكتروني",
+        "emailDesc": "تلقي التنبيهات عبر البريد الإلكتروني",
+        "sms": "إشعارات الرسائل القصيرة",
+        "smsDesc": "تلقي التنبيهات عبر الرسائل القصيرة",
+        "push": "الإشعارات الفورية",
+        "pushDesc": "تلقي الإشعارات في المتصفح"
+      },
+      "appearance": {
+        "title": "المظهر",
+        "description": "تخصيص الواجهة",
+        "darkMode": "الوضع الداكن",
+        "darkModeDesc": "التبديل بين الوضع الفاتح والداكن"
+      },
+      "security": {
+        "title": "الأمان",
+        "description": "إعدادات الأمان والخصوصية",
+        "twoFactor": "المصادقة الثنائية",
+        "twoFactorDesc": "أمان معزز لحسابك",
+        "securityTip": "نصيحة أمنية",
+        "securityMessage": "قم بتفعيل المصادقة الثنائية لتعزيز أمان حساب المسؤول الخاص بك. راجع سجلات الوصول بانتظام لاكتشاف أي نشاط مشبوه."
+      },
+      "roles": {
+        "title": "الأدوار والصلاحيات",
+        "description": "إدارة حقوق الوصول حسب الدور",
+        "admin": "مسؤول النظام",
+        "medecin": "طبيب ممارس",
+        "patient": "مستخدم مريض",
+        "allRights": "جميع الحقوق",
+        "permissions": {
+          "users": "المستخدمون",
+          "doctors": "الأطباء",
+          "appointments": "المواعيد",
+          "stats": "الإحصائيات",
+          "settings": "الإعدادات"
+        },
+        "permissionCount": "{{count}} / {{total}} صلاحية"
+      },
+      "audit": {
+        "title": "سجلات الوصول (التدقيق)",
+        "description": "سجل أنشطة النظام",
+        "last24h": "آخر 24 ساعة",
+        "viewAll": "عرض السجل الكامل ←",
+        "modalTitle": "السجل الكامل للأحداث",
+        "modalSubtitle": "جميع أحداث النظام",
+        "noLogs": "لا توجد سجلات متاحة",
+        "status": {
+          "success": "نجاح",
+          "failed": "فشل",
+          "warning": "تحذير",
+          "info": "معلومات"
+        },
+        "summary": {
+          "success": "{{count}} نجاح",
+          "failed": "{{count}} فشل",
+          "warnings": "{{count}} تحذيرات"
+        }
+      }
+    }
+  },
+  "layout": {
+    "patientSpace": "مساحة المريض",
+    "adminSpace": "مساحة الإدارة",
+    "online": "متصل",
+    "administrator": "المسؤول",
+    "sessionEnded": "انتهت الجلسة",
+    "redirectMessage": "سيتم إعادة توجيهك إلى صفحة تسجيل الدخول"
+  },
+  "months": {
+    "january": "يناير",
+    "february": "فبراير",
+    "march": "مارس",
+    "april": "أبريل",
+    "may": "مايو",
+    "june": "يونيو",
+    "july": "يوليو",
+    "august": "أغسطس",
+    "september": "سبتمبر",
+    "october": "أكتوبر",
+    "november": "نوفمبر",
+    "december": "ديسمبر",
+    "full": {
+      "jan": "يناير",
+      "feb": "فبراير",
+      "mar": "مارس",
+      "apr": "أبريل",
+      "may": "مايو",
+      "jun": "يونيو",
+      "jul": "يوليو",
+      "aug": "أغسطس",
+      "sep": "سبتمبر",
+      "oct": "أكتوبر",
+      "nov": "نوفمبر",
+      "dec": "ديسمبر"
+    },
+    "short": {
+      "jan": "ينا",
+      "feb": "فبر",
+      "mar": "مار",
+      "apr": "أبر",
+      "may": "ماي",
+      "jun": "يون",
+      "jul": "يول",
+      "aug": "أغس",
+      "sep": "سبت",
+      "oct": "أكت",
+      "nov": "نوف",
+      "dec": "ديس"
+    }
+  },
+  "days": {
+    "monday": "الاثنين",
+    "tuesday": "الثلاثاء",
+    "wednesday": "الأربعاء",
+    "thursday": "الخميس",
+    "friday": "الجمعة",
+    "saturday": "السبت",
+    "sunday": "الأحد",
+    "short": {
+      "sun": "الأحد",
+      "mon": "الإثنين",
+      "tue": "الثلاثاء",
+      "wed": "الأربعاء",
+      "thu": "الخميس",
+      "fri": "الجمعة",
+      "sat": "السبت"
+    }
+  },
+  "profile": {
+    "title": "ملفي الشخصي",
+    "edit": "تعديل",
+    "cancel": "إلغاء",
+    "save": "حفظ",
+    "saving": "جاري الحفظ...",
+    "saveSuccess": "تم تحديث الملف الشخصي بنجاح!",
+    "years": "سنة",
+    "group": "الفصيلة",
+    "active": "نشط",
+    "personalInfo": "المعلومات الشخصية",
+    "firstName": "الاسم الأول",
+    "lastName": "اسم العائلة",
+    "email": "البريد الإلكتروني",
+    "phone": "الهاتف",
+    "birthDate": "تاريخ الميلاد",
+    "address": "العنوان",
+    "postalCode": "الرمز البريدي",
+    "city": "المدينة",
+    "medicalInfo": "المعلومات الطبية",
+    "bloodType": "فصيلة الدم",
+    "allergies": "الحساسية",
+    "medicalConditions": "الحالات الطبية",
+    "emergencyContact": "جهة اتصال الطوارئ",
+    "contactName": "اسم جهة الاتصال",
+    "contactPhone": "الهاتف",
+    "contactRelation": "العلاقة",
+    "notProvided": "غير محدد"
+  },
+  "patient": {
+    "notifications": {
+      "mockData": {
+        "appointmentConfirmed": {
+          "title": "تم تأكيد الموعد",
+          "message": "تم تأكيد موعدك مع د. كواديو جان في 15 يناير 2025 الساعة 2:00 مساءً"
+        },
+        "appointmentReminder": {
+          "title": "تذكير بالموعد",
+          "message": "لا تنسَ موعدك مع د. كواديو غداً في الساعة 2:00 مساءً"
+        },
+        "newSlotsAvailable": {
+          "title": "فترات جديدة متاحة",
+          "message": "فتحت د. صوفي كون فترات جديدة للأسبوع المقبل"
+        },
+        "appointmentCancelled": {
+          "title": "تم إلغاء الموعد",
+          "message": "تم إلغاء موعدك مع د. تراوري. يرجى إعادة الحجز."
+        },
+        "requestPending": {
+          "title": "طلب قيد الانتظار",
+          "message": "طلب موعدك قيد انتظار التأكيد"
+        },
+        "resultsAvailable": {
+          "title": "النتائج متاحة",
+          "message": "نتائج تحليلك متاحة الآن"
+        }
+      }
+    }
+  },
+  "notificationsMockData": {
+    "appointmentConfirmed": {
+      "title": "تم تأكيد الموعد",
+      "message": "تم تأكيد موعدك مع د. مارتن في 15 مارس 2025 في الساعة 2:30 مساءً."
+    },
+    "appointmentReminder": {
+      "title": "تذكير بالموعد",
+      "message": "لا تنسَ موعدك غداً في الساعة 10:00 صباحاً مع د. دوبوا."
+    },
+    "systemUpdate": {
+      "title": "تحديث النظام",
+      "message": "يتوفر إصدار جديد من التطبيق مع تحسينات في الأداء."
+    },
+    "appointmentCancelled": {
+      "title": "تم إلغاء الموعد",
+      "message": "تم إلغاء موعدك في 12 مارس من قبل الطبيب. يرجى حجز موعد جديد."
+    },
+    "newAvailability": {
+      "title": "توفر جديد",
+      "message": "لدى د. لوران أوقات جديدة متاحة هذا الشهر. اطلع على تقويمه."
+    }
+  },
+  "notifications": {
+    "title": "الإشعارات",
+    "newNotifications": "{{count}} إشعار جديد",
+    "newNotifications_plural": "{{count}} إشعارات جديدة",
+    "allRead": "تمت قراءة جميع الإشعارات",
+    "markAllRead": "تعليم الكل كمقروء",
+    "filterBy": "تصفية حسب:",
+    "filters": {
+      "all": "الكل",
+      "unread": "غير مقروءة",
+      "appointment": "المواعيد",
+      "reminder": "التذكيرات",
+      "system": "النظام"
+    },
+    "empty": {
+      "title": "لا توجد إشعارات",
+      "message": "ليس لديك أي إشعارات في الوقت الحالي."
+    },
+    "markAsRead": "تعليم كمقروء",
+    "delete": "حذف",
+    "showing": "عرض",
+    "notification": "إشعار",
+    "notifications_plural": "إشعارات",
+    "unreadCount": "غير مقروء",
+    "unreadCount_plural": "غير مقروءة",
+    "timeAgo": {
+      "justNow": "الآن",
+      "hoursAgo": "منذ {{hours}} ساعة",
+      "yesterday": "أمس"
+    }
+  }
+}
