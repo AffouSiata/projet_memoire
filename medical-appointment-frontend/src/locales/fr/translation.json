@@ -1109,7 +1109,36 @@
       "pendingStatus": "En attente",
       "registeredOn": "Demande envoyée le",
       "approve": "Approuver",
-      "reject": "Rejeter"
+      "reject": "Rejeter",
+      "approvalSuccess": "Médecin approuvé",
+      "approvalError": "Erreur",
+      "rejectionSuccess": "Médecin rejeté",
+      "rejectionError": "Erreur",
+      "activateSuccess": "Médecin activé",
+      "activateMessage": "Le médecin a été activé avec succès.",
+      "deactivateSuccess": "Médecin désactivé",
+      "deactivateMessage": "Le médecin a été désactivé avec succès.",
+      "statusUpdateError": "Erreur",
+      "approvalMessageSuccess": "Le médecin a été approuvé avec succès et recevra un email de confirmation.",
+      "approvalMessageError": "Une erreur est survenue lors de l'approbation du médecin.",
+      "rejectionMessageSuccess": "Le médecin a été rejeté et recevra un email de notification.",
+      "rejectionMessageError": "Une erreur est survenue lors du rejet du médecin.",
+      "statusUpdateMessageError": "Une erreur est survenue lors de la mise à jour du statut.",
+      "confirmActivateTitle": "Activer ce médecin ?",
+      "confirmDeactivateTitle": "Désactiver ce médecin ?",
+      "detailsModal": {
+        "active": "Actif",
+        "inactive": "Inactif",
+        "email": "Email",
+        "phone": "Téléphone",
+        "medicalOffice": "Cabinet médical",
+        "dateOfBirth": "Date de naissance",
+        "yearsOld": "ans",
+        "appointments": "Rendez-vous",
+        "totalConsultations": "Total des consultations",
+        "registeredSince": "Inscrit le",
+        "memberSince": "Membre depuis {{days}} jours"
+      }
     },
     "rendezvous": {
       "title": "Gestion des Rendez-vous",
@@ -1363,6 +1392,18 @@
           "mainAdmin": "Admin Principal",
           "unknownUser": "Utilisateur inconnu"
         }
+      },
+      "medicalSpecialties": {
+        "title": "Spécialités Médicales",
+        "description": "Gérer les spécialités disponibles pour les médecins",
+        "add": "Ajouter",
+        "reset": "Réinitialiser",
+        "delete": "Supprimer",
+        "newPlaceholder": "Nouvelle spécialité...",
+        "resetTitle": "Réinitialiser aux spécialités par défaut",
+        "noSpecialties": "Aucune spécialité. Ajoutez-en une ci-dessus.",
+        "count_one": "{{count}} spécialité disponible",
+        "count_other": "{{count}} spécialités disponibles"
       }
     }
   },

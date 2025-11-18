@@ -83,21 +83,51 @@ const AdminParametres = () => {
     backupFrequency: 'daily',
   });
 
-  // Spécialités médicales state
+  // Spécialités médicales state - using translation keys
   const defaultSpecialties = [
-    'Cardiologie',
-    'Pédiatrie',
-    'Dermatologie',
-    'Neurologie',
-    'Ophtalmologie',
-    'Psychiatrie',
-    'Gynécologie',
-    'Médecine générale',
+    'cardiology',
+    'pediatrics',
+    'dermatology',
+    'neurology',
+    'ophthalmology',
+    'psychiatry',
+    'gynecology',
+    'generalMedicine',
   ];
+
+  // Migration map from old French names to translation keys
+  const specialtyMigrationMap = {
+    'Cardiologie': 'cardiology',
+    'Pédiatrie': 'pediatrics',
+    'Dermatologie': 'dermatology',
+    'Neurologie': 'neurology',
+    'Ophtalmologie': 'ophthalmology',
+    'Psychiatrie': 'psychiatry',
+    'Gynécologie': 'gynecology',
+    'Médecine générale': 'generalMedicine',
+    'Orthopédie': 'orthopedics',
+    'Dentisterie': 'dentistry',
+    'Autre': 'other',
+  };
 
   const [specialties, setSpecialties] = useState(() => {
     const saved = localStorage.getItem('medicalSpecialties');
-    return saved ? JSON.parse(saved) : defaultSpecialties;
+    if (saved) {
+      try {
+        const parsedSpecialties = JSON.parse(saved);
+        // Migrate old French names to translation keys
+        const migratedSpecialties = parsedSpecialties.map(spec =>
+          specialtyMigrationMap[spec] || spec
+        );
+        // Save migrated data back to localStorage
+        localStorage.setItem('medicalSpecialties', JSON.stringify(migratedSpecialties));
+        return migratedSpecialties;
+      } catch (e) {
+        console.error('Error parsing specialties:', e);
+        return defaultSpecialties;
+      }
+    }
+    return defaultSpecialties;
   });
   const [newSpecialty, setNewSpecialty] = useState('');
 
@@ -796,17 +826,17 @@ const AdminParametres = () => {
                       <BeakerIcon className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-slate-800 dark:text-white">Spécialités Médicales</h3>
-                      <p className="text-sm text-slate-500 dark:text-gray-400">Gérer les spécialités disponibles pour les médecins</p>
+                      <h3 className="text-xl font-bold text-slate-800 dark:text-white">{t('admin.parametres.medicalSpecialties.title')}</h3>
+                      <p className="text-sm text-slate-500 dark:text-gray-400">{t('admin.parametres.medicalSpecialties.description')}</p>
                     </div>
                   </div>
                   <button
                     onClick={handleResetSpecialties}
                     className="px-3 py-2 text-sm font-semibold text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-all flex items-center gap-2"
-                    title="Réinitialiser aux spécialités par défaut"
+                    title={t('admin.parametres.medicalSpecialties.resetTitle')}
                   >
                     <ArrowPathIcon className="w-4 h-4" />
-                    Réinitialiser
+                    {t('admin.parametres.medicalSpecialties.reset')}
                   </button>
                 </div>
 
@@ -818,7 +848,7 @@ const AdminParametres = () => {
                       value={newSpecialty}
                       onChange={(e) => setNewSpecialty(e.target.value)}
                       onKeyPress={(e) => e.key === 'Enter' && handleAddSpecialty()}
-                      placeholder="Nouvelle spécialité..."
+                      placeholder={t('admin.parametres.medicalSpecialties.newPlaceholder')}
                       className="flex-1 px-4 py-2 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-secondary-500 focus:ring-2 focus:ring-secondary-500/20 transition-all"
                     />
                     <button
@@ -827,44 +857,49 @@ const AdminParametres = () => {
                       className="px-4 py-2 bg-secondary-500 hover:bg-secondary-600 text-white font-semibold rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
                     >
                       <PlusIcon className="w-5 h-5" />
-                      Ajouter
+                      {t('admin.parametres.medicalSpecialties.add')}
                     </button>
                   </div>
                 </div>
 
                 {/* Liste des spécialités */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                  {specialties.map((specialty, index) => (
-                    <div
-                      key={index}
-                      className="group/item relative bg-white dark:bg-gray-700 rounded-xl p-3 border-2 border-gray-200 dark:border-gray-600 hover:border-secondary-400 dark:hover:border-secondary-500 transition-all"
-                    >
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                          <BeakerIcon className="w-5 h-5 text-secondary-500 dark:text-secondary-400" />
-                          <span className="font-semibold text-gray-900 dark:text-white">{specialty}</span>
+                  {specialties.map((specialty, index) => {
+                    // Translate specialty if it's a key, otherwise show as is
+                    const translatedSpecialty = t(`specialties.${specialty}`, { defaultValue: specialty });
+
+                    return (
+                      <div
+                        key={index}
+                        className="group/item relative bg-white dark:bg-gray-700 rounded-xl p-3 border-2 border-gray-200 dark:border-gray-600 hover:border-secondary-400 dark:hover:border-secondary-500 transition-all"
+                      >
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <BeakerIcon className="w-5 h-5 text-secondary-500 dark:text-secondary-400" />
+                            <span className="font-semibold text-gray-900 dark:text-white">{translatedSpecialty}</span>
+                          </div>
+                          <button
+                            onClick={() => handleDeleteSpecialty(specialty)}
+                            className="opacity-0 group-hover/item:opacity-100 p-1 hover:bg-red-100 dark:hover:bg-red-900/30 rounded-lg transition-all"
+                            title={t('admin.parametres.medicalSpecialties.delete')}
+                          >
+                            <XMarkIcon className="w-5 h-5 text-red-600 dark:text-red-400" />
+                          </button>
                         </div>
-                        <button
-                          onClick={() => handleDeleteSpecialty(specialty)}
-                          className="opacity-0 group-hover/item:opacity-100 p-1 hover:bg-red-100 dark:hover:bg-red-900/30 rounded-lg transition-all"
-                          title="Supprimer"
-                        >
-                          <XMarkIcon className="w-5 h-5 text-red-600 dark:text-red-400" />
-                        </button>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
 
                 {specialties.length === 0 && (
                   <div className="text-center py-8 text-gray-500 dark:text-gray-400">
-                    Aucune spécialité. Ajoutez-en une ci-dessus.
+                    {t('admin.parametres.medicalSpecialties.noSpecialties')}
                   </div>
                 )}
 
                 <div className="mt-4 text-xs text-gray-500 dark:text-gray-400 flex items-center gap-2">
                   <BeakerIcon className="w-4 h-4" />
-                  {specialties.length} spécialité{specialties.length !== 1 ? 's' : ''} disponible{specialties.length !== 1 ? 's' : ''}
+                  {t('admin.parametres.medicalSpecialties.count', { count: specialties.length })}
                 </div>
               </div>
             </div>

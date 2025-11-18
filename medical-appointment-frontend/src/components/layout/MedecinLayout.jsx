@@ -3,6 +3,8 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
+import { useNotifications } from '../../context/NotificationContext';
+import NotificationToast from '../common/NotificationToast';
 import {
   HomeIcon,
   CalendarIcon,
@@ -23,6 +25,7 @@ const MedecinLayout = ({ children }) => {
   const location = useLocation();
   const { user, logout } = useAuth();
   const { isDarkMode } = useTheme();
+  const { newNotification, dismissToast, unreadCount } = useNotifications();
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
@@ -216,6 +219,12 @@ const MedecinLayout = ({ children }) => {
                         : 'text-slate-400 dark:text-white group-hover:text-secondary-600 dark:group-hover:text-secondary-400 group-hover:scale-110'
                     }`}
                   />
+                  {/* Notification Badge */}
+                  {item.path === '/medecin/notifications' && unreadCount > 0 && (
+                    <div className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center border border-white dark:border-gray-800 animate-pulse">
+                      <span className="text-[10px] font-bold text-white">{unreadCount}</span>
+                    </div>
+                  )}
                 </div>
 
                 {/* Text */}
@@ -352,6 +361,11 @@ const MedecinLayout = ({ children }) => {
             </div>
           </div>
         </div>
+      )}
+
+      {/* Notification Toast */}
+      {newNotification && (
+        <NotificationToast notification={newNotification} onDismiss={dismissToast} />
       )}
     </div>
   );

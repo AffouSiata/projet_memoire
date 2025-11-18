@@ -27,8 +27,9 @@ export class TimeslotsController {
   async getAvailableTimeSlots(
     @Param('medecinId') medecinId: string,
     @Query('jour') jour?: JourSemaine,
+    @Query('date') date?: string,
   ) {
-    return this.timeslotsService.getAvailableTimeSlots(medecinId, jour);
+    return this.timeslotsService.getAvailableTimeSlots(medecinId, jour, date);
   }
 
   // Endpoints protégés pour les médecins

@@ -93,6 +93,7 @@ model User {
   specialite             String?
   numeroOrdre            String?        // Numéro d'ordre des médecins
   timeslots              TimeSlot[]
+  indisponibilites       MedecinIndisponibilite[] @relation("MedecinIndisponibilites")
   statutValidation       StatutValidation? @default(PENDING)
 
   // Notifications (pour tous les rôles)
@@ -185,6 +186,23 @@ model TimeSlot {
   @@unique([medecinId, jour, heureDebut])
   @@index([medecinId])
   @@index([jour])
+}
+
+// Model MedecinIndisponibilite (jours où le médecin n'est pas disponible)
+model MedecinIndisponibilite {
+  id          String   @id @default(uuid())
+  medecinId   String
+  date        DateTime // Date spécifique d'indisponibilité (format: YYYY-MM-DD)
+  raison      String?  // Raison: "Congé", "Formation", "Jour férié", etc.
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  medecin     User     @relation("MedecinIndisponibilites", fields: [medecinId], references: [id], onDelete: Cascade)
+
+  @@unique([medecinId, date])
+  @@index([medecinId])
+  @@index([date])
 }
 
 // Model AuditLog (Journaux d'accès et d'audit)

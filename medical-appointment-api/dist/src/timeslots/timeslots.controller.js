@@ -27,8 +27,8 @@ let TimeslotsController = class TimeslotsController {
     constructor(timeslotsService) {
         this.timeslotsService = timeslotsService;
     }
-    async getAvailableTimeSlots(medecinId, jour) {
-        return this.timeslotsService.getAvailableTimeSlots(medecinId, jour);
+    async getAvailableTimeSlots(medecinId, jour, date) {
+        return this.timeslotsService.getAvailableTimeSlots(medecinId, jour, date);
     }
     async getMedecinTimeSlots(user, jour) {
         return this.timeslotsService.getMedecinTimeSlots(user.id, jour);
@@ -54,8 +54,9 @@ __decorate([
     (0, common_1.Get)('timeslots/:medecinId'),
     __param(0, (0, common_1.Param)('medecinId')),
     __param(1, (0, common_1.Query)('jour')),
+    __param(2, (0, common_1.Query)('date')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String]),
+    __metadata("design:paramtypes", [String, String, String]),
     __metadata("design:returntype", Promise)
 ], TimeslotsController.prototype, "getAvailableTimeSlots", null);
 __decorate([

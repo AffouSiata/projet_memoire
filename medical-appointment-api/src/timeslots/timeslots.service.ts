@@ -14,7 +14,7 @@ export class TimeslotsService {
   constructor(private prisma: PrismaService) {}
 
   // GET /timeslots (public - pour voir les créneaux disponibles)
-  async getAvailableTimeSlots(medecinId: string, jour?: JourSemaine) {
+  async getAvailableTimeSlots(medecinId: string, jour?: JourSemaine, date?: string) {
     const where: any = {
       medecinId,
       isAvailable: true,
@@ -28,6 +28,27 @@ export class TimeslotsService {
       where,
       orderBy: [{ jour: 'asc' }, { heureDebut: 'asc' }],
     });
+
+    // Si une date spécifique est fournie, vérifier les indisponibilités
+    if (date) {
+      const unavailability = await this.prisma.medecinIndisponibilite.findUnique({
+        where: {
+          medecinId_date: {
+            medecinId,
+            date: new Date(date),
+          },
+        },
+      });
+
+      // Si le médecin est indisponible ce jour-là, retourner un objet vide ou une indication
+      if (unavailability) {
+        return {
+          unavailable: true,
+          raison: unavailability.raison,
+          date: unavailability.date,
+        };
+      }
+    }
 
     // Grouper par jour
     const grouped = timeslots.reduce((acc, slot) => {

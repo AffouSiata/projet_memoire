@@ -48,6 +48,7 @@ export class AdminController {
     @Query('search') search?: string,
     @Query('specialite') specialite?: string,
     @Query('isActive', new ParseBoolPipe({ optional: true })) isActive?: boolean,
+    @Query('statutValidation') statutValidation?: 'PENDING' | 'APPROVED' | 'REJECTED',
     @Query('page', new ParseIntPipe({ optional: true })) page?: number,
     @Query('limit', new ParseIntPipe({ optional: true })) limit?: number,
   ) {
@@ -55,6 +56,7 @@ export class AdminController {
       search,
       specialite,
       isActive,
+      statutValidation: statutValidation as any,
       page,
       limit,
     });
@@ -64,18 +66,25 @@ export class AdminController {
   async updateMedecinStatus(
     @Param('id') medecinId: string,
     @Body() updateStatusDto: UpdateUserStatusDto,
+    @CurrentUser() admin: any,
   ) {
-    return this.adminService.updateMedecinStatus(medecinId, updateStatusDto);
+    return this.adminService.updateMedecinStatus(medecinId, updateStatusDto, admin.id);
   }
 
   @Patch('medecins/:id/approve')
-  async approveMedecin(@Param('id') medecinId: string) {
-    return this.adminService.approveMedecin(medecinId);
+  async approveMedecin(
+    @Param('id') medecinId: string,
+    @CurrentUser() admin: any,
+  ) {
+    return this.adminService.approveMedecin(medecinId, admin.id);
   }
 
   @Patch('medecins/:id/reject')
-  async rejectMedecin(@Param('id') medecinId: string) {
-    return this.adminService.rejectMedecin(medecinId);
+  async rejectMedecin(
+    @Param('id') medecinId: string,
+    @CurrentUser() admin: any,
+  ) {
+    return this.adminService.rejectMedecin(medecinId, admin.id);
   }
 
   @Get('rendezvous')

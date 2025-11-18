@@ -106,6 +106,7 @@ export class AdminService {
     search?: string;
     specialite?: string;
     isActive?: boolean;
+    statutValidation?: StatutValidation;
     page?: number;
     limit?: number;
   }) {
@@ -123,6 +124,10 @@ export class AdminService {
 
     if (filters?.specialite) {
       where.specialite = { contains: filters.specialite, mode: 'insensitive' };
+    }
+
+    if (filters?.statutValidation) {
+      where.statutValidation = filters.statutValidation;
     }
 
     if (filters?.search) {
@@ -171,14 +176,29 @@ export class AdminService {
   }
 
   // PATCH /admin/medecins/:id
-  async updateMedecinStatus(medecinId: string, updateStatusDto: UpdateUserStatusDto) {
+  async updateMedecinStatus(medecinId: string, updateStatusDto: UpdateUserStatusDto, adminId: string) {
     const medecin = await this.prisma.user.findUnique({
       where: { id: medecinId },
+      select: {
+        id: true,
+        nom: true,
+        prenom: true,
+        email: true,
+        telephone: true,
+        specialite: true,
+        isActive: true,
+        role: true,
+        preferencesNotifEmail: true,
+        preferencesNotifSms: true,
+      },
     });
 
     if (!medecin || medecin.role !== Role.MEDECIN) {
       throw new NotFoundException('Médecin non trouvé');
     }
+
+    // Vérifier si le statut change
+    const statusChanging = medecin.isActive !== updateStatusDto.isActive;
 
     const updated = await this.prisma.user.update({
       where: { id: medecinId },
@@ -193,11 +213,52 @@ export class AdminService {
       },
     });
 
+    // Si le statut a changé, envoyer des notifications
+    if (statusChanging) {
+      const medecinName = `${medecin.prenom} ${medecin.nom}`;
+
+      if (updateStatusDto.isActive) {
+        // Le compte a été activé
+        await this.notificationsService.sendAccountActivation(
+          medecin.id,
+          medecinName,
+          medecin.email,
+          medecin.telephone || '',
+          medecin.preferencesNotifEmail ?? true,
+          medecin.preferencesNotifSms ?? false,
+        );
+
+        // Notification pour l'admin
+        await this.notificationsService.createAdminNotificationForActivation(
+          adminId,
+          medecinName,
+          medecin.specialite || 'Non spécifiée',
+        );
+      } else {
+        // Le compte a été désactivé
+        await this.notificationsService.sendAccountDeactivation(
+          medecin.id,
+          medecinName,
+          medecin.email,
+          medecin.telephone || '',
+          medecin.preferencesNotifEmail ?? true,
+          medecin.preferencesNotifSms ?? false,
+        );
+
+        // Notification pour l'admin
+        await this.notificationsService.createAdminNotificationForDeactivation(
+          adminId,
+          medecinName,
+          medecin.specialite || 'Non spécifiée',
+        );
+      }
+    }
+
     return updated;
   }
 
   // PATCH /admin/medecins/:id/approve
-  async approveMedecin(medecinId: string) {
+  async approveMedecin(medecinId: string, adminId: string) {
     const medecin = await this.prisma.user.findUnique({
       where: { id: medecinId },
     });
@@ -221,28 +282,48 @@ export class AdminService {
         nom: true,
         prenom: true,
         email: true,
+        telephone: true,
         specialite: true,
         isActive: true,
         statutValidation: true,
+        preferencesNotifEmail: true,
+        preferencesNotifSms: true,
       },
     });
 
-    // Envoyer une notification au médecin
-    await this.notificationsService.createNotification(
+    // Envoyer une notification complète au médecin (base de données + email + SMS)
+    await this.notificationsService.sendAccountApproval(
       updated.id,
-      'CONFIRMATION',
-      'Compte approuvé',
-      `Félicitations Dr. ${updated.prenom} ${updated.nom}! Votre compte a été approuvé par l'administration. Vous pouvez maintenant vous connecter et accéder à votre espace médecin.`,
+      `${updated.prenom} ${updated.nom}`,
+      updated.email,
+      updated.telephone || '',
+      updated.preferencesNotifEmail ?? true,
+      updated.preferencesNotifSms ?? false,
+    );
+
+    // Créer une notification pour l'admin
+    await this.notificationsService.createAdminNotificationForApproval(
+      adminId,
+      `${updated.prenom} ${updated.nom}`,
+      updated.specialite || 'Non spécifiée',
     );
 
     return {
       message: 'Médecin approuvé avec succès',
-      medecin: updated,
+      medecin: {
+        id: updated.id,
+        nom: updated.nom,
+        prenom: updated.prenom,
+        email: updated.email,
+        specialite: updated.specialite,
+        isActive: updated.isActive,
+        statutValidation: updated.statutValidation,
+      },
     };
   }
 
   // PATCH /admin/medecins/:id/reject
-  async rejectMedecin(medecinId: string) {
+  async rejectMedecin(medecinId: string, adminId: string) {
     const medecin = await this.prisma.user.findUnique({
       where: { id: medecinId },
     });
@@ -266,23 +347,43 @@ export class AdminService {
         nom: true,
         prenom: true,
         email: true,
+        telephone: true,
         specialite: true,
         isActive: true,
         statutValidation: true,
+        preferencesNotifEmail: true,
+        preferencesNotifSms: true,
       },
     });
 
-    // Envoyer une notification au médecin
-    await this.notificationsService.createNotification(
+    // Envoyer une notification complète au médecin (base de données + email + SMS)
+    await this.notificationsService.sendAccountRejection(
       updated.id,
-      'ANNULATION',
-      'Demande refusée',
-      `Bonjour Dr. ${updated.prenom} ${updated.nom}, nous regrettons de vous informer que votre demande d'inscription a été refusée. Pour plus d'informations, veuillez contacter l'administration.`,
+      `${updated.prenom} ${updated.nom}`,
+      updated.email,
+      updated.telephone || '',
+      updated.preferencesNotifEmail ?? true,
+      updated.preferencesNotifSms ?? false,
+    );
+
+    // Créer une notification pour l'admin
+    await this.notificationsService.createAdminNotificationForRejection(
+      adminId,
+      `${updated.prenom} ${updated.nom}`,
+      updated.specialite || 'Non spécifiée',
     );
 
     return {
       message: 'Demande du médecin rejetée',
-      medecin: updated,
+      medecin: {
+        id: updated.id,
+        nom: updated.nom,
+        prenom: updated.prenom,
+        email: updated.email,
+        specialite: updated.specialite,
+        isActive: updated.isActive,
+        statutValidation: updated.statutValidation,
+      },
     };
   }
 

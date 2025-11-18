@@ -28,6 +28,11 @@ const medecinService = {
   // Notifications
   getNotifications: (params) => api.get('/medecins/notifications', { params }),
   markNotificationsAsRead: (notificationIds) => api.patch('/medecins/notifications/mark-as-read', { notificationIds }),
+
+  // Indisponibilités
+  getIndisponibilites: (params) => api.get('/medecins/indisponibilites', { params }),
+  createIndisponibilite: (data) => api.post('/medecins/indisponibilites', data),
+  deleteIndisponibilite: (id) => api.delete(`/medecins/indisponibilites/${id}`),
 };
 
 export default medecinService;

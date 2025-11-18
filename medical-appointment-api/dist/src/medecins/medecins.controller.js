@@ -24,6 +24,7 @@ const update_medecin_dto_1 = require("./dto/update-medecin.dto");
 const update_rendezvous_dto_1 = require("./dto/update-rendezvous.dto");
 const create_note_dto_1 = require("./dto/create-note.dto");
 const update_note_dto_1 = require("./dto/update-note.dto");
+const create_indisponibilite_dto_1 = require("./dto/create-indisponibilite.dto");
 const client_1 = require("@prisma/client");
 const multer_config_1 = require("../upload/multer.config");
 let MedecinsController = class MedecinsController {
@@ -80,6 +81,15 @@ let MedecinsController = class MedecinsController {
             throw new Error('Aucun fichier fourni');
         }
         return this.medecinsService.uploadAttachment(user.id, noteId, file.path);
+    }
+    async getIndisponibilites(user, startDate, endDate) {
+        return this.medecinsService.getIndisponibilites(user.id, startDate, endDate);
+    }
+    async createIndisponibilite(user, createIndisponibiliteDto) {
+        return this.medecinsService.createIndisponibilite(user.id, createIndisponibiliteDto);
+    }
+    async deleteIndisponibilite(user, indisponibiliteId) {
+        return this.medecinsService.deleteIndisponibilite(user.id, indisponibiliteId);
     }
 };
 exports.MedecinsController = MedecinsController;
@@ -192,6 +202,31 @@ __decorate([
     __metadata("design:paramtypes", [Object, String, Object]),
     __metadata("design:returntype", Promise)
 ], MedecinsController.prototype, "uploadAttachment", null);
+__decorate([
+    (0, common_1.Get)('indisponibilites'),
+    __param(0, (0, current_user_decorator_1.CurrentUser)()),
+    __param(1, (0, common_1.Query)('startDate')),
+    __param(2, (0, common_1.Query)('endDate')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, String, String]),
+    __metadata("design:returntype", Promise)
+], MedecinsController.prototype, "getIndisponibilites", null);
+__decorate([
+    (0, common_1.Post)('indisponibilites'),
+    __param(0, (0, current_user_decorator_1.CurrentUser)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, create_indisponibilite_dto_1.CreateIndisponibiliteDto]),
+    __metadata("design:returntype", Promise)
+], MedecinsController.prototype, "createIndisponibilite", null);
+__decorate([
+    (0, common_1.Delete)('indisponibilites/:id'),
+    __param(0, (0, current_user_decorator_1.CurrentUser)()),
+    __param(1, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, String]),
+    __metadata("design:returntype", Promise)
+], MedecinsController.prototype, "deleteIndisponibilite", null);
 exports.MedecinsController = MedecinsController = __decorate([
     (0, common_1.Controller)('medecins'),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard, roles_guard_1.RolesGuard),

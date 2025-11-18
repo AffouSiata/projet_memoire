@@ -23,6 +23,7 @@ import { UpdateMedecinDto } from './dto/update-medecin.dto';
 import { UpdateRendezVousDto } from './dto/update-rendezvous.dto';
 import { CreateNoteDto } from './dto/create-note.dto';
 import { UpdateNoteDto } from './dto/update-note.dto';
+import { CreateIndisponibiliteDto } from './dto/create-indisponibilite.dto';
 import { Role, StatutRendezVous, StatutNote } from '@prisma/client';
 import { multerConfig } from '../upload/multer.config';
 
@@ -155,5 +156,37 @@ export class MedecinsController {
       throw new Error('Aucun fichier fourni');
     }
     return this.medecinsService.uploadAttachment(user.id, noteId, file.path);
+  }
+
+  @Get('indisponibilites')
+  async getIndisponibilites(
+    @CurrentUser() user: any,
+    @Query('startDate') startDate?: string,
+    @Query('endDate') endDate?: string,
+  ) {
+    return this.medecinsService.getIndisponibilites(
+      user.id,
+      startDate,
+      endDate,
+    );
+  }
+
+  @Post('indisponibilites')
+  async createIndisponibilite(
+    @CurrentUser() user: any,
+    @Body() createIndisponibiliteDto: CreateIndisponibiliteDto,
+  ) {
+    return this.medecinsService.createIndisponibilite(
+      user.id,
+      createIndisponibiliteDto,
+    );
+  }
+
+  @Delete('indisponibilites/:id')
+  async deleteIndisponibilite(
+    @CurrentUser() user: any,
+    @Param('id') indisponibiliteId: string,
+  ) {
+    return this.medecinsService.deleteIndisponibilite(user.id, indisponibiliteId);
   }
 }

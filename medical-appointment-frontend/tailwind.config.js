@@ -78,10 +78,12 @@ module.exports = {
       animation: {
         'fade-in': 'fadeIn 0.3s ease-in-out',
         'slide-in': 'slideIn 0.3s ease-out',
+        'slide-in-right': 'slideInRight 0.3s ease-out',
         'slide-up': 'slideUp 0.3s ease-out',
         'scale-in': 'scaleIn 0.3s ease-out',
         'shake': 'shake 0.5s ease-in-out',
         'blob': 'blob 7s infinite',
+        'progress-bar': 'progressBar 5s linear forwards',
       },
 
       keyframes: {
@@ -92,6 +94,10 @@ module.exports = {
         slideIn: {
           '0%': { transform: 'translateX(-100%)' },
           '100%': { transform: 'translateX(0)' },
+        },
+        slideInRight: {
+          '0%': { transform: 'translateX(100%)', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' },
         },
         slideUp: {
           '0%': { transform: 'translateY(20px)', opacity: '0' },
@@ -110,6 +116,10 @@ module.exports = {
           '0%, 100%': { transform: 'translate(0px, 0px) scale(1)' },
           '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
           '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+        },
+        progressBar: {
+          '0%': { width: '100%' },
+          '100%': { width: '0%' },
         },
       },
     },

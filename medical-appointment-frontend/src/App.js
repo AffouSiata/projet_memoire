@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
+import { NotificationProvider } from './context/NotificationContext';
 import PrivateRoute from './routes/PrivateRoute';
 import RoleBasedRoute from './routes/RoleBasedRoute';
 
@@ -40,7 +41,8 @@ function App() {
     <BrowserRouter>
       <ThemeProvider>
         <AuthProvider>
-          <Routes>
+          <NotificationProvider>
+            <Routes>
             {/* Public routes */}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
@@ -264,6 +266,7 @@ function App() {
             {/* Redirect */}
             <Route path="/" element={<Navigate to="/login" replace />} />
           </Routes>
+          </NotificationProvider>
         </AuthProvider>
       </ThemeProvider>
     </BrowserRouter>

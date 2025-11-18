@@ -38,15 +38,65 @@ const AppointmentBooking = () => {
   const [availableTimeSlots, setAvailableTimeSlots] = useState([]);
   const [isLoadingTimeSlots, setIsLoadingTimeSlots] = useState(false);
   const [bookedSlots, setBookedSlots] = useState([]);
+  const [currentMonth, setCurrentMonth] = useState(new Date());
+  const [calendarDays, setCalendarDays] = useState([]);
+  const [isDoctorUnavailable, setIsDoctorUnavailable] = useState(false);
+  const [unavailabilityReason, setUnavailabilityReason] = useState('');
 
   const specialties = [
-    { id: 1, nameKey: 'booking.specialties.cardiology', icon: '🫀', color: 'secondary-500', popular: true },
-    { id: 2, nameKey: 'booking.specialties.pediatrics', icon: '👶', color: 'primary-400', popular: true },
-    { id: 3, nameKey: 'booking.specialties.dermatology', icon: '🩺', color: 'secondary-500', popular: false },
-    { id: 4, nameKey: 'booking.specialties.neurology', icon: '🧠', color: 'primary-400', popular: false },
-    { id: 5, nameKey: 'booking.specialties.ophthalmology', icon: '👁️', color: 'secondary-500', popular: true },
-    { id: 6, nameKey: 'booking.specialties.dentistry', icon: '🦷', color: 'primary-400', popular: false },
+    { id: 1, nameKey: 'booking.specialties.cardiology', name: 'Cardiologie', icon: '🫀', color: 'secondary-500', popular: true },
+    { id: 2, nameKey: 'booking.specialties.pediatrics', name: 'Pédiatrie', icon: '👶', color: 'primary-400', popular: true },
+    { id: 3, nameKey: 'booking.specialties.dermatology', name: 'Dermatologie', icon: '🩺', color: 'secondary-500', popular: true },
+    { id: 4, nameKey: 'booking.specialties.neurology', name: 'Neurologie', icon: '🧠', color: 'primary-400', popular: false },
+    { id: 5, nameKey: 'booking.specialties.ophthalmology', name: 'Ophtalmologie', icon: '👁️', color: 'secondary-500', popular: false },
+    { id: 6, nameKey: 'booking.specialties.dentistry', name: 'Dentisterie', icon: '🦷', color: 'primary-400', popular: false },
+    { id: 7, nameKey: 'booking.specialties.gynecology', name: 'Gynécologie', icon: '👩‍⚕️', color: 'secondary-500', popular: true },
+    { id: 8, nameKey: 'booking.specialties.generalMedicine', name: 'Médecine générale', icon: '⚕️', color: 'primary-400', popular: true },
+    { id: 9, nameKey: 'booking.specialties.psychiatry', name: 'Psychiatrie', icon: '🧘', color: 'secondary-500', popular: false },
   ];
+
+  // Generate calendar days for the current month
+  useEffect(() => {
+    const year = currentMonth.getFullYear();
+    const month = currentMonth.getMonth();
+
+    // First day of the month
+    const firstDay = new Date(year, month, 1);
+    const firstDayOfWeek = firstDay.getDay(); // 0 = Sunday, 1 = Monday, etc.
+
+    // Last day of the month
+    const lastDay = new Date(year, month + 1, 0);
+    const lastDate = lastDay.getDate();
+
+    // Generate calendar array
+    const days = [];
+
+    // Add empty cells for days before the first day of the month
+    for (let i = 0; i < firstDayOfWeek; i++) {
+      days.push(null);
+    }
+
+    // Add all days of the month
+    for (let day = 1; day <= lastDate; day++) {
+      days.push(new Date(year, month, day));
+    }
+
+    setCalendarDays(days);
+  }, [currentMonth]);
+
+  const goToPreviousMonth = () => {
+    setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1));
+  };
+
+  const goToNextMonth = () => {
+    setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1));
+  };
+
+  const isDateInPast = (date) => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return date < today;
+  };
 
   // Récupérer les médecins depuis l'API
   useEffect(() => {
@@ -70,6 +120,8 @@ const AppointmentBooking = () => {
           avatar: `${doc.prenom[0]}${doc.nom[0]}`
         }));
 
+        console.log('📋 Nombre de médecins reçus de l\'API:', response.data.length);
+        console.log('📋 Médecins (approuvés et actifs):', transformedDoctors);
         setDoctors(transformedDoctors);
         setIsLoadingDoctors(false);
       } catch (error) {
@@ -122,10 +174,22 @@ const AppointmentBooking = () => {
       const endMinutes = endHour * 60 + endMin;
 
       while (currentMinutes < endMinutes) {
-        const hours = Math.floor(currentMinutes / 60);
-        const mins = currentMinutes % 60;
-        const timeString = `${String(hours).padStart(2, '0')}:${String(mins).padStart(2, '0')}`;
-        slots.push(timeString);
+        const startHours = Math.floor(currentMinutes / 60);
+        const startMins = currentMinutes % 60;
+        const startTime = `${String(startHours).padStart(2, '0')}:${String(startMins).padStart(2, '0')}`;
+
+        // Calculer l'heure de fin du créneau
+        const endSlotMinutes = currentMinutes + slotDuration;
+        const endHours = Math.floor(endSlotMinutes / 60);
+        const endMins = endSlotMinutes % 60;
+        const endTime = `${String(endHours).padStart(2, '0')}:${String(endMins).padStart(2, '0')}`;
+
+        // Stocker le créneau avec heure de début et de fin
+        slots.push({
+          start: startTime,
+          end: endTime,
+          display: `${startTime} - ${endTime}`
+        });
 
         currentMinutes += slotDuration;
       }
@@ -141,11 +205,15 @@ const AppointmentBooking = () => {
     const fetchTimeSlots = async () => {
       if (!selectedDoctor || !selectedDate) {
         setAvailableTimeSlots([]);
+        setIsDoctorUnavailable(false);
         return;
       }
 
       try {
         setIsLoadingTimeSlots(true);
+        setIsDoctorUnavailable(false);
+        setUnavailabilityReason('');
+
         const dayOfWeek = getDayOfWeek(selectedDate);
 
         console.log('📋 Récupération des créneaux pour:', {
@@ -153,6 +221,25 @@ const AppointmentBooking = () => {
           selectedDate,
           dayOfWeek
         });
+
+        // Vérifier d'abord si le médecin est indisponible à cette date
+        const dateString = selectedDate.toISOString().split('T')[0]; // Format YYYY-MM-DD
+        const unavailabilityResponse = await axios.get(
+          `http://localhost:3002/api/timeslots/${selectedDoctor}`,
+          {
+            params: { date: dateString }
+          }
+        );
+
+        // Si le médecin est indisponible, afficher un message
+        if (unavailabilityResponse.data.unavailable) {
+          console.log('⚠️ Le médecin est indisponible ce jour');
+          setIsDoctorUnavailable(true);
+          setUnavailabilityReason(unavailabilityResponse.data.raison || '');
+          setAvailableTimeSlots([]);
+          setIsLoadingTimeSlots(false);
+          return;
+        }
 
         // Récupérer les timeSlots du médecin pour ce jour
         const response = await patientService.getDoctorTimeSlots(selectedDoctor, dayOfWeek);
@@ -325,11 +412,21 @@ const AppointmentBooking = () => {
     }
   };
 
+  // Filtrer les spécialités pour n'afficher que celles qui ont des médecins approuvés
+  const availableSpecialties = specialties.filter(specialty => {
+    // Vérifier s'il y a au moins un médecin pour cette spécialité
+    const hasDoctors = doctors.some(doc => doc.specialty === specialty.name);
+    return hasDoctors;
+  });
+
+  console.log('🏥 Spécialités avec médecins approuvés:', availableSpecialties.length, '/', specialties.length);
+  console.log('📋 Spécialités disponibles:', availableSpecialties.map(s => s.name));
+
   // Filtrer les médecins par spécialité sélectionnée
   const filteredDoctors = selectedSpecialty
     ? doctors.filter(doc => {
         const selectedSpec = specialties.find(s => s.id === selectedSpecialty);
-        return doc.specialty === t(selectedSpec?.nameKey);
+        return doc.specialty === selectedSpec?.name;
       })
     : doctors;
 
@@ -464,7 +561,7 @@ const AppointmentBooking = () => {
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {specialties.map((specialty, index) => (
+                {availableSpecialties.map((specialty, index) => (
                   <div
                     key={specialty.id}
                     onClick={() => setSelectedSpecialty(specialty.id)}
@@ -505,7 +602,7 @@ const AppointmentBooking = () => {
                           ? `text-${specialty.color}`
                           : `text-gray-900 dark:text-white group-hover:text-${specialty.color}`
                       }`}>
-                        {t(specialty.nameKey)}
+                        {specialty.name}
                       </h3>
 
                       {/* Checkmark pour la sélection */}
@@ -536,10 +633,11 @@ const AppointmentBooking = () => {
           {currentStep === 2 && (
             <div className="animate-scale-in">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                {t('booking.doctors.title')}
+                {t('booking.doctors.title') || 'Choisir un médecin'}
               </h2>
               <p className="text-gray-600 dark:text-white mb-8">
-                {filteredDoctors.length} {t('booking.doctors.available')} {t(specialties.find(s => s.id === selectedSpecialty)?.nameKey)}
+                {filteredDoctors.length} médecin(s) disponible(s)
+                {selectedSpecialty && ` en ${specialties.find(s => s.id === selectedSpecialty)?.name}`}
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -614,7 +712,27 @@ const AppointmentBooking = () => {
                     {t('booking.dateTime.selectDate')}
                   </h3>
                   <div className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl p-6">
+                    {/* Month Navigation */}
+                    <div className="flex items-center justify-between mb-6">
+                      <button
+                        onClick={goToPreviousMonth}
+                        className="p-2 rounded-lg hover:bg-white dark:hover:bg-gray-700 transition-colors"
+                      >
+                        <ChevronLeftIcon className="w-6 h-6 text-gray-700 dark:text-white" />
+                      </button>
+                      <h4 className="text-lg font-bold text-gray-900 dark:text-white">
+                        {currentMonth.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' })}
+                      </h4>
+                      <button
+                        onClick={goToNextMonth}
+                        className="p-2 rounded-lg hover:bg-white dark:hover:bg-gray-700 transition-colors"
+                      >
+                        <ChevronRightIcon className="w-6 h-6 text-gray-700 dark:text-white" />
+                      </button>
+                    </div>
+
                     <div className="grid grid-cols-7 gap-2">
+                      {/* Day headers */}
                       {[
                         t('booking.dateTime.days.sun'),
                         t('booking.dateTime.days.mon'),
@@ -628,26 +746,39 @@ const AppointmentBooking = () => {
                           {day}
                         </div>
                       ))}
-                      {[...Array(31)].map((_, i) => {
-                        const day = i + 1;
-                        // Create a proper Date object for this day
-                        const today = new Date();
-                        const dateObj = new Date(today.getFullYear(), today.getMonth(), day);
+
+                      {/* Calendar days */}
+                      {calendarDays.map((dateObj, index) => {
+                        if (!dateObj) {
+                          // Empty cell for alignment
+                          return <div key={`empty-${index}`} className="aspect-square"></div>;
+                        }
+
+                        const isPast = isDateInPast(dateObj);
                         const isSelected = selectedDate &&
-                          selectedDate.getDate() === day &&
-                          selectedDate.getMonth() === today.getMonth() &&
-                          selectedDate.getFullYear() === today.getFullYear();
+                          selectedDate.getDate() === dateObj.getDate() &&
+                          selectedDate.getMonth() === dateObj.getMonth() &&
+                          selectedDate.getFullYear() === dateObj.getFullYear();
+
+                        const isToday = new Date().toDateString() === dateObj.toDateString();
+
                         return (
                           <button
-                            key={i}
-                            onClick={() => setSelectedDate(dateObj)}
+                            key={index}
+                            onClick={() => !isPast && setSelectedDate(dateObj)}
+                            disabled={isPast}
                             className={`aspect-square rounded-xl text-sm font-medium transition-all duration-300 ${
                               isSelected
                                 ? 'bg-primary-400 text-white scale-110 shadow-lg'
+                                : isPast
+                                ? 'bg-gray-200 dark:bg-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed'
+                                : isToday
+                                ? 'bg-secondary-100 dark:bg-secondary-900 text-secondary-700 dark:text-secondary-300 border-2 border-secondary-500 hover:bg-secondary-200 dark:hover:bg-secondary-800 hover:scale-105'
                                 : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-white hover:bg-primary-50 dark:hover:bg-gray-700 hover:scale-105'
                             }`}
+                            title={dateObj.toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
                           >
-                            {day}
+                            {dateObj.getDate()}
                           </button>
                         );
                       })}
@@ -665,6 +796,28 @@ const AppointmentBooking = () => {
                     <div className="flex justify-center items-center py-12">
                       <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-secondary-500"></div>
                     </div>
+                  ) : isDoctorUnavailable ? (
+                    <div className="bg-red-50 dark:bg-red-900/20 border-2 border-red-200 dark:border-red-800 rounded-xl p-6 text-center animate-scale-in">
+                      <div className="w-16 h-16 bg-red-100 dark:bg-red-900/50 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <CalendarIcon className="w-8 h-8 text-red-500 dark:text-red-400" />
+                      </div>
+                      <h4 className="text-lg font-bold text-red-700 dark:text-red-300 mb-2">
+                        Médecin Indisponible
+                      </h4>
+                      <p className="text-red-600 dark:text-red-400 font-medium mb-3">
+                        Le médecin n'est pas disponible à cette date.
+                      </p>
+                      {unavailabilityReason && (
+                        <div className="bg-white dark:bg-gray-800 rounded-lg p-3 inline-block">
+                          <p className="text-sm text-gray-700 dark:text-gray-300">
+                            <span className="font-semibold">Raison:</span> {unavailabilityReason}
+                          </p>
+                        </div>
+                      )}
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mt-4">
+                        Veuillez choisir une autre date.
+                      </p>
+                    </div>
                   ) : availableTimeSlots.length === 0 ? (
                     <div className="bg-amber-50 dark:bg-amber-900/20 border-2 border-amber-200 dark:border-amber-800 rounded-xl p-6 text-center">
                       <ClockIcon className="w-12 h-12 text-amber-500 mx-auto mb-3" />
@@ -676,14 +829,14 @@ const AppointmentBooking = () => {
                     </div>
                   ) : (
                     <div className="grid grid-cols-2 gap-3">
-                      {availableTimeSlots.map((time) => {
-                        const isSelected = selectedTime === time;
-                        const isBooked = bookedSlots.includes(time);
+                      {availableTimeSlots.map((slot) => {
+                        const isSelected = selectedTime === slot.start;
+                        const isBooked = bookedSlots.includes(slot.start);
 
                         return (
                           <button
-                            key={time}
-                            onClick={() => !isBooked && setSelectedTime(time)}
+                            key={slot.start}
+                            onClick={() => !isBooked && setSelectedTime(slot.start)}
                             disabled={isBooked}
                             className={`p-4 rounded-xl font-medium transition-all duration-300 ${
                               isBooked
@@ -694,7 +847,7 @@ const AppointmentBooking = () => {
                             }`}
                           >
                             <ClockIcon className="w-5 h-5 mx-auto mb-1" />
-                            {time}
+                            {slot.display}
                             {isBooked && <span className="block text-xs mt-1">Réservé</span>}
                           </button>
                         );

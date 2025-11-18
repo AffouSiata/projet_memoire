@@ -5,7 +5,7 @@ import { JourSemaine } from '@prisma/client';
 export declare class TimeslotsService {
     private prisma;
     constructor(prisma: PrismaService);
-    getAvailableTimeSlots(medecinId: string, jour?: JourSemaine): Promise<Record<import("@prisma/client").$Enums.JourSemaine, {
+    getAvailableTimeSlots(medecinId: string, jour?: JourSemaine, date?: string): Promise<Record<import("@prisma/client").$Enums.JourSemaine, {
         id: string;
         createdAt: Date;
         updatedAt: Date;
@@ -14,7 +14,11 @@ export declare class TimeslotsService {
         heureDebut: string;
         heureFin: string;
         isAvailable: boolean;
-    }[]>>;
+    }[]> | {
+        unavailable: boolean;
+        raison: string | null;
+        date: Date;
+    }>;
     getMedecinTimeSlots(medecinId: string, jour?: JourSemaine): Promise<{
         id: string;
         createdAt: Date;

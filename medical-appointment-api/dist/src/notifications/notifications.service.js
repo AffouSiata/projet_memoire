@@ -81,6 +81,78 @@ let NotificationsService = class NotificationsService {
             await this.smsService.sendSms(patientPhone, message);
         }
     }
+    async sendAccountApproval(userId, medecinName, medecinEmail, medecinPhone, sendEmail, sendSms) {
+        await this.createNotification(userId, client_1.TypeNotification.CONFIRMATION, 'Compte approuvé', `Félicitations Dr. ${medecinName}! Votre compte a été approuvé par l'administration. Vous pouvez maintenant vous connecter et accéder à votre espace médecin.`);
+        if (sendEmail) {
+            await this.emailService.sendAccountApproval(medecinEmail, medecinName);
+        }
+        if (sendSms) {
+            const message = `Félicitations Dr. ${medecinName}! Votre compte médecin a été approuvé. Vous pouvez maintenant vous connecter.`;
+            await this.smsService.sendSms(medecinPhone, message);
+        }
+    }
+    async sendAccountRejection(userId, medecinName, medecinEmail, medecinPhone, sendEmail, sendSms) {
+        await this.createNotification(userId, client_1.TypeNotification.ANNULATION, 'Demande refusée', `Bonjour Dr. ${medecinName}, nous regrettons de vous informer que votre demande d'inscription a été refusée. Pour plus d'informations, veuillez contacter l'administration.`);
+        if (sendEmail) {
+            await this.emailService.sendAccountRejection(medecinEmail, medecinName);
+        }
+        if (sendSms) {
+            const message = `Dr. ${medecinName}, votre demande d'inscription a été refusée. Contactez l'administration pour plus d'informations.`;
+            await this.smsService.sendSms(medecinPhone, message);
+        }
+    }
+    async createAdminNotificationForApproval(adminId, medecinName, specialite) {
+        await this.createNotification(adminId, client_1.TypeNotification.CONFIRMATION, 'Médecin approuvé', `Vous avez approuvé le compte de Dr. ${medecinName} (${specialite}). Le médecin a reçu un email de confirmation.`);
+    }
+    async createAdminNotificationForRejection(adminId, medecinName, specialite) {
+        await this.createNotification(adminId, client_1.TypeNotification.ANNULATION, 'Demande rejetée', `Vous avez rejeté la demande d'inscription de Dr. ${medecinName} (${specialite}). Le médecin a été notifié.`);
+    }
+    async sendAccountDeactivation(userId, medecinName, medecinEmail, medecinPhone, sendEmail, sendSms) {
+        await this.createNotification(userId, client_1.TypeNotification.ANNULATION, 'Compte désactivé', `Bonjour Dr. ${medecinName}, votre compte a été désactivé par l'administration. Pour plus d'informations, veuillez contacter l'administration.`);
+        if (sendEmail) {
+            const subject = 'Compte désactivé';
+            const html = `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #dc2626;">Compte désactivé</h2>
+          <p>Bonjour Dr. ${medecinName},</p>
+          <p>Nous vous informons que votre compte a été désactivé par l'administration.</p>
+          <p>Si vous pensez qu'il s'agit d'une erreur ou si vous souhaitez plus d'informations, veuillez contacter l'administration.</p>
+          <p>Cordialement,<br>L'équipe médicale</p>
+        </div>
+      `;
+            await this.emailService.sendEmail(medecinEmail, subject, html);
+        }
+        if (sendSms && medecinPhone) {
+            const message = `Dr. ${medecinName}, votre compte a été désactivé par l'administration. Contactez-nous pour plus d'informations.`;
+            await this.smsService.sendSms(medecinPhone, message);
+        }
+    }
+    async sendAccountActivation(userId, medecinName, medecinEmail, medecinPhone, sendEmail, sendSms) {
+        await this.createNotification(userId, client_1.TypeNotification.CONFIRMATION, 'Compte activé', `Félicitations Dr. ${medecinName}! Votre compte a été réactivé par l'administration. Vous pouvez maintenant vous connecter et accéder à votre espace médecin.`);
+        if (sendEmail) {
+            const subject = 'Compte réactivé';
+            const html = `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #16a34a;">Compte réactivé</h2>
+          <p>Bonjour Dr. ${medecinName},</p>
+          <p>Nous sommes heureux de vous informer que votre compte a été réactivé par l'administration.</p>
+          <p>Vous pouvez maintenant vous connecter et accéder à votre espace médecin.</p>
+          <p>Cordialement,<br>L'équipe médicale</p>
+        </div>
+      `;
+            await this.emailService.sendEmail(medecinEmail, subject, html);
+        }
+        if (sendSms && medecinPhone) {
+            const message = `Dr. ${medecinName}, votre compte a été réactivé. Vous pouvez maintenant vous connecter.`;
+            await this.smsService.sendSms(medecinPhone, message);
+        }
+    }
+    async createAdminNotificationForDeactivation(adminId, medecinName, specialite) {
+        await this.createNotification(adminId, client_1.TypeNotification.ANNULATION, 'Compte médecin désactivé', `Vous avez désactivé le compte de Dr. ${medecinName} (${specialite}). Le médecin a été notifié par email.`);
+    }
+    async createAdminNotificationForActivation(adminId, medecinName, specialite) {
+        await this.createNotification(adminId, client_1.TypeNotification.CONFIRMATION, 'Compte médecin activé', `Vous avez activé le compte de Dr. ${medecinName} (${specialite}). Le médecin a été notifié par email.`);
+    }
 };
 exports.NotificationsService = NotificationsService;
 exports.NotificationsService = NotificationsService = __decorate([

@@ -18,68 +18,21 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline';
 import { useDateFormatter, dateFormats } from '../../hooks/useDateFormatter';
+import { useNotifications } from '../../context/NotificationContext';
+import patientService from '../../services/patientService';
 
 const PatientNotifications = () => {
   const { t } = useTranslation();
   const { formatDate } = useDateFormatter();
   const [currentTime, setCurrentTime] = useState(new Date());
   const [filterType, setFilterType] = useState('ALL');
-  const [notifications, setNotifications] = useState([
-    {
-      id: 1,
-      type: 'RDV',
-      titleKey: 'patient.notifications.mockData.appointmentConfirmed.title',
-      messageKey: 'patient.notifications.mockData.appointmentConfirmed.message',
-      date: new Date(Date.now() - 2 * 60 * 60 * 1000),
-      read: false,
-      priority: 'normal',
-    },
-    {
-      id: 2,
-      type: 'ALERTE',
-      titleKey: 'patient.notifications.mockData.appointmentReminder.title',
-      messageKey: 'patient.notifications.mockData.appointmentReminder.message',
-      date: new Date(Date.now() - 5 * 60 * 60 * 1000),
-      read: false,
-      priority: 'urgent',
-    },
-    {
-      id: 3,
-      type: 'INFO',
-      titleKey: 'patient.notifications.mockData.newSlotsAvailable.title',
-      messageKey: 'patient.notifications.mockData.newSlotsAvailable.message',
-      date: new Date(Date.now() - 24 * 60 * 60 * 1000),
-      read: true,
-      priority: 'normal',
-    },
-    {
-      id: 4,
-      type: 'ANNULATION',
-      titleKey: 'patient.notifications.mockData.appointmentCancelled.title',
-      messageKey: 'patient.notifications.mockData.appointmentCancelled.message',
-      date: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
-      read: true,
-      priority: 'high',
-    },
-    {
-      id: 5,
-      type: 'RDV',
-      titleKey: 'patient.notifications.mockData.requestPending.title',
-      messageKey: 'patient.notifications.mockData.requestPending.message',
-      date: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000),
-      read: true,
-      priority: 'normal',
-    },
-    {
-      id: 6,
-      type: 'INFO',
-      titleKey: 'patient.notifications.mockData.resultsAvailable.title',
-      messageKey: 'patient.notifications.mockData.resultsAvailable.message',
-      date: new Date(Date.now() - 6 * 60 * 60 * 1000),
-      read: false,
-      priority: 'low',
-    },
-  ]);
+  const { notifications: contextNotifications, loadNotifications } = useNotifications();
+  const [notifications, setNotifications] = useState([]);
+
+  // Charger les notifications depuis le contexte
+  useEffect(() => {
+    setNotifications(contextNotifications || []);
+  }, [contextNotifications]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -90,17 +43,17 @@ const PatientNotifications = () => {
 
   const getTypeStyle = (type) => {
     switch (type) {
-      case 'RDV':
+      case 'CONFIRMATION':
         return {
-          icon: CalendarIcon,
-          gradient: 'from-secondary-500 to-secondary-600',
-          bg: 'bg-secondary-100',
-          darkBg: 'dark:bg-secondary-900/30',
-          text: 'text-secondary-600',
-          darkText: 'dark:text-secondary-400',
-          border: 'border-secondary-200',
-          darkBorder: 'dark:border-secondary-800',
-          label: 'Rendez-vous'
+          icon: CheckCircleIcon,
+          gradient: 'from-green-500 to-green-600',
+          bg: 'bg-green-100',
+          darkBg: 'dark:bg-green-900/30',
+          text: 'text-green-600',
+          darkText: 'dark:text-green-400',
+          border: 'border-green-200',
+          darkBorder: 'dark:border-green-800',
+          label: 'Confirmation'
         };
       case 'ANNULATION':
         return {
@@ -114,7 +67,7 @@ const PatientNotifications = () => {
           darkBorder: 'dark:border-red-800',
           label: 'Annulation'
         };
-      case 'ALERTE':
+      case 'RAPPEL':
         return {
           icon: ExclamationTriangleIcon,
           gradient: 'from-orange-500 to-orange-600',
@@ -124,9 +77,21 @@ const PatientNotifications = () => {
           darkText: 'dark:text-orange-400',
           border: 'border-orange-200',
           darkBorder: 'dark:border-orange-800',
-          label: 'Alerte'
+          label: 'Rappel'
         };
-      case 'INFO':
+      case 'CHANGEMENT_HORAIRE':
+        return {
+          icon: ClockIcon,
+          gradient: 'from-amber-500 to-amber-600',
+          bg: 'bg-amber-100',
+          darkBg: 'dark:bg-amber-900/30',
+          text: 'text-amber-600',
+          darkText: 'dark:text-amber-400',
+          border: 'border-amber-200',
+          darkBorder: 'dark:border-amber-800',
+          label: 'Changement'
+        };
+      case 'RECOMMANDATION':
         return {
           icon: InformationCircleIcon,
           gradient: 'from-blue-500 to-blue-600',
@@ -170,34 +135,48 @@ const PatientNotifications = () => {
 
   const filterTypes = [
     { value: 'ALL', label: 'Toutes', icon: BellIcon, count: notifications.length },
-    { value: 'RDV', label: 'Rendez-vous', icon: CalendarIcon, count: notifications.filter(n => n.type === 'RDV').length },
+    { value: 'CONFIRMATION', label: 'Confirmations', icon: CheckCircleIcon, count: notifications.filter(n => n.type === 'CONFIRMATION').length },
     { value: 'ANNULATION', label: 'Annulations', icon: XCircleIcon, count: notifications.filter(n => n.type === 'ANNULATION').length },
-    { value: 'ALERTE', label: 'Alertes', icon: ExclamationTriangleIcon, count: notifications.filter(n => n.type === 'ALERTE').length },
-    { value: 'INFO', label: 'Infos', icon: InformationCircleIcon, count: notifications.filter(n => n.type === 'INFO').length },
+    { value: 'RAPPEL', label: 'Rappels', icon: ExclamationTriangleIcon, count: notifications.filter(n => n.type === 'RAPPEL').length },
+    { value: 'RECOMMANDATION', label: 'Infos', icon: InformationCircleIcon, count: notifications.filter(n => n.type === 'RECOMMANDATION').length },
   ];
 
   const filteredNotifications = filterType === 'ALL'
     ? notifications
     : notifications.filter(n => n.type === filterType);
 
-  const unreadCount = notifications.filter(n => !n.read).length;
+  const unreadCount = notifications.filter(n => !n.lue).length;
 
-  const toggleRead = (id) => {
-    setNotifications(notifications.map(n =>
-      n.id === id ? { ...n, read: !n.read } : n
-    ));
+  const toggleRead = async (id) => {
+    try {
+      await patientService.markAsRead([id]);
+      await loadNotifications();
+    } catch (error) {
+      console.error('Erreur lors du changement de statut:', error);
+    }
   };
 
-  const deleteNotification = (id) => {
-    setNotifications(notifications.filter(n => n.id !== id));
+  const deleteNotification = async (id) => {
+    // Note: L'API ne supporte pas la suppression pour l'instant
+    // On pourrait l'ajouter plus tard si nécessaire
+    console.log('Suppression non implémentée dans l\'API');
   };
 
-  const markAllAsRead = () => {
-    setNotifications(notifications.map(n => ({ ...n, read: true })));
+  const markAllAsRead = async () => {
+    try {
+      const unreadIds = notifications.filter(n => !n.lue).map(n => n.id);
+      if (unreadIds.length > 0) {
+        await patientService.markAsRead(unreadIds);
+        await loadNotifications();
+      }
+    } catch (error) {
+      console.error('Erreur lors du marquage:', error);
+    }
   };
 
   const deleteAllRead = () => {
-    setNotifications(notifications.filter(n => !n.read));
+    // Note: L'API ne supporte pas la suppression pour l'instant
+    console.log('Suppression non implémentée dans l\'API');
   };
 
   const getTimeAgo = (date) => {
@@ -330,11 +309,11 @@ const PatientNotifications = () => {
             </button>
             <button
               onClick={deleteAllRead}
-              disabled={notifications.filter(n => n.read).length === 0}
+              disabled={notifications.filter(n => n.lue).length === 0}
               className="flex items-center gap-2 px-6 py-3 bg-red-500 hover:bg-red-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <TrashIcon className="w-5 h-5" />
-              Supprimer les lues ({notifications.filter(n => n.read).length})
+              Supprimer les lues ({notifications.filter(n => n.lue).length})
             </button>
           </div>
 
@@ -362,24 +341,21 @@ const PatientNotifications = () => {
                   >
                     <div className={`absolute inset-0 bg-gradient-to-br ${typeStyle.gradient} opacity-0 group-hover/notif:opacity-10 rounded-2xl blur-xl transition-opacity`}></div>
                     <div className={`relative bg-white dark:bg-gray-800 rounded-2xl shadow-lg border-2 ${typeStyle.border} ${typeStyle.darkBorder} overflow-hidden transition-all hover:shadow-xl hover:scale-[1.02] ${
-                      !notification.read ? 'border-l-8' : ''
+                      !notification.lue ? 'border-l-8' : ''
                     }`}>
                       <div className="flex gap-4 p-5">
                         {/* Icon */}
                         <div className={`w-14 h-14 ${typeStyle.bg} ${typeStyle.darkBg} rounded-xl flex items-center justify-center flex-shrink-0 relative`}>
                           <div className={`absolute inset-0 bg-gradient-to-br ${typeStyle.gradient} opacity-0 group-hover/notif:opacity-20 rounded-xl transition-opacity`}></div>
                           <TypeIcon className={`w-7 h-7 ${typeStyle.text} ${typeStyle.darkText} relative z-10`} />
-                          {priorityStyle.pulse && (
-                            <div className={`absolute -top-1 -right-1 w-3 h-3 ${priorityStyle.bg} rounded-full animate-pulse`}></div>
-                          )}
                         </div>
 
                         {/* Content */}
                         <div className="flex-1 min-w-0">
                           <div className="flex items-start justify-between gap-4 mb-2">
                             <div className="flex items-center gap-2 flex-wrap">
-                              <h3 className="font-bold text-gray-900 dark:text-white">{t(notification.titleKey)}</h3>
-                              {!notification.read && (
+                              <h3 className="font-bold text-gray-900 dark:text-white">{notification.titre}</h3>
+                              {!notification.lue && (
                                 <div className="w-2 h-2 bg-secondary-500 rounded-full animate-pulse"></div>
                               )}
                             </div>
@@ -391,18 +367,15 @@ const PatientNotifications = () => {
                           </div>
 
                           <p className="text-sm text-gray-700 dark:text-gray-300 mb-3 leading-relaxed">
-                            {t(notification.messageKey)}
+                            {notification.description}
                           </p>
 
                           <div className="flex items-center justify-between">
                             <div className="flex items-center gap-4">
                               <div className="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400">
                                 <ClockIcon className="w-4 h-4" />
-                                <span className="font-medium">{getTimeAgo(notification.date)}</span>
+                                <span className="font-medium">{getTimeAgo(new Date(notification.createdAt))}</span>
                               </div>
-                              <span className={`px-2 py-1 ${priorityStyle.bg} bg-opacity-10 ${priorityStyle.text} rounded-lg text-xs font-bold`}>
-                                {priorityStyle.label}
-                              </span>
                             </div>
 
                             {/* Actions */}
@@ -410,24 +383,17 @@ const PatientNotifications = () => {
                               <button
                                 onClick={() => toggleRead(notification.id)}
                                 className={`p-2 rounded-lg transition-all hover:scale-110 ${
-                                  notification.read
+                                  notification.lue
                                     ? 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600'
                                     : 'bg-secondary-100 dark:bg-secondary-900/30 text-secondary-600 dark:text-secondary-400 hover:bg-secondary-200 dark:hover:bg-secondary-900/50'
                                 }`}
-                                title={notification.read ? 'Marquer comme non lu' : 'Marquer comme lu'}
+                                title={notification.lue ? 'Marquer comme non lu' : 'Marquer comme lu'}
                               >
-                                {notification.read ? (
-                                  <EyeSlashIcon className="w-5 h-5" />
+                                {notification.lue ? (
+                                  <CheckCircleIcon className="w-5 h-5" />
                                 ) : (
                                   <EyeIcon className="w-5 h-5" />
                                 )}
-                              </button>
-                              <button
-                                onClick={() => deleteNotification(notification.id)}
-                                className="p-2 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-lg hover:bg-red-200 dark:hover:bg-red-900/50 transition-all hover:scale-110"
-                                title="Supprimer"
-                              >
-                                <TrashIcon className="w-5 h-5" />
                               </button>
                             </div>
                           </div>

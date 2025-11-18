@@ -17,7 +17,7 @@ let TimeslotsService = class TimeslotsService {
     constructor(prisma) {
         this.prisma = prisma;
     }
-    async getAvailableTimeSlots(medecinId, jour) {
+    async getAvailableTimeSlots(medecinId, jour, date) {
         const where = {
             medecinId,
             isAvailable: true,
@@ -29,6 +29,23 @@ let TimeslotsService = class TimeslotsService {
             where,
             orderBy: [{ jour: 'asc' }, { heureDebut: 'asc' }],
         });
+        if (date) {
+            const unavailability = await this.prisma.medecinIndisponibilite.findUnique({
+                where: {
+                    medecinId_date: {
+                        medecinId,
+                        date: new Date(date),
+                    },
+                },
+            });
+            if (unavailability) {
+                return {
+                    unavailable: true,
+                    raison: unavailability.raison,
+                    date: unavailability.date,
+                };
+            }
+        }
         const grouped = timeslots.reduce((acc, slot) => {
             if (!acc[slot.jour]) {
                 acc[slot.jour] = [];

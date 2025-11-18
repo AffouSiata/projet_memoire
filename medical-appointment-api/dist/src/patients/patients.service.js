@@ -230,7 +230,7 @@ let PatientsService = class PatientsService {
             },
         });
         try {
-            await this.notificationsService.sendAppointmentConfirmation(patient.id, `${patient.prenom} ${patient.nom}`, patient.email, patient.telephone, `${medecin.prenom} ${medecin.nom}`, appointmentDate, createRendezVousDto.motif, patient.preferencesNotifEmail, patient.preferencesNotifSms);
+            await this.notificationsService.createNotification(patient.id, 'CONFIRMATION', 'Demande de rendez-vous reçue', `Votre demande de rendez-vous avec Dr. ${medecin.prenom} ${medecin.nom} pour le ${appointmentDate.toLocaleDateString('fr-FR')} a été reçue et est en attente de confirmation.`);
         }
         catch (error) {
             console.error('Erreur lors de l\'envoi de la notification:', error);
@@ -304,6 +304,8 @@ let PatientsService = class PatientsService {
     async getMedecins(specialite) {
         const where = {
             role: 'MEDECIN',
+            statutValidation: 'APPROVED',
+            isActive: true,
         };
         if (specialite) {
             where.specialite = specialite;
@@ -352,6 +354,12 @@ let PatientsService = class PatientsService {
             },
         });
         await this.notificationsService.createNotification(rendezvous.medecinId, 'ANNULATION', 'Rendez-vous annulé', `Le patient ${rendezvous.patient.prenom} ${rendezvous.patient.nom} a annulé son rendez-vous du ${new Date(rendezvous.date).toLocaleDateString('fr-FR')}`);
+        try {
+            await this.notificationsService.sendAppointmentCancellation(rendezvous.patient.id, `${rendezvous.patient.prenom} ${rendezvous.patient.nom}`, rendezvous.patient.email, rendezvous.patient.telephone || '', `${rendezvous.medecin.prenom} ${rendezvous.medecin.nom}`, rendezvous.date, rendezvous.patient.preferencesNotifEmail ?? true, rendezvous.patient.preferencesNotifSms ?? false);
+        }
+        catch (error) {
+            console.error('Erreur lors de l\'envoi de la notification d\'annulation au patient:', error);
+        }
         return {
             success: true,
             message: 'Rendez-vous annulé avec succès',

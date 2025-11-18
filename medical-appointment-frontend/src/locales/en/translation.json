@@ -1110,7 +1110,36 @@
       "pendingStatus": "Pending",
       "registeredOn": "Request submitted on",
       "approve": "Approve",
-      "reject": "Reject"
+      "reject": "Reject",
+      "approvalSuccess": "Doctor approved",
+      "approvalError": "Error",
+      "rejectionSuccess": "Doctor rejected",
+      "rejectionError": "Error",
+      "activateSuccess": "Doctor activated",
+      "activateMessage": "The doctor has been successfully activated.",
+      "deactivateSuccess": "Doctor deactivated",
+      "deactivateMessage": "The doctor has been successfully deactivated.",
+      "statusUpdateError": "Error",
+      "approvalMessageSuccess": "The doctor has been approved successfully and will receive a confirmation email.",
+      "approvalMessageError": "An error occurred while approving the doctor.",
+      "rejectionMessageSuccess": "The doctor has been rejected and will receive a notification email.",
+      "rejectionMessageError": "An error occurred while rejecting the doctor.",
+      "statusUpdateMessageError": "An error occurred while updating the status.",
+      "confirmActivateTitle": "Activate this doctor?",
+      "confirmDeactivateTitle": "Deactivate this doctor?",
+      "detailsModal": {
+        "active": "Active",
+        "inactive": "Inactive",
+        "email": "Email",
+        "phone": "Phone",
+        "medicalOffice": "Medical office",
+        "dateOfBirth": "Date of birth",
+        "yearsOld": "years old",
+        "appointments": "Appointments",
+        "totalConsultations": "Total consultations",
+        "registeredSince": "Registered on",
+        "memberSince": "Member for {{days}} days"
+      }
     },
     "rendezvous": {
       "title": "Appointment Management",
@@ -1364,6 +1393,18 @@
           "mainAdmin": "Main Admin",
           "unknownUser": "Unknown User"
         }
+      },
+      "medicalSpecialties": {
+        "title": "Medical Specialties",
+        "description": "Manage available specialties for doctors",
+        "add": "Add",
+        "reset": "Reset",
+        "delete": "Delete",
+        "newPlaceholder": "New specialty...",
+        "resetTitle": "Reset to default specialties",
+        "noSpecialties": "No specialties. Add one above.",
+        "count_one": "{{count}} specialty available",
+        "count_other": "{{count}} specialties available"
       }
     }
   },

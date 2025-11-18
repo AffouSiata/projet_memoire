@@ -31,6 +31,16 @@ const MedecinCreneaux = () => {
     isAvailable: true,
   });
 
+  // État pour les indisponibilités
+  const [indisponibilites, setIndisponibilites] = useState([]);
+  const [showCreateIndispoModal, setShowCreateIndispoModal] = useState(false);
+  const [showDeleteIndispoModal, setShowDeleteIndispoModal] = useState(false);
+  const [indispoToDelete, setIndispoToDelete] = useState(null);
+  const [indispoFormData, setIndispoFormData] = useState({
+    date: '',
+    raison: '',
+  });
+
   const jours = [
     { value: 'LUNDI', label: t('medecin.creneaux.days.monday') },
     { value: 'MARDI', label: t('medecin.creneaux.days.tuesday') },
@@ -43,6 +53,7 @@ const MedecinCreneaux = () => {
 
   useEffect(() => {
     loadTimeSlots();
+    loadIndisponibilites();
   }, []);
 
   const loadTimeSlots = async () => {
@@ -64,6 +75,20 @@ const MedecinCreneaux = () => {
       setTimeSlots([]); // Définir un tableau vide en cas d'erreur
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const loadIndisponibilites = async () => {
+    try {
+      console.log('🔄 Chargement des indisponibilités...');
+      const response = await medecinService.getIndisponibilites();
+      const data = response.data || [];
+      const indisposArray = Array.isArray(data) ? data : [];
+      console.log('✅ Indisponibilités chargées:', indisposArray.length);
+      setIndisponibilites(indisposArray);
+    } catch (error) {
+      console.error('❌ Erreur chargement indisponibilités:', error);
+      setIndisponibilites([]);
     }
   };
 
@@ -129,6 +154,48 @@ const MedecinCreneaux = () => {
     } catch (error) {
       console.error('Erreur modification disponibilité:', error);
     }
+  };
+
+  // Handlers pour indisponibilités
+  const handleCreateIndispo = async (e) => {
+    e.preventDefault();
+    try {
+      console.log('🆕 Création indisponibilité:', indispoFormData);
+      await medecinService.createIndisponibilite(indispoFormData);
+      await loadIndisponibilites();
+      setShowCreateIndispoModal(false);
+      setIndispoFormData({ date: '', raison: '' });
+    } catch (error) {
+      console.error('❌ Erreur création indisponibilité:', error);
+      const errorMsg = error.response?.data?.message || error.message || '';
+      setErrorMessage(errorMsg);
+      setShowErrorModal(true);
+    }
+  };
+
+  const handleDeleteIndispoClick = (indispo) => {
+    setIndispoToDelete(indispo);
+    setShowDeleteIndispoModal(true);
+  };
+
+  const confirmDeleteIndispo = async () => {
+    if (!indispoToDelete) return;
+
+    try {
+      await medecinService.deleteIndisponibilite(indispoToDelete.id);
+      await loadIndisponibilites();
+      setShowDeleteIndispoModal(false);
+      setIndispoToDelete(null);
+    } catch (error) {
+      console.error('Erreur suppression indisponibilité:', error);
+      setShowDeleteIndispoModal(false);
+      setIndispoToDelete(null);
+    }
+  };
+
+  const cancelDeleteIndispo = () => {
+    setShowDeleteIndispoModal(false);
+    setIndispoToDelete(null);
   };
 
   // Grouper les créneaux par jour
@@ -350,8 +417,248 @@ const MedecinCreneaux = () => {
               ))}
             </div>
           )}
+
+          {/* Section Indisponibilités */}
+          <div className="mt-12 animate-slide-up">
+            <div className="relative bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-lg overflow-hidden mb-6">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-red-100/40 dark:bg-red-900/20 rounded-full blur-3xl"></div>
+
+              <div className="relative z-10">
+                <div className="flex items-center justify-between">
+                  <div className="flex-1">
+                    <div className="inline-flex items-center gap-2.5 px-4 py-2 bg-red-50 dark:bg-red-900/30 rounded-2xl mb-4">
+                      <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                      <span className="text-xs font-bold text-red-600 dark:text-red-400 uppercase tracking-wider">Congés & Indisponibilités</span>
+                    </div>
+
+                    <div className="flex items-center gap-4 mb-3">
+                      <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white leading-tight">
+                        Dates Indisponibles
+                      </h2>
+                      <div className="w-14 h-14 bg-gradient-to-br from-red-500 to-orange-600 rounded-2xl flex items-center justify-center shadow-lg animate-bounce-slow">
+                        <CalendarIcon className="w-7 h-7 text-white" />
+                      </div>
+                    </div>
+
+                    <p className="text-base text-gray-600 dark:text-gray-400 font-medium">
+                      Gérez vos congés et jours d'indisponibilité
+                    </p>
+                  </div>
+
+                  <button
+                    onClick={() => setShowCreateIndispoModal(true)}
+                    className="flex items-center gap-2 px-6 py-3 bg-red-500 hover:bg-red-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                  >
+                    <PlusIcon className="w-5 h-5" />
+                    Nouvelle Indisponibilité
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {indisponibilites.length === 0 ? (
+              <div className="bg-white dark:bg-gray-800 rounded-3xl p-12 shadow-lg text-center">
+                <div className="max-w-md mx-auto">
+                  <div className="w-32 h-32 bg-gradient-to-br from-red-100 to-orange-100 dark:bg-red-900/30 rounded-full mx-auto mb-6 flex items-center justify-center">
+                    <CalendarIcon className="w-16 h-16 text-red-500 dark:text-red-400" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                    Aucune date indisponible
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
+                    Ajoutez des dates où vous ne serez pas disponible pour recevoir des patients.
+                  </p>
+                  <button
+                    onClick={() => setShowCreateIndispoModal(true)}
+                    className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white rounded-2xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                  >
+                    <PlusIcon className="w-6 h-6" />
+                    Ajouter une date
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-lg">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {indisponibilites.sort((a, b) => new Date(a.date) - new Date(b.date)).map((indispo) => (
+                    <div
+                      key={indispo.id}
+                      className="relative p-6 rounded-2xl border-2 bg-red-50 dark:bg-red-900/20 border-red-300 dark:border-red-800 transition-all duration-300 hover:shadow-lg"
+                    >
+                      <div className="flex items-start justify-between mb-3">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 bg-red-100 dark:bg-red-900/50 rounded-xl flex items-center justify-center">
+                            <CalendarIcon className="w-5 h-5 text-red-600 dark:text-red-400" />
+                          </div>
+                          <div>
+                            <p className="text-lg font-bold text-gray-900 dark:text-white">
+                              {new Date(indispo.date).toLocaleDateString('fr-FR', {
+                                weekday: 'long',
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric'
+                              })}
+                            </p>
+                            {indispo.raison && (
+                              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                                {indispo.raison}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                        <button
+                          onClick={() => handleDeleteIndispoClick(indispo)}
+                          className="p-2 bg-red-100 dark:bg-red-900/30 hover:bg-red-200 dark:hover:bg-red-900/50 text-red-600 dark:text-red-400 rounded-lg transition-all duration-300"
+                        >
+                          <TrashIcon className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
+
+      {/* Modal Créer Indisponibilité */}
+      {showCreateIndispoModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div
+            className="absolute inset-0 bg-black/70 backdrop-blur-md animate-fade-in"
+            onClick={() => setShowCreateIndispoModal(false)}
+          ></div>
+
+          <div className="relative bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-8 max-w-md w-full animate-scale-in overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-red-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+
+            <div className="relative z-10 mb-8">
+              <div className="flex items-center gap-4 mb-2">
+                <div className="w-14 h-14 bg-gradient-to-br from-red-500 to-orange-500 rounded-2xl flex items-center justify-center shadow-lg">
+                  <PlusIcon className="w-7 h-7 text-white" />
+                </div>
+                <div>
+                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                    Nouvelle Indisponibilité
+                  </h2>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    Ajoutez une date d'indisponibilité
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <form onSubmit={handleCreateIndispo} className="relative z-10 space-y-6">
+              <div>
+                <label className="flex items-center gap-2 text-sm font-bold text-gray-700 dark:text-gray-300 mb-3">
+                  <CalendarIcon className="w-5 h-5 text-red-500" />
+                  Date
+                </label>
+                <input
+                  type="date"
+                  required
+                  value={indispoFormData.date}
+                  onChange={(e) => setIndispoFormData({ ...indispoFormData, date: e.target.value })}
+                  className="w-full px-4 py-4 bg-gray-50 dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-2xl focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 text-gray-900 dark:text-white font-medium transition-all duration-300"
+                />
+              </div>
+
+              <div>
+                <label className="flex items-center gap-2 text-sm font-bold text-gray-700 dark:text-gray-300 mb-3">
+                  Raison (optionnel)
+                </label>
+                <input
+                  type="text"
+                  placeholder="Congé, Formation, Jour férié..."
+                  value={indispoFormData.raison}
+                  onChange={(e) => setIndispoFormData({ ...indispoFormData, raison: e.target.value })}
+                  className="w-full px-4 py-4 bg-gray-50 dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-2xl focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 text-gray-900 dark:text-white font-medium transition-all duration-300"
+                />
+              </div>
+
+              <div className="flex justify-end gap-3 pt-4">
+                <button
+                  type="button"
+                  onClick={() => setShowCreateIndispoModal(false)}
+                  className="px-8 py-4 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-white rounded-2xl font-bold transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg"
+                >
+                  Annuler
+                </button>
+                <button
+                  type="submit"
+                  className="px-8 py-4 bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white rounded-2xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2"
+                >
+                  <CheckCircleIcon className="w-5 h-5" />
+                  Créer
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Modal Confirmation Suppression Indisponibilité */}
+      {showDeleteIndispoModal && indispoToDelete && (
+        <div className="fixed inset-0 z-[120] flex items-center justify-center p-4">
+          <div
+            className="absolute inset-0 bg-black/70 backdrop-blur-md animate-fade-in"
+            onClick={cancelDeleteIndispo}
+          ></div>
+
+          <div className="relative bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-8 max-w-md w-full animate-scale-in overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-red-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+
+            <div className="relative z-10">
+              <div className="flex justify-center mb-6">
+                <div className="w-20 h-20 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center animate-pulse">
+                  <TrashIcon className="w-10 h-10 text-red-600 dark:text-red-400" />
+                </div>
+              </div>
+
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-4">
+                Supprimer cette indisponibilité ?
+              </h2>
+
+              <div className="bg-gray-50 dark:bg-gray-700/50 rounded-2xl p-6 mb-6">
+                <p className="text-gray-700 dark:text-gray-300 text-center mb-4">
+                  Vous êtes sur le point de supprimer cette date d'indisponibilité :
+                </p>
+                <div className="bg-white dark:bg-gray-800 rounded-xl p-4 border-2 border-red-200 dark:border-red-800">
+                  <p className="text-lg font-bold text-red-600 dark:text-red-400 text-center">
+                    {new Date(indispoToDelete.date).toLocaleDateString('fr-FR', {
+                      weekday: 'long',
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric'
+                    })}
+                  </p>
+                  {indispoToDelete.raison && (
+                    <p className="text-sm text-gray-600 dark:text-gray-400 text-center mt-2">
+                      {indispoToDelete.raison}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <button
+                  onClick={cancelDeleteIndispo}
+                  className="flex-1 px-6 py-4 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-white rounded-2xl font-bold transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg"
+                >
+                  Annuler
+                </button>
+                <button
+                  onClick={confirmDeleteIndispo}
+                  className="flex-1 px-6 py-4 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-2xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                >
+                  Supprimer
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Modal Erreur */}
       {showErrorModal && (

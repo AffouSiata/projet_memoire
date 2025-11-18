@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import i18n from '../../i18n/config';
 import MedecinLayout from '../../components/layout/MedecinLayout';
 import medecinService from '../../services/medecinService';
+import { useNotifications } from '../../context/NotificationContext';
 import {
   BellIcon,
   CalendarIcon,
@@ -24,6 +25,7 @@ const MedecinNotifications = () => {
   const { formatDate } = useDateFormatter();
   const [currentTime, setCurrentTime] = useState(new Date());
   const [filterType, setFilterType] = useState('ALL');
+  const { notifications: contextNotifications, loadNotifications } = useNotifications();
 
   // Safe translation helper
   const safeT = (key, fallback = '') => {
@@ -33,34 +35,24 @@ const MedecinNotifications = () => {
   const [notifications, setNotifications] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Fetch notifications from backend
+  // Charger les notifications depuis le contexte
   useEffect(() => {
-    const fetchNotifications = async () => {
-      try {
-        setLoading(true);
-        const response = await medecinService.getNotifications();
+    if (contextNotifications && contextNotifications.length >= 0) {
+      // Map backend notifications to frontend format
+      const mappedNotifications = contextNotifications.map(notif => ({
+        id: notif.id,
+        type: mapBackendTypeToFrontend(notif.type),
+        title: notif.titre,
+        message: notif.description,
+        date: new Date(notif.createdAt),
+        read: notif.lue,
+        priority: mapNotificationPriority(notif.type),
+      }));
 
-        // Map backend notifications to frontend format
-        const mappedNotifications = response.data.notifications.map(notif => ({
-          id: notif.id,
-          type: mapBackendTypeToFrontend(notif.type),
-          title: notif.titre,
-          message: notif.message,
-          date: new Date(notif.createdAt),
-          read: notif.lue,
-          priority: mapNotificationPriority(notif.type),
-        }));
-
-        setNotifications(mappedNotifications);
-      } catch (error) {
-        console.error('Error fetching notifications:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchNotifications();
-  }, []);
+      setNotifications(mappedNotifications);
+      setLoading(false);
+    }
+  }, [contextNotifications]);
 
   useEffect(() => {
     const timer = setInterval(() => {

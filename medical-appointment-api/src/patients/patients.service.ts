@@ -246,18 +246,14 @@ export class PatientsService {
       },
     });
 
-    // Envoyer les notifications en fonction des préférences du patient
+    // Créer une notification en base de données (mais pas d'email/SMS)
+    // L'email/SMS sera envoyé uniquement quand le médecin confirme le rendez-vous
     try {
-      await this.notificationsService.sendAppointmentConfirmation(
+      await this.notificationsService.createNotification(
         patient.id,
-        `${patient.prenom} ${patient.nom}`,
-        patient.email,
-        patient.telephone,
-        `${medecin.prenom} ${medecin.nom}`,
-        appointmentDate,
-        createRendezVousDto.motif,
-        patient.preferencesNotifEmail, // Respecte la préférence email
-        patient.preferencesNotifSms,   // Respecte la préférence SMS
+        'CONFIRMATION',
+        'Demande de rendez-vous reçue',
+        `Votre demande de rendez-vous avec Dr. ${medecin.prenom} ${medecin.nom} pour le ${appointmentDate.toLocaleDateString('fr-FR')} a été reçue et est en attente de confirmation.`,
       );
     } catch (error) {
       // Ne pas bloquer la création du rendez-vous si l'envoi de notification échoue
@@ -355,6 +351,8 @@ export class PatientsService {
   async getMedecins(specialite?: string) {
     const where: any = {
       role: 'MEDECIN',
+      statutValidation: 'APPROVED', // Seulement les médecins approuvés
+      isActive: true, // Seulement les médecins actifs
     };
 
     if (specialite) {
@@ -429,6 +427,22 @@ export class PatientsService {
       'Rendez-vous annulé',
       `Le patient ${rendezvous.patient.prenom} ${rendezvous.patient.nom} a annulé son rendez-vous du ${new Date(rendezvous.date).toLocaleDateString('fr-FR')}`,
     );
+
+    // Envoyer email et SMS au patient pour confirmer l'annulation
+    try {
+      await this.notificationsService.sendAppointmentCancellation(
+        rendezvous.patient.id,
+        `${rendezvous.patient.prenom} ${rendezvous.patient.nom}`,
+        rendezvous.patient.email,
+        rendezvous.patient.telephone || '',
+        `${rendezvous.medecin.prenom} ${rendezvous.medecin.nom}`,
+        rendezvous.date,
+        rendezvous.patient.preferencesNotifEmail ?? true,
+        rendezvous.patient.preferencesNotifSms ?? false,
+      );
+    } catch (error) {
+      console.error('Erreur lors de l\'envoi de la notification d\'annulation au patient:', error);
+    }
 
     return {
       success: true,

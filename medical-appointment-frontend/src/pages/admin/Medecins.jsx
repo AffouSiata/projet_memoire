@@ -25,6 +25,7 @@ import {
   MapPinIcon,
 } from '@heroicons/react/24/outline';
 import { useDateFormatter, dateFormats } from '../../hooks/useDateFormatter';
+import AlertModal from '../../components/modals/AlertModal';
 
 const AdminMedecins = () => {
   const { t } = useTranslation();
@@ -50,6 +51,12 @@ const AdminMedecins = () => {
     inactive: 0,
     pending: 0,
     avgAppointments: 0,
+  });
+  const [alertModal, setAlertModal] = useState({
+    isOpen: false,
+    type: 'success',
+    title: '',
+    message: '',
   });
   const limit = 9;
 
@@ -149,21 +156,53 @@ const AdminMedecins = () => {
 
   const handleApproveMedecin = async (medecinId) => {
     try {
-      await adminService.approveMedecin(medecinId);
+      const response = await adminService.approveMedecin(medecinId);
       loadMedecins();
       loadPendingMedecins();
+
+      // Afficher notification de succès
+      setAlertModal({
+        isOpen: true,
+        type: 'success',
+        title: t('admin.medecins.approvalSuccess') || 'Médecin approuvé',
+        message: response.data?.message || t('admin.medecins.approvalMessageSuccess'),
+      });
     } catch (error) {
       console.error('Erreur lors de l\'approbation du médecin:', error);
+
+      // Afficher notification d'erreur
+      setAlertModal({
+        isOpen: true,
+        type: 'error',
+        title: t('admin.medecins.approvalError') || 'Erreur',
+        message: error.response?.data?.message || t('admin.medecins.approvalMessageError'),
+      });
     }
   };
 
   const handleRejectMedecin = async (medecinId) => {
     try {
-      await adminService.rejectMedecin(medecinId);
+      const response = await adminService.rejectMedecin(medecinId);
       loadMedecins();
       loadPendingMedecins();
+
+      // Afficher notification de succès
+      setAlertModal({
+        isOpen: true,
+        type: 'success',
+        title: t('admin.medecins.rejectionSuccess') || 'Médecin rejeté',
+        message: response.data?.message || t('admin.medecins.rejectionMessageSuccess'),
+      });
     } catch (error) {
       console.error('Erreur lors du rejet du médecin:', error);
+
+      // Afficher notification d'erreur
+      setAlertModal({
+        isOpen: true,
+        type: 'error',
+        title: t('admin.medecins.rejectionError') || 'Erreur',
+        message: error.response?.data?.message || t('admin.medecins.rejectionMessageError'),
+      });
     }
   };
 
@@ -193,10 +232,32 @@ const AdminMedecins = () => {
         isActive: !selectedMedecin.isActive,
       });
       setShowConfirmModal(false);
+      const wasActive = selectedMedecin.isActive;
       setSelectedMedecin(null);
       loadMedecins();
+
+      // Afficher notification de succès
+      setAlertModal({
+        isOpen: true,
+        type: 'success',
+        title: wasActive
+          ? (t('admin.medecins.deactivateSuccess') || 'Médecin désactivé')
+          : (t('admin.medecins.activateSuccess') || 'Médecin activé'),
+        message: wasActive
+          ? (t('admin.medecins.deactivateMessage') || 'Le médecin a été désactivé avec succès.')
+          : (t('admin.medecins.activateMessage') || 'Le médecin a été activé avec succès.'),
+      });
     } catch (error) {
       console.error('Erreur lors de la mise à jour du statut:', error);
+      setShowConfirmModal(false);
+
+      // Afficher notification d'erreur
+      setAlertModal({
+        isOpen: true,
+        type: 'error',
+        title: t('admin.medecins.statusUpdateError') || 'Erreur',
+        message: error.response?.data?.message || t('admin.medecins.statusUpdateMessageError'),
+      });
     }
   };
 
@@ -801,12 +862,12 @@ const AdminMedecins = () => {
                     {selectedMedecin.isActive ? (
                       <div className="flex items-center gap-1.5 px-3 py-1 bg-green-100 dark:bg-green-900/40 rounded-full">
                         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                        <span className="text-xs font-bold text-green-700 dark:text-green-300">Actif</span>
+                        <span className="text-xs font-bold text-green-700 dark:text-green-300">{t('admin.medecins.detailsModal.active')}</span>
                       </div>
                     ) : (
                       <div className="flex items-center gap-1.5 px-3 py-1 bg-red-100 dark:bg-red-900/40 rounded-full">
                         <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                        <span className="text-xs font-bold text-red-700 dark:text-red-300">Inactif</span>
+                        <span className="text-xs font-bold text-red-700 dark:text-red-300">{t('admin.medecins.detailsModal.inactive')}</span>
                       </div>
                     )}
                     <span className="text-sm text-gray-500 dark:text-gray-400">ID: {selectedMedecin.id.slice(0, 8)}</span>
@@ -824,7 +885,7 @@ const AdminMedecins = () => {
                       <EnvelopeIcon className="w-5 h-5 text-white" />
                     </div>
                     <p className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
-                      Email
+                      {t('admin.medecins.detailsModal.email')}
                     </p>
                   </div>
                   <p className="font-semibold text-gray-900 dark:text-white break-all">
@@ -838,7 +899,7 @@ const AdminMedecins = () => {
                       <PhoneIcon className="w-5 h-5 text-white" />
                     </div>
                     <p className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
-                      Téléphone
+                      {t('admin.medecins.detailsModal.phone')}
                     </p>
                   </div>
                   <p className="font-semibold text-gray-900 dark:text-white">
@@ -854,7 +915,7 @@ const AdminMedecins = () => {
                     <div className="flex items-center gap-2 mb-3">
                       <MapPinIcon className="w-5 h-5 text-secondary-600 dark:text-secondary-400" />
                       <p className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
-                        Cabinet médical
+                        {t('admin.medecins.detailsModal.medicalOffice')}
                       </p>
                     </div>
                     <p className="text-gray-900 dark:text-white leading-relaxed">
@@ -868,14 +929,14 @@ const AdminMedecins = () => {
                     <div className="flex items-center gap-2 mb-3">
                       <UserIcon className="w-5 h-5 text-primary-600 dark:text-primary-400" />
                       <p className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
-                        Date de naissance
+                        {t('admin.medecins.detailsModal.dateOfBirth')}
                       </p>
                     </div>
                     <p className="font-semibold text-gray-900 dark:text-white">
                       {formatDate(selectedMedecin.dateNaissance, dateFormats.long)}
                     </p>
                     <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                      {new Date().getFullYear() - new Date(selectedMedecin.dateNaissance).getFullYear()} ans
+                      {new Date().getFullYear() - new Date(selectedMedecin.dateNaissance).getFullYear()} {t('admin.medecins.detailsModal.yearsOld')}
                     </p>
                   </div>
                 )}
@@ -887,27 +948,27 @@ const AdminMedecins = () => {
                   <div className="flex items-center gap-2 mb-2">
                     <CalendarIcon className="w-6 h-6" />
                     <p className="text-xs font-bold uppercase tracking-wider opacity-90">
-                      Rendez-vous
+                      {t('admin.medecins.detailsModal.appointments')}
                     </p>
                   </div>
                   <p className="text-4xl font-bold">
                     {selectedMedecin._count?.rendezvousMedecin || 0}
                   </p>
-                  <p className="text-sm opacity-75 mt-1">Total des consultations</p>
+                  <p className="text-sm opacity-75 mt-1">{t('admin.medecins.detailsModal.totalConsultations')}</p>
                 </div>
 
                 <div className="p-5 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 rounded-2xl">
                   <div className="flex items-center gap-2 mb-2">
                     <ClockIcon className="w-6 h-6 text-gray-600 dark:text-gray-300" />
                     <p className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
-                      Inscrit le
+                      {t('admin.medecins.detailsModal.registeredSince')}
                     </p>
                   </div>
                   <p className="text-2xl font-bold text-gray-900 dark:text-white">
                     {formatDate(selectedMedecin.createdAt, dateFormats.short)}
                   </p>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                    Membre depuis {Math.floor((new Date() - new Date(selectedMedecin.createdAt)) / (1000 * 60 * 60 * 24))} jours
+                    {t('admin.medecins.detailsModal.memberSince', { days: Math.floor((new Date() - new Date(selectedMedecin.createdAt)) / (1000 * 60 * 60 * 24)) })}
                   </p>
                 </div>
               </div>
@@ -925,6 +986,15 @@ const AdminMedecins = () => {
           </div>
         </div>
       )}
+
+      {/* Alert Modal for Success/Error Messages */}
+      <AlertModal
+        isOpen={alertModal.isOpen}
+        onClose={() => setAlertModal({ ...alertModal, isOpen: false })}
+        type={alertModal.type}
+        title={alertModal.title}
+        message={alertModal.message}
+      />
     </AdminLayout>
   );
 };

@@ -103,18 +103,10 @@ const Register = () => {
       };
       delete registrationData.confirmPassword;
 
-      const response = await authService.register(registrationData);
+      await authService.register(registrationData);
 
-      if (response.data.requiresApproval) {
-        setSuccessMessage(response.data.message);
-        setShowSuccess(true);
-      } else {
-        setSuccessMessage(t('register.successPatient'));
-        setShowSuccess(true);
-        setTimeout(() => {
-          navigate('/login');
-        }, 3000);
-      }
+      // Redirection immédiate vers la page de connexion
+      navigate('/login');
     } catch (err) {
       setError(getErrorMessage(err, t('register.errorRegistration')));
     } finally {

@@ -176,6 +176,15 @@ let MedecinsService = class MedecinsService {
                 },
             },
         });
+        if (updateRendezVousDto.statut === client_1.StatutRendezVous.CONFIRME &&
+            rendezvous.statut !== client_1.StatutRendezVous.CONFIRME) {
+            try {
+                await this.notificationsService.sendAppointmentConfirmation(rendezvous.patient.id, `${rendezvous.patient.prenom} ${rendezvous.patient.nom}`, rendezvous.patient.email, rendezvous.patient.telephone || '', `${medecin.prenom} ${medecin.nom}`, updateRendezVousDto.date ? new Date(updateRendezVousDto.date) : rendezvous.date, rendezvous.motif, rendezvous.patient.preferencesNotifEmail ?? true, rendezvous.patient.preferencesNotifSms ?? false);
+            }
+            catch (error) {
+                console.error('Erreur lors de l\'envoi de la notification de confirmation:', error);
+            }
+        }
         if (updateRendezVousDto.statut === client_1.StatutRendezVous.ANNULE &&
             rendezvous.statut !== client_1.StatutRendezVous.ANNULE) {
             try {
@@ -429,6 +438,67 @@ let MedecinsService = class MedecinsService {
             },
         });
         return updated;
+    }
+    async getIndisponibilites(medecinId, startDate, endDate) {
+        const where = {
+            medecinId,
+        };
+        if (startDate || endDate) {
+            where.date = {};
+            if (startDate) {
+                where.date.gte = new Date(startDate);
+            }
+            if (endDate) {
+                where.date.lte = new Date(endDate);
+            }
+        }
+        const indisponibilites = await this.prisma.medecinIndisponibilite.findMany({
+            where,
+            orderBy: { date: 'asc' },
+        });
+        return indisponibilites;
+    }
+    async createIndisponibilite(medecinId, createIndisponibiliteDto) {
+        const date = new Date(createIndisponibiliteDto.date);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        if (date < today) {
+            throw new common_1.BadRequestException('La date d\'indisponibilité doit être dans le futur');
+        }
+        const existing = await this.prisma.medecinIndisponibilite.findUnique({
+            where: {
+                medecinId_date: {
+                    medecinId,
+                    date,
+                },
+            },
+        });
+        if (existing) {
+            throw new common_1.BadRequestException('Une indisponibilité existe déjà pour cette date');
+        }
+        const indisponibilite = await this.prisma.medecinIndisponibilite.create({
+            data: {
+                medecinId,
+                date,
+                raison: createIndisponibiliteDto.raison,
+            },
+        });
+        return indisponibilite;
+    }
+    async deleteIndisponibilite(medecinId, indisponibiliteId) {
+        const indisponibilite = await this.prisma.medecinIndisponibilite.findUnique({
+            where: { id: indisponibiliteId },
+        });
+        if (!indisponibilite) {
+            throw new common_1.NotFoundException('Indisponibilité non trouvée');
+        }
+        if (indisponibilite.medecinId !== medecinId) {
+            throw new common_1.ForbiddenException('Accès interdit');
+        }
+        await this.prisma.medecinIndisponibilite.delete({
+            where: { id: indisponibiliteId },
+        });
+        return { message: 'Indisponibilité supprimée avec succès' };
     }
 };
 exports.MedecinsService = MedecinsService;

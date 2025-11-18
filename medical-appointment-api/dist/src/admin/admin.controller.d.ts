@@ -35,7 +35,7 @@ export declare class AdminController {
         prenom: string;
         isActive: boolean;
     }>;
-    getMedecins(search?: string, specialite?: string, isActive?: boolean, page?: number, limit?: number): Promise<{
+    getMedecins(search?: string, specialite?: string, isActive?: boolean, statutValidation?: 'PENDING' | 'APPROVED' | 'REJECTED', page?: number, limit?: number): Promise<{
         data: {
             id: string;
             email: string;
@@ -57,7 +57,7 @@ export declare class AdminController {
             totalPages: number;
         };
     }>;
-    updateMedecinStatus(medecinId: string, updateStatusDto: UpdateUserStatusDto): Promise<{
+    updateMedecinStatus(medecinId: string, updateStatusDto: UpdateUserStatusDto, admin: any): Promise<{
         id: string;
         email: string;
         nom: string;
@@ -65,27 +65,27 @@ export declare class AdminController {
         isActive: boolean;
         specialite: string | null;
     }>;
-    approveMedecin(medecinId: string): Promise<{
+    approveMedecin(medecinId: string, admin: any): Promise<{
         message: string;
         medecin: {
             id: string;
-            email: string;
             nom: string;
             prenom: string;
-            isActive: boolean;
+            email: string;
             specialite: string | null;
+            isActive: boolean;
             statutValidation: import("@prisma/client").$Enums.StatutValidation | null;
         };
     }>;
-    rejectMedecin(medecinId: string): Promise<{
+    rejectMedecin(medecinId: string, admin: any): Promise<{
         message: string;
         medecin: {
             id: string;
-            email: string;
             nom: string;
             prenom: string;
-            isActive: boolean;
+            email: string;
             specialite: string | null;
+            isActive: boolean;
             statutValidation: import("@prisma/client").$Enums.StatutValidation | null;
         };
     }>;

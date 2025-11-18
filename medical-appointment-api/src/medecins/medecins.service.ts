@@ -9,6 +9,7 @@ import { UpdateMedecinDto } from './dto/update-medecin.dto';
 import { UpdateRendezVousDto } from './dto/update-rendezvous.dto';
 import { CreateNoteDto } from './dto/create-note.dto';
 import { UpdateNoteDto } from './dto/update-note.dto';
+import { CreateIndisponibiliteDto } from './dto/create-indisponibilite.dto';
 import { NotificationsService } from '../notifications/notifications.service';
 import { StatutRendezVous, StatutNote } from '@prisma/client';
 
@@ -214,6 +215,28 @@ export class MedecinsService {
         },
       },
     });
+
+    // Si le rendez-vous est confirmé, envoyer une notification de confirmation
+    if (
+      updateRendezVousDto.statut === StatutRendezVous.CONFIRME &&
+      rendezvous.statut !== StatutRendezVous.CONFIRME
+    ) {
+      try {
+        await this.notificationsService.sendAppointmentConfirmation(
+          rendezvous.patient.id,
+          `${rendezvous.patient.prenom} ${rendezvous.patient.nom}`,
+          rendezvous.patient.email,
+          rendezvous.patient.telephone || '',
+          `${medecin.prenom} ${medecin.nom}`,
+          updateRendezVousDto.date ? new Date(updateRendezVousDto.date) : rendezvous.date,
+          rendezvous.motif,
+          rendezvous.patient.preferencesNotifEmail ?? true,
+          rendezvous.patient.preferencesNotifSms ?? false,
+        );
+      } catch (error) {
+        console.error('Erreur lors de l\'envoi de la notification de confirmation:', error);
+      }
+    }
 
     // Si le rendez-vous est annulé, envoyer une notification
     if (
@@ -552,5 +575,99 @@ export class MedecinsService {
     });
 
     return updated;
+  }
+
+  // GET /medecins/indisponibilites
+  async getIndisponibilites(
+    medecinId: string,
+    startDate?: string,
+    endDate?: string,
+  ) {
+    const where: any = {
+      medecinId,
+    };
+
+    // Filter by date range if provided
+    if (startDate || endDate) {
+      where.date = {};
+      if (startDate) {
+        where.date.gte = new Date(startDate);
+      }
+      if (endDate) {
+        where.date.lte = new Date(endDate);
+      }
+    }
+
+    const indisponibilites = await this.prisma.medecinIndisponibilite.findMany({
+      where,
+      orderBy: { date: 'asc' },
+    });
+
+    return indisponibilites;
+  }
+
+  // POST /medecins/indisponibilites
+  async createIndisponibilite(
+    medecinId: string,
+    createIndisponibiliteDto: CreateIndisponibiliteDto,
+  ) {
+    const date = new Date(createIndisponibiliteDto.date);
+
+    // Vérifier que la date est dans le futur
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    if (date < today) {
+      throw new BadRequestException(
+        'La date d\'indisponibilité doit être dans le futur',
+      );
+    }
+
+    // Vérifier qu'il n'existe pas déjà une indisponibilité pour cette date
+    const existing = await this.prisma.medecinIndisponibilite.findUnique({
+      where: {
+        medecinId_date: {
+          medecinId,
+          date,
+        },
+      },
+    });
+
+    if (existing) {
+      throw new BadRequestException(
+        'Une indisponibilité existe déjà pour cette date',
+      );
+    }
+
+    const indisponibilite = await this.prisma.medecinIndisponibilite.create({
+      data: {
+        medecinId,
+        date,
+        raison: createIndisponibiliteDto.raison,
+      },
+    });
+
+    return indisponibilite;
+  }
+
+  // DELETE /medecins/indisponibilites/:id
+  async deleteIndisponibilite(medecinId: string, indisponibiliteId: string) {
+    // Vérifier que l'indisponibilité appartient au médecin
+    const indisponibilite = await this.prisma.medecinIndisponibilite.findUnique({
+      where: { id: indisponibiliteId },
+    });
+
+    if (!indisponibilite) {
+      throw new NotFoundException('Indisponibilité non trouvée');
+    }
+
+    if (indisponibilite.medecinId !== medecinId) {
+      throw new ForbiddenException('Accès interdit');
+    }
+
+    await this.prisma.medecinIndisponibilite.delete({
+      where: { id: indisponibiliteId },
+    });
+
+    return { message: 'Indisponibilité supprimée avec succès' };
   }
 }

@@ -34,23 +34,24 @@ let AdminController = class AdminController {
     async updatePatientStatus(patientId, updateStatusDto) {
         return this.adminService.updatePatientStatus(patientId, updateStatusDto);
     }
-    async getMedecins(search, specialite, isActive, page, limit) {
+    async getMedecins(search, specialite, isActive, statutValidation, page, limit) {
         return this.adminService.getMedecins({
             search,
             specialite,
             isActive,
+            statutValidation: statutValidation,
             page,
             limit,
         });
     }
-    async updateMedecinStatus(medecinId, updateStatusDto) {
-        return this.adminService.updateMedecinStatus(medecinId, updateStatusDto);
+    async updateMedecinStatus(medecinId, updateStatusDto, admin) {
+        return this.adminService.updateMedecinStatus(medecinId, updateStatusDto, admin.id);
     }
-    async approveMedecin(medecinId) {
-        return this.adminService.approveMedecin(medecinId);
+    async approveMedecin(medecinId, admin) {
+        return this.adminService.approveMedecin(medecinId, admin.id);
     }
-    async rejectMedecin(medecinId) {
-        return this.adminService.rejectMedecin(medecinId);
+    async rejectMedecin(medecinId, admin) {
+        return this.adminService.rejectMedecin(medecinId, admin.id);
     }
     async getRendezVous(statut, patientId, medecinId, page, limit) {
         return this.adminService.getRendezVous({
@@ -107,32 +108,36 @@ __decorate([
     __param(0, (0, common_1.Query)('search')),
     __param(1, (0, common_1.Query)('specialite')),
     __param(2, (0, common_1.Query)('isActive', new common_1.ParseBoolPipe({ optional: true }))),
-    __param(3, (0, common_1.Query)('page', new common_1.ParseIntPipe({ optional: true }))),
-    __param(4, (0, common_1.Query)('limit', new common_1.ParseIntPipe({ optional: true }))),
+    __param(3, (0, common_1.Query)('statutValidation')),
+    __param(4, (0, common_1.Query)('page', new common_1.ParseIntPipe({ optional: true }))),
+    __param(5, (0, common_1.Query)('limit', new common_1.ParseIntPipe({ optional: true }))),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String, Boolean, Number, Number]),
+    __metadata("design:paramtypes", [String, String, Boolean, String, Number, Number]),
     __metadata("design:returntype", Promise)
 ], AdminController.prototype, "getMedecins", null);
 __decorate([
     (0, common_1.Patch)('medecins/:id'),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
+    __param(2, (0, current_user_decorator_1.CurrentUser)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, update_user_status_dto_1.UpdateUserStatusDto]),
+    __metadata("design:paramtypes", [String, update_user_status_dto_1.UpdateUserStatusDto, Object]),
     __metadata("design:returntype", Promise)
 ], AdminController.prototype, "updateMedecinStatus", null);
 __decorate([
     (0, common_1.Patch)('medecins/:id/approve'),
     __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, current_user_decorator_1.CurrentUser)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", Promise)
 ], AdminController.prototype, "approveMedecin", null);
 __decorate([
     (0, common_1.Patch)('medecins/:id/reject'),
     __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, current_user_decorator_1.CurrentUser)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", Promise)
 ], AdminController.prototype, "rejectMedecin", null);
 __decorate([

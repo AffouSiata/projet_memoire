@@ -3,6 +3,7 @@ import { UpdateMedecinDto } from './dto/update-medecin.dto';
 import { UpdateRendezVousDto } from './dto/update-rendezvous.dto';
 import { CreateNoteDto } from './dto/create-note.dto';
 import { UpdateNoteDto } from './dto/update-note.dto';
+import { CreateIndisponibiliteDto } from './dto/create-indisponibilite.dto';
 import { StatutRendezVous, StatutNote } from '@prisma/client';
 export declare class MedecinsController {
     private readonly medecinsService;
@@ -185,5 +186,24 @@ export declare class MedecinsController {
         patientId: string;
         contenu: string;
         piecesJointes: string[];
+    }>;
+    getIndisponibilites(user: any, startDate?: string, endDate?: string): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        medecinId: string;
+        date: Date;
+        raison: string | null;
+    }[]>;
+    createIndisponibilite(user: any, createIndisponibiliteDto: CreateIndisponibiliteDto): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        medecinId: string;
+        date: Date;
+        raison: string | null;
+    }>;
+    deleteIndisponibilite(user: any, indisponibiliteId: string): Promise<{
+        message: string;
     }>;
 }

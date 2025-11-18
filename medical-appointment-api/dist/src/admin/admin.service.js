@@ -106,6 +106,9 @@ let AdminService = class AdminService {
         if (filters?.specialite) {
             where.specialite = { contains: filters.specialite, mode: 'insensitive' };
         }
+        if (filters?.statutValidation) {
+            where.statutValidation = filters.statutValidation;
+        }
         if (filters?.search) {
             where.OR = [
                 { nom: { contains: filters.search, mode: 'insensitive' } },
@@ -148,13 +151,26 @@ let AdminService = class AdminService {
             },
         };
     }
-    async updateMedecinStatus(medecinId, updateStatusDto) {
+    async updateMedecinStatus(medecinId, updateStatusDto, adminId) {
         const medecin = await this.prisma.user.findUnique({
             where: { id: medecinId },
+            select: {
+                id: true,
+                nom: true,
+                prenom: true,
+                email: true,
+                telephone: true,
+                specialite: true,
+                isActive: true,
+                role: true,
+                preferencesNotifEmail: true,
+                preferencesNotifSms: true,
+            },
         });
         if (!medecin || medecin.role !== client_1.Role.MEDECIN) {
             throw new common_1.NotFoundException('Médecin non trouvé');
         }
+        const statusChanging = medecin.isActive !== updateStatusDto.isActive;
         const updated = await this.prisma.user.update({
             where: { id: medecinId },
             data: { isActive: updateStatusDto.isActive },
@@ -167,9 +183,20 @@ let AdminService = class AdminService {
                 isActive: true,
             },
         });
+        if (statusChanging) {
+            const medecinName = `${medecin.prenom} ${medecin.nom}`;
+            if (updateStatusDto.isActive) {
+                await this.notificationsService.sendAccountActivation(medecin.id, medecinName, medecin.email, medecin.telephone || '', medecin.preferencesNotifEmail ?? true, medecin.preferencesNotifSms ?? false);
+                await this.notificationsService.createAdminNotificationForActivation(adminId, medecinName, medecin.specialite || 'Non spécifiée');
+            }
+            else {
+                await this.notificationsService.sendAccountDeactivation(medecin.id, medecinName, medecin.email, medecin.telephone || '', medecin.preferencesNotifEmail ?? true, medecin.preferencesNotifSms ?? false);
+                await this.notificationsService.createAdminNotificationForDeactivation(adminId, medecinName, medecin.specialite || 'Non spécifiée');
+            }
+        }
         return updated;
     }
-    async approveMedecin(medecinId) {
+    async approveMedecin(medecinId, adminId) {
         const medecin = await this.prisma.user.findUnique({
             where: { id: medecinId },
         });
@@ -190,18 +217,30 @@ let AdminService = class AdminService {
                 nom: true,
                 prenom: true,
                 email: true,
+                telephone: true,
                 specialite: true,
                 isActive: true,
                 statutValidation: true,
+                preferencesNotifEmail: true,
+                preferencesNotifSms: true,
             },
         });
-        await this.notificationsService.createNotification(updated.id, 'CONFIRMATION', 'Compte approuvé', `Félicitations Dr. ${updated.prenom} ${updated.nom}! Votre compte a été approuvé par l'administration. Vous pouvez maintenant vous connecter et accéder à votre espace médecin.`);
+        await this.notificationsService.sendAccountApproval(updated.id, `${updated.prenom} ${updated.nom}`, updated.email, updated.telephone || '', updated.preferencesNotifEmail ?? true, updated.preferencesNotifSms ?? false);
+        await this.notificationsService.createAdminNotificationForApproval(adminId, `${updated.prenom} ${updated.nom}`, updated.specialite || 'Non spécifiée');
         return {
             message: 'Médecin approuvé avec succès',
-            medecin: updated,
+            medecin: {
+                id: updated.id,
+                nom: updated.nom,
+                prenom: updated.prenom,
+                email: updated.email,
+                specialite: updated.specialite,
+                isActive: updated.isActive,
+                statutValidation: updated.statutValidation,
+            },
         };
     }
-    async rejectMedecin(medecinId) {
+    async rejectMedecin(medecinId, adminId) {
         const medecin = await this.prisma.user.findUnique({
             where: { id: medecinId },
         });
@@ -222,15 +261,27 @@ let AdminService = class AdminService {
                 nom: true,
                 prenom: true,
                 email: true,
+                telephone: true,
                 specialite: true,
                 isActive: true,
                 statutValidation: true,
+                preferencesNotifEmail: true,
+                preferencesNotifSms: true,
             },
         });
-        await this.notificationsService.createNotification(updated.id, 'ANNULATION', 'Demande refusée', `Bonjour Dr. ${updated.prenom} ${updated.nom}, nous regrettons de vous informer que votre demande d'inscription a été refusée. Pour plus d'informations, veuillez contacter l'administration.`);
+        await this.notificationsService.sendAccountRejection(updated.id, `${updated.prenom} ${updated.nom}`, updated.email, updated.telephone || '', updated.preferencesNotifEmail ?? true, updated.preferencesNotifSms ?? false);
+        await this.notificationsService.createAdminNotificationForRejection(adminId, `${updated.prenom} ${updated.nom}`, updated.specialite || 'Non spécifiée');
         return {
             message: 'Demande du médecin rejetée',
-            medecin: updated,
+            medecin: {
+                id: updated.id,
+                nom: updated.nom,
+                prenom: updated.prenom,
+                email: updated.email,
+                specialite: updated.specialite,
+                isActive: updated.isActive,
+                statutValidation: updated.statutValidation,
+            },
         };
     }
     async getRendezVous(filters) {

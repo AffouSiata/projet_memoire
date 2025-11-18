@@ -1,7 +1,7 @@
 import { PrismaService } from '../prisma/prisma.service';
 import { UpdateUserStatusDto } from './dto/update-user-status.dto';
 import { UpdateRendezVousDto } from '../medecins/dto/update-rendezvous.dto';
-import { StatutRendezVous } from '@prisma/client';
+import { StatutRendezVous, StatutValidation } from '@prisma/client';
 import { NotificationsService } from '../notifications/notifications.service';
 export declare class AdminService {
     private prisma;
@@ -45,6 +45,7 @@ export declare class AdminService {
         search?: string;
         specialite?: string;
         isActive?: boolean;
+        statutValidation?: StatutValidation;
         page?: number;
         limit?: number;
     }): Promise<{
@@ -69,7 +70,7 @@ export declare class AdminService {
             totalPages: number;
         };
     }>;
-    updateMedecinStatus(medecinId: string, updateStatusDto: UpdateUserStatusDto): Promise<{
+    updateMedecinStatus(medecinId: string, updateStatusDto: UpdateUserStatusDto, adminId: string): Promise<{
         id: string;
         email: string;
         nom: string;
@@ -77,27 +78,27 @@ export declare class AdminService {
         isActive: boolean;
         specialite: string | null;
     }>;
-    approveMedecin(medecinId: string): Promise<{
+    approveMedecin(medecinId: string, adminId: string): Promise<{
         message: string;
         medecin: {
             id: string;
-            email: string;
             nom: string;
             prenom: string;
-            isActive: boolean;
+            email: string;
             specialite: string | null;
+            isActive: boolean;
             statutValidation: import("@prisma/client").$Enums.StatutValidation | null;
         };
     }>;
-    rejectMedecin(medecinId: string): Promise<{
+    rejectMedecin(medecinId: string, adminId: string): Promise<{
         message: string;
         medecin: {
             id: string;
-            email: string;
             nom: string;
             prenom: string;
-            isActive: boolean;
+            email: string;
             specialite: string | null;
+            isActive: boolean;
             statutValidation: import("@prisma/client").$Enums.StatutValidation | null;
         };
     }>;

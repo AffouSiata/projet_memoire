@@ -132,31 +132,47 @@ Mot de passe: password123
 
 
 
-
-sur la page notifications de l'espace medecin, la langue n'est pas totalement 
-traduire quand on choisir la langue anglais 
-
-
-
-
-
+docteur: afsa  ,   affousiatao59@gmail.com  ,   Dermatologie, qwerty
+        prince  ,   prince@gmail.com  ,   cardiologie, 123456789
+        yao   ,   yao@gmail.com  ,   pediatrie, 987654321
+        fabien  ,   fabien@gmail.com  ,   neurologie, ytrewq
+        odou  ,   odou@gmail.com  ,   ophtamologie, 223344
+        maria  ,   maria@gmail.com  ,   psychiatrie, 119900
 
 
+admin : Email : admin@medical.com
+      - Mot de passe : password123
 
 
-
-
-
-
-
-
+patient: mariam  ,  mariam@gmail.com ,   guervar234#
+        serge  , serge@gmail.com ,   warava200@
+        cidy  ,  cidy@gmail.com ,   mamad090#
+        trabi  ,  trabi@gmail.com ,   trabi432@#
 
 
 
+maitenant la date pour la prise de rdv c'est par semaine oubien par mois parce que je comprend pas
+je comprend pas pourquoi les creneaux de lundi est pour tous  les lundis 
 
 
 
 
+
+
+la section notification sur l'espace patient doit etre personnel chaque notification
+  est dedier a elle , la notification globale sur l'admin
+
+
+
+
+
+
+
+
+
+
+
+j'ai l'impression que notifications push ne fonctionne pas 
 
 
 

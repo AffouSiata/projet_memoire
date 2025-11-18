@@ -3,6 +3,8 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
+import { useNotifications } from '../../context/NotificationContext';
+import NotificationToast from '../common/NotificationToast';
 import {
   HomeIcon,
   UsersIcon,
@@ -23,6 +25,7 @@ const AdminLayout = ({ children }) => {
   const location = useLocation();
   const { user, logout } = useAuth();
   const { isDarkMode } = useTheme();
+  const { unreadCount, newNotification, dismissToast } = useNotifications();
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
@@ -182,6 +185,12 @@ const AdminLayout = ({ children }) => {
                         : 'text-slate-400 dark:text-white group-hover:text-secondary-600 dark:group-hover:text-secondary-400 group-hover:scale-110'
                     }`}
                   />
+                  {/* Notification badge */}
+                  {item.path === '/admin/notifications' && unreadCount > 0 && (
+                    <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold animate-pulse shadow-lg">
+                      {unreadCount > 9 ? '9+' : unreadCount}
+                    </div>
+                  )}
                 </div>
 
                 {/* Text */}
@@ -303,6 +312,12 @@ const AdminLayout = ({ children }) => {
           </div>
         </div>
       )}
+
+      {/* Notification Toast */}
+      <NotificationToast
+        notification={newNotification}
+        onDismiss={dismissToast}
+      />
     </div>
   );
 };
