@@ -217,7 +217,7 @@ const MedecinCreneaux = () => {
       <MedecinLayout>
         <div className="flex items-center justify-center min-h-screen bg-slate-50 dark:bg-gray-900">
           <div className="text-center">
-            <div className="w-16 h-16 border-4 border-secondary-400 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+            <div className="w-16 h-16 border-4 border-blue-400 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
             <p className="text-gray-500 dark:text-white">{t('common.loading')}</p>
           </div>
         </div>
@@ -230,9 +230,9 @@ const MedecinCreneaux = () => {
       <div className="min-h-screen bg-[#F7F9FC] dark:bg-gray-900 p-8 relative overflow-hidden">
         {/* Blobs animés */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-primary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-          <div className="absolute top-40 right-20 w-96 h-96 bg-secondary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-          <div className="absolute -bottom-20 left-1/3 w-80 h-80 bg-primary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+          <div className="absolute top-40 right-20 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+          <div className="absolute -bottom-20 left-1/3 w-80 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
@@ -240,8 +240,8 @@ const MedecinCreneaux = () => {
           <div className="mb-8 animate-slide-up">
             <div className="relative bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-lg overflow-hidden">
               {/* Effets décoratifs subtils */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-primary-100/40 dark:bg-primary-900/20 rounded-full blur-3xl"></div>
-              <div className="absolute bottom-0 left-0 w-48 h-48 bg-secondary-100/40 dark:bg-secondary-900/20 rounded-full blur-3xl"></div>
+              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-100/40 dark:bg-blue-950/20 rounded-full blur-3xl"></div>
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-100/40 dark:bg-blue-950/20 rounded-full blur-3xl"></div>
 
               {/* Contenu principal */}
               <div className="relative z-10">
@@ -249,9 +249,9 @@ const MedecinCreneaux = () => {
                   {/* Section gauche */}
                   <div className="flex-1">
                     {/* Badge */}
-                    <div className="inline-flex items-center gap-2.5 px-4 py-2 bg-primary-50 dark:bg-primary-900/30 rounded-2xl mb-4">
-                      <div className="w-2 h-2 bg-primary-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs font-bold text-primary-600 dark:text-primary-400 uppercase tracking-wider">{t('medecin.creneaux.badge')}</span>
+                    <div className="inline-flex items-center gap-2.5 px-4 py-2 bg-blue-50 dark:bg-blue-950/30 rounded-2xl mb-4">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                      <span className="text-xs font-bold text-blue-700 dark:text-blue-400 uppercase tracking-wider">{t('medecin.creneaux.badge')}</span>
                     </div>
 
                     {/* Titre avec icône */}
@@ -259,7 +259,7 @@ const MedecinCreneaux = () => {
                       <h1 className="text-5xl font-extrabold text-gray-900 dark:text-white leading-tight">
                         {t('medecin.creneaux.title')}
                       </h1>
-                      <div className="w-14 h-14 bg-gradient-to-br from-primary-500 to-secondary-600 rounded-2xl flex items-center justify-center shadow-lg animate-bounce-slow">
+                      <div className="w-14 h-14 bg-blue-700 rounded-2xl flex items-center justify-center shadow-lg animate-bounce-slow">
                         <ClockIcon className="w-7 h-7 text-white" />
                       </div>
                     </div>
@@ -272,7 +272,7 @@ const MedecinCreneaux = () => {
                   {/* Bouton créer */}
                   <button
                     onClick={() => setShowCreateModal(true)}
-                    className="flex items-center gap-2 px-6 py-3 bg-secondary-500 hover:bg-secondary-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                    className="flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-700 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                   >
                     <PlusIcon className="w-5 h-5" />
                     {t('medecin.creneaux.newSlot')}
@@ -285,8 +285,8 @@ const MedecinCreneaux = () => {
           {/* Cartes statistiques */}
           <div className="grid grid-cols-3 gap-4 mb-8">
             <div className="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-md hover:shadow-xl hover:scale-105 hover:-rotate-1 transition-all duration-300 animate-scale-in">
-              <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/50 rounded-2xl flex items-center justify-center mb-4 animate-pulse-soft">
-                <ClockIcon className="w-6 h-6 text-primary-500 dark:text-primary-400" />
+              <div className="w-12 h-12 bg-blue-100 dark:bg-blue-950/50 rounded-2xl flex items-center justify-center mb-4 animate-pulse-soft">
+                <ClockIcon className="w-6 h-6 text-blue-500 dark:text-blue-400" />
               </div>
               <p className="text-gray-500 dark:text-gray-400 text-sm mb-1">{t('medecin.creneaux.stats.total')}</p>
               <p className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{stats.total}</p>
@@ -294,8 +294,8 @@ const MedecinCreneaux = () => {
             </div>
 
             <div className="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-md hover:shadow-xl hover:scale-105 hover:rotate-1 transition-all duration-300 animate-scale-in" style={{ animationDelay: '0.1s' }}>
-              <div className="w-12 h-12 bg-green-100 dark:bg-green-900/50 rounded-2xl flex items-center justify-center mb-4 animate-pulse-soft">
-                <CheckCircleIcon className="w-6 h-6 text-green-500 dark:text-green-400" />
+              <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/50 rounded-2xl flex items-center justify-center mb-4 animate-pulse-soft">
+                <CheckCircleIcon className="w-6 h-6 text-blue-500 dark:text-blue-400" />
               </div>
               <p className="text-gray-500 dark:text-gray-400 text-sm mb-1">{t('medecin.creneaux.stats.active')}</p>
               <p className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{stats.actifs}</p>
@@ -318,8 +318,8 @@ const MedecinCreneaux = () => {
             <div className="bg-white dark:bg-gray-800 rounded-3xl p-12 shadow-lg text-center animate-scale-in">
               <div className="max-w-md mx-auto">
                 {/* Illustration */}
-                <div className="w-32 h-32 bg-gradient-to-br from-primary-100 to-secondary-100 dark:bg-primary-900/30 dark:to-secondary-900/30 rounded-full mx-auto mb-6 flex items-center justify-center animate-bounce-slow">
-                  <ClockIcon className="w-16 h-16 text-primary-500 dark:text-primary-400" />
+                <div className="w-32 h-32 bg-blue-100 dark:bg-blue-950/30 rounded-full mx-auto mb-6 flex items-center justify-center animate-bounce-slow">
+                  <ClockIcon className="w-16 h-16 text-blue-500 dark:text-blue-400" />
                 </div>
 
                 {/* Message principal */}
@@ -333,15 +333,15 @@ const MedecinCreneaux = () => {
                 {/* Call to action */}
                 <button
                   onClick={() => setShowCreateModal(true)}
-                  className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-secondary-500 to-primary-500 hover:from-secondary-600 hover:to-primary-600 text-white rounded-2xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-blue-700 hover:bg-blue-800 text-white rounded-2xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                 >
                   <PlusIcon className="w-6 h-6" />
                   {t('medecin.creneaux.empty.button')}
                 </button>
 
                 {/* Aide */}
-                <div className="mt-8 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-2xl border border-blue-200 dark:border-blue-800">
-                  <p className="text-sm text-blue-700 dark:text-blue-400 font-semibold mb-2">
+                <div className="mt-8 p-4 bg-blue-50 dark:bg-blue-950/20 rounded-2xl border border-blue-200 dark:border-blue-900">
+                  <p className="text-sm text-blue-800 dark:text-blue-400 font-semibold mb-2">
                     💡 {t('medecin.creneaux.empty.tip')}
                   </p>
                   <p className="text-xs text-gray-600 dark:text-gray-400">
@@ -360,7 +360,7 @@ const MedecinCreneaux = () => {
                   style={{ animationDelay: `${0.1 + index * 0.05}s` }}
                 >
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center shadow-md">
+                    <div className="w-10 h-10 bg-blue-700 rounded-xl flex items-center justify-center shadow-md">
                       <CalendarIcon className="w-5 h-5 text-white" />
                     </div>
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white">{dayData.label}</h3>
@@ -376,13 +376,13 @@ const MedecinCreneaux = () => {
                           key={slot.id}
                           className={`relative p-4 rounded-xl border-2 transition-all duration-300 ${
                             slot.isAvailable
-                              ? 'bg-green-50 dark:bg-green-900/20 border-green-300 dark:border-green-800'
+                              ? 'bg-blue-50 dark:bg-blue-900/20 border-blue-300 dark:border-blue-800'
                               : 'bg-gray-50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 opacity-60'
                           }`}
                         >
                           <div className="flex items-center justify-between mb-2">
                             <div className="flex items-center gap-2">
-                              <ClockIcon className={`w-4 h-4 ${slot.isAvailable ? 'text-green-600 dark:text-green-400' : 'text-gray-500 dark:text-gray-400'}`} />
+                              <ClockIcon className={`w-4 h-4 ${slot.isAvailable ? 'text-blue-600 dark:text-blue-400' : 'text-gray-500 dark:text-gray-400'}`} />
                               <span className={`text-sm font-bold ${slot.isAvailable ? 'text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400'}`}>
                                 {slot.heureDebut} - {slot.heureFin}
                               </span>
@@ -394,7 +394,7 @@ const MedecinCreneaux = () => {
                               onClick={() => handleToggleAvailability(slot.id, slot.isAvailable)}
                               className={`flex-1 px-2 py-1.5 rounded-lg text-xs font-semibold transition-all duration-300 ${
                                 slot.isAvailable
-                                  ? 'bg-green-500 hover:bg-green-600 text-white'
+                                  ? 'bg-blue-500 hover:bg-blue-600 text-white'
                                   : 'bg-gray-400 hover:bg-gray-500 text-white'
                               }`}
                             >
@@ -650,7 +650,7 @@ const MedecinCreneaux = () => {
                 </button>
                 <button
                   onClick={confirmDeleteIndispo}
-                  className="flex-1 px-6 py-4 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-2xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                  className="flex-1 px-6 py-4 bg-red-600 hover:bg-red-700 text-white rounded-2xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                 >
                   Supprimer
                 </button>
@@ -694,8 +694,8 @@ const MedecinCreneaux = () => {
               </div>
 
               {/* Suggestions */}
-              <div className="bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-4 mb-6 border border-blue-200 dark:border-blue-800">
-                <p className="text-sm font-bold text-blue-700 dark:text-blue-400 mb-2">
+              <div className="bg-blue-50 dark:bg-blue-950/20 rounded-2xl p-4 mb-6 border border-blue-200 dark:border-blue-900">
+                <p className="text-sm font-bold text-blue-800 dark:text-blue-400 mb-2">
                   💡 {t('medecin.creneaux.errorModal.solutions')}
                 </p>
                 <ul className="text-sm text-gray-700 dark:text-gray-300 space-y-1">
@@ -779,7 +779,7 @@ const MedecinCreneaux = () => {
                 </button>
                 <button
                   onClick={confirmDelete}
-                  className="flex-1 px-6 py-4 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-2xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                  className="flex-1 px-6 py-4 bg-red-600 hover:bg-red-700 text-white rounded-2xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                 >
                   {t('medecin.creneaux.deleteModal.confirm')}
                 </button>
@@ -798,11 +798,11 @@ const MedecinCreneaux = () => {
           ></div>
 
           <div className="relative bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-8 max-w-md w-full animate-scale-in overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-secondary-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
 
             <div className="relative z-10 mb-8">
               <div className="flex items-center gap-4 mb-2">
-                <div className="w-14 h-14 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center shadow-lg">
+                <div className="w-14 h-14 bg-blue-700 rounded-2xl flex items-center justify-center shadow-lg">
                   <PlusIcon className="w-7 h-7 text-white" />
                 </div>
                 <div>
@@ -820,14 +820,14 @@ const MedecinCreneaux = () => {
               {/* Jour */}
               <div>
                 <label className="flex items-center gap-2 text-sm font-bold text-gray-700 dark:text-gray-300 mb-3">
-                  <CalendarIcon className="w-5 h-5 text-primary-500" />
+                  <CalendarIcon className="w-5 h-5 text-blue-500" />
                   {t('medecin.creneaux.createModal.day')}
                 </label>
                 <select
                   required
                   value={formData.jour}
                   onChange={(e) => setFormData({ ...formData, jour: e.target.value })}
-                  className="w-full px-4 py-4 bg-gray-50 dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-2xl focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500 text-gray-900 dark:text-white font-medium transition-all duration-300"
+                  className="w-full px-4 py-4 bg-gray-50 dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-white font-medium transition-all duration-300"
                 >
                   {jours.map(jour => (
                     <option key={jour.value} value={jour.value}>{jour.label}</option>
@@ -839,7 +839,7 @@ const MedecinCreneaux = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="flex items-center gap-2 text-sm font-bold text-gray-700 dark:text-gray-300 mb-3">
-                    <ClockIcon className="w-5 h-5 text-secondary-500" />
+                    <ClockIcon className="w-5 h-5 text-blue-500" />
                     {t('medecin.creneaux.createModal.startTime')}
                   </label>
                   <input
@@ -847,13 +847,13 @@ const MedecinCreneaux = () => {
                     required
                     value={formData.heureDebut}
                     onChange={(e) => setFormData({ ...formData, heureDebut: e.target.value })}
-                    className="w-full px-4 py-4 bg-gray-50 dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-2xl focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500 text-gray-900 dark:text-white font-medium transition-all duration-300"
+                    className="w-full px-4 py-4 bg-gray-50 dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-white font-medium transition-all duration-300"
                   />
                 </div>
 
                 <div>
                   <label className="flex items-center gap-2 text-sm font-bold text-gray-700 dark:text-gray-300 mb-3">
-                    <ClockIcon className="w-5 h-5 text-secondary-500" />
+                    <ClockIcon className="w-5 h-5 text-blue-500" />
                     {t('medecin.creneaux.createModal.endTime')}
                   </label>
                   <input
@@ -861,7 +861,7 @@ const MedecinCreneaux = () => {
                     required
                     value={formData.heureFin}
                     onChange={(e) => setFormData({ ...formData, heureFin: e.target.value })}
-                    className="w-full px-4 py-4 bg-gray-50 dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-2xl focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500 text-gray-900 dark:text-white font-medium transition-all duration-300"
+                    className="w-full px-4 py-4 bg-gray-50 dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-white font-medium transition-all duration-300"
                   />
                 </div>
               </div>
@@ -877,7 +877,7 @@ const MedecinCreneaux = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-8 py-4 bg-gradient-to-r from-secondary-500 to-primary-500 hover:from-secondary-600 hover:to-primary-600 text-white rounded-2xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2"
+                  className="px-8 py-4 bg-blue-700 hover:bg-blue-800 text-white rounded-2xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2"
                 >
                   <CheckCircleIcon className="w-5 h-5" />
                   {t('medecin.creneaux.createModal.create')}

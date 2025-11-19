@@ -93,8 +93,8 @@ const AdminStatistiques = () => {
       change: '+13.9%',
       trend: 'up',
       icon: CalendarIcon,
-      gradient: 'from-secondary-500 to-emerald-600',
-      bgGradient: 'from-secondary-400 to-emerald-600',
+      gradient: 'bg-blue-700',
+      bgGradient: 'bg-blue-700',
     },
     {
       title: safeT('admin.statistiques.kpi.activePatients', 'Patients Actifs'),
@@ -102,8 +102,8 @@ const AdminStatistiques = () => {
       change: '+6.9%',
       trend: 'up',
       icon: UsersIcon,
-      gradient: 'from-green-500 to-emerald-600',
-      bgGradient: 'from-green-500 to-emerald-600',
+      gradient: 'bg-blue-600',
+      bgGradient: 'bg-blue-600',
     },
     {
       title: safeT('admin.statistiques.kpi.successRate', 'Taux de Succès'),
@@ -111,8 +111,8 @@ const AdminStatistiques = () => {
       change: '+3.2%',
       trend: 'up',
       icon: CheckCircleIcon,
-      gradient: 'from-secondary-500 to-emerald-600',
-      bgGradient: 'from-secondary-400 to-emerald-600',
+      gradient: 'bg-blue-700',
+      bgGradient: 'bg-blue-700',
     },
     {
       title: safeT('admin.statistiques.kpi.totalRevenue', 'Revenus Totaux'),
@@ -170,9 +170,9 @@ const AdminStatistiques = () => {
       <div className="min-h-screen bg-[#F7F9FC] dark:bg-gray-900 py-8 px-4 relative overflow-hidden">
         {/* Blobs animés en arrière-plan */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-secondary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-          <div className="absolute top-40 right-20 w-96 h-96 bg-secondary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-          <div className="absolute -bottom-20 left-1/3 w-80 h-80 bg-secondary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+          <div className="absolute top-40 right-20 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+          <div className="absolute -bottom-20 left-1/3 w-80 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
@@ -180,17 +180,17 @@ const AdminStatistiques = () => {
           <div className="mb-8 animate-slide-up">
             <div className="relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl p-8 shadow-xl border border-white/20 dark:border-gray-700/50 overflow-hidden">
               {/* Effets décoratifs d'arrière-plan */}
-              <div className="absolute top-0 right-0 w-96 h-96 bg-secondary-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-              <div className="absolute bottom-0 left-0 w-72 h-72 bg-secondary-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+              <div className="absolute top-0 right-0 w-96 h-96 bg-blue-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+              <div className="absolute bottom-0 left-0 w-72 h-72 bg-blue-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
 
               <div className="relative z-10">
                 <div className="flex items-start justify-between">
                   {/* Section gauche */}
                   <div className="flex-1">
                     {/* Badge */}
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary-50 dark:bg-secondary-900/30 rounded-full mb-4">
-                      <div className="w-2 h-2 bg-secondary-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs font-semibold text-secondary-700 dark:text-secondary-300 uppercase tracking-wider">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-950/30 rounded-full mb-4">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                      <span className="text-xs font-semibold text-blue-800 dark:text-blue-300 uppercase tracking-wider">
                         {safeT('admin.statistics.analytics', 'Analytics')}
                       </span>
                     </div>
@@ -206,8 +206,8 @@ const AdminStatistiques = () => {
                     {/* Mini-cartes date/heure */}
                     <div className="flex items-center gap-4">
                       <div className="flex items-center gap-3 px-5 py-3 bg-white/60 dark:bg-gray-700/60 rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
-                        <div className="w-10 h-10 bg-secondary-100 dark:bg-secondary-900/50 rounded-xl flex items-center justify-center">
-                          <CalendarIcon className="w-5 h-5 text-secondary-600 dark:text-secondary-400" />
+                        <div className="w-10 h-10 bg-blue-100 dark:bg-blue-950/50 rounded-xl flex items-center justify-center">
+                          <CalendarIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
                         </div>
                         <div>
                           <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{safeT('dashboard.date', 'Date')}</p>
@@ -218,8 +218,8 @@ const AdminStatistiques = () => {
                       </div>
 
                       <div className="flex items-center gap-3 px-5 py-3 bg-white/60 dark:bg-gray-700/60 rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
-                        <div className="w-10 h-10 bg-secondary-100 dark:bg-secondary-900/50 rounded-xl flex items-center justify-center">
-                          <ClockIcon className="w-5 h-5 text-secondary-600 dark:text-secondary-400" />
+                        <div className="w-10 h-10 bg-blue-100 dark:bg-blue-950/50 rounded-xl flex items-center justify-center">
+                          <ClockIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
                         </div>
                         <div>
                           <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{safeT('dashboard.time', 'Heure')}</p>
@@ -234,8 +234,8 @@ const AdminStatistiques = () => {
                   {/* Section droite - Stats */}
                   <div className="flex flex-col items-end gap-3">
                     <div className="relative group">
-                      <div className="absolute inset-0 bg-secondary-500 rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
-                      <div className="relative px-6 py-4 bg-gradient-to-br from-secondary-500 to-emerald-600 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                      <div className="absolute inset-0 bg-blue-500 rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+                      <div className="relative px-6 py-4 bg-blue-700 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                         <div className="flex items-center gap-3">
                           <ChartBarIcon className="w-6 h-6 text-white" />
                           <div className="text-left">
@@ -264,7 +264,7 @@ const AdminStatistiques = () => {
                     onClick={() => setSelectedPeriod(period)}
                     className={`flex-1 px-6 py-3 rounded-xl font-semibold transition-all ${
                       selectedPeriod === period
-                        ? 'bg-gradient-to-r from-secondary-500 to-emerald-600 text-white shadow-lg scale-105'
+                        ? 'bg-blue-700 text-white shadow-lg scale-105'
                         : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                     }`}
                   >
@@ -309,7 +309,7 @@ const AdminStatistiques = () => {
                         </div>
                       )}
                       <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 bg-gradient-to-br from-secondary-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-lg">
+                        <div className="w-12 h-12 bg-blue-700 rounded-xl flex items-center justify-center shadow-lg">
                           <span className="text-white font-bold">#{index + 1}</span>
                         </div>
                         <div className="flex-1">
@@ -321,7 +321,7 @@ const AdminStatistiques = () => {
                             <StarIcon className="w-4 h-4 text-yellow-500 fill-yellow-500" />
                             <span className="text-sm font-bold text-gray-900 dark:text-white">{medecin.satisfaction}</span>
                           </div>
-                          <div className={`flex items-center gap-1 ${medecin.trend > 0 ? 'text-green-600' : 'text-red-600'}`}>
+                          <div className={`flex items-center gap-1 ${medecin.trend > 0 ? 'text-blue-600' : 'text-red-600'}`}>
                             {medecin.trend > 0 ? (
                               <ArrowTrendingUpIcon className="w-3 h-3" />
                             ) : (
@@ -334,11 +334,11 @@ const AdminStatistiques = () => {
                       <div className="grid grid-cols-2 gap-3 mt-3 pt-3 border-t border-gray-200 dark:border-gray-600">
                         <div>
                           <p className="text-xs text-gray-500 dark:text-gray-400">RDV</p>
-                          <p className="text-lg font-bold text-secondary-600 dark:text-secondary-400">{medecin.rdv}</p>
+                          <p className="text-lg font-bold text-blue-700 dark:text-blue-400">{medecin.rdv}</p>
                         </div>
                         <div>
                           <p className="text-xs text-gray-500 dark:text-gray-400">Revenus</p>
-                          <p className="text-lg font-bold text-green-600 dark:text-green-400">{medecin.revenus}€</p>
+                          <p className="text-lg font-bold text-blue-600 dark:text-blue-400">{medecin.revenus}€</p>
                         </div>
                       </div>
                     </div>
@@ -349,10 +349,10 @@ const AdminStatistiques = () => {
 
             {/* Statistiques Horaires */}
             <div className="group relative animate-scale-in" style={{ animationDelay: '300ms' }}>
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-secondary-400 to-emerald-600 rounded-2xl blur opacity-0 group-hover:opacity-30 transition duration-500"></div>
+              <div className="absolute -inset-0.5 bg-blue-700 rounded-2xl blur opacity-0 group-hover:opacity-30 transition duration-500"></div>
               <div className="relative bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl rounded-2xl p-6 shadow-xl border border-gray-200/50 dark:border-gray-700/50 hover:shadow-2xl transition-all duration-300">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 bg-gradient-to-br from-secondary-500 to-emerald-600 rounded-xl shadow-lg">
+                  <div className="p-3 bg-blue-700 rounded-xl shadow-lg">
                     <ClockIcon className="w-6 h-6 text-white" />
                   </div>
                   <div>

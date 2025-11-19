@@ -407,7 +407,7 @@ const AdminParametres = () => {
       id: 'notifications',
       title: t('admin.parametres.notifications.title'),
       icon: BellIcon,
-      gradient: 'secondary-400',
+      gradient: 'blue-400',
       description: t('admin.parametres.notifications.description'),
       settings: [
         {
@@ -434,7 +434,7 @@ const AdminParametres = () => {
       id: 'appearance',
       title: t('admin.parametres.appearance.title'),
       icon: settings.darkMode ? MoonIcon : SunIcon,
-      gradient: 'secondary-400',
+      gradient: 'blue-400',
       description: t('admin.parametres.appearance.description'),
       settings: [
         {
@@ -457,8 +457,8 @@ const AdminParametres = () => {
       <div className="min-h-screen bg-slate-50 dark:bg-gray-900 p-8">
         {/* Animated background */}
         <div className="fixed inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-40 -right-40 w-96 h-96 bg-secondary-400/20 dark:bg-secondary-500/10 rounded-full blur-3xl animate-blob"></div>
-          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-secondary-400/20 dark:bg-secondary-500/10 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
+          <div className="absolute -top-40 -right-40 w-96 h-96 bg-blue-400/20 dark:bg-blue-500/10 rounded-full blur-3xl animate-blob"></div>
+          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-400/20 dark:bg-blue-500/10 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
         </div>
 
         <div className="relative max-w-6xl mx-auto space-y-8">
@@ -481,7 +481,7 @@ const AdminParametres = () => {
           {isLoading ? (
             <div className="relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl shadow-2xl p-16 border border-white/50 dark:border-gray-700/50">
               <div className="flex flex-col items-center gap-4">
-                <div className="w-16 h-16 border-4 border-secondary-200 border-t-secondary-500 rounded-full animate-spin"></div>
+                <div className="w-16 h-16 border-4 border-blue-200 border-t-blue-500 rounded-full animate-spin"></div>
                 <p className="text-lg font-semibold text-gray-600 dark:text-gray-300">{t('admin.parametres.loading')}</p>
               </div>
             </div>
@@ -489,17 +489,17 @@ const AdminParametres = () => {
             <>
               {/* Header */}
               <div className="relative group animate-scale-in">
-            <div className="absolute inset-0 bg-secondary-500/20 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-blue-500/20 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl shadow-2xl p-8 border border-white/50 dark:border-gray-700/50">
               <div className="flex items-center gap-4">
                 <div className="relative">
-                  <div className="absolute inset-0 bg-secondary-500 rounded-2xl blur-lg opacity-75 animate-pulse-soft"></div>
-                  <div className="relative w-16 h-16 bg-secondary-500 rounded-2xl flex items-center justify-center shadow-xl">
+                  <div className="absolute inset-0 bg-blue-500 rounded-2xl blur-lg opacity-75 animate-pulse-soft"></div>
+                  <div className="relative w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center shadow-xl">
                     <Cog6ToothIcon className="w-8 h-8 text-white animate-rotate-slow" />
                   </div>
                 </div>
                 <div>
-                  <h1 className="text-4xl font-bold text-secondary-500 dark:text-secondary-400">
+                  <h1 className="text-4xl font-bold text-blue-500 dark:text-blue-400">
                     {t('admin.parametres.title')}
                   </h1>
                   <p className="text-slate-600 dark:text-white mt-1 font-medium">
@@ -513,10 +513,10 @@ const AdminParametres = () => {
           {/* Language Section */}
           <div className="relative animate-slide-up" style={{ animationDelay: '100ms' }}>
             <div className="relative group">
-              <div className="absolute inset-0 bg-secondary-400/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute inset-0 bg-blue-400/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
               <div className="relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl shadow-lg p-6 border border-white/50 dark:border-gray-700/50">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-secondary-400 rounded-xl flex items-center justify-center shadow-lg">
+                  <div className="w-10 h-10 bg-blue-400 rounded-xl flex items-center justify-center shadow-lg">
                     <GlobeAltIcon className="w-5 h-5 text-white" />
                   </div>
                   <div>
@@ -537,13 +537,13 @@ const AdminParametres = () => {
                         onClick={() => handleLanguageChange(lang.code)}
                         className={`relative p-4 rounded-xl transition-all duration-300 hover:scale-105 animate-scale-in ${
                           isActive
-                            ? 'bg-secondary-400 text-white shadow-xl'
+                            ? 'bg-blue-400 text-white shadow-xl'
                             : 'bg-white/60 dark:bg-gray-700 text-slate-700 dark:text-white hover:bg-white dark:hover:bg-gray-600 shadow-md'
                         }`}
                         style={{ animationDelay: `${index * 50}ms` }}
                       >
                         {isActive && (
-                          <div className="absolute inset-0 bg-secondary-400 rounded-xl blur-lg opacity-50 animate-pulse-soft"></div>
+                          <div className="absolute inset-0 bg-blue-400 rounded-xl blur-lg opacity-50 animate-pulse-soft"></div>
                         )}
                         <div className="relative text-center">
                           <div className="text-3xl mb-2">{lang.flag}</div>
@@ -565,10 +565,10 @@ const AdminParametres = () => {
               style={{ animationDelay: `${(sectionIndex + 2) * 100}ms` }}
             >
               <div className="relative group">
-                <div className="absolute inset-0 bg-secondary-400/10 opacity-10 rounded-2xl blur-xl group-hover:opacity-20 transition-opacity"></div>
+                <div className="absolute inset-0 bg-blue-400/10 opacity-10 rounded-2xl blur-xl group-hover:opacity-20 transition-opacity"></div>
                 <div className="relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl shadow-lg p-6 border border-white/50 dark:border-gray-700/50">
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="w-12 h-12 bg-secondary-400 rounded-xl flex items-center justify-center shadow-lg">
+                    <div className="w-12 h-12 bg-blue-400 rounded-xl flex items-center justify-center shadow-lg">
                       <section.icon className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -583,7 +583,7 @@ const AdminParametres = () => {
                         <div key={setting.id} className="relative group/item">
                           <div className="flex items-center justify-between p-4 rounded-xl bg-white/60 dark:bg-gray-700/50 hover:bg-white dark:hover:bg-gray-700 transition-all duration-300 hover:shadow-md">
                             <div className="flex items-center gap-4 flex-1">
-                              <div className="w-10 h-10 bg-secondary-400/20 rounded-lg flex items-center justify-center">
+                              <div className="w-10 h-10 bg-blue-400/20 rounded-lg flex items-center justify-center">
                                 <setting.icon className="w-5 h-5 text-slate-600 dark:text-white" />
                               </div>
                               <div>
@@ -597,7 +597,7 @@ const AdminParametres = () => {
                               onClick={() => handleToggle(setting.id)}
                               className={`relative w-14 h-7 rounded-full transition-all duration-300 ${
                                 settings[setting.id]
-                                  ? 'bg-secondary-400'
+                                  ? 'bg-blue-400'
                                   : 'bg-slate-200 dark:bg-gray-600'
                               }`}
                             >
@@ -620,11 +620,11 @@ const AdminParametres = () => {
           {/* Audit Logs */}
           <div className="relative animate-slide-up" style={{ animationDelay: '600ms' }}>
             <div className="relative group">
-              <div className="absolute inset-0 bg-secondary-400/10 opacity-10 rounded-2xl blur-xl group-hover:opacity-20 transition-opacity"></div>
+              <div className="absolute inset-0 bg-blue-400/10 opacity-10 rounded-2xl blur-xl group-hover:opacity-20 transition-opacity"></div>
               <div className="relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl shadow-lg p-6 border border-white/50 dark:border-gray-700/50">
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-secondary-400 rounded-xl flex items-center justify-center shadow-lg">
+                    <div className="w-12 h-12 bg-blue-400 rounded-xl flex items-center justify-center shadow-lg">
                       <ClipboardDocumentListIcon className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -657,16 +657,16 @@ const AdminParametres = () => {
                       switch (log.status) {
                         case 'success':
                           return {
-                            bg: 'bg-green-500',
-                            border: 'border-green-200',
-                            darkBorder: 'dark:border-green-800',
-                            textBg: 'bg-green-100',
-                            darkTextBg: 'dark:bg-green-900/30',
-                            text: 'text-green-600',
-                            darkText: 'dark:text-green-400',
+                            bg: 'bg-blue-500',
+                            border: 'border-blue-200',
+                            darkBorder: 'dark:border-blue-800',
+                            textBg: 'bg-blue-100',
+                            darkTextBg: 'dark:bg-blue-900/30',
+                            text: 'text-blue-600',
+                            darkText: 'dark:text-blue-400',
                             label: t('admin.parametres.audit.status.success'),
-                            iconBg: 'bg-green-100',
-                            darkIconBg: 'dark:bg-green-900/30'
+                            iconBg: 'bg-blue-100',
+                            darkIconBg: 'dark:bg-blue-900/30'
                           };
                         case 'failed':
                           return {
@@ -778,7 +778,7 @@ const AdminParametres = () => {
                 <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700 flex items-center justify-between">
                   <div className="flex items-center gap-4">
                     <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                      <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
                       <span className="text-sm text-gray-600 dark:text-gray-400">
                         {t('admin.parametres.audit.summary.success', { count: auditLogs.filter(l => l.status === 'success').length })}
                       </span>
@@ -799,11 +799,11 @@ const AdminParametres = () => {
                   <button
                     onClick={loadAllAuditLogs}
                     disabled={isLoadingAllLogs}
-                    className="px-4 py-2 text-sm font-semibold text-secondary-600 dark:text-secondary-400 hover:bg-secondary-50 dark:hover:bg-secondary-900/20 rounded-lg transition-all disabled:opacity-50"
+                    className="px-4 py-2 text-sm font-semibold text-blue-700 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/20 rounded-lg transition-all disabled:opacity-50"
                   >
                     {isLoadingAllLogs ? (
                       <div className="flex items-center gap-2">
-                        <div className="w-4 h-4 border-2 border-secondary-600/30 border-t-secondary-600 rounded-full animate-spin"></div>
+                        <div className="w-4 h-4 border-2 border-blue-700/30 border-t-blue-700 rounded-full animate-spin"></div>
                         {t('common.loading')}
                       </div>
                     ) : (
@@ -818,11 +818,11 @@ const AdminParametres = () => {
           {/* Spécialités Médicales */}
           <div className="relative animate-slide-up" style={{ animationDelay: '600ms' }}>
             <div className="relative group">
-              <div className="absolute inset-0 bg-secondary-400/10 opacity-10 rounded-2xl blur-xl group-hover:opacity-20 transition-opacity"></div>
+              <div className="absolute inset-0 bg-blue-400/10 opacity-10 rounded-2xl blur-xl group-hover:opacity-20 transition-opacity"></div>
               <div className="relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl shadow-lg p-6 border border-white/50 dark:border-gray-700/50">
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-secondary-400 rounded-xl flex items-center justify-center shadow-lg">
+                    <div className="w-12 h-12 bg-blue-400 rounded-xl flex items-center justify-center shadow-lg">
                       <BeakerIcon className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -849,12 +849,12 @@ const AdminParametres = () => {
                       onChange={(e) => setNewSpecialty(e.target.value)}
                       onKeyPress={(e) => e.key === 'Enter' && handleAddSpecialty()}
                       placeholder={t('admin.parametres.medicalSpecialties.newPlaceholder')}
-                      className="flex-1 px-4 py-2 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-secondary-500 focus:ring-2 focus:ring-secondary-500/20 transition-all"
+                      className="flex-1 px-4 py-2 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
                     />
                     <button
                       onClick={handleAddSpecialty}
                       disabled={!newSpecialty.trim()}
-                      className="px-4 py-2 bg-secondary-500 hover:bg-secondary-600 text-white font-semibold rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                      className="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-semibold rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
                     >
                       <PlusIcon className="w-5 h-5" />
                       {t('admin.parametres.medicalSpecialties.add')}
@@ -871,11 +871,11 @@ const AdminParametres = () => {
                     return (
                       <div
                         key={index}
-                        className="group/item relative bg-white dark:bg-gray-700 rounded-xl p-3 border-2 border-gray-200 dark:border-gray-600 hover:border-secondary-400 dark:hover:border-secondary-500 transition-all"
+                        className="group/item relative bg-white dark:bg-gray-700 rounded-xl p-3 border-2 border-gray-200 dark:border-gray-600 hover:border-blue-400 dark:hover:border-blue-500 transition-all"
                       >
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-2">
-                            <BeakerIcon className="w-5 h-5 text-secondary-500 dark:text-secondary-400" />
+                            <BeakerIcon className="w-5 h-5 text-blue-500 dark:text-blue-400" />
                             <span className="font-semibold text-gray-900 dark:text-white">{translatedSpecialty}</span>
                           </div>
                           <button
@@ -910,7 +910,7 @@ const AdminParametres = () => {
             <div className="flex items-center justify-between">
               <div>
                 {saveSuccess && (
-                  <div className="flex items-center gap-2 text-green-600 font-semibold animate-scale-in">
+                  <div className="flex items-center gap-2 text-blue-600 font-semibold animate-scale-in">
                     <CheckCircleIcon className="w-6 h-6" />
                     {t('admin.parametres.saved')}
                   </div>
@@ -921,9 +921,9 @@ const AdminParametres = () => {
                 type="button"
                 onClick={handleSave}
                 disabled={isSaving}
-                className="relative group/btn px-8 py-4 rounded-2xl overflow-hidden bg-secondary-500 text-white font-bold shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="relative group/btn px-8 py-4 rounded-2xl overflow-hidden bg-blue-500 text-white font-bold shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <div className="absolute inset-0 bg-secondary-600 opacity-0 group-hover/btn:opacity-100 transition-opacity"></div>
+                <div className="absolute inset-0 bg-blue-700 opacity-0 group-hover/btn:opacity-100 transition-opacity"></div>
                 <div className="relative flex items-center gap-2">
                   {isSaving ? (
                     <>
@@ -949,7 +949,7 @@ const AdminParametres = () => {
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fade-in">
             <div className="relative w-full max-w-6xl max-h-[90vh] bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden animate-scale-in">
               {/* Header */}
-              <div className="sticky top-0 z-10 bg-gradient-to-r from-secondary-500 to-emerald-600 p-6">
+              <div className="sticky top-0 z-10 bg-blue-700 p-6">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 bg-white/20 backdrop-blur-xl rounded-xl flex items-center justify-center">
@@ -993,16 +993,16 @@ const AdminParametres = () => {
                         switch (log.status) {
                           case 'success':
                             return {
-                              bg: 'bg-green-500',
-                              border: 'border-green-200',
-                              darkBorder: 'dark:border-green-800',
-                              textBg: 'bg-green-100',
-                              darkTextBg: 'dark:bg-green-900/30',
-                              text: 'text-green-600',
-                              darkText: 'dark:text-green-400',
+                              bg: 'bg-blue-500',
+                              border: 'border-blue-200',
+                              darkBorder: 'dark:border-blue-800',
+                              textBg: 'bg-blue-100',
+                              darkTextBg: 'dark:bg-blue-900/30',
+                              text: 'text-blue-600',
+                              darkText: 'dark:text-blue-400',
                               label: t('admin.parametres.audit.status.success'),
-                              iconBg: 'bg-green-100',
-                              darkIconBg: 'dark:bg-green-900/30'
+                              iconBg: 'bg-blue-100',
+                              darkIconBg: 'dark:bg-blue-900/30'
                             };
                           case 'failed':
                             return {

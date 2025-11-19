@@ -222,19 +222,19 @@ const AppointmentHistory = () => {
         return {
           label: t('history.status.completed') || 'Complété',
           icon: CheckCircleIcon,
-          color: 'bg-green-500',
-          textColor: 'text-green-500',
-          bgLight: 'bg-green-50 dark:bg-green-900/20',
-          borderColor: 'border-green-200 dark:border-green-800',
+          color: 'bg-blue-500',
+          textColor: 'text-blue-500',
+          bgLight: 'bg-blue-50 dark:bg-blue-900/20',
+          borderColor: 'border-blue-200 dark:border-blue-800',
         };
       case 'confirmed':
         return {
           label: t('history.status.confirmed') || 'Confirmé',
           icon: CheckCircleIcon,
-          color: 'bg-secondary-500',
-          textColor: 'text-secondary-500',
-          bgLight: 'bg-secondary-50 dark:bg-secondary-900/20',
-          borderColor: 'border-secondary-200 dark:border-secondary-800',
+          color: 'bg-blue-500',
+          textColor: 'text-blue-500',
+          bgLight: 'bg-blue-50 dark:bg-blue-950/20',
+          borderColor: 'border-blue-200 dark:border-blue-900',
         };
       case 'upcoming':
         return {
@@ -310,8 +310,8 @@ const AppointmentHistory = () => {
         <div className="flex items-center justify-center min-h-screen bg-[#F7F9FC] dark:bg-gray-900">
           <div className="text-center">
             <div className="relative w-20 h-20 mx-auto mb-6">
-              <div className="absolute inset-0 border-4 border-secondary-200 dark:border-secondary-800 rounded-full"></div>
-              <div className="absolute inset-0 border-4 border-secondary-500 border-t-transparent rounded-full animate-spin"></div>
+              <div className="absolute inset-0 border-4 border-blue-200 dark:border-blue-900 rounded-full"></div>
+              <div className="absolute inset-0 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
             </div>
             <p className="text-gray-500 dark:text-white font-semibold">{t('common.loading')}</p>
           </div>
@@ -325,9 +325,9 @@ const AppointmentHistory = () => {
       <div className="min-h-screen bg-[#F7F9FC] dark:bg-gray-900 p-4 md:p-8 relative overflow-hidden">
         {/* Blobs animés - couleurs LARANA */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-secondary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-          <div className="absolute top-40 right-20 w-96 h-96 bg-primary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-          <div className="absolute -bottom-20 left-1/3 w-80 h-80 bg-secondary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+          <div className="absolute top-40 right-20 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+          <div className="absolute -bottom-20 left-1/3 w-80 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
@@ -335,16 +335,16 @@ const AppointmentHistory = () => {
           <div className="mb-8 animate-slide-up">
             <div className="relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl p-8 shadow-xl border border-white/20 dark:border-gray-700/50 overflow-hidden">
               {/* Effets décoratifs */}
-              <div className="absolute top-0 right-0 w-96 h-96 bg-secondary-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-              <div className="absolute bottom-0 left-0 w-72 h-72 bg-primary-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+              <div className="absolute top-0 right-0 w-96 h-96 bg-blue-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+              <div className="absolute bottom-0 left-0 w-72 h-72 bg-blue-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
 
               <div className="relative z-10">
                 <div className="flex items-start justify-between mb-8">
                   {/* Section gauche */}
                   <div className="flex-1">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary-50 dark:bg-secondary-900/30 rounded-full mb-4">
-                      <div className="w-2 h-2 bg-secondary-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs font-semibold text-secondary-700 dark:text-secondary-300 uppercase tracking-wider">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-950/30 rounded-full mb-4">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                      <span className="text-xs font-semibold text-blue-800 dark:text-blue-300 uppercase tracking-wider">
                         {t('history.title') || 'Historique des Rendez-vous'}
                       </span>
                     </div>
@@ -364,8 +364,8 @@ const AppointmentHistory = () => {
                       onClick={() => navigate('/patient/appointment')}
                       className="relative group"
                     >
-                      <div className="absolute inset-0 bg-secondary-400 rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
-                      <div className="relative flex items-center gap-3 px-6 py-4 bg-secondary-500 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                      <div className="absolute inset-0 bg-blue-400 rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+                      <div className="relative flex items-center gap-3 px-6 py-4 bg-blue-500 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                         <CalendarIcon className="w-6 h-6 text-white" />
                         <span className="text-white font-semibold">{t('booking.newAppointment') || 'Nouveau RDV'}</span>
                         <ArrowRightIcon className="w-5 h-5 text-white" />
@@ -379,10 +379,10 @@ const AppointmentHistory = () => {
                   {/* Total */}
                   <div className="bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-2xl p-6 border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-xl transition-all hover:scale-105 group">
                     <div className="flex items-start justify-between mb-3">
-                      <div className="w-12 h-12 bg-gradient-to-br from-secondary-400 to-secondary-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                      <div className="w-12 h-12 bg-blue-700 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                         <ChartBarIcon className="w-6 h-6 text-white" />
                       </div>
-                      <TrophyIcon className="w-5 h-5 text-secondary-400" />
+                      <TrophyIcon className="w-5 h-5 text-blue-400" />
                     </div>
                     <p className="text-3xl font-bold text-gray-900 dark:text-white mb-1">{stats.total}</p>
                     <p className="text-sm text-gray-600 dark:text-gray-300 font-medium">{t('history.stats.total') || 'Total RDV'}</p>
@@ -391,14 +391,14 @@ const AppointmentHistory = () => {
                   {/* Complétés */}
                   <div className="bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-2xl p-6 border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-xl transition-all hover:scale-105 group">
                     <div className="flex items-start justify-between mb-3">
-                      <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                      <div className="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                         <CheckCircleIcon className="w-6 h-6 text-white" />
                       </div>
-                      <ArrowTrendingUpIcon className="w-5 h-5 text-green-400" />
+                      <ArrowTrendingUpIcon className="w-5 h-5 text-blue-400" />
                     </div>
                     <div className="flex items-end gap-2 mb-1">
-                      <p className="text-3xl font-bold text-green-600 dark:text-green-400">{stats.completed}</p>
-                      <span className="text-sm font-semibold text-green-600 dark:text-green-400 mb-1">{completionRate}%</span>
+                      <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">{stats.completed}</p>
+                      <span className="text-sm font-semibold text-blue-600 dark:text-blue-400 mb-1">{completionRate}%</span>
                     </div>
                     <p className="text-sm text-gray-600 dark:text-gray-300 font-medium">{t('history.stats.completed') || 'Complétés'}</p>
                   </div>
@@ -406,19 +406,19 @@ const AppointmentHistory = () => {
                   {/* À venir */}
                   <div className="bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-2xl p-6 border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-xl transition-all hover:scale-105 group">
                     <div className="flex items-start justify-between mb-3">
-                      <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                      <div className="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                         <ClockIcon className="w-6 h-6 text-white" />
                       </div>
                       <BoltIcon className="w-5 h-5 text-blue-400" />
                     </div>
-                    <p className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">{stats.upcoming}</p>
+                    <p className="text-3xl font-bold text-blue-700 dark:text-blue-400 mb-1">{stats.upcoming}</p>
                     <p className="text-sm text-gray-600 dark:text-gray-300 font-medium">{t('history.stats.upcoming') || 'À venir'}</p>
                   </div>
 
                   {/* Annulés */}
                   <div className="bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-2xl p-6 border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-xl transition-all hover:scale-105 group">
                     <div className="flex items-start justify-between mb-3">
-                      <div className="w-12 h-12 bg-gradient-to-br from-red-400 to-red-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                      <div className="w-12 h-12 bg-red-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                         <XCircleIcon className="w-6 h-6 text-white" />
                       </div>
                     </div>
@@ -441,7 +441,7 @@ const AppointmentHistory = () => {
                     placeholder={t('history.search.placeholder') || 'Rechercher par médecin ou spécialité...'}
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-2xl focus:outline-none focus:border-secondary-400 focus:ring-4 focus:ring-secondary-100 transition-all text-gray-900 dark:text-white"
+                    className="w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-2xl focus:outline-none focus:border-blue-400 focus:ring-4 focus:ring-blue-100 transition-all text-gray-900 dark:text-white"
                   />
                 </div>
 
@@ -449,7 +449,7 @@ const AppointmentHistory = () => {
                   onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
                   className={`px-6 py-3 rounded-2xl flex items-center gap-2 transition-all hover:scale-105 ${
                     showAdvancedFilters
-                      ? 'bg-secondary-500 text-white shadow-lg'
+                      ? 'bg-blue-500 text-white shadow-lg'
                       : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-600'
                   }`}
                 >
@@ -466,7 +466,7 @@ const AppointmentHistory = () => {
                   <select
                     value={filterSpecialty}
                     onChange={(e) => setFilterSpecialty(e.target.value)}
-                    className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-2xl focus:outline-none focus:border-secondary-400 focus:ring-4 focus:ring-secondary-100 transition-all text-gray-900 dark:text-white"
+                    className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-2xl focus:outline-none focus:border-blue-400 focus:ring-4 focus:ring-blue-100 transition-all text-gray-900 dark:text-white"
                   >
                     <option value="all">{t('history.search.allSpecialties') || 'Toutes les spécialités'}</option>
                     {specialties.filter(s => s !== 'all').map((specialty) => (
@@ -495,14 +495,14 @@ const AppointmentHistory = () => {
                   onClick={() => setSelectedFilter(filter.value)}
                   className={`group px-6 py-3 rounded-2xl font-semibold transition-all duration-300 hover:scale-105 flex items-center gap-3 ${
                     selectedFilter === filter.value
-                      ? 'bg-secondary-500 text-white shadow-lg'
+                      ? 'bg-blue-500 text-white shadow-lg'
                       : 'bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm text-gray-600 dark:text-white shadow-md hover:shadow-lg border border-white/20 dark:border-gray-700/50'
                   }`}
                 >
-                  <FilterIcon className={`w-5 h-5 ${selectedFilter === filter.value ? '' : 'text-gray-400 group-hover:text-secondary-500 transition-colors'}`} />
+                  <FilterIcon className={`w-5 h-5 ${selectedFilter === filter.value ? '' : 'text-gray-400 group-hover:text-blue-500 transition-colors'}`} />
                   {filter.label}
                   <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${
-                    selectedFilter === filter.value ? 'bg-white/20' : 'bg-secondary-100 dark:bg-secondary-900/30 text-secondary-700 dark:text-secondary-300'
+                    selectedFilter === filter.value ? 'bg-white/20' : 'bg-blue-100 dark:bg-blue-950/30 text-blue-800 dark:text-blue-300'
                   }`}>
                     {filter.count}
                   </span>
@@ -513,7 +513,7 @@ const AppointmentHistory = () => {
 
           {/* Compteur */}
           <div className="mb-4 flex items-center gap-2 text-gray-600 dark:text-white animate-scale-in" style={{ animationDelay: '0.3s' }}>
-            <FireIcon className="w-5 h-5 text-secondary-500" />
+            <FireIcon className="w-5 h-5 text-blue-500" />
             <span className="font-semibold">
               {filteredAppointments.length} {filteredAppointments.length > 1 ? 'résultats' : 'résultat'}
             </span>
@@ -535,7 +535,7 @@ const AppointmentHistory = () => {
                     >
                       {/* Timeline connector (sauf pour le dernier) */}
                       {index < paginatedAppointments.length - 1 && (
-                        <div className="absolute left-8 top-20 w-0.5 h-16 bg-gradient-to-b from-secondary-300 to-transparent dark:bg-secondary-700 z-0"></div>
+                        <div className="absolute left-8 top-20 w-0.5 h-16 bg-blue-700 z-0"></div>
                       )}
 
                       <div className="relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] border border-white/20 dark:border-gray-700/50">
@@ -563,7 +563,7 @@ const AppointmentHistory = () => {
                                   </span>
                                 </div>
 
-                                <div className="flex items-center gap-2 text-secondary-600 dark:text-secondary-400 mb-3">
+                                <div className="flex items-center gap-2 text-blue-700 dark:text-blue-400 mb-3">
                                   <HeartIcon className="w-5 h-5" />
                                   <span className="font-semibold">{appointment.specialty}</span>
                                 </div>
@@ -571,11 +571,11 @@ const AppointmentHistory = () => {
                                 {/* Date Time Info */}
                                 <div className="flex flex-wrap items-center gap-4 text-gray-600 dark:text-gray-300">
                                   <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 dark:bg-gray-700/50 rounded-xl">
-                                    <CalendarIcon className="w-5 h-5 text-secondary-500" />
+                                    <CalendarIcon className="w-5 h-5 text-blue-500" />
                                     <span className="font-medium text-sm">{formatDate(appointment.dateObj, dateFormats.long)}</span>
                                   </div>
                                   <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 dark:bg-gray-700/50 rounded-xl">
-                                    <ClockIcon className="w-5 h-5 text-primary-500" />
+                                    <ClockIcon className="w-5 h-5 text-blue-500" />
                                     <span className="font-medium text-sm">{formatTime(appointment.dateObj, timeFormats.short)}</span>
                                   </div>
                                 </div>
@@ -584,7 +584,7 @@ const AppointmentHistory = () => {
                                 {appointment.motif && (
                                   <div className="mt-3 p-3 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700/50 dark:to-gray-700/30 rounded-xl border border-gray-200 dark:border-gray-600">
                                     <p className="text-sm text-gray-700 dark:text-gray-200">
-                                      <span className="font-bold text-secondary-600 dark:text-secondary-400">Motif:</span> {appointment.motif}
+                                      <span className="font-bold text-blue-700 dark:text-blue-400">Motif:</span> {appointment.motif}
                                     </p>
                                   </div>
                                 )}
@@ -630,7 +630,7 @@ const AppointmentHistory = () => {
                                 {appointment.status === 'completed' && (
                                   <button
                                     onClick={() => handleViewDetails(appointment)}
-                                    className="px-6 py-2 bg-secondary-500 text-white rounded-xl hover:bg-secondary-600 transition-all hover:scale-105 font-bold shadow-lg"
+                                    className="px-6 py-2 bg-blue-500 text-white rounded-xl hover:bg-blue-700 transition-all hover:scale-105 font-bold shadow-lg"
                                   >
                                     Détails →
                                   </button>
@@ -659,7 +659,7 @@ const AppointmentHistory = () => {
                       className={`px-4 py-2 rounded-xl font-medium transition-all ${
                         currentPage === 1
                           ? 'bg-gray-100 dark:bg-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed'
-                          : 'bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm text-gray-700 dark:text-white hover:bg-secondary-50 dark:hover:bg-gray-700 hover:scale-105 shadow-md hover:shadow-lg border border-white/20 dark:border-gray-700/50'
+                          : 'bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm text-gray-700 dark:text-white hover:bg-blue-50 dark:hover:bg-gray-700 hover:scale-105 shadow-md hover:shadow-lg border border-white/20 dark:border-gray-700/50'
                       }`}
                     >
                       ← Précédent
@@ -678,8 +678,8 @@ const AppointmentHistory = () => {
                               onClick={() => setCurrentPage(page)}
                               className={`w-10 h-10 rounded-xl font-bold transition-all ${
                                 currentPage === page
-                                  ? 'bg-secondary-500 text-white shadow-lg scale-110'
-                                  : 'bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm text-gray-700 dark:text-white hover:bg-secondary-50 dark:hover:bg-gray-700 hover:scale-105 shadow-md border border-white/20 dark:border-gray-700/50'
+                                  ? 'bg-blue-500 text-white shadow-lg scale-110'
+                                  : 'bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm text-gray-700 dark:text-white hover:bg-blue-50 dark:hover:bg-gray-700 hover:scale-105 shadow-md border border-white/20 dark:border-gray-700/50'
                               }`}
                             >
                               {page}
@@ -702,7 +702,7 @@ const AppointmentHistory = () => {
                       className={`px-4 py-2 rounded-xl font-medium transition-all ${
                         currentPage === totalPages
                           ? 'bg-gray-100 dark:bg-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed'
-                          : 'bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm text-gray-700 dark:text-white hover:bg-secondary-50 dark:hover:bg-gray-700 hover:scale-105 shadow-md hover:shadow-lg border border-white/20 dark:border-gray-700/50'
+                          : 'bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm text-gray-700 dark:text-white hover:bg-blue-50 dark:hover:bg-gray-700 hover:scale-105 shadow-md hover:shadow-lg border border-white/20 dark:border-gray-700/50'
                       }`}
                     >
                       Suivant →
@@ -715,8 +715,8 @@ const AppointmentHistory = () => {
             /* État vide */
             <div className="bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl p-12 shadow-xl text-center animate-scale-in border border-white/20 dark:border-gray-700/50">
               <div className="relative inline-block mb-6">
-                <div className="absolute inset-0 bg-secondary-400 rounded-full blur-2xl opacity-20 animate-pulse"></div>
-                <div className="relative w-24 h-24 bg-gradient-to-br from-secondary-400 to-secondary-600 rounded-full flex items-center justify-center shadow-xl">
+                <div className="absolute inset-0 bg-blue-400 rounded-full blur-2xl opacity-20 animate-pulse"></div>
+                <div className="relative w-24 h-24 bg-blue-700 rounded-full flex items-center justify-center shadow-xl">
                   <CalendarIcon className="w-12 h-12 text-white" />
                 </div>
               </div>
@@ -737,7 +737,7 @@ const AppointmentHistory = () => {
                     setFilterSpecialty('all');
                     setSelectedFilter('all');
                   }}
-                  className="px-6 py-3 bg-secondary-500 text-white rounded-2xl hover:scale-105 hover:shadow-xl transition-all font-bold"
+                  className="px-6 py-3 bg-blue-500 text-white rounded-2xl hover:scale-105 hover:shadow-xl transition-all font-bold"
                 >
                   Réinitialiser les filtres
                 </button>
@@ -762,12 +762,12 @@ const AppointmentHistory = () => {
           {/* Modal content */}
           <div className="relative bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-6 max-w-lg w-full animate-scale-in">
             {/* Effet décoratif d'arrière-plan */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-secondary-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
 
             {/* Header du modal */}
             <div className="relative z-10 flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-gradient-to-br from-secondary-500 to-primary-500 rounded-2xl flex items-center justify-center shadow-lg">
+                <div className="w-12 h-12 bg-blue-700 rounded-2xl flex items-center justify-center shadow-lg">
                   <CalendarIcon className="w-6 h-6 text-white" />
                 </div>
                 <div>
@@ -800,30 +800,30 @@ const AppointmentHistory = () => {
               </div>
 
               {/* Carte Médecin */}
-              <div className="bg-gradient-to-br from-secondary-50 to-secondary-100 dark:bg-secondary-900/20 dark:to-secondary-900/10 rounded-2xl p-5 border-2 border-secondary-200 dark:border-secondary-800 shadow-lg">
+              <div className="bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-5 border-2 border-blue-200 dark:border-blue-900 shadow-lg">
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="w-10 h-10 bg-secondary-500 rounded-xl flex items-center justify-center shadow-lg">
+                  <div className="w-10 h-10 bg-blue-500 rounded-xl flex items-center justify-center shadow-lg">
                     <UserIcon className="w-6 h-6 text-white" />
                   </div>
-                  <p className="text-xs font-bold text-secondary-700 dark:text-secondary-400 uppercase tracking-wider">
+                  <p className="text-xs font-bold text-blue-800 dark:text-blue-400 uppercase tracking-wider">
                     Médecin
                   </p>
                 </div>
                 <p className="text-xl font-bold text-gray-900 dark:text-white mb-1">
                   {selectedAppointment.doctor}
                 </p>
-                <p className="text-sm text-secondary-600 dark:text-secondary-400 font-semibold">
+                <p className="text-sm text-blue-700 dark:text-blue-400 font-semibold">
                   {selectedAppointment.specialty}
                 </p>
               </div>
 
               {/* Carte Date & Heure */}
-              <div className="bg-gradient-to-br from-primary-50 to-primary-100 dark:bg-primary-900/20 dark:to-primary-900/10 rounded-2xl p-5 border-2 border-primary-200 dark:border-primary-800 shadow-lg">
+              <div className="bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-5 border-2 border-blue-200 dark:border-blue-900 shadow-lg">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-primary-500 rounded-xl flex items-center justify-center shadow-lg">
+                  <div className="w-10 h-10 bg-blue-500 rounded-xl flex items-center justify-center shadow-lg">
                     <CalendarIcon className="w-6 h-6 text-white" />
                   </div>
-                  <p className="text-xs font-bold text-primary-700 dark:text-primary-400 uppercase tracking-wider">
+                  <p className="text-xs font-bold text-blue-800 dark:text-blue-400 uppercase tracking-wider">
                     Date et Heure
                   </p>
                 </div>
@@ -839,16 +839,16 @@ const AppointmentHistory = () => {
 
               {/* Carte Motif */}
               {selectedAppointment.motif && (
-                <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:bg-blue-900/20 dark:to-blue-900/10 rounded-2xl p-5 border-2 border-blue-200 dark:border-blue-800 shadow-lg">
+                <div className="bg-blue-50 dark:bg-blue-950/20 rounded-2xl p-5 border-2 border-blue-200 dark:border-blue-900 shadow-lg">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-10 h-10 bg-blue-500 rounded-xl flex items-center justify-center shadow-lg">
                       <DocumentTextIcon className="w-6 h-6 text-white" />
                     </div>
-                    <p className="text-xs font-bold text-blue-700 dark:text-blue-400 uppercase tracking-wider">
+                    <p className="text-xs font-bold text-blue-800 dark:text-blue-400 uppercase tracking-wider">
                       {t('history.consultationReason')}
                     </p>
                   </div>
-                  <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-xl p-4 border border-blue-200 dark:border-blue-800">
+                  <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-xl p-4 border border-blue-200 dark:border-blue-900">
                     <p className="text-sm text-gray-900 dark:text-white leading-relaxed">
                       {translateMotif(selectedAppointment.motif)}
                     </p>
@@ -864,7 +864,7 @@ const AppointmentHistory = () => {
                   setShowDetailsModal(false);
                   setSelectedAppointment(null);
                 }}
-                className="w-full px-6 py-3.5 bg-gradient-to-r from-secondary-500 to-primary-500 hover:from-secondary-600 hover:to-primary-600 text-white rounded-2xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                className="w-full px-6 py-3.5 bg-blue-700 hover:bg-blue-800 text-white rounded-2xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
               >
                 Fermer
               </button>

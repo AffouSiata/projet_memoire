@@ -378,7 +378,7 @@ const AdminDashboard = () => {
     return (
       <div className="flex items-center justify-center min-h-screen bg-[#F7F9FC] dark:bg-gray-900">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-secondary-400 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="w-16 h-16 border-4 border-blue-400 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-gray-500 dark:text-white">{t('common.loading')}</p>
         </div>
       </div>
@@ -390,9 +390,9 @@ const AdminDashboard = () => {
       <div className="min-h-screen bg-[#F7F9FC] dark:bg-gray-900 py-8 px-4 relative overflow-hidden">
         {/* Blobs animés en arrière-plan - couleurs turquoise */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-secondary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-          <div className="absolute top-40 right-20 w-96 h-96 bg-secondary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-          <div className="absolute -bottom-20 left-1/3 w-80 h-80 bg-secondary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+          <div className="absolute top-40 right-20 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+          <div className="absolute -bottom-20 left-1/3 w-80 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
@@ -400,8 +400,8 @@ const AdminDashboard = () => {
           <div className="mb-8 animate-slide-up">
             <div className="relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl p-8 shadow-xl border border-white/20 dark:border-gray-700/50 overflow-hidden">
               {/* Effets décoratifs d'arrière-plan */}
-              <div className="absolute top-0 right-0 w-96 h-96 bg-secondary-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-              <div className="absolute bottom-0 left-0 w-72 h-72 bg-secondary-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+              <div className="absolute top-0 right-0 w-96 h-96 bg-blue-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+              <div className="absolute bottom-0 left-0 w-72 h-72 bg-blue-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
 
               {/* Contenu principal */}
               <div className="relative z-10">
@@ -409,9 +409,9 @@ const AdminDashboard = () => {
                   {/* Section gauche - Message de bienvenue */}
                   <div className="flex-1">
                     {/* Badge "Dashboard Admin" */}
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary-50 dark:bg-secondary-900/30 rounded-full mb-4">
-                      <div className="w-2 h-2 bg-secondary-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs font-semibold text-secondary-700 dark:text-secondary-300 uppercase tracking-wider">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-950/30 rounded-full mb-4">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                      <span className="text-xs font-semibold text-blue-800 dark:text-blue-300 uppercase tracking-wider">
                         {t('admin.dashboard.title')}
                       </span>
                     </div>
@@ -429,8 +429,8 @@ const AdminDashboard = () => {
                     <div className="flex items-center gap-4 flex-wrap">
                       {/* Carte Date */}
                       <div className="flex items-center gap-3 px-5 py-3 bg-white/60 dark:bg-gray-700/60 rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
-                        <div className="w-10 h-10 bg-secondary-100 dark:bg-secondary-900/50 rounded-xl flex items-center justify-center">
-                          <CalendarIcon className="w-5 h-5 text-secondary-600 dark:text-secondary-400" />
+                        <div className="w-10 h-10 bg-blue-100 dark:bg-blue-950/50 rounded-xl flex items-center justify-center">
+                          <CalendarIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
                         </div>
                         <div>
                           <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{t('dashboard.date')}</p>
@@ -442,8 +442,8 @@ const AdminDashboard = () => {
 
                       {/* Carte Heure en temps réel */}
                       <div className="flex items-center gap-3 px-5 py-3 bg-white/60 dark:bg-gray-700/60 rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
-                        <div className="w-10 h-10 bg-secondary-100 dark:bg-secondary-900/50 rounded-xl flex items-center justify-center">
-                          <ClockIcon className="w-5 h-5 text-secondary-600 dark:text-secondary-400" />
+                        <div className="w-10 h-10 bg-blue-100 dark:bg-blue-950/50 rounded-xl flex items-center justify-center">
+                          <ClockIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
                         </div>
                         <div>
                           <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{t('dashboard.time')}</p>
@@ -455,8 +455,8 @@ const AdminDashboard = () => {
 
                       {/* Carte Jour de la semaine */}
                       <div className="flex items-center gap-3 px-5 py-3 bg-white/60 dark:bg-gray-700/60 rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
-                        <div className="w-10 h-10 bg-secondary-100 dark:bg-secondary-900/50 rounded-xl flex items-center justify-center">
-                          <SparklesIcon className="w-5 h-5 text-secondary-600 dark:text-secondary-400" />
+                        <div className="w-10 h-10 bg-blue-100 dark:bg-blue-950/50 rounded-xl flex items-center justify-center">
+                          <SparklesIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
                         </div>
                         <div>
                           <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{t('dashboard.day')}</p>
@@ -471,8 +471,8 @@ const AdminDashboard = () => {
                   {/* Section droite - Système de santé */}
                   <div className="flex flex-col items-end gap-3">
                     <div className="relative group">
-                      <div className="absolute inset-0 bg-secondary-500 rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
-                      <div className="relative px-6 py-4 bg-gradient-to-br from-secondary-500 to-emerald-600 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                      <div className="absolute inset-0 bg-blue-500 rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+                      <div className="relative px-6 py-4 bg-blue-700 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                         <div className="flex items-center gap-3">
                           <ChartBarIcon className="w-6 h-6 text-white" />
                           <div className="text-left">
@@ -496,16 +496,16 @@ const AdminDashboard = () => {
               {/* Card Patients */}
               <div className="group animate-scale-in" style={{ animationDelay: '100ms' }}>
                 <div className="relative h-full bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl p-6 shadow-lg border border-white/20 dark:border-gray-700/50 hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-secondary-200/30 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-200/30 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
 
                   <div className="relative z-10">
                     <div className="flex items-center justify-between mb-4">
-                      <div className="w-14 h-14 bg-gradient-to-br from-secondary-500 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
+                      <div className="w-14 h-14 bg-blue-700 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
                         <UsersIcon className="w-7 h-7 text-white" />
                       </div>
-                      <div className="flex items-center gap-1 px-3 py-1 bg-green-100 dark:bg-green-900/30 rounded-full">
-                        <ArrowTrendingUpIcon className="w-4 h-4 text-green-600 dark:text-green-400" />
-                        <span className="text-xs font-bold text-green-600 dark:text-green-400">
+                      <div className="flex items-center gap-1 px-3 py-1 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+                        <ArrowTrendingUpIcon className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                        <span className="text-xs font-bold text-blue-600 dark:text-blue-400">
                           {stats.utilisateurs?.patients?.actifs || 0}
                         </span>
                       </div>
@@ -518,7 +518,7 @@ const AdminDashboard = () => {
                       <p className="text-4xl font-bold text-gray-900 dark:text-white mb-1">
                         {stats.utilisateurs?.patients?.total || 0}
                       </p>
-                      <p className="text-xs text-green-600 dark:text-green-400 font-semibold">
+                      <p className="text-xs text-blue-600 dark:text-blue-400 font-semibold">
                         {stats.utilisateurs?.patients?.actifs || 0} {t('admin.dashboard.active')}
                       </p>
                     </div>
@@ -529,16 +529,16 @@ const AdminDashboard = () => {
               {/* Card Médecins */}
               <div className="group animate-scale-in" style={{ animationDelay: '200ms' }}>
                 <div className="relative h-full bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl p-6 shadow-lg border border-white/20 dark:border-gray-700/50 hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-secondary-200/30 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-200/30 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
 
                   <div className="relative z-10">
                     <div className="flex items-center justify-between mb-4">
-                      <div className="w-14 h-14 bg-gradient-to-br from-secondary-500 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
+                      <div className="w-14 h-14 bg-blue-700 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
                         <UserGroupIcon className="w-7 h-7 text-white" />
                       </div>
-                      <div className="flex items-center gap-1 px-3 py-1 bg-green-100 dark:bg-green-900/30 rounded-full">
-                        <ArrowTrendingUpIcon className="w-4 h-4 text-green-600 dark:text-green-400" />
-                        <span className="text-xs font-bold text-green-600 dark:text-green-400">
+                      <div className="flex items-center gap-1 px-3 py-1 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+                        <ArrowTrendingUpIcon className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                        <span className="text-xs font-bold text-blue-600 dark:text-blue-400">
                           {stats.utilisateurs?.medecins?.actifs || 0}
                         </span>
                       </div>
@@ -551,7 +551,7 @@ const AdminDashboard = () => {
                       <p className="text-4xl font-bold text-gray-900 dark:text-white mb-1">
                         {stats.utilisateurs?.medecins?.total || 0}
                       </p>
-                      <p className="text-xs text-green-600 dark:text-green-400 font-semibold">
+                      <p className="text-xs text-blue-600 dark:text-blue-400 font-semibold">
                         {stats.utilisateurs?.medecins?.actifs || 0} {t('admin.dashboard.active')}
                       </p>
                     </div>
@@ -562,16 +562,16 @@ const AdminDashboard = () => {
               {/* Card Rendez-vous */}
               <div className="group animate-scale-in" style={{ animationDelay: '300ms' }}>
                 <div className="relative h-full bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl p-6 shadow-lg border border-white/20 dark:border-gray-700/50 hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-secondary-200/30 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-200/30 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
 
                   <div className="relative z-10">
                     <div className="flex items-center justify-between mb-4">
-                      <div className="w-14 h-14 bg-gradient-to-br from-secondary-500 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
+                      <div className="w-14 h-14 bg-blue-700 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
                         <CalendarIcon className="w-7 h-7 text-white" />
                       </div>
-                      <div className="flex items-center gap-1 px-3 py-1 bg-green-100 dark:bg-green-900/30 rounded-full">
-                        <CheckCircleIcon className="w-4 h-4 text-green-600 dark:text-green-400" />
-                        <span className="text-xs font-bold text-green-600 dark:text-green-400">+12%</span>
+                      <div className="flex items-center gap-1 px-3 py-1 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+                        <CheckCircleIcon className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                        <span className="text-xs font-bold text-blue-600 dark:text-blue-400">+12%</span>
                       </div>
                     </div>
 
@@ -593,11 +593,11 @@ const AdminDashboard = () => {
               {/* Card Taux de satisfaction */}
               <div className="group animate-scale-in" style={{ animationDelay: '400ms' }}>
                 <div className="relative h-full bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl p-6 shadow-lg border border-white/20 dark:border-gray-700/50 hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-secondary-200/30 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-200/30 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
 
                   <div className="relative z-10">
                     <div className="flex items-center justify-between mb-4">
-                      <div className="w-14 h-14 bg-gradient-to-br from-secondary-500 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
+                      <div className="w-14 h-14 bg-blue-700 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
                         <ChartBarIcon className="w-7 h-7 text-white" />
                       </div>
                     </div>
@@ -611,7 +611,7 @@ const AdminDashboard = () => {
                       </p>
                       <p className={`text-xs font-semibold ${
                         satisfactionRate >= 80
-                          ? 'text-green-600 dark:text-green-400'
+                          ? 'text-blue-600 dark:text-blue-400'
                           : satisfactionRate >= 50
                           ? 'text-yellow-600 dark:text-yellow-400'
                           : 'text-red-600 dark:text-red-400'
@@ -635,15 +635,15 @@ const AdminDashboard = () => {
               {/* Graphique en barres - Rendez-vous par mois */}
               <div className="animate-slide-up" style={{ animationDelay: '500ms' }}>
                 <div className="relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl p-6 shadow-lg border border-white/20 dark:border-gray-700/50 overflow-hidden">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-secondary-200/20 rounded-full blur-3xl"></div>
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-blue-200/20 rounded-full blur-3xl"></div>
 
                   <div className="relative z-10">
                     <div className="flex items-center justify-between mb-6">
                       <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                         {t('admin.dashboard.appointmentsPerMonth')}
                       </h3>
-                      <div className="w-10 h-10 bg-secondary-100 dark:bg-secondary-900/50 rounded-xl flex items-center justify-center">
-                        <ChartBarIcon className="w-5 h-5 text-secondary-600 dark:text-secondary-400" />
+                      <div className="w-10 h-10 bg-blue-100 dark:bg-blue-950/50 rounded-xl flex items-center justify-center">
+                        <ChartBarIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
                       </div>
                     </div>
 
@@ -669,15 +669,15 @@ const AdminDashboard = () => {
               {/* Graphique donut - Rendez-vous par statut */}
               <div className="animate-slide-up" style={{ animationDelay: '600ms' }}>
                 <div className="relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl p-6 shadow-lg border border-white/20 dark:border-gray-700/50 overflow-hidden">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-secondary-200/20 rounded-full blur-3xl"></div>
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-blue-200/20 rounded-full blur-3xl"></div>
 
                   <div className="relative z-10">
                     <div className="flex items-center justify-between mb-6">
                       <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                         {t('admin.dashboard.appointmentsByStatus')}
                       </h3>
-                      <div className="w-10 h-10 bg-secondary-100 dark:bg-secondary-900/50 rounded-xl flex items-center justify-center">
-                        <CalendarIcon className="w-5 h-5 text-secondary-600 dark:text-secondary-400" />
+                      <div className="w-10 h-10 bg-blue-100 dark:bg-blue-950/50 rounded-xl flex items-center justify-center">
+                        <CalendarIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
                       </div>
                     </div>
 
@@ -719,7 +719,7 @@ const AdminDashboard = () => {
               {/* Top Médecins */}
               <div className="animate-slide-up" style={{ animationDelay: '700ms' }}>
                 <div className="relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl p-6 shadow-lg border border-white/20 dark:border-gray-700/50 overflow-hidden">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-secondary-200/20 rounded-full blur-3xl"></div>
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-blue-200/20 rounded-full blur-3xl"></div>
 
                   <div className="relative z-10">
                     <div className="flex items-center justify-between mb-6">
@@ -728,12 +728,12 @@ const AdminDashboard = () => {
                       </h3>
                       <button
                         onClick={() => navigate('/admin/medecins')}
-                        className="flex items-center gap-2 px-4 py-2 bg-secondary-50 dark:bg-secondary-900/30 hover:bg-secondary-100 dark:hover:bg-secondary-900/50 rounded-xl transition-all duration-300 hover:scale-105"
+                        className="flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-950/30 hover:bg-blue-100 dark:hover:bg-blue-950/50 rounded-xl transition-all duration-300 hover:scale-105"
                       >
-                        <span className="text-sm font-semibold text-secondary-600 dark:text-secondary-400">
+                        <span className="text-sm font-semibold text-blue-700 dark:text-blue-400">
                           {t('common.seeAll')}
                         </span>
-                        <ArrowRightIcon className="w-4 h-4 text-secondary-600 dark:text-secondary-400" />
+                        <ArrowRightIcon className="w-4 h-4 text-blue-700 dark:text-blue-400" />
                       </button>
                     </div>
 
@@ -744,7 +744,7 @@ const AdminDashboard = () => {
                           className="flex items-center justify-between p-4 bg-white/60 dark:bg-gray-700/60 rounded-2xl hover:shadow-md transition-all duration-300 hover:scale-105"
                         >
                           <div className="flex items-center gap-4">
-                            <div className="w-12 h-12 bg-gradient-to-br from-secondary-500 to-emerald-600 rounded-xl flex items-center justify-center text-white font-bold shadow-lg">
+                            <div className="w-12 h-12 bg-blue-700 rounded-xl flex items-center justify-center text-white font-bold shadow-lg">
                               {index + 1}
                             </div>
                             <div>
@@ -757,7 +757,7 @@ const AdminDashboard = () => {
                             </div>
                           </div>
                           <div className="text-right">
-                            <p className="text-lg font-bold text-secondary-600 dark:text-secondary-400">
+                            <p className="text-lg font-bold text-blue-700 dark:text-blue-400">
                               {medecin.nombreRendezVous}
                             </p>
                             <p className="text-xs text-gray-500 dark:text-gray-400">
@@ -774,15 +774,15 @@ const AdminDashboard = () => {
               {/* Calendrier des prochains rendez-vous */}
               <div className="animate-slide-up" style={{ animationDelay: '800ms' }}>
                 <div className="relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl p-6 shadow-lg border border-white/20 dark:border-gray-700/50 overflow-hidden">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-secondary-200/20 rounded-full blur-3xl"></div>
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-blue-200/20 rounded-full blur-3xl"></div>
 
                   <div className="relative z-10">
                     <div className="flex items-center justify-between mb-6">
                       <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                         {t('admin.dashboard.upcomingAppointments')}
                       </h3>
-                      <div className="w-10 h-10 bg-secondary-100 dark:bg-secondary-900/50 rounded-xl flex items-center justify-center">
-                        <CalendarIcon className="w-5 h-5 text-secondary-600 dark:text-secondary-400" />
+                      <div className="w-10 h-10 bg-blue-100 dark:bg-blue-950/50 rounded-xl flex items-center justify-center">
+                        <CalendarIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
                       </div>
                     </div>
 
@@ -795,7 +795,7 @@ const AdminDashboard = () => {
                           >
                             <div className="flex items-start gap-3">
                               {/* Date badge */}
-                              <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-secondary-500 to-emerald-600 rounded-xl flex flex-col items-center justify-center text-white shadow-lg">
+                              <div className="flex-shrink-0 w-14 h-14 bg-blue-700 rounded-xl flex flex-col items-center justify-center text-white shadow-lg">
                                 <span className="text-xs font-semibold uppercase">
                                   {new Date(rdv.date).toLocaleDateString(i18n.language === 'fr' ? 'fr-FR' : 'en-US', { month: 'short' })}
                                 </span>
@@ -812,7 +812,7 @@ const AdminDashboard = () => {
                                     {formatTime(new Date(rdv.date), timeFormats.short)}
                                   </span>
                                   {rdv.statut === 'CONFIRME' && (
-                                    <span className="px-2 py-0.5 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-xs font-bold rounded-full">
+                                    <span className="px-2 py-0.5 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-bold rounded-full">
                                       {t('admin.rendezvous.status.confirmed')}
                                     </span>
                                   )}
@@ -857,7 +857,7 @@ const AdminDashboard = () => {
                       {/* Bouton Voir tous les rendez-vous */}
                       <button
                         onClick={() => navigate('/admin/rendezvous')}
-                        className="w-full mt-4 py-4 bg-gradient-to-r from-secondary-500 to-emerald-600 hover:from-secondary-600 hover:to-emerald-700 rounded-2xl text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
+                        className="w-full mt-4 py-4 bg-blue-700 hover:bg-blue-800 rounded-2xl text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
                       >
                         <CalendarIcon className="w-5 h-5" />
                         {t('admin.dashboard.viewAllAppointments')}

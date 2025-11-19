@@ -255,7 +255,7 @@ const PatientDashboard = () => {
     return (
       <div className="flex items-center justify-center min-h-screen bg-[#F7F9FC] dark:bg-gray-900">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-secondary-400 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="w-16 h-16 border-4 border-blue-400 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-gray-500 dark:text-white">{safeT('common.loading')}</p>
         </div>
       </div>
@@ -267,9 +267,9 @@ const PatientDashboard = () => {
       <div className="min-h-screen bg-[#F7F9FC] dark:bg-gray-900 p-8 relative overflow-hidden">
         {/* Blobs animés en arrière-plan - couleurs LARANA */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-secondary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-          <div className="absolute top-40 right-20 w-96 h-96 bg-primary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-          <div className="absolute -bottom-20 left-1/3 w-80 h-80 bg-secondary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+          <div className="absolute top-40 right-20 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+          <div className="absolute -bottom-20 left-1/3 w-80 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
@@ -278,8 +278,8 @@ const PatientDashboard = () => {
             {/* Carte principale du header avec glassmorphism */}
             <div className="relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl p-8 shadow-xl border border-white/20 dark:border-gray-700/50 overflow-hidden">
               {/* Effets décoratifs d'arrière-plan */}
-              <div className="absolute top-0 right-0 w-96 h-96 bg-secondary-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-              <div className="absolute bottom-0 left-0 w-72 h-72 bg-primary-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+              <div className="absolute top-0 right-0 w-96 h-96 bg-blue-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+              <div className="absolute bottom-0 left-0 w-72 h-72 bg-blue-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
 
               {/* Contenu principal */}
               <div className="relative z-10">
@@ -287,9 +287,9 @@ const PatientDashboard = () => {
                   {/* Section gauche - Message de bienvenue */}
                   <div className="flex-1">
                     {/* Badge "Dashboard" */}
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary-50 dark:bg-secondary-900/30 rounded-full mb-4">
-                      <div className="w-2 h-2 bg-secondary-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs font-semibold text-secondary-700 dark:text-secondary-300 uppercase tracking-wider">{safeT('dashboard.title')}</span>
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-950/30 rounded-full mb-4">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                      <span className="text-xs font-semibold text-blue-800 dark:text-blue-300 uppercase tracking-wider">{safeT('dashboard.title')}</span>
                     </div>
 
                     {/* Titre principal avec animation */}
@@ -305,8 +305,8 @@ const PatientDashboard = () => {
                     <div className="flex items-center gap-4">
                       {/* Carte Date */}
                       <div className="flex items-center gap-3 px-5 py-3 bg-white/60 dark:bg-gray-700/60 rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
-                        <div className="w-10 h-10 bg-secondary-100 dark:bg-secondary-900/50 rounded-xl flex items-center justify-center">
-                          <CalendarIcon className="w-5 h-5 text-secondary-600 dark:text-secondary-400" />
+                        <div className="w-10 h-10 bg-blue-100 dark:bg-blue-950/50 rounded-xl flex items-center justify-center">
+                          <CalendarIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
                         </div>
                         <div>
                           <p className="text-xs text-gray-500 dark:text-white font-medium">{safeT('dashboard.date')}</p>
@@ -318,8 +318,8 @@ const PatientDashboard = () => {
 
                       {/* Carte Heure en temps réel */}
                       <div className="flex items-center gap-3 px-5 py-3 bg-white/60 dark:bg-gray-700/60 rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
-                        <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900/50 rounded-xl flex items-center justify-center">
-                          <ClockIcon className="w-5 h-5 text-primary-600 dark:text-primary-400" />
+                        <div className="w-10 h-10 bg-blue-100 dark:bg-blue-950/50 rounded-xl flex items-center justify-center">
+                          <ClockIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
                         </div>
                         <div>
                           <p className="text-xs text-gray-500 dark:text-white font-medium">{safeT('dashboard.time')}</p>
@@ -331,8 +331,8 @@ const PatientDashboard = () => {
 
                       {/* Carte Jour de la semaine */}
                       <div className="flex items-center gap-3 px-5 py-3 bg-white/60 dark:bg-gray-700/60 rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
-                        <div className="w-10 h-10 bg-secondary-100 dark:bg-secondary-900/50 rounded-xl flex items-center justify-center">
-                          <SparklesIcon className="w-5 h-5 text-secondary-600 dark:text-secondary-400" />
+                        <div className="w-10 h-10 bg-blue-100 dark:bg-blue-950/50 rounded-xl flex items-center justify-center">
+                          <SparklesIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
                         </div>
                         <div>
                           <p className="text-xs text-gray-500 dark:text-white font-medium">{safeT('dashboard.day')}</p>
@@ -352,12 +352,12 @@ const PatientDashboard = () => {
                       className="relative group"
                     >
                       {/* Effet glow en arrière-plan */}
-                      <div className="absolute inset-0 bg-secondary-400 rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+                      <div className="absolute inset-0 bg-blue-400 rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
 
                       {/* Bouton principal */}
-                      <div className="relative flex items-center gap-3 px-6 py-4 bg-white dark:bg-gray-700 rounded-2xl border-2 border-gray-100 dark:border-gray-600 shadow-lg hover:shadow-xl hover:border-secondary-200 dark:hover:border-secondary-600 transition-all duration-300 hover:scale-105">
+                      <div className="relative flex items-center gap-3 px-6 py-4 bg-white dark:bg-gray-700 rounded-2xl border-2 border-gray-100 dark:border-gray-600 shadow-lg hover:shadow-xl hover:border-blue-200 dark:hover:border-blue-700 transition-all duration-300 hover:scale-105">
                         <div className="relative">
-                          <BellIcon className="w-6 h-6 text-gray-600 dark:text-white group-hover:text-secondary-600 transition-colors" />
+                          <BellIcon className="w-6 h-6 text-gray-600 dark:text-white group-hover:text-blue-700 transition-colors" />
                           {/* Badge rouge animé avec effet de pulsation */}
                           {notifications.filter(n => !n.lue).length > 0 && (
                             <>
@@ -380,8 +380,8 @@ const PatientDashboard = () => {
                     </button>
 
                     {/* Message d'encouragement dynamique */}
-                    <div className="px-4 py-2 bg-secondary-50/50 dark:bg-secondary-900/20 rounded-xl border border-secondary-100 dark:border-secondary-800">
-                      <p className="text-xs text-secondary-700 dark:text-secondary-300 font-medium">
+                    <div className="px-4 py-2 bg-blue-50/50 dark:bg-blue-950/20 rounded-xl border border-blue-100 dark:border-blue-900">
+                      <p className="text-xs text-blue-800 dark:text-blue-300 font-medium">
                         ✨ {safeT('dashboard.excellentDay')}
                       </p>
                     </div>
@@ -396,7 +396,7 @@ const PatientDashboard = () => {
             <div className="lg:col-span-2 space-y-6">
               {/* Grande carte hero - Dégradé Bleu-Vert LARANA */}
               <div
-                className="bg-gradient-to-br from-primary-500 via-primary-400 to-secondary-500 rounded-3xl p-8 text-white shadow-md relative overflow-hidden animate-scale-in"
+                className="bg-blue-700 rounded-3xl p-8 text-white shadow-md relative overflow-hidden animate-scale-in"
                 style={{ animationDelay: '0.1s' }}
               >
                 {/* Particules flottantes */}
@@ -442,7 +442,7 @@ const PatientDashboard = () => {
                   <div className="flex gap-4">
                     <button
                       onClick={() => navigate('/patient/appointment')}
-                      className="bg-gradient-to-r from-secondary-500 to-primary-500 text-white px-6 py-3 rounded-2xl font-semibold hover:shadow-lg hover:scale-105 hover:from-secondary-600 hover:to-primary-600 transition-all duration-300 flex items-center gap-2"
+                      className="bg-blue-700 text-white px-6 py-3 rounded-2xl font-semibold hover:shadow-lg hover:scale-105 hover:bg-blue-800 transition-all duration-300 flex items-center gap-2"
                     >
                       {safeT('dashboard.bookAppointment')}
                       <ArrowRightIcon className="w-5 h-5" />
@@ -464,8 +464,8 @@ const PatientDashboard = () => {
                   className="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-md hover:shadow-xl hover:scale-105 hover:-rotate-1 transition-all duration-300 animate-scale-in"
                   style={{ animationDelay: '0.2s' }}
                 >
-                  <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/50 rounded-2xl flex items-center justify-center mb-4 animate-pulse-soft animate-glow">
-                    <CalendarIcon className="w-6 h-6 text-primary-500 dark:text-primary-400" />
+                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-950/50 rounded-2xl flex items-center justify-center mb-4 animate-pulse-soft animate-glow">
+                    <CalendarIcon className="w-6 h-6 text-blue-500 dark:text-blue-400" />
                   </div>
                   <p className="text-gray-500 dark:text-white text-sm mb-1">{safeT('dashboard.stats.nextAppointment')}</p>
                   <p className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
@@ -485,8 +485,8 @@ const PatientDashboard = () => {
                   className="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-md hover:shadow-xl hover:scale-105 hover:rotate-1 transition-all duration-300 animate-scale-in"
                   style={{ animationDelay: '0.3s' }}
                 >
-                  <div className="w-12 h-12 bg-secondary-100 dark:bg-secondary-900/50 rounded-2xl flex items-center justify-center mb-4 animate-pulse-soft">
-                    <ClockIcon className="w-6 h-6 text-secondary-500 dark:text-secondary-400" />
+                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-950/50 rounded-2xl flex items-center justify-center mb-4 animate-pulse-soft">
+                    <ClockIcon className="w-6 h-6 text-blue-500 dark:text-blue-400" />
                   </div>
                   <p className="text-gray-500 dark:text-white text-sm mb-1">{safeT('dashboard.stats.upcoming')}</p>
                   <p className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
@@ -500,8 +500,8 @@ const PatientDashboard = () => {
                   className="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-md hover:shadow-xl hover:scale-105 hover:-rotate-1 transition-all duration-300 animate-scale-in"
                   style={{ animationDelay: '0.4s' }}
                 >
-                  <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/50 rounded-2xl flex items-center justify-center mb-4 animate-pulse-soft">
-                    <CheckCircleIcon className="w-6 h-6 text-primary-500 dark:text-primary-400" />
+                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-950/50 rounded-2xl flex items-center justify-center mb-4 animate-pulse-soft">
+                    <CheckCircleIcon className="w-6 h-6 text-blue-500 dark:text-blue-400" />
                   </div>
                   <p className="text-gray-500 dark:text-white text-sm mb-1">{safeT('dashboard.stats.completed')}</p>
                   <p className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
@@ -613,12 +613,12 @@ const PatientDashboard = () => {
                     {completedAppointments.slice(0, 3).map((apt, index) => (
                       <div
                         key={apt.id}
-                        className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-2xl hover:bg-secondary-50 dark:hover:bg-secondary-900/30 hover:translate-x-2 hover:shadow-md transition-all duration-300 animate-slide-up"
+                        className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-2xl hover:bg-blue-50 dark:hover:bg-blue-950/30 hover:translate-x-2 hover:shadow-md transition-all duration-300 animate-slide-up"
                         style={{ animationDelay: `${0.8 + index * 0.1}s` }}
                       >
                         <div className="flex items-center gap-4">
-                          <div className="w-10 h-10 bg-secondary-100 dark:bg-secondary-900/50 rounded-full flex items-center justify-center animate-pulse-soft">
-                            <HeartIcon className="w-5 h-5 text-secondary-500 dark:text-secondary-400" />
+                          <div className="w-10 h-10 bg-blue-100 dark:bg-blue-950/50 rounded-full flex items-center justify-center animate-pulse-soft">
+                            <HeartIcon className="w-5 h-5 text-blue-500 dark:text-blue-400" />
                           </div>
                           <div>
                             <p className="font-semibold text-gray-900 dark:text-white">
@@ -684,9 +684,9 @@ const PatientDashboard = () => {
                           ? dayInfo.day === new Date().getDate() &&
                             currentDate.getMonth() === new Date().getMonth() &&
                             currentDate.getFullYear() === new Date().getFullYear()
-                            ? 'bg-secondary-500 text-white font-bold shadow-md animate-pulse-soft scale-110'
+                            ? 'bg-blue-500 text-white font-bold shadow-md animate-pulse-soft scale-110'
                             : dayInfo.hasAppointment
-                            ? 'bg-primary-100 dark:bg-primary-900/50 text-primary-600 dark:text-primary-400 font-semibold hover:bg-primary-200 dark:hover:bg-primary-800 hover:scale-110'
+                            ? 'bg-blue-100 dark:bg-blue-950/50 text-blue-700 dark:text-blue-400 font-semibold hover:bg-blue-200 dark:hover:bg-blue-900 hover:scale-110'
                             : 'text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 hover:scale-105'
                           : 'text-gray-300 dark:text-white'
                         }`}
@@ -705,15 +705,15 @@ const PatientDashboard = () => {
                 {/* Particules autour du score si > 80% */}
                 {healthScore > 80 && (
                   <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div className="absolute top-10 left-10 w-2 h-2 bg-secondary-400 rounded-full animate-float"></div>
-                    <div className="absolute top-20 right-10 w-1.5 h-1.5 bg-secondary-300 rounded-full animate-float" style={{ animationDelay: '1s' }}></div>
-                    <div className="absolute bottom-20 left-12 w-1 h-1 bg-secondary-500 rounded-full animate-float" style={{ animationDelay: '0.5s' }}></div>
-                    <div className="absolute bottom-10 right-12 w-1.5 h-1.5 bg-secondary-400 rounded-full animate-float" style={{ animationDelay: '1.5s' }}></div>
+                    <div className="absolute top-10 left-10 w-2 h-2 bg-blue-400 rounded-full animate-float"></div>
+                    <div className="absolute top-20 right-10 w-1.5 h-1.5 bg-blue-300 rounded-full animate-float" style={{ animationDelay: '1s' }}></div>
+                    <div className="absolute bottom-20 left-12 w-1 h-1 bg-blue-500 rounded-full animate-float" style={{ animationDelay: '0.5s' }}></div>
+                    <div className="absolute bottom-10 right-12 w-1.5 h-1.5 bg-blue-400 rounded-full animate-float" style={{ animationDelay: '1.5s' }}></div>
                   </div>
                 )}
 
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                  <HeartIcon className="w-5 h-5 text-secondary-500 dark:text-secondary-400 animate-pulse-soft" />
+                  <HeartIcon className="w-5 h-5 text-blue-500 dark:text-blue-400 animate-pulse-soft" />
                   {safeT('dashboard.healthScore')}
                 </h3>
                 <div className="flex items-center justify-center mb-4">
@@ -754,7 +754,7 @@ const PatientDashboard = () => {
                     </svg>
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="text-center">
-                        <p className="text-3xl font-bold text-primary-500 dark:text-primary-400">
+                        <p className="text-3xl font-bold text-blue-500 dark:text-blue-400">
                           {animatedScore}%
                         </p>
                       </div>
@@ -781,12 +781,12 @@ const PatientDashboard = () => {
 
               {/* Conseils santé du jour */}
               <div
-                className="bg-secondary-50 dark:bg-gray-800 rounded-3xl p-6 shadow-md animate-scale-in relative overflow-hidden"
+                className="bg-blue-50 dark:bg-gray-800 rounded-3xl p-6 shadow-md animate-scale-in relative overflow-hidden"
                 style={{ animationDelay: '0.4s' }}
               >
                 {/* Badge "Conseil du jour" */}
                 <div className="flex items-center gap-2 mb-4">
-                  <div className="w-10 h-10 bg-secondary-500 rounded-full flex items-center justify-center shadow-lg">
+                  <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center shadow-lg">
                     <SparklesIcon className="w-5 h-5 text-white animate-pulse-soft" />
                   </div>
                   <div>
@@ -805,7 +805,7 @@ const PatientDashboard = () => {
                       className="bg-white/70 dark:bg-gray-700/70 rounded-2xl p-4 backdrop-blur-sm border border-white/50 dark:border-gray-600/50 hover:bg-white/90 dark:hover:bg-gray-700/90 hover:scale-105 transition-all duration-300"
                     >
                       <div className="flex items-start gap-3">
-                        <div className="flex-shrink-0 w-6 h-6 bg-secondary-500 rounded-full flex items-center justify-center text-white text-xs font-bold">
+                        <div className="flex-shrink-0 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs font-bold">
                           {index + 1}
                         </div>
                         <p className="text-sm text-gray-700 dark:text-white leading-relaxed flex-1">

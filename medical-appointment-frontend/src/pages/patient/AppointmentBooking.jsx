@@ -44,15 +44,15 @@ const AppointmentBooking = () => {
   const [unavailabilityReason, setUnavailabilityReason] = useState('');
 
   const specialties = [
-    { id: 1, nameKey: 'booking.specialties.cardiology', name: 'Cardiologie', icon: '🫀', color: 'secondary-500', popular: true },
-    { id: 2, nameKey: 'booking.specialties.pediatrics', name: 'Pédiatrie', icon: '👶', color: 'primary-400', popular: true },
-    { id: 3, nameKey: 'booking.specialties.dermatology', name: 'Dermatologie', icon: '🩺', color: 'secondary-500', popular: true },
-    { id: 4, nameKey: 'booking.specialties.neurology', name: 'Neurologie', icon: '🧠', color: 'primary-400', popular: false },
-    { id: 5, nameKey: 'booking.specialties.ophthalmology', name: 'Ophtalmologie', icon: '👁️', color: 'secondary-500', popular: false },
-    { id: 6, nameKey: 'booking.specialties.dentistry', name: 'Dentisterie', icon: '🦷', color: 'primary-400', popular: false },
-    { id: 7, nameKey: 'booking.specialties.gynecology', name: 'Gynécologie', icon: '👩‍⚕️', color: 'secondary-500', popular: true },
-    { id: 8, nameKey: 'booking.specialties.generalMedicine', name: 'Médecine générale', icon: '⚕️', color: 'primary-400', popular: true },
-    { id: 9, nameKey: 'booking.specialties.psychiatry', name: 'Psychiatrie', icon: '🧘', color: 'secondary-500', popular: false },
+    { id: 1, nameKey: 'booking.specialties.cardiology', name: 'Cardiologie', icon: '🫀', color: 'blue-500', popular: true },
+    { id: 2, nameKey: 'booking.specialties.pediatrics', name: 'Pédiatrie', icon: '👶', color: 'blue-400', popular: true },
+    { id: 3, nameKey: 'booking.specialties.dermatology', name: 'Dermatologie', icon: '🩺', color: 'blue-500', popular: true },
+    { id: 4, nameKey: 'booking.specialties.neurology', name: 'Neurologie', icon: '🧠', color: 'blue-400', popular: false },
+    { id: 5, nameKey: 'booking.specialties.ophthalmology', name: 'Ophtalmologie', icon: '👁️', color: 'blue-500', popular: false },
+    { id: 6, nameKey: 'booking.specialties.dentistry', name: 'Dentisterie', icon: '🦷', color: 'blue-400', popular: false },
+    { id: 7, nameKey: 'booking.specialties.gynecology', name: 'Gynécologie', icon: '👩‍⚕️', color: 'blue-500', popular: true },
+    { id: 8, nameKey: 'booking.specialties.generalMedicine', name: 'Médecine générale', icon: '⚕️', color: 'blue-400', popular: true },
+    { id: 9, nameKey: 'booking.specialties.psychiatry', name: 'Psychiatrie', icon: '🧘', color: 'blue-500', popular: false },
   ];
 
   // Generate calendar days for the current month
@@ -436,16 +436,16 @@ const AppointmentBooking = () => {
       {/* Patterns de fond animés ultra-modernes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Blobs animés avec plus d'effets */}
-        <div className="absolute top-20 left-20 w-96 h-96 bg-secondary-400/20 rounded-full blur-3xl animate-blob"></div>
-        <div className="absolute top-40 right-20 w-96 h-96 bg-primary-400/20 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-20 left-1/2 w-96 h-96 bg-secondary-300/15 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
+        <div className="absolute top-20 left-20 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl animate-blob"></div>
+        <div className="absolute top-40 right-20 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
+        <div className="absolute bottom-20 left-1/2 w-96 h-96 bg-blue-300/15 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
 
         {/* Particules flottantes */}
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-secondary-400 rounded-full animate-float opacity-60"></div>
-        <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-primary-400 rounded-full animate-float opacity-50 animation-delay-2000"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-2 h-2 bg-secondary-500 rounded-full animate-float opacity-60 animation-delay-4000"></div>
-        <div className="absolute top-2/3 left-1/3 w-2 h-2 bg-primary-400 rounded-full animate-float opacity-50"></div>
-        <div className="absolute bottom-1/3 left-2/3 w-3 h-3 bg-secondary-400 rounded-full animate-float opacity-60 animation-delay-2000"></div>
+        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-400 rounded-full animate-float opacity-60"></div>
+        <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-blue-400 rounded-full animate-float opacity-50 animation-delay-2000"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-2 h-2 bg-blue-500 rounded-full animate-float opacity-60 animation-delay-4000"></div>
+        <div className="absolute top-2/3 left-1/3 w-2 h-2 bg-blue-400 rounded-full animate-float opacity-50"></div>
+        <div className="absolute bottom-1/3 left-2/3 w-3 h-3 bg-blue-400 rounded-full animate-float opacity-60 animation-delay-2000"></div>
 
         {/* Grille de points animée */}
         <div className="absolute inset-0 opacity-10">
@@ -461,13 +461,13 @@ const AppointmentBooking = () => {
         <div className="mb-12 animate-scale-in">
           <div className="flex items-center gap-4 mb-4">
             <div className="relative group">
-              <div className="absolute inset-0 bg-secondary-500 rounded-2xl blur-xl opacity-75 group-hover:opacity-100 transition-opacity animate-pulse-soft"></div>
-              <div className="relative w-16 h-16 bg-secondary-500 rounded-2xl flex items-center justify-center shadow-2xl transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+              <div className="absolute inset-0 bg-blue-500 rounded-2xl blur-xl opacity-75 group-hover:opacity-100 transition-opacity animate-pulse-soft"></div>
+              <div className="relative w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center shadow-2xl transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                 <CalendarIcon className="w-8 h-8 text-white animate-pulse-soft" />
               </div>
             </div>
             <div>
-              <h1 className="text-5xl font-black text-secondary-500 mb-2">
+              <h1 className="text-5xl font-black text-blue-500 mb-2">
                 {t('booking.title')}
               </h1>
               <p className="text-gray-600 dark:text-white text-lg font-medium">
@@ -485,7 +485,7 @@ const AppointmentBooking = () => {
 
             {/* Progress Line Active avec effet glow */}
             <div
-              className="absolute top-8 left-0 h-2 rounded-full transition-all duration-500 bg-secondary-500 shadow-lg"
+              className="absolute top-8 left-0 h-2 rounded-full transition-all duration-500 bg-blue-500 shadow-lg"
               style={{
                 width: `${((currentStep - 1) / 2) * 100}%`,
                 boxShadow: '0 0 20px rgba(20, 184, 166, 0.5)'
@@ -504,22 +504,22 @@ const AppointmentBooking = () => {
                     <div className="relative group">
                       {/* Glow effect pour l'étape active */}
                       {isActive && (
-                        <div className="absolute inset-0 bg-secondary-500 rounded-full blur-xl opacity-60 animate-pulse-soft"></div>
+                        <div className="absolute inset-0 bg-blue-500 rounded-full blur-xl opacity-60 animate-pulse-soft"></div>
                       )}
 
                       {/* Step circle */}
                       <div
                         className={`relative w-20 h-20 rounded-full flex items-center justify-center transition-all duration-500 transform ${
                           isActive
-                            ? 'bg-secondary-500 shadow-2xl scale-110'
-                            : 'bg-white dark:bg-gray-800 border-3 border-gray-300 dark:border-gray-700 hover:border-secondary-300 hover:scale-105'
-                        } ${isCurrent ? 'ring-4 ring-secondary-300 ring-opacity-50 animate-pulse-soft' : ''}`}
+                            ? 'bg-blue-500 shadow-2xl scale-110'
+                            : 'bg-white dark:bg-gray-800 border-3 border-gray-300 dark:border-gray-700 hover:border-blue-300 hover:scale-105'
+                        } ${isCurrent ? 'ring-4 ring-blue-300 ring-opacity-50 animate-pulse-soft' : ''}`}
                       >
-                        <Icon className={`w-9 h-9 transition-all duration-300 ${isActive ? 'text-white animate-pulse-soft' : 'text-gray-400 dark:text-gray-300 group-hover:text-secondary-500'}`} />
+                        <Icon className={`w-9 h-9 transition-all duration-300 ${isActive ? 'text-white animate-pulse-soft' : 'text-gray-400 dark:text-gray-300 group-hover:text-blue-500'}`} />
 
                         {/* Checkmark pour les étapes complétées */}
                         {isActive && !isCurrent && (
-                          <div className="absolute -top-1 -right-1 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center shadow-lg animate-scale-in">
+                          <div className="absolute -top-1 -right-1 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center shadow-lg animate-scale-in">
                             <CheckIcon className="w-4 h-4 text-white" />
                           </div>
                         )}
@@ -529,7 +529,7 @@ const AppointmentBooking = () => {
                     {/* Step title */}
                     <p className={`mt-4 text-sm font-bold transition-all duration-300 ${
                       isActive
-                        ? 'text-secondary-600'
+                        ? 'text-blue-700'
                         : 'text-gray-500 dark:text-gray-400'
                     }`}>
                       {t(step.titleKey)}
@@ -537,7 +537,7 @@ const AppointmentBooking = () => {
 
                     {/* Step number */}
                     {isCurrent && (
-                      <div className="mt-1 px-3 py-1 bg-secondary-500 rounded-full text-white text-xs font-bold animate-pulse-soft">
+                      <div className="mt-1 px-3 py-1 bg-blue-500 rounded-full text-white text-xs font-bold animate-pulse-soft">
                         {t('booking.steps.step')} {step.number}/3
                       </div>
                     )}
@@ -580,7 +580,7 @@ const AppointmentBooking = () => {
                     }`}>
                       {/* Badge "Populaire" avec shimmer effect */}
                       {specialty.popular && (
-                        <div className="absolute -top-3 -right-3 bg-primary-400 text-white text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1 shadow-xl animate-pulse-soft">
+                        <div className="absolute -top-3 -right-3 bg-blue-400 text-white text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1 shadow-xl animate-pulse-soft">
                           <StarIcon className="w-3 h-3 animate-pulse" />
                           {t('booking.specialties.popular')}
                         </div>
@@ -609,12 +609,12 @@ const AppointmentBooking = () => {
                       {selectedSpecialty === specialty.id && (
                         <div className="mt-4 flex items-center gap-2 animate-scale-in">
                           <div className="relative">
-                            <div className="absolute inset-0 bg-green-500 rounded-full blur-md opacity-50"></div>
-                            <div className="relative bg-green-500 rounded-full p-1">
+                            <div className="absolute inset-0 bg-blue-500 rounded-full blur-md opacity-50"></div>
+                            <div className="relative bg-blue-500 rounded-full p-1">
                               <CheckCircleIcon className="w-5 h-5 text-white" />
                             </div>
                           </div>
-                          <span className="text-sm font-bold text-green-600">{t('booking.specialties.selected')}</span>
+                          <span className="text-sm font-bold text-blue-600">{t('booking.specialties.selected')}</span>
                         </div>
                       )}
 
@@ -647,17 +647,17 @@ const AppointmentBooking = () => {
                     onClick={() => setSelectedDoctor(doctor.id)}
                     className={`cursor-pointer group ${
                       selectedDoctor === doctor.id
-                        ? 'ring-4 ring-secondary-500'
+                        ? 'ring-4 ring-blue-500'
                         : ''
                     }`}
                   >
-                    <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 border-2 border-gray-200 dark:border-gray-700 hover:border-secondary-500 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                    <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
                       <div className="flex items-start gap-4">
                         <div className="relative">
-                          <div className="w-16 h-16 bg-secondary-500 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                          <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
                             {doctor.avatar}
                           </div>
-                          <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+                          <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-blue-500 rounded-full border-2 border-white flex items-center justify-center">
                             <div className="w-2 h-2 bg-white dark:bg-gray-800 rounded-full"></div>
                           </div>
                         </div>
@@ -681,7 +681,7 @@ const AppointmentBooking = () => {
                           </div>
 
                           {selectedDoctor === doctor.id && (
-                            <div className="mt-3 flex items-center gap-2 text-secondary-600">
+                            <div className="mt-3 flex items-center gap-2 text-blue-700">
                               <CheckCircleIcon className="w-5 h-5" />
                               <span className="text-sm font-medium">{t('booking.doctors.selected')}</span>
                             </div>
@@ -769,12 +769,12 @@ const AppointmentBooking = () => {
                             disabled={isPast}
                             className={`aspect-square rounded-xl text-sm font-medium transition-all duration-300 ${
                               isSelected
-                                ? 'bg-primary-400 text-white scale-110 shadow-lg'
+                                ? 'bg-blue-400 text-white scale-110 shadow-lg'
                                 : isPast
                                 ? 'bg-gray-200 dark:bg-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed'
                                 : isToday
-                                ? 'bg-secondary-100 dark:bg-secondary-900 text-secondary-700 dark:text-secondary-300 border-2 border-secondary-500 hover:bg-secondary-200 dark:hover:bg-secondary-800 hover:scale-105'
-                                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-white hover:bg-primary-50 dark:hover:bg-gray-700 hover:scale-105'
+                                ? 'bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 border-2 border-blue-500 hover:bg-blue-200 dark:hover:bg-blue-900 hover:scale-105'
+                                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-white hover:bg-blue-50 dark:hover:bg-gray-700 hover:scale-105'
                             }`}
                             title={dateObj.toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
                           >
@@ -794,7 +794,7 @@ const AppointmentBooking = () => {
 
                   {isLoadingTimeSlots ? (
                     <div className="flex justify-center items-center py-12">
-                      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-secondary-500"></div>
+                      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
                     </div>
                   ) : isDoctorUnavailable ? (
                     <div className="bg-red-50 dark:bg-red-900/20 border-2 border-red-200 dark:border-red-800 rounded-xl p-6 text-center animate-scale-in">
@@ -842,8 +842,8 @@ const AppointmentBooking = () => {
                               isBooked
                                 ? 'bg-gray-200 dark:bg-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed opacity-50'
                                 : isSelected
-                                ? 'bg-secondary-500 text-white scale-105 shadow-lg'
-                                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-white border-2 border-gray-200 dark:border-gray-700 hover:border-secondary-500 hover:scale-105'
+                                ? 'bg-blue-500 text-white scale-105 shadow-lg'
+                                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-white border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 hover:scale-105'
                             }`}
                           >
                             <ClockIcon className="w-5 h-5 mx-auto mb-1" />
@@ -880,7 +880,7 @@ const AppointmentBooking = () => {
                 disabled={!canProceed()}
                 className={`flex items-center gap-2 px-8 py-3 rounded-xl font-bold transition-all duration-300 ${
                   canProceed()
-                    ? 'bg-secondary-500 text-white hover:scale-105 hover:shadow-2xl'
+                    ? 'bg-blue-500 text-white hover:scale-105 hover:shadow-2xl'
                     : 'bg-gray-200 dark:bg-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed'
                 }`}
               >
@@ -893,7 +893,7 @@ const AppointmentBooking = () => {
                 disabled={!canProceed() || isSubmitting}
                 className={`flex items-center gap-2 px-8 py-3 rounded-xl font-bold transition-all duration-300 ${
                   canProceed() && !isSubmitting
-                    ? 'bg-green-500 text-white hover:scale-105 hover:shadow-2xl'
+                    ? 'bg-blue-500 text-white hover:scale-105 hover:shadow-2xl'
                     : 'bg-gray-200 dark:bg-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed'
                 }`}
               >
@@ -923,8 +923,8 @@ const AppointmentBooking = () => {
           {/* Icône de succès */}
           <div className="flex justify-center mb-6">
             <div className="relative">
-              <div className="absolute inset-0 bg-green-500 rounded-full blur-xl opacity-50 animate-pulse-soft"></div>
-              <div className="relative w-20 h-20 bg-green-500 rounded-full flex items-center justify-center shadow-xl">
+              <div className="absolute inset-0 bg-blue-500 rounded-full blur-xl opacity-50 animate-pulse-soft"></div>
+              <div className="relative w-20 h-20 bg-blue-500 rounded-full flex items-center justify-center shadow-xl">
                 <CheckCircleIcon className="w-10 h-10 text-white" />
               </div>
             </div>
@@ -946,9 +946,9 @@ const AppointmentBooking = () => {
               setShowSuccessModal(false);
               navigate('/patient/dashboard');
             }}
-            className="w-full relative group/btn px-6 py-3 rounded-2xl overflow-hidden bg-green-500 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
+            className="w-full relative group/btn px-6 py-3 rounded-2xl overflow-hidden bg-blue-500 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
           >
-            <div className="absolute inset-0 bg-green-600 opacity-0 group-hover/btn:opacity-100 transition-opacity"></div>
+            <div className="absolute inset-0 bg-blue-600 opacity-0 group-hover/btn:opacity-100 transition-opacity"></div>
             <div className="relative flex items-center justify-center gap-2">
               {t('booking.successModal.button')}
             </div>

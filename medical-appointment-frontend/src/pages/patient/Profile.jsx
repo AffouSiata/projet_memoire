@@ -283,8 +283,8 @@ const Profile = () => {
         <div className="min-h-screen bg-[#F7F9FC] dark:bg-gray-900 p-8 flex items-center justify-center">
           <div className="text-center">
             <div className="relative w-20 h-20 mx-auto mb-6">
-              <div className="absolute inset-0 border-4 border-secondary-200 dark:border-secondary-800 rounded-full"></div>
-              <div className="absolute inset-0 border-4 border-secondary-500 border-t-transparent rounded-full animate-spin"></div>
+              <div className="absolute inset-0 border-4 border-blue-200 dark:border-blue-900 rounded-full"></div>
+              <div className="absolute inset-0 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
             </div>
             <p className="text-gray-500 dark:text-white font-semibold text-lg">Chargement de votre profil...</p>
           </div>
@@ -301,9 +301,9 @@ const Profile = () => {
       <div className="min-h-screen bg-[#F7F9FC] dark:bg-gray-900 p-4 md:p-8 relative overflow-hidden">
         {/* Blobs animés en arrière-plan - couleurs LARANA (identiques au Dashboard) */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-secondary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-          <div className="absolute top-40 right-20 w-96 h-96 bg-primary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-          <div className="absolute -bottom-20 left-1/3 w-80 h-80 bg-secondary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+          <div className="absolute top-40 right-20 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+          <div className="absolute -bottom-20 left-1/3 w-80 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
         </div>
 
         <div className="relative max-w-7xl mx-auto z-10">
@@ -311,8 +311,8 @@ const Profile = () => {
           <div className="mb-8 animate-slide-up">
             <div className="relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl p-8 shadow-xl border border-white/20 dark:border-gray-700/50 overflow-hidden">
               {/* Effets décoratifs d'arrière-plan */}
-              <div className="absolute top-0 right-0 w-96 h-96 bg-secondary-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-              <div className="absolute bottom-0 left-0 w-72 h-72 bg-primary-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+              <div className="absolute top-0 right-0 w-96 h-96 bg-blue-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+              <div className="absolute bottom-0 left-0 w-72 h-72 bg-blue-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
 
               {/* Contenu principal */}
               <div className="relative z-10">
@@ -320,9 +320,9 @@ const Profile = () => {
                   {/* Section gauche */}
                   <div className="flex-1">
                     {/* Badge "Profil" */}
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary-50 dark:bg-secondary-900/30 rounded-full mb-4">
-                      <div className="w-2 h-2 bg-secondary-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs font-semibold text-secondary-700 dark:text-secondary-300 uppercase tracking-wider">Mon Profil</span>
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-950/30 rounded-full mb-4">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                      <span className="text-xs font-semibold text-blue-800 dark:text-blue-300 uppercase tracking-wider">Mon Profil</span>
                     </div>
 
                     {/* Titre principal */}
@@ -339,12 +339,12 @@ const Profile = () => {
                   <div className="flex flex-col items-end gap-3">
                     <button className="relative group">
                       {/* Effet glow */}
-                      <div className="absolute inset-0 bg-secondary-400 rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+                      <div className="absolute inset-0 bg-blue-400 rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
 
                       {/* Bouton principal */}
-                      <div className="relative flex items-center gap-3 px-6 py-4 bg-white dark:bg-gray-700 rounded-2xl border-2 border-gray-100 dark:border-gray-600 shadow-lg hover:shadow-xl hover:border-secondary-200 dark:hover:border-secondary-600 transition-all duration-300 hover:scale-105">
+                      <div className="relative flex items-center gap-3 px-6 py-4 bg-white dark:bg-gray-700 rounded-2xl border-2 border-gray-100 dark:border-gray-600 shadow-lg hover:shadow-xl hover:border-blue-200 dark:hover:border-blue-700 transition-all duration-300 hover:scale-105">
                         <div className="relative">
-                          <BellIcon className="w-6 h-6 text-gray-600 dark:text-white group-hover:text-secondary-600 transition-colors" />
+                          <BellIcon className="w-6 h-6 text-gray-600 dark:text-white group-hover:text-blue-700 transition-colors" />
                           <div className="absolute -top-1 -right-1 w-6 h-6 bg-red-500 rounded-full animate-ping opacity-75"></div>
                           <span className="absolute -top-1 -right-1 w-6 h-6 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center shadow-lg">
                             3
@@ -364,11 +364,11 @@ const Profile = () => {
 
           {/* Success/Error Messages */}
           {success && (
-            <div className="mb-6 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-2xl p-4 flex items-center gap-3 animate-slide-down backdrop-blur-sm">
-              <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
+            <div className="mb-6 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-2xl p-4 flex items-center gap-3 animate-slide-down backdrop-blur-sm">
+              <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
                 <CheckCircleIcon className="w-6 h-6 text-white" />
               </div>
-              <p className="text-green-800 dark:text-green-200 font-medium">{success}</p>
+              <p className="text-blue-800 dark:text-blue-200 font-medium">{success}</p>
             </div>
           )}
 
@@ -388,7 +388,7 @@ const Profile = () => {
               {/* Profile Card */}
               <div className="bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl shadow-xl border border-white/20 dark:border-gray-700/50 overflow-hidden animate-scale-in">
                 {/* Cover Image - Couleur LARANA */}
-                <div className="h-32 bg-secondary-500 relative">
+                <div className="h-32 bg-blue-500 relative">
                   <div className="absolute inset-0 bg-black/10"></div>
                   <button className="absolute top-4 right-4 p-2 bg-white/20 backdrop-blur-sm rounded-xl hover:bg-white/30 transition-all">
                     <CameraIcon className="w-5 h-5 text-white" />
@@ -398,12 +398,12 @@ const Profile = () => {
                 <div className="relative px-6 pb-6">
                   {/* Avatar */}
                   <div className="relative -mt-16 mb-4">
-                    <div className="w-32 h-32 rounded-3xl bg-gradient-to-br from-secondary-500 to-primary-500 flex items-center justify-center shadow-2xl ring-4 ring-white dark:ring-gray-800 mx-auto">
+                    <div className="w-32 h-32 rounded-3xl bg-blue-700 flex items-center justify-center shadow-2xl ring-4 ring-white dark:ring-gray-800 mx-auto">
                       <span className="text-5xl font-bold text-white">
                         {profileData.prenom?.charAt(0)}{profileData.nom?.charAt(0)}
                       </span>
                     </div>
-                    <div className="absolute bottom-2 right-1/2 translate-x-12 w-8 h-8 bg-green-500 rounded-full border-4 border-white dark:border-gray-800 flex items-center justify-center">
+                    <div className="absolute bottom-2 right-1/2 translate-x-12 w-8 h-8 bg-blue-500 rounded-full border-4 border-white dark:border-gray-800 flex items-center justify-center">
                       <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
                     </div>
                     <button className="absolute bottom-0 right-1/2 translate-x-16 p-2 bg-white dark:bg-gray-700 rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-110">
@@ -416,29 +416,29 @@ const Profile = () => {
                     <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
                       {profileData.prenom} {profileData.nom}
                     </h2>
-                    <p className="text-secondary-600 dark:text-secondary-400 font-medium">
+                    <p className="text-blue-700 dark:text-blue-400 font-medium">
                       Patient {age ? `• ${age} ans` : ''}
                     </p>
                     <div className="flex items-center justify-center gap-2 mt-2">
-                      <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                      <span className="text-green-600 dark:text-green-400 text-sm font-medium">Compte actif</span>
+                      <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></div>
+                      <span className="text-blue-600 dark:text-blue-400 text-sm font-medium">Compte actif</span>
                     </div>
                   </div>
 
                   {/* Quick Stats */}
                   <div className="grid grid-cols-3 gap-3 pt-6 border-t border-gray-200 dark:border-gray-700">
                     <div className="text-center">
-                      <div className="w-12 h-12 mx-auto mb-2 bg-gradient-to-br from-primary-100 to-primary-200 dark:bg-primary-900/30 dark:to-primary-800/30 rounded-2xl flex items-center justify-center">
-                        <CalendarDaysIcon className="w-6 h-6 text-primary-600 dark:text-primary-400" />
+                      <div className="w-12 h-12 mx-auto mb-2 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center">
+                        <CalendarDaysIcon className="w-6 h-6 text-blue-700 dark:text-blue-400" />
                       </div>
-                      <p className="text-2xl font-bold text-primary-600 dark:text-primary-400">{healthSummary.totalAppointments}</p>
+                      <p className="text-2xl font-bold text-blue-700 dark:text-blue-400">{healthSummary.totalAppointments}</p>
                       <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Total RDV</p>
                     </div>
                     <div className="text-center">
-                      <div className="w-12 h-12 mx-auto mb-2 bg-gradient-to-br from-green-100 to-green-200 dark:bg-green-900/30 dark:to-green-800/30 rounded-2xl flex items-center justify-center">
-                        <CheckCircleIcon className="w-6 h-6 text-green-600 dark:text-green-400" />
+                      <div className="w-12 h-12 mx-auto mb-2 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center">
+                        <CheckCircleIcon className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                       </div>
-                      <p className="text-2xl font-bold text-green-600 dark:text-green-400">{healthSummary.completedAppointments}</p>
+                      <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">{healthSummary.completedAppointments}</p>
                       <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Honorés</p>
                     </div>
                     <div className="text-center">
@@ -453,7 +453,7 @@ const Profile = () => {
               </div>
 
               {/* Health Score Card - Couleur LARANA comme Dashboard */}
-              <div className="bg-secondary-500 rounded-3xl shadow-2xl p-6 text-white animate-scale-in overflow-hidden relative" style={{ animationDelay: '100ms' }}>
+              <div className="bg-blue-500 rounded-3xl shadow-2xl p-6 text-white animate-scale-in overflow-hidden relative" style={{ animationDelay: '100ms' }}>
                 {/* Particules flottantes comme Dashboard */}
                 <div className="absolute inset-0 overflow-hidden">
                   <div className="absolute top-10 left-20 w-2 h-2 bg-white/40 rounded-full animate-float"></div>
@@ -515,8 +515,8 @@ const Profile = () => {
                   <div className="bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl p-4 shadow-lg hover:shadow-xl transition-all border border-white/20 dark:border-gray-700/50 hover:scale-[1.02]">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 bg-gradient-to-br from-secondary-100 to-secondary-200 dark:bg-secondary-900/30 dark:to-secondary-800/30 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                          <PencilIcon className="w-6 h-6 text-secondary-600 dark:text-secondary-400" />
+                        <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                          <PencilIcon className="w-6 h-6 text-blue-700 dark:text-blue-400" />
                         </div>
                         <div className="text-left">
                           <p className="font-semibold text-gray-900 dark:text-white">Modifier le profil</p>
@@ -552,7 +552,7 @@ const Profile = () => {
                   onClick={() => setShowHealthCardModal(true)}
                   className="w-full group"
                 >
-                  <div className="bg-secondary-500 rounded-2xl p-4 shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]">
+                  <div className="bg-blue-500 rounded-2xl p-4 shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -575,8 +575,8 @@ const Profile = () => {
               {/* Personal Info Card */}
               <div className="bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl shadow-xl p-6 border border-white/20 dark:border-gray-700/50 animate-slide-up">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 bg-gradient-to-br from-secondary-100 to-secondary-200 dark:bg-secondary-900/30 dark:to-secondary-800/30 rounded-xl flex items-center justify-center">
-                    <IdentificationIcon className="w-6 h-6 text-secondary-600 dark:text-secondary-400" />
+                  <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center">
+                    <IdentificationIcon className="w-6 h-6 text-blue-700 dark:text-blue-400" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white">Informations personnelles</h3>
                 </div>
@@ -586,22 +586,22 @@ const Profile = () => {
                     icon={<EnvelopeIcon className="w-5 h-5" />}
                     label="Email"
                     value={profileData.email || '-'}
-                    iconBg="bg-gradient-to-br from-secondary-100 to-secondary-200 dark:bg-secondary-900/30 dark:to-secondary-800/30"
-                    iconColor="text-secondary-600 dark:text-secondary-400"
+                    iconBg="bg-blue-100 dark:bg-blue-900/30"
+                    iconColor="text-blue-700 dark:text-blue-400"
                   />
                   <InfoItem
                     icon={<PhoneIcon className="w-5 h-5" />}
                     label="Téléphone"
                     value={profileData.telephone || '-'}
-                    iconBg="bg-gradient-to-br from-primary-100 to-primary-200 dark:bg-primary-900/30 dark:to-primary-800/30"
-                    iconColor="text-primary-600 dark:text-primary-400"
+                    iconBg="bg-blue-100 dark:bg-blue-900/30"
+                    iconColor="text-blue-700 dark:text-blue-400"
                   />
                   <InfoItem
                     icon={<CalendarIcon className="w-5 h-5" />}
                     label="Date de naissance"
                     value={formatDate(profileData.dateNaissance)}
-                    iconBg="bg-gradient-to-br from-green-100 to-green-200 dark:bg-green-900/30 dark:to-green-800/30"
-                    iconColor="text-green-600 dark:text-green-400"
+                    iconBg="bg-blue-100 dark:bg-blue-900/30"
+                    iconColor="text-blue-600 dark:text-blue-400"
                   />
                   <InfoItem
                     icon={<MapPinIcon className="w-5 h-5" />}
@@ -635,14 +635,14 @@ const Profile = () => {
                     </p>
                   </div>
 
-                  <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:bg-blue-900/20 dark:to-cyan-900/20 rounded-2xl p-4 border border-blue-200 dark:border-blue-800">
+                  <div className="bg-blue-50 dark:bg-blue-950/20 rounded-2xl p-4 border border-blue-200 dark:border-blue-900">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
                         <UserIcon className="w-5 h-5 text-white" />
                       </div>
                       <p className="text-xs font-medium text-gray-600 dark:text-gray-400">Âge</p>
                     </div>
-                    <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">
+                    <p className="text-3xl font-bold text-blue-700 dark:text-blue-400">
                       {age || '-'} {age && <span className="text-lg">ans</span>}
                     </p>
                   </div>
@@ -701,7 +701,7 @@ const Profile = () => {
               {/* Next Appointment */}
               <div className="bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl shadow-xl p-6 border border-white/20 dark:border-gray-700/50 animate-slide-up">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 bg-gradient-to-br from-secondary-500 to-primary-500 rounded-xl flex items-center justify-center">
+                  <div className="w-10 h-10 bg-blue-700 rounded-xl flex items-center justify-center">
                     <ClockIcon className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="font-bold text-lg text-gray-900 dark:text-white">Prochain Rendez-vous</h3>
@@ -710,7 +710,7 @@ const Profile = () => {
                 {healthSummary.nextAppointment ? (
                   <div className="space-y-4">
                     <div className="flex items-start gap-4">
-                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-secondary-500 to-primary-500 flex items-center justify-center flex-shrink-0 shadow-lg">
+                      <div className="w-16 h-16 rounded-2xl bg-blue-700 flex items-center justify-center flex-shrink-0 shadow-lg">
                         <span className="text-white font-bold text-xl">
                           Dr. {healthSummary.nextAppointment.medecin?.nom?.charAt(0)}
                         </span>
@@ -719,7 +719,7 @@ const Profile = () => {
                         <p className="font-bold text-gray-900 dark:text-white text-lg">
                           Dr. {healthSummary.nextAppointment.medecin?.prenom} {healthSummary.nextAppointment.medecin?.nom}
                         </p>
-                        <p className="text-sm text-secondary-600 dark:text-secondary-400 font-medium">
+                        <p className="text-sm text-blue-700 dark:text-blue-400 font-medium">
                           {healthSummary.nextAppointment.medecin?.specialite}
                         </p>
                       </div>
@@ -727,14 +727,14 @@ const Profile = () => {
 
                     <div className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm rounded-2xl p-4 border border-gray-200/50 dark:border-gray-700/50">
                       <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-                        <CalendarIcon className="w-5 h-5 text-secondary-500" />
+                        <CalendarIcon className="w-5 h-5 text-blue-500" />
                         <p className="text-sm font-medium">
                           {formatDateTime(healthSummary.nextAppointment.dateHeure)}
                         </p>
                       </div>
                     </div>
 
-                    <button className="w-full bg-gradient-to-r from-secondary-500 to-primary-500 text-white rounded-xl py-3 font-medium hover:shadow-lg transition-all hover:scale-[1.02]">
+                    <button className="w-full bg-blue-700 text-white rounded-xl py-3 font-medium hover:shadow-lg transition-all hover:scale-[1.02]">
                       Voir les détails
                     </button>
                   </div>
@@ -744,7 +744,7 @@ const Profile = () => {
                       <CalendarIcon className="w-10 h-10 text-gray-300 dark:text-gray-600" />
                     </div>
                     <p className="text-gray-500 dark:text-gray-400 font-medium mb-4">Aucun rendez-vous prévu</p>
-                    <button className="px-6 py-2 bg-gradient-to-r from-secondary-500 to-primary-500 text-white rounded-xl font-medium hover:shadow-lg transition-all">
+                    <button className="px-6 py-2 bg-blue-700 text-white rounded-xl font-medium hover:shadow-lg transition-all">
                       Prendre un RDV
                     </button>
                   </div>
@@ -754,14 +754,14 @@ const Profile = () => {
               {/* This Month Stats */}
               <div className="bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl shadow-xl p-6 border border-white/20 dark:border-gray-700/50 animate-slide-up" style={{ animationDelay: '100ms' }}>
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-blue-500 rounded-xl flex items-center justify-center">
+                  <div className="w-10 h-10 bg-blue-700 rounded-xl flex items-center justify-center">
                     <CalendarDaysIcon className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="font-bold text-lg text-gray-900 dark:text-white">Ce mois-ci</h3>
                 </div>
 
                 <div className="text-center py-4">
-                  <p className="text-7xl font-bold bg-gradient-to-r from-primary-600 to-blue-600 dark:bg-primary-400 dark:to-blue-400 bg-clip-text text-transparent mb-2">
+                  <p className="text-7xl font-bold text-blue-700 dark:text-blue-500 mb-2">
                     {healthSummary.appointmentsThisMonth}
                   </p>
                   <p className="text-gray-600 dark:text-gray-400 font-medium">Rendez-vous programmés</p>
@@ -771,14 +771,14 @@ const Profile = () => {
               {/* Favorite Speciality */}
               <div className="bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl shadow-xl p-6 border border-white/20 dark:border-gray-700/50 animate-slide-up" style={{ animationDelay: '200ms' }}>
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-500 rounded-xl flex items-center justify-center">
+                  <div className="w-10 h-10 bg-blue-500 rounded-xl flex items-center justify-center">
                     <ChartBarIcon className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="font-bold text-lg text-gray-900 dark:text-white">Spécialité préférée</h3>
                 </div>
 
                 <div className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm rounded-2xl p-4 border border-gray-200/50 dark:border-gray-700/50">
-                  <p className="text-2xl font-bold text-green-600 dark:text-green-400 mb-1">
+                  <p className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-1">
                     {healthSummary.mostConsultedSpeciality}
                   </p>
                   <p className="text-sm text-gray-600 dark:text-gray-400">La plus consultée</p>
@@ -815,7 +815,7 @@ const Profile = () => {
           <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl shadow-2xl max-w-3xl w-full p-8 animate-scale-in max-h-[90vh] overflow-y-auto border border-white/20 dark:border-gray-700/50">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
-                <div className="w-10 h-10 bg-secondary-500 rounded-xl flex items-center justify-center">
+                <div className="w-10 h-10 bg-blue-500 rounded-xl flex items-center justify-center">
                   <PencilIcon className="w-6 h-6 text-white" />
                 </div>
                 Modifier mes informations
@@ -877,7 +877,7 @@ const Profile = () => {
                   <select
                     value={editData.groupeSanguin}
                     onChange={(e) => setEditData({ ...editData, groupeSanguin: e.target.value })}
-                    className="w-full pl-11 pr-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500 transition-all"
+                    className="w-full pl-11 pr-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                   >
                     <option value="">Sélectionner</option>
                     <option value="A+">A+</option>
@@ -915,7 +915,7 @@ const Profile = () => {
               <button
                 onClick={handleEditProfile}
                 disabled={isSaving}
-                className="px-6 py-3 bg-gradient-to-r from-secondary-500 to-primary-500 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                className="px-6 py-3 bg-blue-700 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
               >
                 {isSaving ? (
                   <>
@@ -940,7 +940,7 @@ const Profile = () => {
           <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl shadow-2xl max-w-md w-full p-8 animate-scale-in border border-white/20 dark:border-gray-700/50">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
-                <div className="w-10 h-10 bg-secondary-500 rounded-xl flex items-center justify-center">
+                <div className="w-10 h-10 bg-blue-500 rounded-xl flex items-center justify-center">
                   <LockClosedIcon className="w-6 h-6 text-white" />
                 </div>
                 Changer le mot de passe
@@ -998,7 +998,7 @@ const Profile = () => {
               <button
                 onClick={handlePasswordChange}
                 disabled={isSaving}
-                className="px-6 py-3 bg-secondary-500 hover:bg-secondary-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                className="px-6 py-3 bg-blue-500 hover:bg-blue-700 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
               >
                 {isSaving ? (
                   <>
@@ -1023,7 +1023,7 @@ const Profile = () => {
           <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl shadow-2xl max-w-4xl w-full p-8 animate-scale-in max-h-[90vh] overflow-y-auto border border-white/20 dark:border-gray-700/50">
             <div className="flex items-center justify-between mb-8">
               <h3 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
-                <div className="w-12 h-12 bg-secondary-500 rounded-2xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-blue-500 rounded-2xl flex items-center justify-center">
                   <ClipboardDocumentCheckIcon className="w-7 h-7 text-white" />
                 </div>
                 Mon Carnet Santé
@@ -1109,7 +1109,7 @@ const Profile = () => {
               </div>
 
               {/* Médicaments actuels */}
-              <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:bg-blue-900/20 dark:to-cyan-900/20 rounded-2xl p-6 border-2 border-blue-200 dark:border-blue-800">
+              <div className="bg-blue-50 dark:bg-blue-950/20 rounded-2xl p-6 border-2 border-blue-200 dark:border-blue-900">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center">
                     <BeakerIcon className="w-7 h-7 text-white" />
@@ -1127,9 +1127,9 @@ const Profile = () => {
               </div>
 
               {/* Vaccins */}
-              <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:bg-green-900/20 dark:to-emerald-900/20 rounded-2xl p-6 border-2 border-green-200 dark:border-green-800">
+              <div className="bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-6 border-2 border-blue-200 dark:border-blue-800">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center">
+                  <div className="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center">
                     <ShieldCheckIcon className="w-7 h-7 text-white" />
                   </div>
                   <h4 className="text-lg font-bold text-gray-900 dark:text-white">Vaccinations</h4>
@@ -1141,7 +1141,7 @@ const Profile = () => {
                         <p className="text-sm font-bold text-gray-900 dark:text-white">{vaccin.nom}</p>
                         <span className={`px-2 py-1 rounded-lg text-xs font-semibold ${
                           vaccin.statut === 'À jour'
-                            ? 'bg-green-500 text-white'
+                            ? 'bg-blue-500 text-white'
                             : 'bg-amber-500 text-white'
                         }`}>
                           {vaccin.statut}
@@ -1163,7 +1163,7 @@ const Profile = () => {
               >
                 Fermer
               </button>
-              <button className="px-6 py-3 bg-secondary-500 hover:bg-secondary-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all flex items-center gap-2">
+              <button className="px-6 py-3 bg-blue-500 hover:bg-blue-700 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all flex items-center gap-2">
                 <PencilIcon className="w-5 h-5" />
                 Modifier le carnet
               </button>
@@ -1202,7 +1202,7 @@ const FormInput = ({ label, type = 'text', value, onChange, icon, placeholder })
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="w-full pl-11 pr-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500 transition-all"
+        className="w-full pl-11 pr-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
       />
     </div>
   </div>

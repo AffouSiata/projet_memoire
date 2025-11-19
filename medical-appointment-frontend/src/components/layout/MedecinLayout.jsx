@@ -58,43 +58,43 @@ const MedecinLayout = ({ children }) => {
       name: safeT('nav.dashboard', 'Dashboard'),
       path: '/medecin/dashboard',
       icon: HomeIcon,
-      color: 'secondary-500',
+      color: 'blue-500',
     },
     {
       name: safeT('nav.appointments', 'Rendez-vous'),
       path: '/medecin/appointments',
       icon: CalendarIcon,
-      color: 'secondary-500',
+      color: 'blue-500',
     },
     {
       name: safeT('nav.patients', 'Patients'),
       path: '/medecin/patients',
       icon: UsersIcon,
-      color: 'secondary-500',
+      color: 'blue-500',
     },
     {
       name: safeT('nav.medicalNotes', 'Notes Médicales'),
       path: '/medecin/notes',
       icon: DocumentTextIcon,
-      color: 'secondary-500',
+      color: 'blue-500',
     },
     {
       name: safeT('nav.timeSlots', 'Créneaux'),
       path: '/medecin/creneaux',
       icon: ClockIcon,
-      color: 'secondary-500',
+      color: 'blue-500',
     },
     {
       name: safeT('nav.notifications', 'Notifications'),
       path: '/medecin/notifications',
       icon: BellIcon,
-      color: 'secondary-500',
+      color: 'blue-500',
     },
     {
       name: safeT('nav.settings', 'Paramètres'),
       path: '/medecin/settings',
       icon: CogIcon,
-      color: 'secondary-500',
+      color: 'blue-500',
     },
   ];
 
@@ -118,9 +118,9 @@ const MedecinLayout = ({ children }) => {
     <div className="flex min-h-screen bg-slate-50 dark:bg-gray-900 relative overflow-hidden transition-colors duration-300">
       {/* Animated background - couleurs LARANA */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-secondary-400/20 dark:bg-secondary-500/10 rounded-full blur-3xl animate-blob"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary-400/20 dark:bg-primary-500/10 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
-        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-secondary-300/15 dark:bg-secondary-600/10 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-400/20 dark:bg-blue-500/10 rounded-full blur-3xl animate-blob"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-400/20 dark:bg-blue-500/10 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
+        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-blue-300/15 dark:bg-blue-700/10 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
       </div>
 
       {/* Sidebar */}
@@ -150,12 +150,12 @@ const MedecinLayout = ({ children }) => {
           )}
           <button
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            className="relative p-2 rounded-xl hover:bg-secondary-50 dark:hover:bg-gray-700 transition-all duration-300 group"
+            className="relative p-2 rounded-xl hover:bg-blue-50 dark:hover:bg-gray-700 transition-all duration-300 group"
           >
             {isSidebarOpen ? (
-              <XMarkIcon className="relative w-6 h-6 text-slate-600 dark:text-white group-hover:text-secondary-600 dark:group-hover:text-secondary-400 transition-colors" />
+              <XMarkIcon className="relative w-6 h-6 text-slate-600 dark:text-white group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors" />
             ) : (
-              <Bars3Icon className="relative w-6 h-6 text-slate-600 dark:text-white group-hover:text-secondary-600 dark:group-hover:text-secondary-400 transition-colors" />
+              <Bars3Icon className="relative w-6 h-6 text-slate-600 dark:text-white group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors" />
             )}
           </button>
         </div>
@@ -169,7 +169,7 @@ const MedecinLayout = ({ children }) => {
             >
               <div className="relative flex items-center gap-4 p-4 bg-white/60 dark:bg-gray-700/60 rounded-2xl backdrop-blur-sm border border-white/50 dark:border-gray-600/50 shadow-lg group-hover:scale-105 group-hover:shadow-xl transition-all duration-300 cursor-pointer">
                 <div className="relative">
-                  <div className="relative w-14 h-14 bg-secondary-500 rounded-2xl flex items-center justify-center text-white font-bold text-lg shadow-xl">
+                  <div className="relative w-14 h-14 bg-blue-500 rounded-2xl flex items-center justify-center text-white font-bold text-lg shadow-xl">
                     Dr. {user.nom?.charAt(0)}
                   </div>
                 </div>
@@ -177,12 +177,12 @@ const MedecinLayout = ({ children }) => {
                   <p className="text-sm font-bold text-slate-800 dark:text-white truncate">
                     Dr. {user.prenom} {user.nom}
                   </p>
-                  <p className="text-xs text-secondary-600 dark:text-secondary-400 truncate font-medium">
+                  <p className="text-xs text-blue-700 dark:text-blue-400 truncate font-medium">
                     {translateSpecialty(user.specialite)}
                   </p>
                   <div className="flex items-center gap-1 mt-1">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <span className="text-xs text-green-600 font-medium">{safeT('common.online', 'En ligne')}</span>
+                    <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                    <span className="text-xs text-blue-600 font-medium">{safeT('common.online', 'En ligne')}</span>
                   </div>
                 </div>
               </div>
@@ -200,14 +200,14 @@ const MedecinLayout = ({ children }) => {
                 onClick={() => navigate(item.path)}
                 className={`relative w-full flex items-center gap-3 px-4 py-3.5 rounded-2xl transition-all duration-300 group animate-slide-in-left ${
                   isItemActive
-                    ? 'bg-secondary-500 text-white shadow-xl scale-105'
+                    ? 'bg-blue-500 text-white shadow-xl scale-105'
                     : 'text-slate-600 dark:text-white hover:bg-white/80 dark:hover:bg-gray-700/80 hover:shadow-lg hover:scale-105'
                 }`}
                 style={{ animationDelay: `${(index + 2) * 50}ms` }}
               >
                 {/* Glow effect for active item */}
                 {isItemActive && (
-                  <div className="absolute inset-0 bg-secondary-500 rounded-2xl blur-xl opacity-50 animate-pulse-soft"></div>
+                  <div className="absolute inset-0 bg-blue-500 rounded-2xl blur-xl opacity-50 animate-pulse-soft"></div>
                 )}
 
                 {/* Icon */}
@@ -216,7 +216,7 @@ const MedecinLayout = ({ children }) => {
                     className={`w-6 h-6 transition-all duration-300 ${
                       isItemActive
                         ? 'text-white scale-110 animate-pulse-soft'
-                        : 'text-slate-400 dark:text-white group-hover:text-secondary-600 dark:group-hover:text-secondary-400 group-hover:scale-110'
+                        : 'text-slate-400 dark:text-white group-hover:text-blue-700 dark:group-hover:text-blue-400 group-hover:scale-110'
                     }`}
                   />
                   {/* Notification Badge */}
@@ -284,7 +284,7 @@ const MedecinLayout = ({ children }) => {
           <div className="relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl shadow-2xl p-8 max-w-md w-full animate-scale-in border border-white/20 dark:border-gray-700/50 overflow-hidden">
             {/* Effets décoratifs d'arrière-plan */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-red-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-secondary-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
 
             {/* Contenu */}
             <div className="relative z-10">
@@ -295,7 +295,7 @@ const MedecinLayout = ({ children }) => {
                   <div className="absolute inset-0 bg-red-500 rounded-full blur-2xl opacity-50 animate-pulse"></div>
 
                   {/* Cercle principal */}
-                  <div className="relative w-24 h-24 bg-gradient-to-br from-red-400 to-red-600 rounded-full flex items-center justify-center shadow-2xl">
+                  <div className="relative w-24 h-24 bg-red-600 rounded-full flex items-center justify-center shadow-2xl">
                     <ExclamationTriangleIcon className="w-12 h-12 text-white animate-pulse" />
                   </div>
 
@@ -310,7 +310,7 @@ const MedecinLayout = ({ children }) => {
                   {safeT('common.confirmLogout') || 'Confirmer la déconnexion'}
                 </h2>
                 <div className="flex items-center justify-center gap-2">
-                  <div className="w-12 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent rounded-full"></div>
+                  <div className="w-12 h-1 bg-gradient-to-r from-transparent via-blue-700 to-transparent rounded-full"></div>
                 </div>
               </div>
 
@@ -320,7 +320,7 @@ const MedecinLayout = ({ children }) => {
               </p>
 
               {/* Carte d'information */}
-              <div className="mb-8 bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 rounded-2xl p-5 border border-red-200 dark:border-red-800">
+              <div className="mb-8 bg-red-50 dark:bg-red-900/20 rounded-2xl p-5 border border-red-200 dark:border-red-800">
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 bg-red-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
                     <ArrowLeftOnRectangleIcon className="w-5 h-5 text-white" />
@@ -352,7 +352,7 @@ const MedecinLayout = ({ children }) => {
                 {/* Bouton Se déconnecter */}
                 <button
                   onClick={confirmLogout}
-                  className="flex-1 px-6 py-4 rounded-2xl bg-gradient-to-r from-red-500 to-red-600 text-white font-bold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
+                  className="flex-1 px-6 py-4 rounded-2xl bg-red-600 text-white font-bold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
                 >
                   <ArrowLeftOnRectangleIcon className="w-6 h-6" />
                   <span>{safeT('common.logoutButton') || 'Se déconnecter'}</span>

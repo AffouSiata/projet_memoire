@@ -46,19 +46,19 @@ const PatientNotifications = () => {
       case 'CONFIRMATION':
         return {
           icon: CheckCircleIcon,
-          gradient: 'from-green-500 to-green-600',
-          bg: 'bg-green-100',
-          darkBg: 'dark:bg-green-900/30',
-          text: 'text-green-600',
-          darkText: 'dark:text-green-400',
-          border: 'border-green-200',
-          darkBorder: 'dark:border-green-800',
+          gradient: 'bg-blue-600',
+          bg: 'bg-blue-100',
+          darkBg: 'dark:bg-blue-900/30',
+          text: 'text-blue-600',
+          darkText: 'dark:text-blue-400',
+          border: 'border-blue-200',
+          darkBorder: 'dark:border-blue-800',
           label: 'Confirmation'
         };
       case 'ANNULATION':
         return {
           icon: XCircleIcon,
-          gradient: 'from-red-500 to-red-600',
+          gradient: 'bg-red-600',
           bg: 'bg-red-100',
           darkBg: 'dark:bg-red-900/30',
           text: 'text-red-600',
@@ -70,7 +70,7 @@ const PatientNotifications = () => {
       case 'RAPPEL':
         return {
           icon: ExclamationTriangleIcon,
-          gradient: 'from-orange-500 to-orange-600',
+          gradient: 'bg-orange-600',
           bg: 'bg-orange-100',
           darkBg: 'dark:bg-orange-900/30',
           text: 'text-orange-600',
@@ -82,7 +82,7 @@ const PatientNotifications = () => {
       case 'CHANGEMENT_HORAIRE':
         return {
           icon: ClockIcon,
-          gradient: 'from-amber-500 to-amber-600',
+          gradient: 'bg-amber-600',
           bg: 'bg-amber-100',
           darkBg: 'dark:bg-amber-900/30',
           text: 'text-amber-600',
@@ -94,19 +94,19 @@ const PatientNotifications = () => {
       case 'RECOMMANDATION':
         return {
           icon: InformationCircleIcon,
-          gradient: 'from-blue-500 to-blue-600',
+          gradient: 'bg-blue-600',
           bg: 'bg-blue-100',
-          darkBg: 'dark:bg-blue-900/30',
-          text: 'text-blue-600',
+          darkBg: 'dark:bg-blue-950/30',
+          text: 'text-blue-700',
           darkText: 'dark:text-blue-400',
           border: 'border-blue-200',
-          darkBorder: 'dark:border-blue-800',
+          darkBorder: 'dark:border-blue-900',
           label: 'Information'
         };
       default:
         return {
           icon: BellIcon,
-          gradient: 'from-gray-500 to-gray-600',
+          gradient: 'bg-gray-600',
           bg: 'bg-gray-100',
           darkBg: 'dark:bg-gray-900/30',
           text: 'text-gray-600',
@@ -194,20 +194,20 @@ const PatientNotifications = () => {
       <div className="min-h-screen bg-slate-50 dark:bg-gray-900 p-8">
         {/* Animated background */}
         <div className="fixed inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-40 -right-40 w-96 h-96 bg-secondary-400/20 dark:bg-secondary-500/10 rounded-full blur-3xl animate-blob"></div>
-          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-secondary-400/20 dark:bg-secondary-500/10 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
+          <div className="absolute -top-40 -right-40 w-96 h-96 bg-blue-400/20 dark:bg-blue-500/10 rounded-full blur-3xl animate-blob"></div>
+          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-400/20 dark:bg-blue-500/10 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
         </div>
 
         <div className="relative max-w-6xl mx-auto space-y-8">
           {/* Header */}
           <div className="relative group animate-scale-in">
-            <div className="absolute inset-0 bg-secondary-500/20 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-blue-500/20 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl shadow-2xl p-8 border border-white/50 dark:border-gray-700/50">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <div className="relative">
-                    <div className="absolute inset-0 bg-secondary-500 rounded-2xl blur-lg opacity-75 animate-pulse-soft"></div>
-                    <div className="relative w-16 h-16 bg-secondary-500 rounded-2xl flex items-center justify-center shadow-xl">
+                    <div className="absolute inset-0 bg-blue-500 rounded-2xl blur-lg opacity-75 animate-pulse-soft"></div>
+                    <div className="relative w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center shadow-xl">
                       <BellIcon className="w-8 h-8 text-white" />
                       {unreadCount > 0 && (
                         <div className="absolute -top-1 -right-1 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center border-2 border-white dark:border-gray-800 animate-pulse">
@@ -218,10 +218,10 @@ const PatientNotifications = () => {
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <h1 className="text-4xl font-bold text-secondary-500 dark:text-secondary-400">
+                      <h1 className="text-4xl font-bold text-blue-500 dark:text-blue-400">
                         Notifications
                       </h1>
-                      <SparklesIcon className="w-6 h-6 text-secondary-500 animate-pulse" />
+                      <SparklesIcon className="w-6 h-6 text-blue-500 animate-pulse" />
                     </div>
                     <p className="text-slate-600 dark:text-white font-medium">
                       Vos notifications personnelles
@@ -232,9 +232,9 @@ const PatientNotifications = () => {
                 {/* Date & Time */}
                 <div className="flex gap-3">
                   <div className="group/card relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl px-5 py-3 shadow-lg border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl transition-all hover:scale-105">
-                    <div className="absolute inset-0 bg-gradient-to-br from-secondary-500/10 to-secondary-600/10 rounded-2xl opacity-0 group-hover/card:opacity-100 transition-opacity"></div>
+                    <div className="absolute inset-0 bg-blue-700/10 rounded-2xl opacity-0 group-hover/card:opacity-100 transition-opacity"></div>
                     <div className="relative flex items-center gap-3">
-                      <CalendarIcon className="w-5 h-5 text-secondary-600 dark:text-secondary-400" />
+                      <CalendarIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
                       <div>
                         <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">Date</p>
                         <p className="text-sm font-bold text-gray-900 dark:text-white">
@@ -244,9 +244,9 @@ const PatientNotifications = () => {
                     </div>
                   </div>
                   <div className="group/card relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl px-5 py-3 shadow-lg border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl transition-all hover:scale-105">
-                    <div className="absolute inset-0 bg-gradient-to-br from-secondary-500/10 to-secondary-600/10 rounded-2xl opacity-0 group-hover/card:opacity-100 transition-opacity"></div>
+                    <div className="absolute inset-0 bg-blue-700/10 rounded-2xl opacity-0 group-hover/card:opacity-100 transition-opacity"></div>
                     <div className="relative flex items-center gap-3">
-                      <ClockIcon className="w-5 h-5 text-secondary-600 dark:text-secondary-400" />
+                      <ClockIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
                       <div>
                         <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">Heure</p>
                         <p className="text-sm font-bold text-gray-900 dark:text-white font-mono">
@@ -274,12 +274,12 @@ const PatientNotifications = () => {
                       onClick={() => setFilterType(filter.value)}
                       className={`relative p-4 rounded-xl transition-all duration-300 hover:scale-105 ${
                         isActive
-                          ? 'bg-secondary-500 text-white shadow-xl'
+                          ? 'bg-blue-500 text-white shadow-xl'
                           : 'bg-white/60 dark:bg-gray-700/50 text-slate-700 dark:text-white hover:bg-white dark:hover:bg-gray-700 shadow-md'
                       }`}
                     >
                       {isActive && (
-                        <div className="absolute inset-0 bg-secondary-500 rounded-xl blur-lg opacity-50 animate-pulse-soft"></div>
+                        <div className="absolute inset-0 bg-blue-500 rounded-xl blur-lg opacity-50 animate-pulse-soft"></div>
                       )}
                       <div className="relative flex flex-col items-center gap-2">
                         <FilterIcon className="w-6 h-6" />
@@ -302,7 +302,7 @@ const PatientNotifications = () => {
             <button
               onClick={markAllAsRead}
               disabled={unreadCount === 0}
-              className="flex items-center gap-2 px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <CheckCircleIcon className="w-5 h-5" />
               Tout marquer comme lu
@@ -339,14 +339,14 @@ const PatientNotifications = () => {
                     className="relative group/notif animate-scale-in"
                     style={{ animationDelay: `${(index + 3) * 50}ms` }}
                   >
-                    <div className={`absolute inset-0 bg-gradient-to-br ${typeStyle.gradient} opacity-0 group-hover/notif:opacity-10 rounded-2xl blur-xl transition-opacity`}></div>
+                    <div className={`absolute inset-0 ${typeStyle.gradient} opacity-0 group-hover/notif:opacity-10 rounded-2xl blur-xl transition-opacity`}></div>
                     <div className={`relative bg-white dark:bg-gray-800 rounded-2xl shadow-lg border-2 ${typeStyle.border} ${typeStyle.darkBorder} overflow-hidden transition-all hover:shadow-xl hover:scale-[1.02] ${
                       !notification.lue ? 'border-l-8' : ''
                     }`}>
                       <div className="flex gap-4 p-5">
                         {/* Icon */}
                         <div className={`w-14 h-14 ${typeStyle.bg} ${typeStyle.darkBg} rounded-xl flex items-center justify-center flex-shrink-0 relative`}>
-                          <div className={`absolute inset-0 bg-gradient-to-br ${typeStyle.gradient} opacity-0 group-hover/notif:opacity-20 rounded-xl transition-opacity`}></div>
+                          <div className={`absolute inset-0 ${typeStyle.gradient} opacity-0 group-hover/notif:opacity-20 rounded-xl transition-opacity`}></div>
                           <TypeIcon className={`w-7 h-7 ${typeStyle.text} ${typeStyle.darkText} relative z-10`} />
                         </div>
 
@@ -356,7 +356,7 @@ const PatientNotifications = () => {
                             <div className="flex items-center gap-2 flex-wrap">
                               <h3 className="font-bold text-gray-900 dark:text-white">{notification.titre}</h3>
                               {!notification.lue && (
-                                <div className="w-2 h-2 bg-secondary-500 rounded-full animate-pulse"></div>
+                                <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
                               )}
                             </div>
                             <div className="flex items-center gap-2">
@@ -385,7 +385,7 @@ const PatientNotifications = () => {
                                 className={`p-2 rounded-lg transition-all hover:scale-110 ${
                                   notification.lue
                                     ? 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600'
-                                    : 'bg-secondary-100 dark:bg-secondary-900/30 text-secondary-600 dark:text-secondary-400 hover:bg-secondary-200 dark:hover:bg-secondary-900/50'
+                                    : 'bg-blue-100 dark:bg-blue-950/30 text-blue-700 dark:text-blue-400 hover:bg-blue-200 dark:hover:bg-blue-950/50'
                                 }`}
                                 title={notification.lue ? 'Marquer comme non lu' : 'Marquer comme lu'}
                               >

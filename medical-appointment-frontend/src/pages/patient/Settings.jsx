@@ -233,18 +233,18 @@ const Settings = () => {
   // Helper pour obtenir les vraies classes CSS (Tailwind ne supporte pas les classes dynamiques)
   const getGradientClasses = (gradient) => {
     const classes = {
-      'secondary-500': {
-        bg: 'bg-secondary-500',
-        bgOpacity: 'bg-secondary-500',
-        text: 'text-secondary-500'
+      'blue-500': {
+        bg: 'bg-blue-500',
+        bgOpacity: 'bg-blue-500',
+        text: 'text-blue-500'
       },
-      'primary-400': {
-        bg: 'bg-primary-400',
-        bgOpacity: 'bg-primary-400',
-        text: 'text-primary-400'
+      'blue-400': {
+        bg: 'bg-blue-400',
+        bgOpacity: 'bg-blue-400',
+        text: 'text-blue-400'
       }
     };
-    return classes[gradient] || classes['secondary-500'];
+    return classes[gradient] || classes['blue-500'];
   };
 
   const settingSections = [
@@ -252,7 +252,7 @@ const Settings = () => {
       id: 'notifications',
       title: t('settings.notifications.title'),
       icon: BellIcon,
-      gradient: 'secondary-500',
+      gradient: 'blue-500',
       description: t('settings.notifications.description'),
       settings: [
         {
@@ -285,7 +285,7 @@ const Settings = () => {
       id: 'appearance',
       title: t('settings.appearance.title'),
       icon: settings.darkMode ? MoonIcon : SunIcon,
-      gradient: 'primary-400',
+      gradient: 'blue-400',
       description: t('settings.appearance.description'),
       settings: [
         {
@@ -300,7 +300,7 @@ const Settings = () => {
       id: 'security',
       title: t('settings.security.title'),
       icon: ShieldCheckIcon,
-      gradient: 'secondary-500',
+      gradient: 'blue-500',
       description: t('settings.security.description'),
       settings: [
         {
@@ -329,7 +329,7 @@ const Settings = () => {
       <PatientLayout>
         <div className="min-h-screen bg-slate-50 dark:bg-gray-900 p-8 flex items-center justify-center">
           <div className="text-center">
-            <div className="w-16 h-16 border-4 border-secondary-500/30 border-t-secondary-500 rounded-full animate-spin mx-auto mb-4"></div>
+            <div className="w-16 h-16 border-4 border-blue-500/30 border-t-blue-500 rounded-full animate-spin mx-auto mb-4"></div>
             <p className="text-slate-600 dark:text-white font-medium">{t('common.loading')}</p>
           </div>
         </div>
@@ -341,8 +341,8 @@ const Settings = () => {
     <PatientLayout>
       <div className="min-h-screen bg-slate-50 dark:bg-gray-900 p-8">
         <div className="fixed inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-40 -right-40 w-96 h-96 bg-secondary-400/20 dark:bg-secondary-500/10 rounded-full blur-3xl animate-blob"></div>
-          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-primary-400/20 dark:bg-primary-500/10 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
+          <div className="absolute -top-40 -right-40 w-96 h-96 bg-blue-400/20 dark:bg-blue-500/10 rounded-full blur-3xl animate-blob"></div>
+          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-400/20 dark:bg-blue-500/10 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
         </div>
 
         <div className="relative max-w-6xl mx-auto space-y-8">
@@ -361,17 +361,17 @@ const Settings = () => {
           )}
 
           <div className="relative group animate-scale-in">
-            <div className="absolute inset-0 bg-secondary-500/20 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-blue-500/20 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl shadow-2xl p-8 border border-white/50 dark:border-gray-700/50">
               <div className="flex items-center gap-4">
                 <div className="relative">
-                  <div className="absolute inset-0 bg-secondary-500 rounded-2xl blur-lg opacity-75 animate-pulse-soft"></div>
-                  <div className="relative w-16 h-16 bg-secondary-500 rounded-2xl flex items-center justify-center shadow-xl">
+                  <div className="absolute inset-0 bg-blue-500 rounded-2xl blur-lg opacity-75 animate-pulse-soft"></div>
+                  <div className="relative w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center shadow-xl">
                     <CogIcon className="w-8 h-8 text-white animate-rotate-slow" />
                   </div>
                 </div>
                 <div>
-                  <h1 className="text-4xl font-bold text-secondary-500 dark:text-secondary-400">
+                  <h1 className="text-4xl font-bold text-blue-500 dark:text-blue-400">
                     {t('settings.title')}
                   </h1>
                   <p className="text-slate-600 dark:text-white mt-1 font-medium">
@@ -384,10 +384,10 @@ const Settings = () => {
 
           <div className="relative animate-slide-up" style={{ animationDelay: '100ms' }}>
             <div className="relative group">
-              <div className="absolute inset-0 bg-primary-400/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute inset-0 bg-blue-400/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
               <div className="relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl shadow-lg p-6 border border-white/50 dark:border-gray-700/50">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-primary-400 rounded-xl flex items-center justify-center shadow-lg">
+                  <div className="w-10 h-10 bg-blue-400 rounded-xl flex items-center justify-center shadow-lg">
                     <GlobeAltIcon className="w-5 h-5 text-white" />
                   </div>
                   <div>
@@ -410,13 +410,13 @@ const Settings = () => {
                       onClick={() => handleLanguageChange(lang.code)}
                       className={`relative p-4 rounded-xl transition-all duration-300 hover:scale-105 animate-scale-in ${
                         isActive
-                          ? 'bg-primary-400 text-white shadow-xl'
+                          ? 'bg-blue-400 text-white shadow-xl'
                           : 'bg-white/60 dark:bg-gray-700 text-slate-700 dark:text-white hover:bg-white dark:hover:bg-gray-600 shadow-md'
                       }`}
                       style={{ animationDelay: `${index * 50}ms` }}
                     >
                       {isActive && (
-                        <div className="absolute inset-0 bg-primary-400 rounded-xl blur-lg opacity-50 animate-pulse-soft"></div>
+                        <div className="absolute inset-0 bg-blue-400 rounded-xl blur-lg opacity-50 animate-pulse-soft"></div>
                       )}
                       <div className="relative text-center">
                         <div className="text-3xl mb-2">{lang.flag}</div>
@@ -499,7 +499,7 @@ const Settings = () => {
             <div className="flex items-center justify-between">
               <div>
                 {saveSuccess && (
-                  <div className="flex items-center gap-2 text-green-600 font-semibold animate-scale-in">
+                  <div className="flex items-center gap-2 text-blue-600 font-semibold animate-scale-in">
                     <CheckCircleIcon className="w-6 h-6" />
                     {t('settings.saved')}
                   </div>
@@ -510,9 +510,9 @@ const Settings = () => {
                 type="button"
                 onClick={handleSave}
                 disabled={isSaving}
-                className="relative group/btn px-8 py-4 rounded-2xl overflow-hidden bg-secondary-500 text-white font-bold shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="relative group/btn px-8 py-4 rounded-2xl overflow-hidden bg-blue-500 text-white font-bold shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <div className="absolute inset-0 bg-secondary-600 opacity-0 group-hover/btn:opacity-100 transition-opacity"></div>
+                <div className="absolute inset-0 bg-blue-700 opacity-0 group-hover/btn:opacity-100 transition-opacity"></div>
                 <div className="relative flex items-center gap-2">
                   {isSaving ? (
                     <>
@@ -530,9 +530,9 @@ const Settings = () => {
             </div>
           </div>
 
-          <div className="relative bg-secondary-500/10 dark:bg-secondary-900/20 backdrop-blur-xl rounded-2xl p-6 border border-secondary-200/50 dark:border-secondary-800/50 shadow-lg animate-slide-up" style={{ animationDelay: '600ms' }}>
+          <div className="relative bg-blue-500/10 dark:bg-blue-950/20 backdrop-blur-xl rounded-2xl p-6 border border-blue-200/50 dark:border-blue-900/50 shadow-lg animate-slide-up" style={{ animationDelay: '600ms' }}>
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-secondary-500 rounded-xl flex items-center justify-center shadow-lg flex-shrink-0">
+              <div className="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center shadow-lg flex-shrink-0">
                 <ShieldCheckIcon className="w-6 h-6 text-white" />
               </div>
               <div>

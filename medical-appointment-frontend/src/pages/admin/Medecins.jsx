@@ -266,8 +266,8 @@ const AdminMedecins = () => {
       <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-[#F7F9FC] via-[#EEF2FF] to-[#F0F9FF] dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
         <div className="text-center">
           <div className="relative w-20 h-20 mx-auto mb-6">
-            <div className="absolute inset-0 border-4 border-green-200 rounded-full"></div>
-            <div className="absolute inset-0 border-4 border-green-500 border-t-transparent rounded-full animate-spin"></div>
+            <div className="absolute inset-0 border-4 border-blue-200 rounded-full"></div>
+            <div className="absolute inset-0 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
           </div>
           <p className="text-lg font-semibold text-gray-700 dark:text-white">{t('common.loading')}</p>
         </div>
@@ -280,9 +280,9 @@ const AdminMedecins = () => {
       <div className="min-h-screen bg-[#F7F9FC] dark:bg-gray-900 py-8 px-4 relative overflow-hidden">
         {/* Blobs animés en arrière-plan */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-primary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-          <div className="absolute top-40 right-20 w-96 h-96 bg-secondary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-          <div className="absolute -bottom-20 left-1/3 w-80 h-80 bg-primary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+          <div className="absolute top-40 right-20 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+          <div className="absolute -bottom-20 left-1/3 w-80 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
@@ -290,17 +290,17 @@ const AdminMedecins = () => {
           <div className="mb-8 animate-slide-up">
             <div className="relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl p-8 shadow-xl border border-white/20 dark:border-gray-700/50 overflow-hidden">
               {/* Effets décoratifs d'arrière-plan */}
-              <div className="absolute top-0 right-0 w-96 h-96 bg-primary-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-              <div className="absolute bottom-0 left-0 w-72 h-72 bg-secondary-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+              <div className="absolute top-0 right-0 w-96 h-96 bg-blue-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+              <div className="absolute bottom-0 left-0 w-72 h-72 bg-blue-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
 
               <div className="relative z-10">
                 <div className="flex items-start justify-between">
                   {/* Section gauche */}
                   <div className="flex-1">
                     {/* Badge */}
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-50 dark:bg-primary-900/30 rounded-full mb-4">
-                      <div className="w-2 h-2 bg-primary-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs font-semibold text-primary-700 dark:text-primary-300 uppercase tracking-wider">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-950/30 rounded-full mb-4">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                      <span className="text-xs font-semibold text-blue-800 dark:text-blue-300 uppercase tracking-wider">
                         {t('admin.medecins.management')}
                       </span>
                     </div>
@@ -316,8 +316,8 @@ const AdminMedecins = () => {
                     {/* Mini-cartes date/heure */}
                     <div className="flex items-center gap-4">
                       <div className="flex items-center gap-3 px-5 py-3 bg-white/60 dark:bg-gray-700/60 rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
-                        <div className="w-10 h-10 bg-green-100 dark:bg-green-900/50 rounded-xl flex items-center justify-center">
-                          <CalendarIcon className="w-5 h-5 text-green-600 dark:text-green-400" />
+                        <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/50 rounded-xl flex items-center justify-center">
+                          <CalendarIcon className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                         </div>
                         <div>
                           <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{t('dashboard.date')}</p>
@@ -328,8 +328,8 @@ const AdminMedecins = () => {
                       </div>
 
                       <div className="flex items-center gap-3 px-5 py-3 bg-white/60 dark:bg-gray-700/60 rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
-                        <div className="w-10 h-10 bg-secondary-100 dark:bg-secondary-900/50 rounded-xl flex items-center justify-center">
-                          <ClockIcon className="w-5 h-5 text-secondary-600 dark:text-secondary-400" />
+                        <div className="w-10 h-10 bg-blue-100 dark:bg-blue-950/50 rounded-xl flex items-center justify-center">
+                          <ClockIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
                         </div>
                         <div>
                           <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{t('dashboard.time')}</p>
@@ -344,8 +344,8 @@ const AdminMedecins = () => {
                   {/* Section droite - Stats */}
                   <div className="flex flex-col items-end gap-3">
                     <div className="relative group">
-                      <div className="absolute inset-0 bg-secondary-500 rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
-                      <div className="relative px-6 py-4 bg-gradient-to-br from-secondary-500 to-emerald-600 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                      <div className="absolute inset-0 bg-blue-500 rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+                      <div className="relative px-6 py-4 bg-blue-700 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                         <div className="flex items-center gap-3">
                           <UserGroupIcon className="w-6 h-6 text-white" />
                           <div className="text-left">
@@ -370,7 +370,7 @@ const AdminMedecins = () => {
                 onClick={() => setActiveTab('all')}
                 className={`flex items-center gap-2 px-6 py-3 rounded-xl font-bold transition-all ${
                   activeTab === 'all'
-                    ? 'bg-gradient-to-r from-secondary-500 to-emerald-600 text-white shadow-lg'
+                    ? 'bg-blue-700 text-white shadow-lg'
                     : 'bg-white/90 dark:bg-gray-800/90 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/90'
                 }`}
               >
@@ -410,7 +410,7 @@ const AdminMedecins = () => {
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
                       onKeyPress={handleKeyPress}
-                      className="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white/70 dark:bg-gray-700/70 text-gray-900 dark:text-white placeholder-gray-500 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all"
+                      className="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white/70 dark:bg-gray-700/70 text-gray-900 dark:text-white placeholder-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
                     />
                     <MagnifyingGlassIcon className="w-5 h-5 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2" />
                   </div>
@@ -421,7 +421,7 @@ const AdminMedecins = () => {
                   <select
                     value={filterSpecialty}
                     onChange={(e) => { setFilterSpecialty(e.target.value); setCurrentPage(1); }}
-                    className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white/70 dark:bg-gray-700/70 text-gray-900 dark:text-white focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all"
+                    className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white/70 dark:bg-gray-700/70 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
                   >
                     <option value="">{t('admin.medecins.allSpecialties')}</option>
                     {specialties.map((specialty) => (
@@ -436,7 +436,7 @@ const AdminMedecins = () => {
                     onClick={() => { setFilterStatus('ALL'); setCurrentPage(1); }}
                     className={`flex-1 px-4 py-3 rounded-xl font-semibold transition-all ${
                       filterStatus === 'ALL'
-                        ? 'bg-secondary-500 text-white shadow-lg scale-105'
+                        ? 'bg-blue-500 text-white shadow-lg scale-105'
                         : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                     }`}
                   >
@@ -446,7 +446,7 @@ const AdminMedecins = () => {
                     onClick={() => { setFilterStatus('ACTIVE'); setCurrentPage(1); }}
                     className={`flex-1 px-4 py-3 rounded-xl font-semibold transition-all ${
                       filterStatus === 'ACTIVE'
-                        ? 'bg-green-500 text-white shadow-lg scale-105'
+                        ? 'bg-blue-500 text-white shadow-lg scale-105'
                         : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                     }`}
                   >
@@ -489,14 +489,14 @@ const AdminMedecins = () => {
                     className="group relative animate-scale-in"
                     style={{ animationDelay: `${index * 50}ms` }}
                   >
-                    <div className="absolute -inset-0.5 bg-gradient-to-r from-secondary-400 to-emerald-600 rounded-2xl blur opacity-0 group-hover:opacity-30 transition duration-500"></div>
+                    <div className="absolute -inset-0.5 bg-blue-700 rounded-2xl blur opacity-0 group-hover:opacity-30 transition duration-500"></div>
                     <div className="relative bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl rounded-2xl p-6 shadow-xl border border-gray-200/50 dark:border-gray-700/50 hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-2">
                       {/* Status Badge */}
                       <div className="absolute top-4 right-4 z-10">
                         {medecin.isActive ? (
-                          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-green-100 dark:bg-green-900/40 backdrop-blur-sm rounded-full shadow-sm">
-                            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                            <span className="text-xs font-bold text-green-700 dark:text-green-300">{t('admin.medecins.table.activeStatus')}</span>
+                          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-100 dark:bg-blue-900/40 backdrop-blur-sm rounded-full shadow-sm">
+                            <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                            <span className="text-xs font-bold text-blue-700 dark:text-blue-300">{t('admin.medecins.table.activeStatus')}</span>
                           </div>
                         ) : (
                           <div className="flex items-center gap-1.5 px-3 py-1.5 bg-red-100 dark:bg-red-900/40 backdrop-blur-sm rounded-full shadow-sm">
@@ -509,8 +509,8 @@ const AdminMedecins = () => {
                       {/* Doctor Info */}
                       <div className="flex items-start gap-4 mb-5">
                         <div className="relative">
-                          <div className="absolute -inset-1 bg-gradient-to-br from-secondary-400 to-emerald-600 rounded-2xl blur-sm opacity-50 group-hover:opacity-75 transition"></div>
-                          <div className="relative w-16 h-16 bg-gradient-to-br from-secondary-500 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                          <div className="absolute -inset-1 bg-blue-700 rounded-2xl blur-sm opacity-50 group-hover:opacity-75 transition"></div>
+                          <div className="relative w-16 h-16 bg-blue-700 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                             <span className="text-2xl font-bold text-white">Dr</span>
                           </div>
                           <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full border-2 border-white dark:border-gray-800 flex items-center justify-center shadow-md">
@@ -518,12 +518,12 @@ const AdminMedecins = () => {
                           </div>
                         </div>
                         <div className="flex-1 min-w-0 pt-1">
-                          <h3 className="text-lg font-bold text-gray-900 dark:text-white truncate mb-1 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+                          <h3 className="text-lg font-bold text-gray-900 dark:text-white truncate mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                             Dr. {medecin.prenom} {medecin.nom}
                           </h3>
                           <div className="flex items-center gap-2">
-                            <BeakerIcon className="w-4 h-4 text-green-500 flex-shrink-0" />
-                            <span className="text-sm font-semibold text-green-600 dark:text-green-400 truncate">
+                            <BeakerIcon className="w-4 h-4 text-blue-500 flex-shrink-0" />
+                            <span className="text-sm font-semibold text-blue-600 dark:text-blue-400 truncate">
                               {translateSpecialty(medecin.specialite) || t('admin.medecins.table.unspecified')}
                             </span>
                           </div>
@@ -532,14 +532,14 @@ const AdminMedecins = () => {
 
                       {/* Contact Info */}
                       <div className="space-y-2.5 mb-5">
-                        <div className="flex items-center gap-2.5 text-sm text-gray-600 dark:text-gray-400 group/item hover:text-green-600 dark:hover:text-green-400 transition-colors">
-                          <div className="p-1.5 bg-gray-100 dark:bg-gray-700 rounded-lg group-hover/item:bg-secondary-100 dark:group-hover/item:bg-secondary-900/30 transition-colors">
+                        <div className="flex items-center gap-2.5 text-sm text-gray-600 dark:text-gray-400 group/item hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                          <div className="p-1.5 bg-gray-100 dark:bg-gray-700 rounded-lg group-hover/item:bg-blue-100 dark:group-hover/item:bg-blue-950/30 transition-colors">
                             <EnvelopeIcon className="w-3.5 h-3.5" />
                           </div>
                           <span className="truncate font-medium">{medecin.email}</span>
                         </div>
-                        <div className="flex items-center gap-2.5 text-sm text-gray-600 dark:text-gray-400 group/item hover:text-green-600 dark:hover:text-green-400 transition-colors">
-                          <div className="p-1.5 bg-gray-100 dark:bg-gray-700 rounded-lg group-hover/item:bg-secondary-100 dark:group-hover/item:bg-secondary-900/30 transition-colors">
+                        <div className="flex items-center gap-2.5 text-sm text-gray-600 dark:text-gray-400 group/item hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                          <div className="p-1.5 bg-gray-100 dark:bg-gray-700 rounded-lg group-hover/item:bg-blue-100 dark:group-hover/item:bg-blue-950/30 transition-colors">
                             <PhoneIcon className="w-3.5 h-3.5" />
                           </div>
                           <span className="font-medium">{medecin.telephone}</span>
@@ -549,7 +549,7 @@ const AdminMedecins = () => {
                       {/* Stats Bar */}
                       <div className="flex items-center gap-4 mb-5 p-4 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700/50 dark:to-gray-600/50 rounded-xl border border-gray-200/50 dark:border-gray-600/50">
                         <div className="flex items-center gap-2 flex-1">
-                          <CalendarIcon className="w-5 h-5 text-green-600 dark:text-green-400" />
+                          <CalendarIcon className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                           <div>
                             <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{t('admin.medecins.table.appointments')}</p>
                             <p className="text-lg font-bold text-gray-900 dark:text-white">
@@ -573,7 +573,7 @@ const AdminMedecins = () => {
                           className={`flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-bold transition-all hover:scale-105 shadow-lg ${
                             medecin.isActive
                               ? 'bg-red-500 hover:bg-red-600 text-white'
-                              : 'bg-gradient-to-r from-secondary-500 to-emerald-600 hover:from-secondary-600 hover:to-emerald-700 text-white'
+                              : 'bg-blue-700 hover:bg-blue-800 text-white'
                           }`}
                         >
                           {medecin.isActive ? (
@@ -590,7 +590,7 @@ const AdminMedecins = () => {
                         </button>
                         <button
                           onClick={() => handleShowDetails(medecin)}
-                          className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-bold transition-all hover:scale-105 border-2 border-emerald-500 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20"
+                          className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-bold transition-all hover:scale-105 border-2 border-blue-500 text-blue-700 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/20"
                         >
                           <EyeIcon className="w-4 h-4" />
                           <span>{t('admin.medecins.details')}</span>
@@ -626,7 +626,7 @@ const AdminMedecins = () => {
                             onClick={() => setCurrentPage(page)}
                             className={`w-12 h-12 rounded-xl font-bold transition-all ${
                               currentPage === page
-                                ? 'bg-gradient-to-r from-secondary-500 to-emerald-600 text-white shadow-lg scale-110'
+                                ? 'bg-blue-700 text-white shadow-lg scale-110'
                                 : 'bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:scale-105'
                             }`}
                           >
@@ -661,8 +661,8 @@ const AdminMedecins = () => {
             pendingMedecins.length === 0 ? (
               <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl p-16 text-center shadow-xl border border-gray-200/50 dark:border-gray-700/50 animate-slide-up">
                 <div className="mb-6">
-                  <div className="w-24 h-24 bg-gradient-to-br from-green-100 to-emerald-200 dark:from-green-900 dark:to-emerald-800 rounded-full flex items-center justify-center mx-auto">
-                    <CheckCircleIcon className="w-12 h-12 text-green-600 dark:text-green-400" />
+                  <div className="w-24 h-24 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto">
+                    <CheckCircleIcon className="w-12 h-12 text-blue-600 dark:text-blue-400" />
                   </div>
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{t('admin.medecins.noPending')}</h3>
@@ -738,7 +738,7 @@ const AdminMedecins = () => {
                       <div className="grid grid-cols-2 gap-2">
                         <button
                           onClick={() => handleApproveMedecin(medecin.id)}
-                          className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-bold transition-all hover:scale-105 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white shadow-lg"
+                          className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-bold transition-all hover:scale-105 bg-blue-600 hover:bg-blue-700 text-white shadow-lg"
                         >
                           <CheckCircleIcon className="w-4 h-4" />
                           {t('admin.medecins.approve')}
@@ -770,17 +770,17 @@ const AdminMedecins = () => {
           ></div>
 
           <div className="relative animate-scale-in">
-            <div className="absolute -inset-1 bg-gradient-to-r from-secondary-400 to-emerald-600 rounded-3xl blur-xl opacity-75"></div>
+            <div className="absolute -inset-1 bg-blue-700 rounded-3xl blur-xl opacity-75"></div>
             <div className="relative bg-white/95 dark:bg-gray-800/95 backdrop-blur-2xl rounded-3xl shadow-2xl p-8 max-w-md w-full border-2 border-gray-200/50 dark:border-gray-700/50">
               <div className="text-center mb-8">
                 <div className="relative inline-block mb-6">
                   <div className={`absolute -inset-2 rounded-2xl blur-xl ${
-                    selectedMedecin.isActive ? 'bg-red-500' : 'bg-green-500'
+                    selectedMedecin.isActive ? 'bg-red-500' : 'bg-blue-500'
                   } opacity-50`}></div>
                   <div className={`relative w-20 h-20 rounded-2xl flex items-center justify-center shadow-xl ${
                     selectedMedecin.isActive
                       ? 'bg-red-500'
-                      : 'bg-gradient-to-br from-secondary-500 to-emerald-600'
+                      : 'bg-blue-700'
                   }`}>
                     {selectedMedecin.isActive ? (
                       <XCircleIcon className="w-10 h-10 text-white" />
@@ -812,7 +812,7 @@ const AdminMedecins = () => {
                   className={`flex-1 px-6 py-3.5 font-bold rounded-xl text-white shadow-xl transition-all hover:scale-105 ${
                     selectedMedecin.isActive
                       ? 'bg-red-500 hover:bg-red-600'
-                      : 'bg-gradient-to-r from-secondary-500 to-emerald-600 hover:from-secondary-600 hover:to-emerald-700'
+                      : 'bg-blue-700 hover:bg-blue-800'
                   }`}
                 >
                   {t('common.confirm')}
@@ -835,16 +835,16 @@ const AdminMedecins = () => {
             {/* En-tête avec dégradé et icône */}
             <div className="relative mb-6">
               {/* Fond dégradé décoratif */}
-              <div className="absolute -top-8 -right-8 w-64 h-64 bg-gradient-to-br from-primary-200 to-secondary-200 rounded-full blur-3xl opacity-30"></div>
+              <div className="absolute -top-8 -right-8 w-64 h-64 bg-blue-200 rounded-full blur-3xl opacity-30"></div>
 
               <div className="relative flex items-center gap-4">
                 {/* Avatar du médecin */}
                 <div className="relative">
-                  <div className="absolute -inset-1 bg-gradient-to-br from-secondary-400 to-primary-400 rounded-2xl blur-md opacity-75"></div>
-                  <div className="relative w-20 h-20 bg-gradient-to-br from-secondary-500 to-primary-500 rounded-2xl flex items-center justify-center shadow-xl">
+                  <div className="absolute -inset-1 bg-blue-700 rounded-2xl blur-md opacity-75"></div>
+                  <div className="relative w-20 h-20 bg-blue-700 rounded-2xl flex items-center justify-center shadow-xl">
                     <span className="text-xl font-bold text-white">Dr</span>
                   </div>
-                  <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full border-2 border-white dark:border-gray-800 flex items-center justify-center shadow-lg">
+                  <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-blue-500 rounded-full border-2 border-white dark:border-gray-800 flex items-center justify-center shadow-lg">
                     <AcademicCapIcon className="w-4 h-4 text-white" />
                   </div>
                 </div>
@@ -855,14 +855,14 @@ const AdminMedecins = () => {
                     Dr. {selectedMedecin.prenom} {selectedMedecin.nom}
                   </h3>
                   <div className="flex items-center gap-3 flex-wrap">
-                    <div className="flex items-center gap-1.5 px-3 py-1 bg-gradient-to-r from-secondary-100 to-primary-100 dark:bg-secondary-900/40 dark:to-primary-900/40 rounded-full">
-                      <BeakerIcon className="w-3.5 h-3.5 text-secondary-600 dark:text-secondary-400" />
-                      <span className="text-xs font-bold text-secondary-700 dark:text-secondary-300">{translateSpecialty(selectedMedecin.specialite)}</span>
+                    <div className="flex items-center gap-1.5 px-3 py-1 bg-blue-100 dark:bg-blue-900/40 rounded-full">
+                      <BeakerIcon className="w-3.5 h-3.5 text-blue-700 dark:text-blue-400" />
+                      <span className="text-xs font-bold text-blue-800 dark:text-blue-300">{translateSpecialty(selectedMedecin.specialite)}</span>
                     </div>
                     {selectedMedecin.isActive ? (
-                      <div className="flex items-center gap-1.5 px-3 py-1 bg-green-100 dark:bg-green-900/40 rounded-full">
-                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                        <span className="text-xs font-bold text-green-700 dark:text-green-300">{t('admin.medecins.detailsModal.active')}</span>
+                      <div className="flex items-center gap-1.5 px-3 py-1 bg-blue-100 dark:bg-blue-900/40 rounded-full">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                        <span className="text-xs font-bold text-blue-700 dark:text-blue-300">{t('admin.medecins.detailsModal.active')}</span>
                       </div>
                     ) : (
                       <div className="flex items-center gap-1.5 px-3 py-1 bg-red-100 dark:bg-red-900/40 rounded-full">
@@ -879,9 +879,9 @@ const AdminMedecins = () => {
             <div className="space-y-4">
               {/* Informations de contact */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="p-5 bg-gradient-to-br from-secondary-50 to-primary-50 dark:bg-secondary-900/20 dark:to-primary-900/20 rounded-2xl border border-secondary-100 dark:border-secondary-800">
+                <div className="p-5 bg-blue-50 dark:bg-blue-900/20 rounded-2xl border border-blue-100 dark:border-blue-900">
                   <div className="flex items-center gap-2 mb-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-secondary-500 to-primary-500 rounded-xl flex items-center justify-center shadow-lg">
+                    <div className="w-10 h-10 bg-blue-700 rounded-xl flex items-center justify-center shadow-lg">
                       <EnvelopeIcon className="w-5 h-5 text-white" />
                     </div>
                     <p className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
@@ -893,9 +893,9 @@ const AdminMedecins = () => {
                   </p>
                 </div>
 
-                <div className="p-5 bg-gradient-to-br from-primary-50 to-secondary-50 dark:bg-primary-900/20 dark:to-secondary-900/20 rounded-2xl border border-primary-100 dark:border-primary-800">
+                <div className="p-5 bg-blue-50 dark:bg-blue-900/20 rounded-2xl border border-blue-100 dark:border-blue-900">
                   <div className="flex items-center gap-2 mb-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center shadow-lg">
+                    <div className="w-10 h-10 bg-blue-700 rounded-xl flex items-center justify-center shadow-lg">
                       <PhoneIcon className="w-5 h-5 text-white" />
                     </div>
                     <p className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
@@ -911,9 +911,9 @@ const AdminMedecins = () => {
               {/* Adresse et Date de naissance */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {selectedMedecin.adresse && (
-                  <div className="p-5 bg-white dark:bg-gray-700/50 rounded-2xl border-2 border-secondary-200 dark:border-secondary-800">
+                  <div className="p-5 bg-white dark:bg-gray-700/50 rounded-2xl border-2 border-blue-200 dark:border-blue-900">
                     <div className="flex items-center gap-2 mb-3">
-                      <MapPinIcon className="w-5 h-5 text-secondary-600 dark:text-secondary-400" />
+                      <MapPinIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
                       <p className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
                         {t('admin.medecins.detailsModal.medicalOffice')}
                       </p>
@@ -925,9 +925,9 @@ const AdminMedecins = () => {
                 )}
 
                 {selectedMedecin.dateNaissance && (
-                  <div className="p-5 bg-white dark:bg-gray-700/50 rounded-2xl border-2 border-primary-200 dark:border-primary-800">
+                  <div className="p-5 bg-white dark:bg-gray-700/50 rounded-2xl border-2 border-blue-200 dark:border-blue-900">
                     <div className="flex items-center gap-2 mb-3">
-                      <UserIcon className="w-5 h-5 text-primary-600 dark:text-primary-400" />
+                      <UserIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
                       <p className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
                         {t('admin.medecins.detailsModal.dateOfBirth')}
                       </p>
@@ -944,7 +944,7 @@ const AdminMedecins = () => {
 
               {/* Statistiques */}
               <div className="grid grid-cols-2 gap-4">
-                <div className="p-5 bg-gradient-to-br from-secondary-500 to-primary-500 rounded-2xl text-white shadow-xl">
+                <div className="p-5 bg-blue-700 rounded-2xl text-white shadow-xl">
                   <div className="flex items-center gap-2 mb-2">
                     <CalendarIcon className="w-6 h-6" />
                     <p className="text-xs font-bold uppercase tracking-wider opacity-90">
@@ -977,7 +977,7 @@ const AdminMedecins = () => {
             <div className="mt-6 flex justify-end gap-3">
               <button
                 onClick={() => setShowDetailsModal(false)}
-                className="flex items-center gap-2 px-6 py-3 rounded-xl font-bold transition-all hover:scale-105 border-2 border-emerald-500 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20"
+                className="flex items-center gap-2 px-6 py-3 rounded-xl font-bold transition-all hover:scale-105 border-2 border-blue-500 text-blue-700 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/20"
               >
                 <XCircleIcon className="w-5 h-5" />
                 <span>{t('common.close')}</span>

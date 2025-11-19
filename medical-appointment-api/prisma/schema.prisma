@@ -107,6 +107,10 @@ model User {
 
   @@index([email])
   @@index([role])
+  @@index([statutValidation])
+  @@index([isActive])
+  @@index([specialite])
+  @@index([role, statutValidation, isActive]) // Index composite pour requêtes médecins
 }
 
 // Model RendezVous

@@ -132,12 +132,15 @@ Mot de passe: password123
 
 
 
-docteur: afsa  ,   affousiatao59@gmail.com  ,   Dermatologie, qwerty
-        prince  ,   prince@gmail.com  ,   cardiologie, 123456789
-        yao   ,   yao@gmail.com  ,   pediatrie, 987654321
-        fabien  ,   fabien@gmail.com  ,   neurologie, ytrewq
-        odou  ,   odou@gmail.com  ,   ophtamologie, 223344
-        maria  ,   maria@gmail.com  ,   psychiatrie, 119900
+docteur:
+        
+        maria  ,   marie@example.com  ,   cardiologie, 123456,
+        odou  ,   odou@gmail.com  ,   pediatrie, 223344,
+        diarra ,   dia@gmail.com , dermatologie , diarra,
+        yao   ,   yao@gmail.com  , neurologie , 098765,
+        mamadou,  mama@gmail.com , medecin general , mamadou, 
+        konan ,  konan@gmail.com , gynecologie , konana
+
 
 
 admin : Email : admin@medical.com
@@ -151,30 +154,15 @@ patient: mariam  ,  mariam@gmail.com ,   guervar234#
 
 
 
-maitenant la date pour la prise de rdv c'est par semaine oubien par mois parce que je comprend pas
-je comprend pas pourquoi les creneaux de lundi est pour tous  les lundis 
 
 
 
-
-
-
-la section notification sur l'espace patient doit etre personnel chaque notification
-  est dedier a elle , la notification globale sur l'admin
-
-
-
-
-
-
-
-
-
-
-
-j'ai l'impression que notifications push ne fonctionne pas 
-
-
-
-
-
+❯ 1. Bleu hôpital classique
+     Bleu moyen professionnel - blue-600 (#2563eb)
+  2. Bleu foncé médical
+     Bleu foncé sérieux - blue-700 (#1d4ed8)
+  3. Bleu cyan médical
+     Bleu cyan moderne - cyan-600 (#0891b2)
+  4. Bleu indigo profond
+     Indigo professionnel - indigo-600 (#4f46e5)
+  5. Type something.

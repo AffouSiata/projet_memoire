@@ -274,7 +274,7 @@ const MedecinDashboard = () => {
       <MedecinLayout>
         <div className="flex items-center justify-center min-h-screen bg-[#F7F9FC] dark:bg-gray-900">
           <div className="text-center">
-            <div className="w-16 h-16 border-4 border-secondary-400 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+            <div className="w-16 h-16 border-4 border-blue-400 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
             <p className="text-gray-500 dark:text-white">{safeT('common.loading')}</p>
           </div>
         </div>
@@ -287,9 +287,9 @@ const MedecinDashboard = () => {
       <div className="min-h-screen bg-[#F7F9FC] dark:bg-gray-900 p-8 relative overflow-hidden">
         {/* Blobs animés en arrière-plan - couleurs LARANA */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-secondary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-          <div className="absolute top-40 right-20 w-96 h-96 bg-primary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-          <div className="absolute -bottom-20 left-1/3 w-80 h-80 bg-secondary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+          <div className="absolute top-40 right-20 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+          <div className="absolute -bottom-20 left-1/3 w-80 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
@@ -297,8 +297,8 @@ const MedecinDashboard = () => {
           <div className="mb-8 animate-slide-up">
             <div className="relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl p-8 shadow-xl border border-white/20 dark:border-gray-700/50 overflow-hidden">
               {/* Effets décoratifs d'arrière-plan */}
-              <div className="absolute top-0 right-0 w-96 h-96 bg-secondary-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-              <div className="absolute bottom-0 left-0 w-72 h-72 bg-primary-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+              <div className="absolute top-0 right-0 w-96 h-96 bg-blue-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+              <div className="absolute bottom-0 left-0 w-72 h-72 bg-blue-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
 
               {/* Contenu principal */}
               <div className="relative z-10">
@@ -306,9 +306,9 @@ const MedecinDashboard = () => {
                   {/* Section gauche - Message de bienvenue */}
                   <div className="flex-1">
                     {/* Badge "Espace Médecin" */}
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary-50 dark:bg-secondary-900/30 rounded-full mb-4">
-                      <div className="w-2 h-2 bg-secondary-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs font-semibold text-secondary-700 dark:text-secondary-400 uppercase tracking-wider">{safeT('common.doctorSpace', 'Espace Médecin')}</span>
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-950/30 rounded-full mb-4">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                      <span className="text-xs font-semibold text-blue-800 dark:text-blue-400 uppercase tracking-wider">{safeT('common.doctorSpace', 'Espace Médecin')}</span>
                     </div>
 
                     {/* Titre principal avec animation */}
@@ -324,8 +324,8 @@ const MedecinDashboard = () => {
                     <div className="flex items-center gap-4">
                       {/* Carte Date */}
                       <div className="flex items-center gap-3 px-5 py-3 bg-white/60 dark:bg-gray-700/60 rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
-                        <div className="w-10 h-10 bg-secondary-100 dark:bg-secondary-900/50 rounded-xl flex items-center justify-center">
-                          <CalendarIcon className="w-5 h-5 text-secondary-600 dark:text-secondary-400" />
+                        <div className="w-10 h-10 bg-blue-100 dark:bg-blue-950/50 rounded-xl flex items-center justify-center">
+                          <CalendarIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
                         </div>
                         <div>
                           <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{safeT('dashboard.date')}</p>
@@ -337,8 +337,8 @@ const MedecinDashboard = () => {
 
                       {/* Carte Heure en temps réel */}
                       <div className="flex items-center gap-3 px-5 py-3 bg-white/60 dark:bg-gray-700/60 rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
-                        <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900/50 rounded-xl flex items-center justify-center">
-                          <ClockIcon className="w-5 h-5 text-primary-600 dark:text-primary-400" />
+                        <div className="w-10 h-10 bg-blue-100 dark:bg-blue-950/50 rounded-xl flex items-center justify-center">
+                          <ClockIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
                         </div>
                         <div>
                           <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{safeT('dashboard.time')}</p>
@@ -350,8 +350,8 @@ const MedecinDashboard = () => {
 
                       {/* Carte Jour de la semaine */}
                       <div className="flex items-center gap-3 px-5 py-3 bg-white/60 dark:bg-gray-700/60 rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
-                        <div className="w-10 h-10 bg-secondary-100 dark:bg-secondary-900/50 rounded-xl flex items-center justify-center">
-                          <SparklesIcon className="w-5 h-5 text-secondary-600 dark:text-secondary-400" />
+                        <div className="w-10 h-10 bg-blue-100 dark:bg-blue-950/50 rounded-xl flex items-center justify-center">
+                          <SparklesIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
                         </div>
                         <div>
                           <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{safeT('dashboard.day')}</p>
@@ -365,12 +365,12 @@ const MedecinDashboard = () => {
 
                   {/* Section droite - Widget conseil santé */}
                   <div className="flex flex-col items-end gap-3">
-                    <div className="px-6 py-4 bg-gradient-to-r from-secondary-50 to-primary-50 dark:from-secondary-900/30 dark:to-primary-900/30 rounded-2xl border border-secondary-100 dark:border-secondary-800 shadow-lg">
+                    <div className="px-6 py-4 bg-blue-50 dark:bg-blue-900/30 rounded-2xl border border-blue-100 dark:border-blue-900 shadow-lg">
                       <div className="flex items-center gap-3 mb-2">
-                        <div className="w-8 h-8 bg-secondary-500 rounded-full flex items-center justify-center">
+                        <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
                           <LightBulbIcon className="w-5 h-5 text-white" />
                         </div>
-                        <p className="text-xs font-bold text-secondary-700 dark:text-secondary-400 uppercase tracking-wider">{safeT('medecin.dashboard.tipOfDay')}</p>
+                        <p className="text-xs font-bold text-blue-800 dark:text-blue-400 uppercase tracking-wider">{safeT('medecin.dashboard.tipOfDay')}</p>
                       </div>
                       <p className="text-sm text-gray-700 dark:text-gray-300 font-medium">
                         💡 {safeT('medecin.dashboard.tipMessage')}
@@ -387,7 +387,7 @@ const MedecinDashboard = () => {
             <div className="lg:col-span-2 space-y-6">
               {/* Grande carte hero - Dégradé Vert-Bleu LARANA */}
               <div
-                className="bg-gradient-to-br from-secondary-500 via-secondary-400 to-primary-500 rounded-3xl p-8 text-white shadow-md relative overflow-hidden animate-scale-in"
+                className="bg-blue-700 rounded-3xl p-8 text-white shadow-md relative overflow-hidden animate-scale-in"
                 style={{ animationDelay: '0.1s' }}
               >
                 {/* Particules flottantes */}
@@ -427,7 +427,7 @@ const MedecinDashboard = () => {
                   <div className="flex gap-4">
                     <button
                       onClick={() => navigate('/medecin/appointments')}
-                      className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-6 py-3 rounded-2xl font-semibold hover:shadow-lg hover:scale-105 hover:from-primary-600 hover:to-secondary-600 transition-all duration-300 flex items-center gap-2"
+                      className="bg-blue-700 text-white px-6 py-3 rounded-2xl font-semibold hover:shadow-lg hover:scale-105 hover:bg-blue-800 transition-all duration-300 flex items-center gap-2"
                     >
                       {safeT('medecin.dashboard.viewAppointments')}
                       <ArrowRightIcon className="w-5 h-5" />
@@ -449,8 +449,8 @@ const MedecinDashboard = () => {
                   className="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-md hover:shadow-xl hover:scale-105 hover:-rotate-1 transition-all duration-300 animate-scale-in"
                   style={{ animationDelay: '0.2s' }}
                 >
-                  <div className="w-12 h-12 bg-secondary-100 dark:bg-secondary-900/50 rounded-2xl flex items-center justify-center mb-4 animate-pulse-soft">
-                    <CalendarIcon className="w-6 h-6 text-secondary-500 dark:text-secondary-400" />
+                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-950/50 rounded-2xl flex items-center justify-center mb-4 animate-pulse-soft">
+                    <CalendarIcon className="w-6 h-6 text-blue-500 dark:text-blue-400" />
                   </div>
                   <p className="text-gray-500 dark:text-gray-400 text-sm mb-1">{safeT('medecin.dashboard.todayAppointments')}</p>
                   <p className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
@@ -464,8 +464,8 @@ const MedecinDashboard = () => {
                   className="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-md hover:shadow-xl hover:scale-105 hover:rotate-1 transition-all duration-300 animate-scale-in"
                   style={{ animationDelay: '0.3s' }}
                 >
-                  <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/50 rounded-2xl flex items-center justify-center mb-4 animate-pulse-soft">
-                    <ClockIcon className="w-6 h-6 text-primary-500 dark:text-primary-400" />
+                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-950/50 rounded-2xl flex items-center justify-center mb-4 animate-pulse-soft">
+                    <ClockIcon className="w-6 h-6 text-blue-500 dark:text-blue-400" />
                   </div>
                   <p className="text-gray-500 dark:text-gray-400 text-sm mb-1">{safeT('medecin.dashboard.upcoming')}</p>
                   <p className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
@@ -479,8 +479,8 @@ const MedecinDashboard = () => {
                   className="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-md hover:shadow-xl hover:scale-105 hover:-rotate-1 transition-all duration-300 animate-scale-in"
                   style={{ animationDelay: '0.4s' }}
                 >
-                  <div className="w-12 h-12 bg-secondary-100 dark:bg-secondary-900/50 rounded-2xl flex items-center justify-center mb-4 animate-pulse-soft">
-                    <UsersIcon className="w-6 h-6 text-secondary-500 dark:text-secondary-400" />
+                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-950/50 rounded-2xl flex items-center justify-center mb-4 animate-pulse-soft">
+                    <UsersIcon className="w-6 h-6 text-blue-500 dark:text-blue-400" />
                   </div>
                   <p className="text-gray-500 dark:text-gray-400 text-sm mb-1">{safeT('medecin.dashboard.patientsFollowed')}</p>
                   <p className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
@@ -513,7 +513,7 @@ const MedecinDashboard = () => {
                   style={{ animationDelay: '0.6s' }}
                 >
                   <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                    <ChartBarIcon className="w-5 h-5 text-secondary-500 dark:text-secondary-400" />
+                    <ChartBarIcon className="w-5 h-5 text-blue-500 dark:text-blue-400" />
                     {safeT('medecin.dashboard.appointmentsByMonth')}
                   </h3>
                   <ResponsiveContainer width="100%" height={240}>
@@ -605,13 +605,13 @@ const MedecinDashboard = () => {
                 style={{ animationDelay: '0.8s' }}
               >
                 {/* Effet décoratif d'arrière-plan */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-secondary-100/30 dark:bg-secondary-900/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                <div className="absolute top-0 right-0 w-64 h-64 bg-blue-100/30 dark:bg-blue-950/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
 
                 {/* Header de la section */}
                 <div className="relative z-10 mb-8">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-gradient-to-br from-secondary-500 to-primary-500 rounded-2xl flex items-center justify-center shadow-lg">
+                      <div className="w-12 h-12 bg-blue-700 rounded-2xl flex items-center justify-center shadow-lg">
                         <CalendarIcon className="w-6 h-6 text-white" />
                       </div>
                       <div>
@@ -625,8 +625,8 @@ const MedecinDashboard = () => {
                     </div>
 
                     {/* Badge du nombre de rendez-vous */}
-                    <div className="px-4 py-2 bg-secondary-100 dark:bg-secondary-900/30 rounded-xl">
-                      <p className="text-sm font-bold text-secondary-700 dark:text-secondary-400">
+                    <div className="px-4 py-2 bg-blue-100 dark:bg-blue-950/30 rounded-xl">
+                      <p className="text-sm font-bold text-blue-800 dark:text-blue-400">
                         {monthTimeline.slice(0, 10).length} {safeT('medecin.dashboard.displayed')}
                       </p>
                     </div>
@@ -636,10 +636,10 @@ const MedecinDashboard = () => {
                 {monthTimeline.length > 0 ? (
                   <div className="relative">
                     {/* Ligne de timeline moderne avec dégradé */}
-                    <div className="absolute top-20 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-secondary-300 dark:via-secondary-700 to-transparent"></div>
+                    <div className="absolute top-20 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-blue-300 dark:via-blue-800 to-transparent"></div>
 
                     {/* Rendez-vous sur la timeline */}
-                    <div className="relative flex overflow-x-auto pb-6 gap-6 scrollbar-thin scrollbar-thumb-secondary-300 scrollbar-track-gray-100 dark:scrollbar-thumb-secondary-700 dark:scrollbar-track-gray-800">
+                    <div className="relative flex overflow-x-auto pb-6 gap-6 scrollbar-thin scrollbar-thumb-blue-300 scrollbar-track-gray-100 dark:scrollbar-thumb-blue-800 dark:scrollbar-track-gray-800">
                       {monthTimeline.slice(0, 10).map((appt, index) => {
                         const isConfirmed = appt.statut === 'CONFIRME';
                         const isPending = appt.statut === 'EN_ATTENTE';
@@ -655,7 +655,7 @@ const MedecinDashboard = () => {
                               {/* Point sur la timeline avec animation pulse */}
                               <div className="flex justify-center mb-4">
                                 <div className={`relative w-10 h-10 rounded-full flex items-center justify-center shadow-lg ${
-                                  isConfirmed ? 'bg-green-500' :
+                                  isConfirmed ? 'bg-blue-500' :
                                   isPending ? 'bg-orange-500' :
                                   'bg-red-500'
                                 } ring-4 ring-white dark:ring-gray-800 group-hover:scale-110 transition-transform duration-300`}>
@@ -672,7 +672,7 @@ const MedecinDashboard = () => {
 
                               {/* Connecteur au point */}
                               <div className={`absolute top-10 left-1/2 w-0.5 h-4 -translate-x-1/2 ${
-                                isConfirmed ? 'bg-green-500' :
+                                isConfirmed ? 'bg-blue-500' :
                                 isPending ? 'bg-orange-500' :
                                 'bg-red-500'
                               }`}></div>
@@ -680,7 +680,7 @@ const MedecinDashboard = () => {
                               {/* Carte rendez-vous modernisée */}
                               <div className={`relative p-5 rounded-2xl border-2 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 ${
                                 isConfirmed
-                                  ? 'bg-gradient-to-br from-green-50 to-green-100/50 dark:bg-green-900/20 dark:to-green-900/10 border-green-300 dark:border-green-800'
+                                  ? 'bg-blue-50/50 dark:bg-blue-900/20 border-blue-300 dark:border-blue-800'
                                   : isPending
                                   ? 'bg-gradient-to-br from-orange-50 to-orange-100/50 dark:from-orange-900/20 dark:to-orange-900/10 border-orange-300 dark:border-orange-800'
                                   : 'bg-gradient-to-br from-red-50 to-red-100/50 dark:from-red-900/20 dark:to-red-900/10 border-red-300 dark:border-red-800'
@@ -688,7 +688,7 @@ const MedecinDashboard = () => {
                                 {/* Badge de statut */}
                                 <div className="absolute -top-2 -right-2">
                                   <span className={`text-xs px-3 py-1 rounded-full font-bold shadow-md ${
-                                    isConfirmed ? 'bg-green-500 text-white' :
+                                    isConfirmed ? 'bg-blue-500 text-white' :
                                     isPending ? 'bg-orange-500 text-white' :
                                     'bg-red-500 text-white'
                                   }`}>
@@ -701,7 +701,7 @@ const MedecinDashboard = () => {
                                   {/* Date */}
                                   <div className="flex items-center gap-2">
                                     <CalendarIcon className={`w-4 h-4 ${
-                                      isConfirmed ? 'text-green-600 dark:text-green-400' :
+                                      isConfirmed ? 'text-blue-600 dark:text-blue-400' :
                                       isPending ? 'text-orange-600 dark:text-orange-400' :
                                       'text-red-600 dark:text-red-400'
                                     }`} />
@@ -713,7 +713,7 @@ const MedecinDashboard = () => {
                                   {/* Heure */}
                                   <div className="flex items-center gap-2">
                                     <ClockIcon className={`w-4 h-4 ${
-                                      isConfirmed ? 'text-green-600 dark:text-green-400' :
+                                      isConfirmed ? 'text-blue-600 dark:text-blue-400' :
                                       isPending ? 'text-orange-600 dark:text-orange-400' :
                                       'text-red-600 dark:text-red-400'
                                     }`} />
@@ -724,7 +724,7 @@ const MedecinDashboard = () => {
 
                                   {/* Séparateur */}
                                   <div className={`h-px ${
-                                    isConfirmed ? 'bg-green-200 dark:bg-green-800' :
+                                    isConfirmed ? 'bg-blue-200 dark:bg-blue-800' :
                                     isPending ? 'bg-orange-200 dark:bg-orange-800' :
                                     'bg-red-200 dark:bg-red-800'
                                   }`}></div>
@@ -732,7 +732,7 @@ const MedecinDashboard = () => {
                                   {/* Patient */}
                                   <div className="flex items-center gap-3">
                                     <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm shadow-md ${
-                                      isConfirmed ? 'bg-green-500 text-white' :
+                                      isConfirmed ? 'bg-blue-500 text-white' :
                                       isPending ? 'bg-orange-500 text-white' :
                                       'bg-red-500 text-white'
                                     }`}>
@@ -757,7 +757,7 @@ const MedecinDashboard = () => {
 
                     {/* Indicateur de scroll si plus de 10 rendez-vous */}
                     {monthTimeline.length > 10 && (
-                      <div className="absolute bottom-0 right-0 px-4 py-2 bg-secondary-500 text-white text-xs font-semibold rounded-tl-2xl rounded-br-2xl shadow-lg">
+                      <div className="absolute bottom-0 right-0 px-4 py-2 bg-blue-500 text-white text-xs font-semibold rounded-tl-2xl rounded-br-2xl shadow-lg">
                         +{monthTimeline.length - 10} {safeT('medecin.dashboard.moreAppointments')} →
                       </div>
                     )}
@@ -780,7 +780,7 @@ const MedecinDashboard = () => {
               >
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                    <ClockIcon className="w-6 h-6 text-secondary-500 dark:text-secondary-400" />
+                    <ClockIcon className="w-6 h-6 text-blue-500 dark:text-blue-400" />
                     {safeT('medecin.dashboard.todaySchedule')}
                   </h3>
                   <span className="text-sm text-gray-500 dark:text-gray-400 font-medium">
@@ -793,11 +793,11 @@ const MedecinDashboard = () => {
                     {todayAppointments.map((appt, index) => (
                       <div
                         key={appt.id}
-                        className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700/50 rounded-2xl hover:bg-secondary-50 dark:hover:bg-secondary-900/30 hover:translate-x-2 hover:shadow-md transition-all duration-300 animate-slide-up"
+                        className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700/50 rounded-2xl hover:bg-blue-50 dark:hover:bg-blue-950/30 hover:translate-x-2 hover:shadow-md transition-all duration-300 animate-slide-up"
                         style={{ animationDelay: `${1.0 + index * 0.1}s` }}
                       >
                         <div className="flex items-center gap-4">
-                          <div className="w-12 h-12 bg-secondary-100 dark:bg-secondary-900/50 rounded-full flex items-center justify-center font-bold text-secondary-600 dark:text-secondary-400">
+                          <div className="w-12 h-12 bg-blue-100 dark:bg-blue-950/50 rounded-full flex items-center justify-center font-bold text-blue-700 dark:text-blue-400">
                             {safeString(appt.patient?.prenom, '').charAt(0)}{safeString(appt.patient?.nom, '').charAt(0)}
                           </div>
                           <div>
@@ -820,7 +820,7 @@ const MedecinDashboard = () => {
                           </div>
                           <span className={`text-xs px-3 py-1.5 rounded-xl font-semibold ${
                             appt.statut === 'CONFIRME'
-                              ? 'bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-400'
+                              ? 'bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-400'
                               : 'bg-orange-100 dark:bg-orange-900/50 text-orange-700 dark:text-orange-400'
                           }`}>
                             {appt.statut === 'CONFIRME' ? safeT('medecin.dashboard.statusConfirmed') : safeT('medecin.dashboard.statusPending')}
@@ -848,7 +848,7 @@ const MedecinDashboard = () => {
                 style={{ animationDelay: '0.2s' }}
               >
                 <h3 className="font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                  <CalendarIcon className="w-5 h-5 text-secondary-500 dark:text-secondary-400" />
+                  <CalendarIcon className="w-5 h-5 text-blue-500 dark:text-blue-400" />
                   {safeT('medecin.dashboard.calendar')} - {monthNames[new Date().getMonth()]}
                 </h3>
 
@@ -897,11 +897,11 @@ const MedecinDashboard = () => {
                         bgColor = 'bg-orange-100 dark:bg-orange-900/30';
                         textColor = 'text-orange-700 dark:text-orange-400';
                       } else if (hasConfirmed) {
-                        bgColor = 'bg-green-100 dark:bg-green-900/30';
-                        textColor = 'text-green-700 dark:text-green-400';
-                      } else if (hasPending) {
                         bgColor = 'bg-blue-100 dark:bg-blue-900/30';
                         textColor = 'text-blue-700 dark:text-blue-400';
+                      } else if (hasPending) {
+                        bgColor = 'bg-blue-100 dark:bg-blue-950/30';
+                        textColor = 'text-blue-800 dark:text-blue-400';
                       }
                     }
 
@@ -911,7 +911,7 @@ const MedecinDashboard = () => {
                         className={`aspect-square flex items-center justify-center rounded-lg text-xs font-medium transition-all duration-300 ${
                           dayInfo.isCurrentMonth
                             ? isToday
-                              ? 'bg-secondary-500 text-white font-bold shadow-md scale-110'
+                              ? 'bg-blue-500 text-white font-bold shadow-md scale-110'
                               : `${bgColor} ${textColor} hover:scale-105`
                             : 'text-gray-300 dark:text-gray-600'
                         }`}
@@ -926,11 +926,11 @@ const MedecinDashboard = () => {
                 <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
                   <div className="grid grid-cols-2 gap-2 text-xs">
                     <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 bg-green-100 dark:bg-green-900/30 rounded"></div>
+                      <div className="w-3 h-3 bg-blue-100 dark:bg-blue-900/30 rounded"></div>
                       <span className="text-gray-600 dark:text-gray-400">{safeT('medecin.dashboard.statusConfirmed')}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 bg-blue-100 dark:bg-blue-900/30 rounded"></div>
+                      <div className="w-3 h-3 bg-blue-100 dark:bg-blue-950/30 rounded"></div>
                       <span className="text-gray-600 dark:text-gray-400">{safeT('medecin.dashboard.statusPending')}</span>
                     </div>
                     <div className="flex items-center gap-2">
@@ -968,8 +968,8 @@ const MedecinDashboard = () => {
                         suggestion.color === 'orange'
                           ? 'bg-orange-50 dark:bg-orange-900/20 border-orange-200 dark:border-orange-800'
                           : suggestion.color === 'blue'
-                          ? 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800'
-                          : 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800'
+                          ? 'bg-blue-50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-900'
+                          : 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800'
                       } hover:scale-105 transition-all duration-300`}
                     >
                       <div className="flex items-start gap-3">
@@ -989,11 +989,11 @@ const MedecinDashboard = () => {
                     <div className="flex items-center gap-2">
                       <div className="w-24 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
                         <div
-                          className="h-full bg-gradient-to-r from-secondary-500 via-secondary-400 to-primary-500 rounded-full transition-all duration-1000"
+                          className="h-full bg-blue-700 rounded-full transition-all duration-1000"
                           style={{ width: `${Math.min((appointments.length / 50) * 100, 100)}%` }}
                         ></div>
                       </div>
-                      <span className="text-sm font-bold text-secondary-600 dark:text-secondary-400">
+                      <span className="text-sm font-bold text-blue-700 dark:text-blue-400">
                         {Math.min(Math.round((appointments.length / 50) * 100), 100)}%
                       </span>
                     </div>
@@ -1007,15 +1007,15 @@ const MedecinDashboard = () => {
                 style={{ animationDelay: '0.4s' }}
               >
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                  <SparklesIcon className="w-5 h-5 text-secondary-500 dark:text-secondary-400" />
+                  <SparklesIcon className="w-5 h-5 text-blue-500 dark:text-blue-400" />
                   {safeT('medecin.dashboard.quickAccess')}
                 </h3>
                 <div className="space-y-3">
                   <button
                     onClick={() => navigate('/medecin/appointments')}
-                    className="w-full flex items-center gap-3 p-4 bg-gradient-to-r from-secondary-50 to-secondary-100 dark:from-secondary-900/30 dark:to-secondary-900/50 rounded-2xl hover:scale-105 hover:shadow-md transition-all duration-300"
+                    className="w-full flex items-center gap-3 p-4 bg-blue-50 dark:bg-blue-900/30 rounded-2xl hover:scale-105 hover:shadow-md transition-all duration-300"
                   >
-                    <div className="w-10 h-10 bg-secondary-500 rounded-xl flex items-center justify-center">
+                    <div className="w-10 h-10 bg-blue-500 rounded-xl flex items-center justify-center">
                       <CalendarIcon className="w-5 h-5 text-white" />
                     </div>
                     <div className="text-left flex-1">
@@ -1026,9 +1026,9 @@ const MedecinDashboard = () => {
 
                   <button
                     onClick={() => navigate('/medecin/patients')}
-                    className="w-full flex items-center gap-3 p-4 bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/30 dark:to-green-900/50 rounded-2xl hover:scale-105 hover:shadow-md transition-all duration-300"
+                    className="w-full flex items-center gap-3 p-4 bg-blue-50 dark:bg-blue-900/30 rounded-2xl hover:scale-105 hover:shadow-md transition-all duration-300"
                   >
-                    <div className="w-10 h-10 bg-green-500 rounded-xl flex items-center justify-center">
+                    <div className="w-10 h-10 bg-blue-500 rounded-xl flex items-center justify-center">
                       <UsersIcon className="w-5 h-5 text-white" />
                     </div>
                     <div className="text-left flex-1">
@@ -1039,9 +1039,9 @@ const MedecinDashboard = () => {
 
                   <button
                     onClick={() => navigate('/medecin/notes')}
-                    className="w-full flex items-center gap-3 p-4 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/30 dark:to-primary-900/50 rounded-2xl hover:scale-105 hover:shadow-md transition-all duration-300"
+                    className="w-full flex items-center gap-3 p-4 bg-blue-50 dark:bg-blue-900/30 rounded-2xl hover:scale-105 hover:shadow-md transition-all duration-300"
                   >
-                    <div className="w-10 h-10 bg-primary-500 rounded-xl flex items-center justify-center">
+                    <div className="w-10 h-10 bg-blue-500 rounded-xl flex items-center justify-center">
                       <DocumentTextIcon className="w-5 h-5 text-white" />
                     </div>
                     <div className="text-left flex-1">

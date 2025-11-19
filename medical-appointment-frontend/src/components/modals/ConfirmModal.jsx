@@ -18,7 +18,7 @@ const ConfirmModal = ({
       Icon: ExclamationTriangleIcon,
       bgColor: 'bg-red-100 dark:bg-red-900/30',
       iconColor: 'text-red-600 dark:text-red-400',
-      btnColor: 'from-red-500 to-red-600 hover:from-red-600 hover:to-red-700',
+      btnColor: 'from-red-500 to-red-600 hover:bg-red-700',
       effectColor: 'bg-red-200/30',
     },
     warning: {
@@ -30,16 +30,16 @@ const ConfirmModal = ({
     },
     success: {
       Icon: CheckCircleIcon,
-      bgColor: 'bg-green-100 dark:bg-green-900/30',
-      iconColor: 'text-green-600 dark:text-green-400',
-      btnColor: 'from-green-500 to-green-600 hover:from-green-600 hover:to-green-700',
-      effectColor: 'bg-green-200/30',
+      bgColor: 'bg-blue-100 dark:bg-blue-900/30',
+      iconColor: 'text-blue-600 dark:text-blue-400',
+      btnColor: 'bg-blue-600 hover:bg-blue-700',
+      effectColor: 'bg-blue-200/30',
     },
     info: {
       Icon: CheckCircleIcon,
-      bgColor: 'bg-blue-100 dark:bg-blue-900/30',
-      iconColor: 'text-blue-600 dark:text-blue-400',
-      btnColor: 'from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700',
+      bgColor: 'bg-blue-100 dark:bg-blue-950/30',
+      iconColor: 'text-blue-700 dark:text-blue-400',
+      btnColor: 'bg-blue-600 hover:bg-blue-700',
       effectColor: 'bg-blue-200/30',
     },
   };
@@ -100,7 +100,7 @@ const ConfirmModal = ({
                 onConfirm();
                 onClose();
               }}
-              className={`flex-1 px-6 py-4 bg-gradient-to-r ${config.btnColor} text-white rounded-2xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105`}
+              className={`flex-1 px-6 py-4 ${config.btnColor} text-white rounded-2xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105`}
             >
               {confirmText}
             </button>

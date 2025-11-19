@@ -290,7 +290,7 @@ const AdminRendezVous = () => {
     switch (statut) {
       case 'CONFIRME':
         return (
-          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">
             <CheckCircleIcon className="w-4 h-4" />
             {t('admin.rendezvous.status.confirmed')}
           </span>
@@ -318,7 +318,7 @@ const AdminRendezVous = () => {
     return (
       <div className="flex items-center justify-center min-h-screen bg-[#F7F9FC] dark:bg-gray-900">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-secondary-400 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="w-16 h-16 border-4 border-blue-400 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-gray-500 dark:text-white">{t('common.loading')}</p>
         </div>
       </div>
@@ -330,9 +330,9 @@ const AdminRendezVous = () => {
       <div className="min-h-screen bg-[#F7F9FC] dark:bg-gray-900 py-8 px-4 relative overflow-hidden">
         {/* Blobs animés en arrière-plan */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-primary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-          <div className="absolute top-40 right-20 w-96 h-96 bg-secondary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-          <div className="absolute -bottom-20 left-1/3 w-80 h-80 bg-primary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+          <div className="absolute top-40 right-20 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+          <div className="absolute -bottom-20 left-1/3 w-80 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
@@ -340,17 +340,17 @@ const AdminRendezVous = () => {
           <div className="mb-8 animate-slide-up">
             <div className="relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl p-8 shadow-xl border border-white/20 dark:border-gray-700/50 overflow-hidden">
               {/* Effets décoratifs d'arrière-plan */}
-              <div className="absolute top-0 right-0 w-96 h-96 bg-primary-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-              <div className="absolute bottom-0 left-0 w-72 h-72 bg-secondary-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+              <div className="absolute top-0 right-0 w-96 h-96 bg-blue-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+              <div className="absolute bottom-0 left-0 w-72 h-72 bg-blue-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
 
               <div className="relative z-10">
                 <div className="flex items-start justify-between">
                   {/* Section gauche */}
                   <div className="flex-1">
                     {/* Badge */}
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-50 dark:bg-primary-900/30 rounded-full mb-4">
-                      <div className="w-2 h-2 bg-primary-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs font-semibold text-primary-700 dark:text-primary-300 uppercase tracking-wider">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-950/30 rounded-full mb-4">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                      <span className="text-xs font-semibold text-blue-800 dark:text-blue-300 uppercase tracking-wider">
                         {t('admin.rendezvous.title')}
                       </span>
                     </div>
@@ -366,8 +366,8 @@ const AdminRendezVous = () => {
                     {/* Mini-cartes date/heure */}
                     <div className="flex items-center gap-4">
                       <div className="flex items-center gap-3 px-5 py-3 bg-white/60 dark:bg-gray-700/60 rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
-                        <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900/50 rounded-xl flex items-center justify-center">
-                          <CalendarIcon className="w-5 h-5 text-primary-600 dark:text-primary-400" />
+                        <div className="w-10 h-10 bg-blue-100 dark:bg-blue-950/50 rounded-xl flex items-center justify-center">
+                          <CalendarIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
                         </div>
                         <div>
                           <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{t('dashboard.date')}</p>
@@ -378,8 +378,8 @@ const AdminRendezVous = () => {
                       </div>
 
                       <div className="flex items-center gap-3 px-5 py-3 bg-white/60 dark:bg-gray-700/60 rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
-                        <div className="w-10 h-10 bg-secondary-100 dark:bg-secondary-900/50 rounded-xl flex items-center justify-center">
-                          <ClockIcon className="w-5 h-5 text-secondary-600 dark:text-secondary-400" />
+                        <div className="w-10 h-10 bg-blue-100 dark:bg-blue-950/50 rounded-xl flex items-center justify-center">
+                          <ClockIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
                         </div>
                         <div>
                           <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{t('dashboard.time')}</p>
@@ -394,8 +394,8 @@ const AdminRendezVous = () => {
                   {/* Section droite - Stats */}
                   <div className="flex flex-col items-end gap-3">
                     <div className="relative group">
-                      <div className="absolute inset-0 bg-secondary-500 rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
-                      <div className="relative px-6 py-4 bg-gradient-to-br from-secondary-500 to-emerald-600 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                      <div className="absolute inset-0 bg-blue-500 rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+                      <div className="relative px-6 py-4 bg-blue-700 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                         <div className="flex items-center gap-3">
                           <CalendarIcon className="w-6 h-6 text-white" />
                           <div className="text-left">
@@ -421,7 +421,7 @@ const AdminRendezVous = () => {
                   onClick={() => { setFilterStatus(''); setCurrentPage(1); }}
                   className={`flex-1 px-6 py-3.5 rounded-xl font-semibold transition-all ${
                     filterStatus === ''
-                      ? 'bg-secondary-500 text-white shadow-lg scale-105'
+                      ? 'bg-blue-500 text-white shadow-lg scale-105'
                       : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                   }`}
                 >
@@ -431,7 +431,7 @@ const AdminRendezVous = () => {
                   onClick={() => { setFilterStatus('CONFIRME'); setCurrentPage(1); }}
                   className={`flex-1 px-6 py-3.5 rounded-xl font-semibold transition-all ${
                     filterStatus === 'CONFIRME'
-                      ? 'bg-green-500 text-white shadow-lg scale-105'
+                      ? 'bg-blue-500 text-white shadow-lg scale-105'
                       : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                   }`}
                 >
@@ -484,7 +484,7 @@ const AdminRendezVous = () => {
                       className="group relative animate-scale-in"
                       style={{ animationDelay: `${index * 50}ms` }}
                     >
-                      <div className="absolute -inset-0.5 bg-gradient-to-r from-secondary-400 to-emerald-600 rounded-2xl blur opacity-0 group-hover:opacity-30 transition duration-500"></div>
+                      <div className="absolute -inset-0.5 bg-blue-700 rounded-2xl blur opacity-0 group-hover:opacity-30 transition duration-500"></div>
                       <div className="relative bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl rounded-2xl p-6 shadow-xl border border-gray-200/50 dark:border-gray-700/50 hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-2">
                         {/* Status Badge en haut */}
                         <div className="absolute top-4 right-4 z-10">
@@ -495,8 +495,8 @@ const AdminRendezVous = () => {
                         <div className="mb-5 pt-2">
                           <div className="flex items-center gap-3">
                             <div className="relative">
-                              <div className="absolute -inset-1 bg-gradient-to-br from-secondary-400 to-emerald-600 rounded-2xl blur-sm opacity-50 group-hover:opacity-75 transition"></div>
-                              <div className="relative w-16 h-16 bg-gradient-to-br from-secondary-500 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                              <div className="absolute -inset-1 bg-blue-700 rounded-2xl blur-sm opacity-50 group-hover:opacity-75 transition"></div>
+                              <div className="relative w-16 h-16 bg-blue-700 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                                 <CalendarIcon className="w-8 h-8 text-white" />
                               </div>
                             </div>
@@ -512,12 +512,12 @@ const AdminRendezVous = () => {
                         </div>
 
                         {/* Patient Info */}
-                        <div className="mb-4 p-4 bg-primary-50 dark:bg-primary-900/20 rounded-xl border border-primary-200 dark:border-primary-800">
-                          <p className="text-xs font-bold text-primary-700 dark:text-primary-300 uppercase tracking-wider mb-2">
+                        <div className="mb-4 p-4 bg-blue-50 dark:bg-blue-950/20 rounded-xl border border-blue-200 dark:border-blue-900">
+                          <p className="text-xs font-bold text-blue-800 dark:text-blue-300 uppercase tracking-wider mb-2">
                             {t('admin.rendezvous.table.patient')}
                           </p>
                           <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 bg-primary-500 rounded-xl flex items-center justify-center text-white text-sm font-bold shadow-md">
+                            <div className="w-10 h-10 bg-blue-500 rounded-xl flex items-center justify-center text-white text-sm font-bold shadow-md">
                               {rdv.patient?.prenom?.charAt(0)}{rdv.patient?.nom?.charAt(0)}
                             </div>
                             <div className="flex-1 min-w-0">
@@ -532,12 +532,12 @@ const AdminRendezVous = () => {
                         </div>
 
                         {/* Médecin Info */}
-                        <div className="mb-4 p-4 bg-secondary-50 dark:bg-secondary-900/20 rounded-xl border border-secondary-200 dark:border-secondary-800">
-                          <p className="text-xs font-bold text-secondary-700 dark:text-secondary-300 uppercase tracking-wider mb-2">
+                        <div className="mb-4 p-4 bg-blue-50 dark:bg-blue-950/20 rounded-xl border border-blue-200 dark:border-blue-900">
+                          <p className="text-xs font-bold text-blue-800 dark:text-blue-300 uppercase tracking-wider mb-2">
                             {t('admin.rendezvous.table.doctor')}
                           </p>
                           <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 bg-secondary-500 rounded-xl flex items-center justify-center text-white text-xs font-bold shadow-md">
+                            <div className="w-10 h-10 bg-blue-500 rounded-xl flex items-center justify-center text-white text-xs font-bold shadow-md">
                               {t('common.dr')}
                             </div>
                             <div className="flex-1 min-w-0">
@@ -567,7 +567,7 @@ const AdminRendezVous = () => {
                         <div className="grid grid-cols-2 gap-2">
                           <button
                             onClick={() => handleShowDetails(rdv)}
-                            className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg text-xs font-bold transition-all hover:scale-105 whitespace-nowrap border-2 border-emerald-500 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20"
+                            className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg text-xs font-bold transition-all hover:scale-105 whitespace-nowrap border-2 border-blue-500 text-blue-700 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/20"
                           >
                             <EyeIcon className="w-3.5 h-3.5" />
                             <span>{t('admin.rendezvous.details')}</span>
@@ -575,7 +575,7 @@ const AdminRendezVous = () => {
 
                           <button
                             onClick={() => handleChangeStatus(rdv)}
-                            className="flex items-center justify-center gap-1.5 px-3 py-2.5 bg-gradient-to-r from-secondary-500 to-emerald-600 hover:from-secondary-600 hover:to-emerald-700 text-white rounded-lg text-xs font-bold transition-all hover:scale-105 shadow-md whitespace-nowrap"
+                            className="flex items-center justify-center gap-1.5 px-3 py-2.5 bg-blue-700 hover:bg-blue-800 text-white rounded-lg text-xs font-bold transition-all hover:scale-105 shadow-md whitespace-nowrap"
                           >
                             <ClockIcon className="w-3.5 h-3.5" />
                             <span>{t('admin.rendezvous.changeStatus')}</span>
@@ -619,7 +619,7 @@ const AdminRendezVous = () => {
                             onClick={() => setCurrentPage(page)}
                             className={`px-4 py-2 rounded-lg transition-all ${
                               currentPage === page
-                                ? 'bg-gradient-to-r from-secondary-500 to-emerald-600 text-white shadow-lg scale-110'
+                                ? 'bg-blue-700 text-white shadow-lg scale-110'
                                 : 'bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-600'
                             }`}
                           >
@@ -664,11 +664,11 @@ const AdminRendezVous = () => {
             {/* En-tête avec icône */}
             <div className="relative mb-5">
               {/* Fond décoratif */}
-              <div className="absolute -top-8 -right-8 w-48 h-48 bg-primary-200 rounded-full blur-3xl opacity-30"></div>
+              <div className="absolute -top-8 -right-8 w-48 h-48 bg-blue-200 rounded-full blur-3xl opacity-30"></div>
 
               <div className="relative flex items-center gap-3">
                 {/* Icône */}
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-secondary-500 to-emerald-600 flex items-center justify-center shadow-lg">
+                <div className="w-10 h-10 rounded-xl bg-blue-700 flex items-center justify-center shadow-lg">
                   <InformationCircleIcon className="w-6 h-6 text-white" />
                 </div>
 
@@ -687,10 +687,10 @@ const AdminRendezVous = () => {
             <div className="space-y-3">
               {/* Date et Statut */}
               <div className="grid grid-cols-2 gap-3">
-                <div className="p-3 bg-primary-50 dark:bg-primary-900/20 rounded-xl border border-primary-200 dark:border-primary-800">
+                <div className="p-3 bg-blue-50 dark:bg-blue-950/20 rounded-xl border border-blue-200 dark:border-blue-900">
                   <div className="flex items-center gap-1.5 mb-1.5">
-                    <CalendarIcon className="w-4 h-4 text-primary-600 dark:text-primary-400" />
-                    <p className="text-xs font-semibold text-primary-700 dark:text-primary-300 uppercase tracking-wider">
+                    <CalendarIcon className="w-4 h-4 text-blue-700 dark:text-blue-400" />
+                    <p className="text-xs font-semibold text-blue-800 dark:text-blue-300 uppercase tracking-wider">
                       {t('admin.rendezvous.table.date')}
                     </p>
                   </div>
@@ -702,10 +702,10 @@ const AdminRendezVous = () => {
                   </p>
                 </div>
 
-                <div className="p-3 bg-secondary-50 dark:bg-secondary-900/20 rounded-xl border border-secondary-200 dark:border-secondary-800">
+                <div className="p-3 bg-blue-50 dark:bg-blue-950/20 rounded-xl border border-blue-200 dark:border-blue-900">
                   <div className="flex items-center gap-1.5 mb-1.5">
-                    <CheckCircleIcon className="w-4 h-4 text-secondary-600 dark:text-secondary-400" />
-                    <p className="text-xs font-semibold text-secondary-700 dark:text-secondary-300 uppercase tracking-wider">
+                    <CheckCircleIcon className="w-4 h-4 text-blue-700 dark:text-blue-400" />
+                    <p className="text-xs font-semibold text-blue-800 dark:text-blue-300 uppercase tracking-wider">
                       {t('admin.rendezvous.table.status')}
                     </p>
                   </div>
@@ -716,9 +716,9 @@ const AdminRendezVous = () => {
               </div>
 
               {/* Patient */}
-              <div className="p-4 bg-white dark:bg-gray-700/50 rounded-xl border border-primary-200 dark:border-primary-800 hover:border-primary-300 dark:hover:border-primary-700 transition-colors">
+              <div className="p-4 bg-white dark:bg-gray-700/50 rounded-xl border border-blue-200 dark:border-blue-900 hover:border-blue-300 dark:hover:border-blue-800 transition-colors">
                 <div className="flex items-center gap-2.5 mb-2">
-                  <div className="w-9 h-9 bg-gradient-to-br from-secondary-500 to-emerald-600 rounded-lg flex items-center justify-center shadow-md">
+                  <div className="w-9 h-9 bg-blue-700 rounded-lg flex items-center justify-center shadow-md">
                     <UserIcon className="w-5 h-5 text-white" />
                   </div>
                   <p className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
@@ -729,15 +729,15 @@ const AdminRendezVous = () => {
                   {selectedRendezVous.patient?.prenom} {selectedRendezVous.patient?.nom}
                 </p>
                 <p className="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
+                  <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
                   {selectedRendezVous.patient?.telephone}
                 </p>
               </div>
 
               {/* Médecin */}
-              <div className="p-4 bg-white dark:bg-gray-700/50 rounded-xl border border-secondary-200 dark:border-secondary-800 hover:border-secondary-300 dark:hover:border-secondary-700 transition-colors">
+              <div className="p-4 bg-white dark:bg-gray-700/50 rounded-xl border border-blue-200 dark:border-blue-900 hover:border-blue-300 dark:hover:border-blue-800 transition-colors">
                 <div className="flex items-center gap-2.5 mb-2">
-                  <div className="w-9 h-9 bg-gradient-to-br from-secondary-500 to-emerald-600 rounded-lg flex items-center justify-center shadow-md">
+                  <div className="w-9 h-9 bg-blue-700 rounded-lg flex items-center justify-center shadow-md">
                     <UserGroupIcon className="w-5 h-5 text-white" />
                   </div>
                   <p className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
@@ -748,7 +748,7 @@ const AdminRendezVous = () => {
                   {t('common.dr')}. {selectedRendezVous.medecin?.prenom} {selectedRendezVous.medecin?.nom}
                 </p>
                 <p className="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 bg-secondary-500 rounded-full"></span>
+                  <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
                   {translateSpecialty(selectedRendezVous.medecin?.specialite)}
                 </p>
               </div>
@@ -767,7 +767,7 @@ const AdminRendezVous = () => {
             <div className="mt-5 flex justify-end">
               <button
                 onClick={() => setShowDetailsModal(false)}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-sm transition-all hover:scale-105 border-2 border-emerald-500 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20"
+                className="flex items-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-sm transition-all hover:scale-105 border-2 border-blue-500 text-blue-700 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/20"
               >
                 <XCircleIcon className="w-4 h-4" />
                 <span>{t('common.close')}</span>
@@ -791,17 +791,17 @@ const AdminRendezVous = () => {
             </h3>
 
             <div className="space-y-4 mb-6">
-              <label className={`flex items-center gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all hover:bg-gray-50 dark:hover:bg-gray-700/50 ${newStatus === 'CONFIRME' ? 'border-green-500 bg-green-50 dark:bg-green-900/20' : 'border-gray-200 dark:border-gray-700'}`}>
+              <label className={`flex items-center gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all hover:bg-gray-50 dark:hover:bg-gray-700/50 ${newStatus === 'CONFIRME' ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20' : 'border-gray-200 dark:border-gray-700'}`}>
                 <input
                   type="radio"
                   name="status"
                   value="CONFIRME"
                   checked={newStatus === 'CONFIRME'}
                   onChange={(e) => setNewStatus(e.target.value)}
-                  className="w-5 h-5 text-green-600"
+                  className="w-5 h-5 text-blue-600"
                 />
                 <div className="flex items-center gap-2">
-                  <CheckCircleIcon className="w-5 h-5 text-green-600" />
+                  <CheckCircleIcon className="w-5 h-5 text-blue-600" />
                   <span className="font-medium text-gray-900 dark:text-white">
                     {t('admin.rendezvous.status.confirmed')}
                   </span>
@@ -852,7 +852,7 @@ const AdminRendezVous = () => {
               </button>
               <button
                 onClick={confirmChangeStatus}
-                className="flex-1 px-6 py-3 bg-gradient-to-r from-secondary-500 to-emerald-600 hover:from-secondary-600 hover:to-emerald-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                className="flex-1 px-6 py-3 bg-blue-700 hover:bg-blue-800 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
               >
                 {t('common.confirm')}
               </button>

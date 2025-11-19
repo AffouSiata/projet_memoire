@@ -21,26 +21,26 @@ const NotificationToast = ({ notification, onDismiss }) => {
   const getIcon = (type) => {
     switch (type) {
       case 'CONFIRMATION':
-        return <CheckCircleIcon className="w-6 h-6 text-green-500" />;
+        return <CheckCircleIcon className="w-6 h-6 text-blue-500" />;
       case 'ANNULATION':
         return <XCircleIcon className="w-6 h-6 text-red-500" />;
       case 'CHANGEMENT_HORAIRE':
         return <ExclamationTriangleIcon className="w-6 h-6 text-orange-500" />;
       default:
-        return <BellIcon className="w-6 h-6 text-secondary-500" />;
+        return <BellIcon className="w-6 h-6 text-blue-500" />;
     }
   };
 
   const getBgColor = (type) => {
     switch (type) {
       case 'CONFIRMATION':
-        return 'from-green-500 to-emerald-600';
+        return 'blue-600';
       case 'ANNULATION':
-        return 'from-red-500 to-rose-600';
+        return 'red-500';
       case 'CHANGEMENT_HORAIRE':
-        return 'from-orange-500 to-amber-600';
+        return 'orange-500';
       default:
-        return 'from-secondary-500 to-cyan-600';
+        return 'blue-700';
     }
   };
 
@@ -60,7 +60,7 @@ const NotificationToast = ({ notification, onDismiss }) => {
     <div className="fixed top-4 right-4 z-[9999] animate-slide-in-right">
       <div className="relative group">
         {/* Glow effect */}
-        <div className={`absolute inset-0 bg-gradient-to-r ${getBgColor(notification.type)} rounded-2xl blur-xl opacity-60 group-hover:opacity-80 transition-opacity`}></div>
+        <div className={`absolute inset-0 bg-${getBgColor(notification.type)} rounded-2xl blur-xl opacity-60 group-hover:opacity-80 transition-opacity`}></div>
 
         {/* Toast content */}
         <div
@@ -69,7 +69,7 @@ const NotificationToast = ({ notification, onDismiss }) => {
         >
           <div className="flex items-start gap-3">
             {/* Icon */}
-            <div className={`flex-shrink-0 w-10 h-10 bg-gradient-to-r ${getBgColor(notification.type)} rounded-xl flex items-center justify-center`}>
+            <div className={`flex-shrink-0 w-10 h-10 bg-${getBgColor(notification.type)} rounded-xl flex items-center justify-center`}>
               {getIcon(notification.type)}
             </div>
 
@@ -81,7 +81,7 @@ const NotificationToast = ({ notification, onDismiss }) => {
               <p className="text-xs text-gray-600 dark:text-gray-300 line-clamp-2">
                 {notification.description}
               </p>
-              <p className="text-xs text-secondary-600 dark:text-secondary-400 mt-1 font-semibold">
+              <p className="text-xs text-blue-700 dark:text-blue-400 mt-1 font-semibold">
                 Cliquez pour voir →
               </p>
             </div>
@@ -100,7 +100,7 @@ const NotificationToast = ({ notification, onDismiss }) => {
 
           {/* Progress bar */}
           <div className="absolute bottom-0 left-0 right-0 h-1 bg-gray-200 dark:bg-gray-700 rounded-b-2xl overflow-hidden">
-            <div className={`h-full bg-gradient-to-r ${getBgColor(notification.type)} animate-progress-bar`}></div>
+            <div className={`h-full bg-${getBgColor(notification.type)} animate-progress-bar`}></div>
           </div>
         </div>
       </div>

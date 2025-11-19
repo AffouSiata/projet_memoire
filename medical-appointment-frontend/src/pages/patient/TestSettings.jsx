@@ -55,7 +55,7 @@ const TestSettings = () => {
 
           {/* Message */}
           <div className="bg-blue-100 border border-blue-400 rounded-lg p-4 mb-6">
-            <p className="text-blue-900 font-mono">{message}</p>
+            <p className="text-blue-950 font-mono">{message}</p>
           </div>
 
           {/* Sélection langue */}
@@ -70,7 +70,7 @@ const TestSettings = () => {
                 }}
                 className={`px-6 py-3 rounded-lg font-bold ${
                   langue === 'fr'
-                    ? 'bg-green-500 text-white'
+                    ? 'bg-blue-500 text-white'
                     : 'bg-gray-200 text-gray-700'
                 }`}
               >
@@ -84,7 +84,7 @@ const TestSettings = () => {
                 }}
                 className={`px-6 py-3 rounded-lg font-bold ${
                   langue === 'en'
-                    ? 'bg-green-500 text-white'
+                    ? 'bg-blue-500 text-white'
                     : 'bg-gray-200 text-gray-700'
                 }`}
               >
@@ -101,7 +101,7 @@ const TestSettings = () => {
                 saveSettings();
               }}
               disabled={loading}
-              className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed text-xl"
+              className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed text-xl"
             >
               {loading ? '⏳ Sauvegarde...' : '💾 SAUVEGARDER'}
             </button>

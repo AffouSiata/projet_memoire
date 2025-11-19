@@ -175,7 +175,7 @@ const MedecinAppointments = () => {
       <MedecinLayout>
         <div className="flex items-center justify-center min-h-screen bg-slate-50 dark:bg-gray-900">
           <div className="text-center">
-            <div className="w-16 h-16 border-4 border-secondary-400 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+            <div className="w-16 h-16 border-4 border-blue-400 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
             <p className="text-gray-500 dark:text-white">{t('common.loading')}</p>
           </div>
         </div>
@@ -188,9 +188,9 @@ const MedecinAppointments = () => {
       <div className="min-h-screen bg-[#F7F9FC] dark:bg-gray-900 p-8 relative overflow-hidden">
         {/* Blobs animés - couleurs LARANA */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-secondary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-          <div className="absolute top-40 right-20 w-96 h-96 bg-primary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-          <div className="absolute -bottom-20 left-1/3 w-80 h-80 bg-secondary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+          <div className="absolute top-40 right-20 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+          <div className="absolute -bottom-20 left-1/3 w-80 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
@@ -198,8 +198,8 @@ const MedecinAppointments = () => {
           <div className="mb-8 animate-slide-up">
             <div className="relative bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-lg overflow-hidden">
               {/* Effets décoratifs subtils */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-secondary-100/40 dark:bg-secondary-900/20 rounded-full blur-3xl"></div>
-              <div className="absolute bottom-0 left-0 w-48 h-48 bg-primary-100/40 dark:bg-primary-900/20 rounded-full blur-3xl"></div>
+              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-100/40 dark:bg-blue-950/20 rounded-full blur-3xl"></div>
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-100/40 dark:bg-blue-950/20 rounded-full blur-3xl"></div>
 
               {/* Contenu principal */}
               <div className="relative z-10">
@@ -207,9 +207,9 @@ const MedecinAppointments = () => {
                   {/* Section gauche */}
                   <div className="flex-1">
                     {/* Badge avec icône de calendrier */}
-                    <div className="inline-flex items-center gap-2.5 px-4 py-2 bg-secondary-50 dark:bg-secondary-900/30 rounded-2xl mb-4">
-                      <div className="w-2 h-2 bg-secondary-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs font-bold text-secondary-600 dark:text-secondary-400 uppercase tracking-wider">{t('medecin.appointments.badge')}</span>
+                    <div className="inline-flex items-center gap-2.5 px-4 py-2 bg-blue-50 dark:bg-blue-950/30 rounded-2xl mb-4">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                      <span className="text-xs font-bold text-blue-700 dark:text-blue-400 uppercase tracking-wider">{t('medecin.appointments.badge')}</span>
                     </div>
 
                     {/* Titre avec icône intégrée */}
@@ -217,7 +217,7 @@ const MedecinAppointments = () => {
                       <h1 className="text-5xl font-extrabold text-gray-900 dark:text-white leading-tight">
                         {t('medecin.appointments.title')}
                       </h1>
-                      <div className="w-14 h-14 bg-gradient-to-br from-secondary-500 to-primary-600 rounded-2xl flex items-center justify-center shadow-lg animate-bounce-slow">
+                      <div className="w-14 h-14 bg-blue-700 rounded-2xl flex items-center justify-center shadow-lg animate-bounce-slow">
                         <CalendarIcon className="w-7 h-7 text-white" />
                       </div>
                     </div>
@@ -230,7 +230,7 @@ const MedecinAppointments = () => {
                   {/* Actions rapides - Redesignées */}
                   <div className="flex items-center gap-3">
                     {/* Bouton Exporter - Style moderne */}
-                    <button className="flex items-center gap-2.5 px-6 py-3.5 bg-white dark:bg-gray-700 hover:bg-blue-600 dark:hover:bg-blue-600 text-gray-700 dark:text-white hover:text-white border-2 border-gray-200 dark:border-gray-600 hover:border-blue-600 rounded-2xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                    <button className="flex items-center gap-2.5 px-6 py-3.5 bg-white dark:bg-gray-700 hover:bg-blue-700 dark:hover:bg-blue-700 text-gray-700 dark:text-white hover:text-white border-2 border-gray-200 dark:border-gray-600 hover:border-blue-700 rounded-2xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                       <DocumentArrowDownIcon className="w-5 h-5" />
                       <span>{t('medecin.appointments.export')}</span>
                     </button>
@@ -247,8 +247,8 @@ const MedecinAppointments = () => {
               className="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-md hover:shadow-xl hover:scale-105 hover:-rotate-1 transition-all duration-300 animate-scale-in"
               style={{ animationDelay: '0.2s' }}
             >
-              <div className="w-12 h-12 bg-secondary-100 dark:bg-secondary-900/50 rounded-2xl flex items-center justify-center mb-4 animate-pulse-soft">
-                <CalendarIcon className="w-6 h-6 text-secondary-500 dark:text-secondary-400" />
+              <div className="w-12 h-12 bg-blue-100 dark:bg-blue-950/50 rounded-2xl flex items-center justify-center mb-4 animate-pulse-soft">
+                <CalendarIcon className="w-6 h-6 text-blue-500 dark:text-blue-400" />
               </div>
               <p className="text-gray-500 dark:text-gray-400 text-sm mb-1">{t('medecin.appointments.stats.total')}</p>
               <p className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
@@ -262,8 +262,8 @@ const MedecinAppointments = () => {
               className="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-md hover:shadow-xl hover:scale-105 hover:rotate-1 transition-all duration-300 animate-scale-in"
               style={{ animationDelay: '0.3s' }}
             >
-              <div className="w-12 h-12 bg-green-100 dark:bg-green-900/50 rounded-2xl flex items-center justify-center mb-4 animate-pulse-soft">
-                <CheckCircleIcon className="w-6 h-6 text-green-500 dark:text-green-400" />
+              <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/50 rounded-2xl flex items-center justify-center mb-4 animate-pulse-soft">
+                <CheckCircleIcon className="w-6 h-6 text-blue-500 dark:text-blue-400" />
               </div>
               <p className="text-gray-500 dark:text-gray-400 text-sm mb-1">{t('medecin.appointments.stats.confirmed')}</p>
               <p className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
@@ -308,19 +308,19 @@ const MedecinAppointments = () => {
             <div className="flex items-center gap-4">
               {/* Barre de recherche */}
               <div className="flex-1 relative group">
-                <MagnifyingGlassIcon className="w-5 h-5 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2 group-focus-within:text-secondary-500 transition-colors" />
+                <MagnifyingGlassIcon className="w-5 h-5 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2 group-focus-within:text-blue-500 transition-colors" />
                 <input
                   type="text"
                   placeholder={t('medecin.appointments.searchPlaceholder')}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3.5 bg-gray-50/50 dark:bg-gray-700/50 backdrop-blur-sm border-2 border-gray-200/50 dark:border-gray-600/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500 text-gray-900 dark:text-white placeholder:text-gray-400 font-medium transition-all"
+                  className="w-full pl-12 pr-4 py-3.5 bg-gray-50/50 dark:bg-gray-700/50 backdrop-blur-sm border-2 border-gray-200/50 dark:border-gray-600/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-white placeholder:text-gray-400 font-medium transition-all"
                 />
               </div>
 
               {/* Filtre par statut */}
               <div className="flex items-center gap-2 px-4 py-3.5 bg-gray-50/50 dark:bg-gray-700/50 backdrop-blur-sm border-2 border-gray-200/50 dark:border-gray-600/50 rounded-xl">
-                <FunnelIcon className="w-5 h-5 text-secondary-500" />
+                <FunnelIcon className="w-5 h-5 text-blue-500" />
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
@@ -335,7 +335,7 @@ const MedecinAppointments = () => {
 
               {/* Filtre par date */}
               <div className="flex items-center gap-2 px-4 py-3.5 bg-gray-50/50 dark:bg-gray-700/50 backdrop-blur-sm border-2 border-gray-200/50 dark:border-gray-600/50 rounded-xl">
-                <CalendarIcon className="w-5 h-5 text-primary-500" />
+                <CalendarIcon className="w-5 h-5 text-blue-500" />
                 <select
                   value={dateFilter}
                   onChange={(e) => setDateFilter(e.target.value)}
@@ -353,7 +353,7 @@ const MedecinAppointments = () => {
             {/* Résultats de recherche */}
             <div className="mt-4 flex items-center justify-between">
               <div className="flex items-center gap-2 text-sm">
-                <div className="w-2 h-2 bg-secondary-500 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
                 <span className="font-semibold text-gray-700 dark:text-gray-300">
                   {filteredAppointments.length} {t('medecin.appointments.resultsFound', { count: filteredAppointments.length })}
                 </span>
@@ -381,14 +381,14 @@ const MedecinAppointments = () => {
                       {/* Avatar avec gradient */}
                       <div className="relative">
                         <div className={`absolute inset-0 rounded-2xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity ${
-                          apt.statut === 'CONFIRME' ? 'bg-green-500' :
+                          apt.statut === 'CONFIRME' ? 'bg-blue-500' :
                           apt.statut === 'EN_ATTENTE' ? 'bg-orange-500' :
                           'bg-red-500'
                         }`}></div>
                         <div className={`relative w-16 h-16 rounded-2xl flex items-center justify-center font-bold text-xl shadow-xl group-hover:scale-110 transition-transform ${
-                          apt.statut === 'CONFIRME' ? 'bg-gradient-to-br from-green-400 to-green-600 text-white' :
+                          apt.statut === 'CONFIRME' ? 'bg-blue-500 text-white' :
                           apt.statut === 'EN_ATTENTE' ? 'bg-gradient-to-br from-orange-400 to-orange-600 text-white' :
-                          'bg-gradient-to-br from-red-400 to-red-600 text-white'
+                          'bg-red-600 text-white'
                         }`}>
                           {apt.patient?.prenom?.charAt(0)}{apt.patient?.nom?.charAt(0)}
                         </div>
@@ -401,7 +401,7 @@ const MedecinAppointments = () => {
                             {apt.patient?.prenom} {apt.patient?.nom}
                           </h3>
                           <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold shadow-sm ${
-                            apt.statut === 'CONFIRME' ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400' :
+                            apt.statut === 'CONFIRME' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' :
                             apt.statut === 'EN_ATTENTE' ? 'bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400' :
                             'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400'
                           }`}>
@@ -413,11 +413,11 @@ const MedecinAppointments = () => {
 
                         <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
                           <div className="flex items-center gap-2 px-3 py-1.5 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                            <CalendarIcon className="w-4 h-4 text-secondary-500" />
+                            <CalendarIcon className="w-4 h-4 text-blue-500" />
                             <span className="font-medium">{formatDate(new Date(apt.date), dateFormats.medium)}</span>
                           </div>
                           <div className="flex items-center gap-2 px-3 py-1.5 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                            <ClockIcon className="w-4 h-4 text-primary-500" />
+                            <ClockIcon className="w-4 h-4 text-blue-500" />
                             <span className="font-medium">{formatTime(new Date(apt.date), timeFormats.short)}</span>
                           </div>
                           <div className="flex items-center gap-2 px-3 py-1.5 bg-gray-50 dark:bg-gray-700 rounded-lg">
@@ -433,13 +433,13 @@ const MedecinAppointments = () => {
                         <>
                           <button
                             onClick={() => handleConfirm(apt.id)}
-                            className="relative group/btn overflow-hidden px-4 py-2 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                            className="relative group/btn overflow-hidden px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                           >
                             <span className="relative z-10">{t('medecin.appointments.confirm')}</span>
                           </button>
                           <button
                             onClick={() => handleCancel(apt.id)}
-                            className="relative group/btn overflow-hidden px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                            className="relative group/btn overflow-hidden px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                           >
                             <span className="relative z-10">{t('medecin.appointments.cancel')}</span>
                           </button>
@@ -447,7 +447,7 @@ const MedecinAppointments = () => {
                       )}
                       <button
                         onClick={() => handleViewDetails(apt)}
-                        className="relative group/btn overflow-hidden px-4 py-2 bg-gradient-to-r from-secondary-500 to-secondary-600 hover:from-secondary-600 hover:to-secondary-700 text-white rounded-xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                        className="relative group/btn overflow-hidden px-4 py-2 bg-blue-700 hover:bg-blue-800 text-white rounded-xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                       >
                         <span className="relative z-10">{t('medecin.appointments.details')}</span>
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700"></div>
@@ -459,8 +459,8 @@ const MedecinAppointments = () => {
             ) : (
               <div className="relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl p-16 text-center border border-white/20 dark:border-gray-700/50 shadow-xl animate-scale-in">
                 <div className="relative inline-block mb-6">
-                  <div className="absolute inset-0 bg-secondary-400 rounded-full blur-2xl opacity-20 animate-pulse"></div>
-                  <div className="relative w-24 h-24 bg-gradient-to-br from-secondary-400 to-secondary-600 rounded-full flex items-center justify-center shadow-xl">
+                  <div className="absolute inset-0 bg-blue-400 rounded-full blur-2xl opacity-20 animate-pulse"></div>
+                  <div className="relative w-24 h-24 bg-blue-700 rounded-full flex items-center justify-center shadow-xl">
                     <CalendarIcon className="w-12 h-12 text-white" />
                   </div>
                 </div>
@@ -488,7 +488,7 @@ const MedecinAppointments = () => {
                   className={`px-4 py-2 rounded-xl font-medium transition-all ${
                     currentPage === 1
                       ? 'bg-gray-100 dark:bg-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed'
-                      : 'bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm text-gray-700 dark:text-white hover:bg-secondary-50 dark:hover:bg-gray-700 hover:scale-105 shadow-md hover:shadow-lg border border-white/20 dark:border-gray-700/50'
+                      : 'bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm text-gray-700 dark:text-white hover:bg-blue-50 dark:hover:bg-gray-700 hover:scale-105 shadow-md hover:shadow-lg border border-white/20 dark:border-gray-700/50'
                   }`}
                 >
                   ← {t('medecin.appointments.previous')}
@@ -507,8 +507,8 @@ const MedecinAppointments = () => {
                           onClick={() => setCurrentPage(page)}
                           className={`w-10 h-10 rounded-xl font-bold transition-all ${
                             currentPage === page
-                              ? 'bg-secondary-500 text-white shadow-lg scale-110'
-                              : 'bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm text-gray-700 dark:text-white hover:bg-secondary-50 dark:hover:bg-gray-700 hover:scale-105 shadow-md border border-white/20 dark:border-gray-700/50'
+                              ? 'bg-blue-500 text-white shadow-lg scale-110'
+                              : 'bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm text-gray-700 dark:text-white hover:bg-blue-50 dark:hover:bg-gray-700 hover:scale-105 shadow-md border border-white/20 dark:border-gray-700/50'
                           }`}
                         >
                           {page}
@@ -531,7 +531,7 @@ const MedecinAppointments = () => {
                   className={`px-4 py-2 rounded-xl font-medium transition-all ${
                     currentPage === totalPages
                       ? 'bg-gray-100 dark:bg-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed'
-                      : 'bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm text-gray-700 dark:text-white hover:bg-secondary-50 dark:hover:bg-gray-700 hover:scale-105 shadow-md hover:shadow-lg border border-white/20 dark:border-gray-700/50'
+                      : 'bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm text-gray-700 dark:text-white hover:bg-blue-50 dark:hover:bg-gray-700 hover:scale-105 shadow-md hover:shadow-lg border border-white/20 dark:border-gray-700/50'
                   }`}
                 >
                   {t('medecin.appointments.next')} →
@@ -554,7 +554,7 @@ const MedecinAppointments = () => {
           {/* Modal Container */}
           <div className="relative bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl rounded-3xl shadow-2xl w-full max-w-2xl animate-slide-up overflow-hidden">
             {/* Header avec gradient et effet décoratif */}
-            <div className="relative bg-gradient-to-br from-secondary-500 via-secondary-600 to-primary-600 p-5 overflow-hidden">
+            <div className="relative bg-blue-700 p-5 overflow-hidden">
               {/* Blobs décoratifs */}
               <div className="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
 
@@ -589,7 +589,7 @@ const MedecinAppointments = () => {
               <div className="relative bg-white/60 dark:bg-gray-700/60 backdrop-blur-xl rounded-2xl p-4 border border-white/20 dark:border-gray-600/50 shadow-lg overflow-hidden">
                 <div className="relative z-10">
                   <div className="flex items-center gap-2 mb-3">
-                    <div className="w-7 h-7 bg-gradient-to-br from-secondary-400 to-secondary-600 rounded-lg flex items-center justify-center">
+                    <div className="w-7 h-7 bg-blue-700 rounded-lg flex items-center justify-center">
                       <UserCircleIcon className="w-4 h-4 text-white" />
                     </div>
                     <h3 className="text-base font-bold text-gray-900 dark:text-white">{t('medecin.appointments.modal.patientInfo')}</h3>
@@ -598,8 +598,8 @@ const MedecinAppointments = () => {
                   <div className="flex items-center gap-3">
                     {/* Avatar avec gradient animé */}
                     <div className="relative group">
-                      <div className="absolute inset-0 bg-gradient-to-br from-secondary-400 to-primary-500 rounded-xl blur-md opacity-50 group-hover:opacity-75 transition-opacity"></div>
-                      <div className="relative w-14 h-14 bg-gradient-to-br from-secondary-500 to-primary-600 rounded-xl flex items-center justify-center font-bold text-lg text-white shadow-lg group-hover:scale-110 transition-transform">
+                      <div className="absolute inset-0 bg-blue-700 rounded-xl blur-md opacity-50 group-hover:opacity-75 transition-opacity"></div>
+                      <div className="relative w-14 h-14 bg-blue-700 rounded-xl flex items-center justify-center font-bold text-lg text-white shadow-lg group-hover:scale-110 transition-transform">
                         {selectedAppointment.patient?.prenom?.charAt(0)}{selectedAppointment.patient?.nom?.charAt(0)}
                       </div>
                     </div>
@@ -611,16 +611,16 @@ const MedecinAppointments = () => {
                       </h4>
                       <div className="space-y-1">
                         <div className="flex items-center gap-2 text-xs">
-                          <div className="w-6 h-6 bg-secondary-100 dark:bg-secondary-900/30 rounded-lg flex items-center justify-center">
-                            <PhoneIcon className="w-3 h-3 text-secondary-600 dark:text-secondary-400" />
+                          <div className="w-6 h-6 bg-blue-100 dark:bg-blue-950/30 rounded-lg flex items-center justify-center">
+                            <PhoneIcon className="w-3 h-3 text-blue-700 dark:text-blue-400" />
                           </div>
                           <span className="text-gray-700 dark:text-gray-300 font-medium">
                             {selectedAppointment.patient?.telephone || t('medecin.appointments.modal.notProvided')}
                           </span>
                         </div>
                         <div className="flex items-center gap-2 text-xs">
-                          <div className="w-6 h-6 bg-secondary-100 dark:bg-secondary-900/30 rounded-lg flex items-center justify-center">
-                            <EnvelopeIcon className="w-3 h-3 text-secondary-600 dark:text-secondary-400" />
+                          <div className="w-6 h-6 bg-blue-100 dark:bg-blue-950/30 rounded-lg flex items-center justify-center">
+                            <EnvelopeIcon className="w-3 h-3 text-blue-700 dark:text-blue-400" />
                           </div>
                           <span className="text-gray-700 dark:text-gray-300 font-medium">
                             {selectedAppointment.patient?.email || t('medecin.appointments.modal.notProvided')}
@@ -635,7 +635,7 @@ const MedecinAppointments = () => {
               {/* Section Détails RDV */}
               <div>
                 <div className="flex items-center gap-2 mb-3">
-                  <div className="w-7 h-7 bg-gradient-to-br from-primary-400 to-primary-600 rounded-lg flex items-center justify-center">
+                  <div className="w-7 h-7 bg-blue-700 rounded-lg flex items-center justify-center">
                     <CalendarIcon className="w-4 h-4 text-white" />
                   </div>
                   <h3 className="text-base font-bold text-gray-900 dark:text-white">{t('medecin.appointments.modal.appointmentDetails')}</h3>
@@ -644,10 +644,10 @@ const MedecinAppointments = () => {
                 <div className="grid grid-cols-2 gap-3">
                   {/* Date */}
                   <div className="group relative bg-gradient-to-br from-white/80 to-white/60 dark:from-gray-700/80 dark:to-gray-700/60 backdrop-blur-xl rounded-xl p-3 border border-white/20 dark:border-gray-600/50 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-secondary-500/0 to-secondary-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div className="absolute inset-0 bg-blue-700/0 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <div className="relative z-10">
                       <div className="flex items-center gap-1.5 mb-1">
-                        <CalendarIcon className="w-4 h-4 text-secondary-600 dark:text-secondary-400" />
+                        <CalendarIcon className="w-4 h-4 text-blue-700 dark:text-blue-400" />
                         <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase">{t('medecin.appointments.modal.date')}</p>
                       </div>
                       <p className="text-sm font-bold text-gray-900 dark:text-white">
@@ -658,10 +658,10 @@ const MedecinAppointments = () => {
 
                   {/* Heure */}
                   <div className="group relative bg-gradient-to-br from-white/80 to-white/60 dark:from-gray-700/80 dark:to-gray-700/60 backdrop-blur-xl rounded-xl p-3 border border-white/20 dark:border-gray-600/50 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary-500/0 to-primary-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div className="absolute inset-0 bg-blue-700/0 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <div className="relative z-10">
                       <div className="flex items-center gap-1.5 mb-1">
-                        <ClockIcon className="w-4 h-4 text-primary-600 dark:text-primary-400" />
+                        <ClockIcon className="w-4 h-4 text-blue-700 dark:text-blue-400" />
                         <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase">{t('medecin.appointments.modal.time')}</p>
                       </div>
                       <p className="text-sm font-bold text-gray-900 dark:text-white">
@@ -675,7 +675,7 @@ const MedecinAppointments = () => {
                     <div className="relative z-10">
                       <div className="flex items-center gap-1.5 mb-1">
                         {selectedAppointment.statut === 'CONFIRME' ? (
-                          <CheckCircleIcon className="w-4 h-4 text-green-600 dark:text-green-400" />
+                          <CheckCircleIcon className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                         ) : selectedAppointment.statut === 'EN_ATTENTE' ? (
                           <ClockIcon className="w-4 h-4 text-orange-600 dark:text-orange-400" />
                         ) : (
@@ -684,7 +684,7 @@ const MedecinAppointments = () => {
                         <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase">{t('medecin.appointments.modal.status')}</p>
                       </div>
                       <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold shadow-sm ${
-                        selectedAppointment.statut === 'CONFIRME' ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400' :
+                        selectedAppointment.statut === 'CONFIRME' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' :
                         selectedAppointment.statut === 'EN_ATTENTE' ? 'bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400' :
                         'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400'
                       }`}>
@@ -697,10 +697,10 @@ const MedecinAppointments = () => {
 
                   {/* Motif */}
                   <div className="group relative bg-gradient-to-br from-white/80 to-white/60 dark:from-gray-700/80 dark:to-gray-700/60 backdrop-blur-xl rounded-xl p-3 border border-white/20 dark:border-gray-600/50 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-secondary-500/0 to-primary-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div className="absolute inset-0 bg-blue-700/0 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <div className="relative z-10">
                       <div className="flex items-center gap-1.5 mb-1">
-                        <ExclamationCircleIcon className="w-4 h-4 text-secondary-600 dark:text-secondary-400" />
+                        <ExclamationCircleIcon className="w-4 h-4 text-blue-700 dark:text-blue-400" />
                         <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase">{t('medecin.appointments.modal.reason')}</p>
                       </div>
                       <p className="text-sm font-bold text-gray-900 dark:text-white">

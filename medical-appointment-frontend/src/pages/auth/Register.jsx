@@ -116,25 +116,15 @@ const Register = () => {
 
   if (showSuccess) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 via-white to-secondary-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 relative overflow-hidden">
-        {/* Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-          <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-secondary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-          <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-green-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
-        </div>
-
-        <div className="max-w-md w-full relative z-10">
-          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-2xl rounded-3xl shadow-2xl p-8 text-center animate-scale-in border border-white/20 dark:border-gray-700/50">
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 px-4">
+        <div className="max-w-md w-full">
+          <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-8 text-center animate-scale-in border border-gray-200 dark:border-gray-700">
             <div className="mb-6">
               <div className="relative inline-block">
-                <div className={`absolute -inset-4 rounded-full blur-2xl ${
-                  role === 'MEDECIN' ? 'bg-orange-500' : 'bg-green-500'
-                } opacity-30 animate-pulse`}></div>
                 <div className={`relative w-24 h-24 rounded-full flex items-center justify-center mx-auto shadow-2xl ${
                   role === 'MEDECIN'
-                    ? 'bg-gradient-to-br from-orange-500 to-yellow-600'
-                    : 'bg-gradient-to-br from-green-500 to-emerald-600'
+                    ? 'bg-orange-600'
+                    : 'bg-blue-700'
                 }`}>
                   {role === 'MEDECIN' ? (
                     <ClockIcon className="w-12 h-12 text-white" />
@@ -160,7 +150,7 @@ const Register = () => {
             )}
             <button
               onClick={() => navigate('/login')}
-              className="w-full px-8 py-4 bg-gradient-to-r from-primary-500 to-secondary-600 text-white font-bold rounded-2xl hover:from-primary-600 hover:to-secondary-700 transition-all shadow-xl hover:shadow-2xl transform hover:scale-105 flex items-center justify-center gap-2"
+              className="w-full px-8 py-4 bg-blue-700 text-white font-bold rounded-2xl hover:bg-blue-800 transition-all shadow-xl hover:shadow-2xl transform hover:scale-105 flex items-center justify-center gap-2"
             >
               {t('register.goToLogin')}
               <ArrowRightIcon className="w-5 h-5" />
@@ -173,20 +163,13 @@ const Register = () => {
 
   if (step === 1) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 via-white to-secondary-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 py-12 relative overflow-hidden">
-        {/* Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-96 h-96 bg-primary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-          <div className="absolute top-40 right-20 w-96 h-96 bg-secondary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-          <div className="absolute -bottom-20 left-1/3 w-96 h-96 bg-primary-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
-        </div>
-
-        <div className="max-w-6xl w-full relative z-10">
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 px-4 py-12">
+        <div className="max-w-6xl w-full">
           {/* Header */}
           <div className="text-center mb-16 animate-fade-in">
             <div className="inline-flex items-center justify-center gap-2 mb-4">
-              <SparklesIcon className="w-10 h-10 text-primary-600 dark:text-primary-400 animate-pulse" />
-              <h1 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-primary-600 via-secondary-600 to-primary-600 bg-clip-text text-transparent">
+              <SparklesIcon className="w-10 h-10 text-blue-700 dark:text-blue-400 animate-pulse" />
+              <h1 className="text-5xl md:text-6xl font-black text-blue-700 dark:text-blue-500">
                 Nexus Health
               </h1>
             </div>
@@ -200,17 +183,17 @@ const Register = () => {
             {/* Patient Card */}
             <button
               onClick={() => handleRoleSelection('PATIENT')}
-              className="group relative bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-3 border border-white/50 dark:border-gray-700/50 animate-slide-up overflow-hidden"
+              className="group relative bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-3 border border-gray-200 dark:border-gray-700 animate-slide-up overflow-hidden"
             >
               {/* Animated gradient background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-secondary-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-blue-700/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
               <div className="relative z-10">
                 {/* Icon */}
                 <div className="mb-6 flex justify-center">
                   <div className="relative">
-                    <div className="absolute -inset-4 bg-gradient-to-br from-primary-400 to-secondary-400 rounded-3xl blur-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
-                    <div className="relative w-24 h-24 bg-gradient-to-br from-primary-500 to-secondary-600 rounded-3xl flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-500">
+                    <div className="absolute -inset-4 bg-blue-700 rounded-3xl blur-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+                    <div className="relative w-24 h-24 bg-blue-700 rounded-3xl flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-500">
                       <UserCircleIcon className="w-12 h-12 text-white" />
                     </div>
                   </div>
@@ -227,27 +210,27 @@ const Register = () => {
                 {/* Features */}
                 <ul className="space-y-3 text-left mb-6">
                   <li className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
-                    <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0">
-                      <CheckCircleIcon className="w-4 h-4 text-green-600 dark:text-green-400" />
+                    <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                      <CheckCircleIcon className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                     </div>
                     <span>{t('register.patientFeature1')}</span>
                   </li>
                   <li className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
-                    <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0">
-                      <CheckCircleIcon className="w-4 h-4 text-green-600 dark:text-green-400" />
+                    <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                      <CheckCircleIcon className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                     </div>
                     <span>{t('register.patientFeature2')}</span>
                   </li>
                   <li className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
-                    <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0">
-                      <CheckCircleIcon className="w-4 h-4 text-green-600 dark:text-green-400" />
+                    <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                      <CheckCircleIcon className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                     </div>
                     <span>{t('register.patientFeature3')}</span>
                   </li>
                 </ul>
 
                 {/* Action */}
-                <div className="flex items-center justify-center gap-2 text-primary-600 dark:text-primary-400 font-bold group-hover:gap-4 transition-all">
+                <div className="flex items-center justify-center gap-2 text-blue-700 dark:text-blue-400 font-bold group-hover:gap-4 transition-all">
                   <span>{t('register.submit')}</span>
                   <ArrowRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </div>
@@ -257,18 +240,18 @@ const Register = () => {
             {/* Doctor Card */}
             <button
               onClick={() => handleRoleSelection('MEDECIN')}
-              className="group relative bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-3 border border-white/50 dark:border-gray-700/50 animate-slide-up overflow-hidden"
+              className="group relative bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-3 border border-gray-200 dark:border-gray-700 animate-slide-up overflow-hidden"
               style={{ animationDelay: '150ms' }}
             >
               {/* Animated gradient background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-secondary-500/10 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-blue-700/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
               <div className="relative z-10">
                 {/* Icon */}
                 <div className="mb-6 flex justify-center">
                   <div className="relative">
-                    <div className="absolute -inset-4 bg-gradient-to-br from-secondary-400 to-emerald-400 rounded-3xl blur-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
-                    <div className="relative w-24 h-24 bg-gradient-to-br from-secondary-500 to-emerald-600 rounded-3xl flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-500">
+                    <div className="absolute -inset-4 bg-blue-700 rounded-3xl blur-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+                    <div className="relative w-24 h-24 bg-blue-700 rounded-3xl flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-500">
                       <UserGroupIcon className="w-12 h-12 text-white" />
                     </div>
                   </div>
@@ -285,20 +268,20 @@ const Register = () => {
                 {/* Features */}
                 <ul className="space-y-3 text-left mb-6">
                   <li className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
-                    <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0">
-                      <CheckCircleIcon className="w-4 h-4 text-green-600 dark:text-green-400" />
+                    <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                      <CheckCircleIcon className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                     </div>
                     <span>{t('register.doctorFeature1')}</span>
                   </li>
                   <li className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
-                    <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0">
-                      <CheckCircleIcon className="w-4 h-4 text-green-600 dark:text-green-400" />
+                    <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                      <CheckCircleIcon className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                     </div>
                     <span>{t('register.doctorFeature2')}</span>
                   </li>
                   <li className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
-                    <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0">
-                      <CheckCircleIcon className="w-4 h-4 text-green-600 dark:text-green-400" />
+                    <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                      <CheckCircleIcon className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                     </div>
                     <span>{t('register.doctorFeature3')}</span>
                   </li>
@@ -313,7 +296,7 @@ const Register = () => {
                 </div>
 
                 {/* Action */}
-                <div className="flex items-center justify-center gap-2 text-secondary-600 dark:text-secondary-400 font-bold group-hover:gap-4 transition-all">
+                <div className="flex items-center justify-center gap-2 text-blue-700 dark:text-blue-400 font-bold group-hover:gap-4 transition-all">
                   <span>{t('register.submit')}</span>
                   <ArrowRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </div>
@@ -325,7 +308,7 @@ const Register = () => {
           <div className="text-center animate-fade-in" style={{ animationDelay: '300ms' }}>
             <p className="text-gray-600 dark:text-gray-400">
               {t('register.alreadyHaveAccount')}{' '}
-              <Link to="/login" className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-bold transition-colors">
+              <Link to="/login" className="text-blue-700 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-bold transition-colors">
                 {t('register.loginLink')}
               </Link>
             </p>
@@ -336,23 +319,16 @@ const Register = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 via-white to-secondary-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 py-12 relative overflow-hidden">
-      {/* Animated background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-96 h-96 bg-primary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-        <div className="absolute top-40 right-20 w-96 h-96 bg-secondary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-20 left-1/3 w-96 h-96 bg-primary-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
-      </div>
-
-      <div className="max-w-2xl w-full relative z-10">
-        <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-2xl rounded-3xl shadow-2xl p-8 md:p-10 animate-fade-in border border-white/50 dark:border-gray-700/50">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 px-4 py-12">
+      <div className="max-w-2xl w-full">
+        <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-8 md:p-10 animate-fade-in border border-gray-200 dark:border-gray-700">
           {/* Header */}
           <div className="text-center mb-8">
-            <div className="inline-flex items-center gap-3 px-5 py-2 bg-gradient-to-r from-primary-100 to-secondary-100 dark:from-primary-900/30 dark:to-secondary-900/30 rounded-full mb-6 border border-primary-200 dark:border-primary-800">
+            <div className="inline-flex items-center gap-3 px-5 py-2 bg-blue-100 dark:bg-blue-900/30 rounded-full mb-6 border border-blue-200 dark:border-blue-800">
               {role === 'PATIENT' ? (
-                <UserCircleIcon className="w-5 h-5 text-primary-600 dark:text-primary-400" />
+                <UserCircleIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
               ) : (
-                <UserGroupIcon className="w-5 h-5 text-secondary-600 dark:text-secondary-400" />
+                <UserGroupIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
               )}
               <span className="text-sm font-bold text-gray-700 dark:text-gray-300">
                 {role === 'PATIENT' ? t('register.patientRole') : t('register.doctorRole')}
@@ -388,7 +364,7 @@ const Register = () => {
                   value={formData.nom}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-primary-500 focus:ring-4 focus:ring-primary-500/20 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500"
+                  className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500"
                   placeholder={t('register.lastNamePlaceholder')}
                 />
               </div>
@@ -402,7 +378,7 @@ const Register = () => {
                   value={formData.prenom}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-primary-500 focus:ring-4 focus:ring-primary-500/20 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500"
+                  className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500"
                   placeholder={t('register.firstNamePlaceholder')}
                 />
               </div>
@@ -420,7 +396,7 @@ const Register = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-primary-500 focus:ring-4 focus:ring-primary-500/20 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500"
+                className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500"
                 placeholder={t('register.emailPlaceholder')}
               />
             </div>
@@ -437,7 +413,7 @@ const Register = () => {
                 value={formData.telephone}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-primary-500 focus:ring-4 focus:ring-primary-500/20 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500"
+                className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500"
                 placeholder={t('register.phonePlaceholder')}
               />
             </div>
@@ -447,7 +423,7 @@ const Register = () => {
               <>
                 <div className="border-t-2 border-gray-200 dark:border-gray-700 pt-6 mt-6">
                   <div className="flex items-center gap-2 mb-6">
-                    <ShieldCheckIcon className="w-6 h-6 text-secondary-600 dark:text-secondary-400" />
+                    <ShieldCheckIcon className="w-6 h-6 text-blue-700 dark:text-blue-400" />
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                       {t('register.professionalInfo')}
                     </h3>
@@ -464,7 +440,7 @@ const Register = () => {
                       value={formData.specialite}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-secondary-500 focus:ring-4 focus:ring-secondary-500/20 transition-all group-hover:border-gray-300 dark:group-hover:border-gray-500"
+                      className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all group-hover:border-gray-300 dark:group-hover:border-gray-500"
                     >
                       <option value="">{t('register.selectSpecialty')}</option>
                       {specialties.map((specialty, index) => (
@@ -487,7 +463,7 @@ const Register = () => {
                       value={formData.numeroOrdre}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-secondary-500 focus:ring-4 focus:ring-secondary-500/20 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500"
+                      className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500"
                       placeholder={t('register.registrationNumberPlaceholder')}
                     />
                     <p className="mt-2 text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1">
@@ -528,7 +504,7 @@ const Register = () => {
                   onChange={handleChange}
                   required
                   minLength={6}
-                  className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-primary-500 focus:ring-4 focus:ring-primary-500/20 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500"
+                  className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500"
                   placeholder="••••••••"
                 />
               </div>
@@ -544,7 +520,7 @@ const Register = () => {
                   onChange={handleChange}
                   required
                   minLength={6}
-                  className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-primary-500 focus:ring-4 focus:ring-primary-500/20 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500"
+                  className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500"
                   placeholder="••••••••"
                 />
               </div>
@@ -565,8 +541,8 @@ const Register = () => {
                 disabled={loading}
                 className={`flex-1 px-8 py-4 font-bold rounded-2xl text-white shadow-xl transition-all flex items-center justify-center gap-2 ${
                   role === 'PATIENT'
-                    ? 'bg-gradient-to-r from-primary-500 to-secondary-600 hover:from-primary-600 hover:to-secondary-700'
-                    : 'bg-gradient-to-r from-secondary-500 to-emerald-600 hover:from-secondary-600 hover:to-emerald-700'
+                    ? 'bg-blue-700 hover:bg-blue-800'
+                    : 'bg-blue-700 hover:bg-blue-800'
                 } ${loading ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-2xl hover:scale-105'}`}
               >
                 {loading ? (
@@ -587,7 +563,7 @@ const Register = () => {
           <div className="mt-8 text-center pt-6 border-t border-gray-200 dark:border-gray-700">
             <p className="text-gray-600 dark:text-gray-400">
               {t('register.alreadyHaveAccount')}{' '}
-              <Link to="/login" className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-bold transition-colors">
+              <Link to="/login" className="text-blue-700 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-bold transition-colors">
                 {t('register.loginLink')}
               </Link>
             </p>

@@ -199,7 +199,7 @@ const MedecinNotes = () => {
       <MedecinLayout>
         <div className="flex items-center justify-center min-h-screen bg-slate-50 dark:bg-gray-900">
           <div className="text-center">
-            <div className="w-16 h-16 border-4 border-secondary-400 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+            <div className="w-16 h-16 border-4 border-blue-400 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
             <p className="text-gray-500 dark:text-white">{t('common.loading')}</p>
           </div>
         </div>
@@ -212,9 +212,9 @@ const MedecinNotes = () => {
       <div className="min-h-screen bg-[#F7F9FC] dark:bg-gray-900 p-8 relative overflow-hidden">
         {/* Blobs animés en arrière-plan - couleurs LARANA */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-secondary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-          <div className="absolute top-40 right-20 w-96 h-96 bg-primary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-          <div className="absolute -bottom-20 left-1/3 w-80 h-80 bg-secondary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+          <div className="absolute top-40 right-20 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+          <div className="absolute -bottom-20 left-1/3 w-80 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
@@ -222,8 +222,8 @@ const MedecinNotes = () => {
           <div className="mb-8 animate-slide-up">
             <div className="relative bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-lg overflow-hidden">
               {/* Effets décoratifs subtils */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-primary-100/40 dark:bg-primary-900/20 rounded-full blur-3xl"></div>
-              <div className="absolute bottom-0 left-0 w-48 h-48 bg-secondary-100/40 dark:bg-secondary-900/20 rounded-full blur-3xl"></div>
+              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-100/40 dark:bg-blue-950/20 rounded-full blur-3xl"></div>
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-100/40 dark:bg-blue-950/20 rounded-full blur-3xl"></div>
 
               {/* Contenu principal */}
               <div className="relative z-10">
@@ -231,9 +231,9 @@ const MedecinNotes = () => {
                   {/* Section gauche */}
                   <div className="flex-1">
                     {/* Badge */}
-                    <div className="inline-flex items-center gap-2.5 px-4 py-2 bg-secondary-50 dark:bg-secondary-900/30 rounded-2xl mb-4">
-                      <div className="w-2 h-2 bg-secondary-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs font-bold text-secondary-600 dark:text-secondary-400 uppercase tracking-wider">{t('medecin.notes.badge')}</span>
+                    <div className="inline-flex items-center gap-2.5 px-4 py-2 bg-blue-50 dark:bg-blue-950/30 rounded-2xl mb-4">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                      <span className="text-xs font-bold text-blue-700 dark:text-blue-400 uppercase tracking-wider">{t('medecin.notes.badge')}</span>
                     </div>
 
                     {/* Titre avec icône */}
@@ -241,7 +241,7 @@ const MedecinNotes = () => {
                       <h1 className="text-5xl font-extrabold text-gray-900 dark:text-white leading-tight">
                         {t('medecin.notes.title')}
                       </h1>
-                      <div className="w-14 h-14 bg-gradient-to-br from-primary-500 to-secondary-600 rounded-2xl flex items-center justify-center shadow-lg animate-bounce-slow">
+                      <div className="w-14 h-14 bg-blue-700 rounded-2xl flex items-center justify-center shadow-lg animate-bounce-slow">
                         <DocumentTextIcon className="w-7 h-7 text-white" />
                       </div>
                     </div>
@@ -257,7 +257,7 @@ const MedecinNotes = () => {
                       setShowCreateModal(true);
                       setCreateError(null);
                     }}
-                    className="flex items-center gap-2 px-6 py-3 bg-secondary-500 hover:bg-secondary-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                    className="flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-700 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                   >
                     <PlusIcon className="w-5 h-5" />
                     {t('medecin.notes.newNote')}
@@ -274,8 +274,8 @@ const MedecinNotes = () => {
               className="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-md hover:shadow-xl hover:scale-105 hover:-rotate-1 transition-all duration-300 animate-scale-in"
               style={{ animationDelay: '0.1s' }}
             >
-              <div className="w-12 h-12 bg-secondary-100 dark:bg-secondary-900/50 rounded-2xl flex items-center justify-center mb-4 animate-pulse-soft">
-                <DocumentTextIcon className="w-6 h-6 text-secondary-500 dark:text-secondary-400" />
+              <div className="w-12 h-12 bg-blue-100 dark:bg-blue-950/50 rounded-2xl flex items-center justify-center mb-4 animate-pulse-soft">
+                <DocumentTextIcon className="w-6 h-6 text-blue-500 dark:text-blue-400" />
               </div>
               <p className="text-gray-500 dark:text-gray-400 text-sm mb-1">{t('medecin.notes.stats.total')}</p>
               <p className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
@@ -289,8 +289,8 @@ const MedecinNotes = () => {
               className="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-md hover:shadow-xl hover:scale-105 hover:rotate-1 transition-all duration-300 animate-scale-in"
               style={{ animationDelay: '0.2s' }}
             >
-              <div className="w-12 h-12 bg-green-100 dark:bg-green-900/50 rounded-2xl flex items-center justify-center mb-4 animate-pulse-soft">
-                <CheckCircleIcon className="w-6 h-6 text-green-500 dark:text-green-400" />
+              <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/50 rounded-2xl flex items-center justify-center mb-4 animate-pulse-soft">
+                <CheckCircleIcon className="w-6 h-6 text-blue-500 dark:text-blue-400" />
               </div>
               <p className="text-gray-500 dark:text-gray-400 text-sm mb-1">{t('medecin.notes.stats.active')}</p>
               <p className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
@@ -319,8 +319,8 @@ const MedecinNotes = () => {
               className="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-md hover:shadow-xl hover:scale-105 hover:rotate-1 transition-all duration-300 animate-scale-in"
               style={{ animationDelay: '0.4s' }}
             >
-              <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/50 rounded-2xl flex items-center justify-center mb-4 animate-pulse-soft">
-                <PaperClipIcon className="w-6 h-6 text-primary-500 dark:text-primary-400" />
+              <div className="w-12 h-12 bg-blue-100 dark:bg-blue-950/50 rounded-2xl flex items-center justify-center mb-4 animate-pulse-soft">
+                <PaperClipIcon className="w-6 h-6 text-blue-500 dark:text-blue-400" />
               </div>
               <p className="text-gray-500 dark:text-gray-400 text-sm mb-1">{t('medecin.notes.stats.withAttachments')}</p>
               <p className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
@@ -338,19 +338,19 @@ const MedecinNotes = () => {
             <div className="flex items-center gap-4">
               {/* Barre de recherche avec style amélioré */}
               <div className="flex-1 relative group">
-                <MagnifyingGlassIcon className="w-5 h-5 text-gray-400 group-focus-within:text-secondary-500 absolute left-4 top-1/2 -translate-y-1/2 transition-colors duration-300" />
+                <MagnifyingGlassIcon className="w-5 h-5 text-gray-400 group-focus-within:text-blue-500 absolute left-4 top-1/2 -translate-y-1/2 transition-colors duration-300" />
                 <input
                   type="text"
                   placeholder={t('medecin.notes.searchPlaceholder')}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-12 pr-4 py-4 bg-white dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-2xl focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500 text-gray-900 dark:text-white transition-all duration-300 shadow-sm hover:shadow-md"
+                  className="w-full pl-12 pr-4 py-4 bg-white dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-white transition-all duration-300 shadow-sm hover:shadow-md"
                 />
               </div>
 
               {/* Filtre par statut avec icône */}
               <div className="flex items-center gap-3 px-4 py-4 bg-white dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
-                <FunnelIcon className="w-5 h-5 text-secondary-500 dark:text-secondary-400" />
+                <FunnelIcon className="w-5 h-5 text-blue-500 dark:text-blue-400" />
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
@@ -366,8 +366,8 @@ const MedecinNotes = () => {
             {/* Résultats de recherche avec badge */}
             <div className="mt-4 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <div className="px-4 py-2 bg-secondary-100 dark:bg-secondary-900/30 rounded-xl">
-                  <p className="text-sm font-bold text-secondary-700 dark:text-secondary-400">
+                <div className="px-4 py-2 bg-blue-100 dark:bg-blue-950/30 rounded-xl">
+                  <p className="text-sm font-bold text-blue-800 dark:text-blue-400">
                     {t('medecin.notes.resultsFound', { count: filteredNotes.length })}
                   </p>
                 </div>
@@ -398,11 +398,11 @@ const MedecinNotes = () => {
                           <div className="flex items-center gap-3 mb-4">
                             <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
                               isActive
-                                ? 'bg-secondary-100 dark:bg-secondary-900/30'
+                                ? 'bg-blue-100 dark:bg-blue-950/30'
                                 : 'bg-orange-100 dark:bg-orange-900/30'
                             }`}>
                               <DocumentTextIcon className={`w-6 h-6 ${
-                                isActive ? 'text-secondary-600 dark:text-secondary-400' : 'text-orange-600 dark:text-orange-400'
+                                isActive ? 'text-blue-700 dark:text-blue-400' : 'text-orange-600 dark:text-orange-400'
                               }`} />
                             </div>
 
@@ -444,7 +444,7 @@ const MedecinNotes = () => {
                         <div className="flex flex-col gap-2 flex-shrink-0">
                           <button
                             onClick={() => handleViewDetails(note)}
-                            className="px-5 py-2.5 bg-secondary-500 hover:bg-secondary-600 text-white rounded-xl text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 whitespace-nowrap"
+                            className="px-5 py-2.5 bg-blue-500 hover:bg-blue-700 text-white rounded-xl text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 whitespace-nowrap"
                           >
                             {t('medecin.notes.details')}
                           </button>
@@ -502,12 +502,12 @@ const MedecinNotes = () => {
           {/* Modal content */}
           <div className="relative bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-8 max-w-2xl w-full animate-scale-in overflow-hidden">
             {/* Effet décoratif d'arrière-plan */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-secondary-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
 
             {/* Header du modal */}
             <div className="relative z-10 mb-8">
               <div className="flex items-center gap-4 mb-2">
-                <div className="w-14 h-14 bg-gradient-to-br from-secondary-500 to-primary-500 rounded-2xl flex items-center justify-center shadow-lg">
+                <div className="w-14 h-14 bg-blue-700 rounded-2xl flex items-center justify-center shadow-lg">
                   <PlusIcon className="w-7 h-7 text-white" />
                 </div>
                 <div>
@@ -525,14 +525,14 @@ const MedecinNotes = () => {
               {/* Patient */}
               <div>
                 <label className="flex items-center gap-2 text-sm font-bold text-gray-700 dark:text-gray-300 mb-3">
-                  <UserCircleIcon className="w-5 h-5 text-secondary-500" />
+                  <UserCircleIcon className="w-5 h-5 text-blue-500" />
                   {t('medecin.notes.createModal.patient')}
                 </label>
                 <select
                   required
                   value={formData.patientId}
                   onChange={(e) => setFormData({ ...formData, patientId: e.target.value })}
-                  className="w-full px-4 py-4 bg-gray-50 dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-2xl focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500 text-gray-900 dark:text-white font-medium transition-all duration-300"
+                  className="w-full px-4 py-4 bg-gray-50 dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-white font-medium transition-all duration-300"
                 >
                   <option value="">{t('medecin.notes.createModal.selectPatient')}</option>
                   {patients.map(patient => (
@@ -546,7 +546,7 @@ const MedecinNotes = () => {
               {/* Contenu */}
               <div>
                 <label className="flex items-center gap-2 text-sm font-bold text-gray-700 dark:text-gray-300 mb-3">
-                  <DocumentTextIcon className="w-5 h-5 text-secondary-500" />
+                  <DocumentTextIcon className="w-5 h-5 text-blue-500" />
                   {t('medecin.notes.createModal.observation')}
                 </label>
                 <textarea
@@ -555,7 +555,7 @@ const MedecinNotes = () => {
                   value={formData.contenu}
                   onChange={(e) => setFormData({ ...formData, contenu: e.target.value })}
                   placeholder={t('medecin.notes.createModal.observationPlaceholder')}
-                  className="w-full px-4 py-4 bg-gray-50 dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-2xl focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500 text-gray-900 dark:text-white resize-none font-medium transition-all duration-300"
+                  className="w-full px-4 py-4 bg-gray-50 dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-white resize-none font-medium transition-all duration-300"
                 ></textarea>
               </div>
 
@@ -594,7 +594,7 @@ const MedecinNotes = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-8 py-4 bg-gradient-to-r from-secondary-500 to-primary-500 hover:from-secondary-600 hover:to-primary-600 text-white rounded-2xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2"
+                  className="px-8 py-4 bg-blue-700 hover:bg-blue-800 text-white rounded-2xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2"
                 >
                   <CheckCircleIcon className="w-5 h-5" />
                   {t('medecin.notes.createModal.create')}
@@ -617,14 +617,14 @@ const MedecinNotes = () => {
           {/* Modal content */}
           <div className="relative bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-6 max-w-2xl w-full animate-scale-in">
             {/* Effet décoratif d'arrière-plan */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-secondary-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
 
             {/* Header du modal */}
             <div className="relative z-10 flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
                 <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg ${
                   selectedNote.statut === 'ACTIF'
-                    ? 'bg-gradient-to-br from-green-500 to-green-600'
+                    ? 'bg-blue-500'
                     : 'bg-gradient-to-br from-gray-500 to-gray-600'
                 }`}>
                   <DocumentTextIcon className="w-6 h-6 text-white" />
@@ -652,7 +652,7 @@ const MedecinNotes = () => {
               <div className="flex justify-center">
                 <span className={`inline-flex items-center gap-2 px-5 py-2 rounded-2xl text-sm font-bold shadow-lg ${
                   selectedNote.statut === 'ACTIF'
-                    ? 'bg-green-500 text-white'
+                    ? 'bg-blue-500 text-white'
                     : 'bg-gray-500 text-white'
                 }`}>
                   {selectedNote.statut === 'ACTIF' ? t('medecin.notes.statusActive') : t('medecin.notes.statusArchived')}
@@ -660,12 +660,12 @@ const MedecinNotes = () => {
               </div>
 
               {/* Carte Patient */}
-              <div className="bg-gradient-to-br from-secondary-50 to-secondary-100 dark:bg-secondary-900/20 dark:to-secondary-900/10 rounded-2xl p-5 border-2 border-secondary-200 dark:border-secondary-800 shadow-lg">
+              <div className="bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-5 border-2 border-blue-200 dark:border-blue-900 shadow-lg">
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="w-10 h-10 bg-secondary-500 rounded-xl flex items-center justify-center shadow-lg">
+                  <div className="w-10 h-10 bg-blue-500 rounded-xl flex items-center justify-center shadow-lg">
                     <UserCircleIcon className="w-6 h-6 text-white" />
                   </div>
-                  <p className="text-xs font-bold text-secondary-700 dark:text-secondary-400 uppercase tracking-wider">
+                  <p className="text-xs font-bold text-blue-800 dark:text-blue-400 uppercase tracking-wider">
                     {t('medecin.notes.detailsModal.patient')}
                   </p>
                 </div>
@@ -675,16 +675,16 @@ const MedecinNotes = () => {
               </div>
 
               {/* Carte Contenu */}
-              <div className="bg-gradient-to-br from-primary-50 to-primary-100 dark:bg-primary-900/20 dark:to-primary-900/10 rounded-2xl p-5 border-2 border-primary-200 dark:border-primary-800 shadow-lg">
+              <div className="bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-5 border-2 border-blue-200 dark:border-blue-900 shadow-lg">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-primary-500 rounded-xl flex items-center justify-center shadow-lg">
+                  <div className="w-10 h-10 bg-blue-500 rounded-xl flex items-center justify-center shadow-lg">
                     <DocumentTextIcon className="w-6 h-6 text-white" />
                   </div>
-                  <p className="text-xs font-bold text-primary-700 dark:text-primary-400 uppercase tracking-wider">
+                  <p className="text-xs font-bold text-blue-800 dark:text-blue-400 uppercase tracking-wider">
                     {t('medecin.notes.detailsModal.observation')}
                   </p>
                 </div>
-                <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-xl p-4 border border-primary-200 dark:border-primary-800 max-h-60 overflow-y-auto">
+                <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-xl p-4 border border-blue-200 dark:border-blue-900 max-h-60 overflow-y-auto">
                   <p className="text-sm text-gray-900 dark:text-white whitespace-pre-wrap leading-relaxed">
                     {getTranslatedContent(selectedNote)}
                   </p>
@@ -696,7 +696,7 @@ const MedecinNotes = () => {
                 {/* Date de création */}
                 <div className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-4 border border-gray-200 dark:border-gray-600">
                   <div className="flex items-center gap-2 mb-2">
-                    <CalendarIcon className="w-5 h-5 text-secondary-500" />
+                    <CalendarIcon className="w-5 h-5 text-blue-500" />
                     <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase">
                       {t('medecin.notes.detailsModal.date')}
                     </p>
@@ -709,7 +709,7 @@ const MedecinNotes = () => {
                 {/* Médecin */}
                 <div className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-4 border border-gray-200 dark:border-gray-600">
                   <div className="flex items-center gap-2 mb-2">
-                    <UserCircleIcon className="w-5 h-5 text-primary-500" />
+                    <UserCircleIcon className="w-5 h-5 text-blue-500" />
                     <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase">
                       {t('medecin.notes.detailsModal.doctor')}
                     </p>
@@ -722,12 +722,12 @@ const MedecinNotes = () => {
 
               {/* Pièces jointes si présentes */}
               {selectedNote.piecesJointes && selectedNote.piecesJointes.length > 0 && (
-                <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:bg-blue-900/20 dark:to-blue-900/10 rounded-2xl p-4 border-2 border-blue-200 dark:border-blue-800 shadow-lg">
+                <div className="bg-blue-50 dark:bg-blue-950/20 rounded-2xl p-4 border-2 border-blue-200 dark:border-blue-900 shadow-lg">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-10 h-10 bg-blue-500 rounded-xl flex items-center justify-center shadow-lg">
                       <PaperClipIcon className="w-6 h-6 text-white" />
                     </div>
-                    <p className="text-xs font-bold text-blue-700 dark:text-blue-400 uppercase tracking-wider">
+                    <p className="text-xs font-bold text-blue-800 dark:text-blue-400 uppercase tracking-wider">
                       {t('medecin.notes.detailsModal.attachments', { count: selectedNote.piecesJointes.length })}
                     </p>
                   </div>
@@ -747,7 +747,7 @@ const MedecinNotes = () => {
             <div className="relative z-10 mt-6">
               <button
                 onClick={() => setShowDetailsModal(false)}
-                className="w-full px-6 py-3 bg-gradient-to-r from-secondary-500 to-primary-500 hover:from-secondary-600 hover:to-primary-600 text-white rounded-2xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                className="w-full px-6 py-3 bg-blue-700 hover:bg-blue-800 text-white rounded-2xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
               >
                 {t('medecin.notes.detailsModal.close')}
               </button>

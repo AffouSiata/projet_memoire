@@ -45,21 +45,14 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 via-white to-secondary-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-secondary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-primary-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
-      </div>
-
-      <div className="max-w-md w-full relative z-10">
-        <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-2xl rounded-3xl shadow-2xl p-8 md:p-10 animate-fade-in border border-white/50 dark:border-gray-700/50">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 px-4">
+      <div className="max-w-md w-full">
+        <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-8 md:p-10 animate-fade-in border border-gray-200 dark:border-gray-700">
           {/* Header */}
           <div className="text-center mb-8">
             <div className="inline-flex items-center justify-center gap-2 mb-6">
-              <SparklesIcon className="w-8 h-8 text-primary-600 dark:text-primary-400 animate-pulse" />
-              <h1 className="text-4xl font-black bg-gradient-to-r from-primary-600 via-secondary-600 to-primary-600 bg-clip-text text-transparent">
+              <SparklesIcon className="w-8 h-8 text-blue-700 dark:text-blue-400 animate-pulse" />
+              <h1 className="text-4xl font-black text-blue-700 dark:text-blue-500">
                 {t('login.title')}
               </h1>
             </div>
@@ -91,7 +84,7 @@ const Login = () => {
                 onChange={handleChange}
                 placeholder={t('login.emailPlaceholder')}
                 required
-                className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-primary-500 focus:ring-4 focus:ring-primary-500/20 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500"
+                className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500"
               />
             </div>
 
@@ -108,7 +101,7 @@ const Login = () => {
                 onChange={handleChange}
                 placeholder={t('login.passwordPlaceholder')}
                 required
-                className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-primary-500 focus:ring-4 focus:ring-primary-500/20 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500"
+                className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500"
               />
             </div>
 
@@ -116,8 +109,8 @@ const Login = () => {
             <button
               type="submit"
               disabled={loading}
-              className={`w-full px-8 py-4 bg-gradient-to-r from-primary-500 to-secondary-600 text-white font-bold rounded-2xl shadow-xl transition-all flex items-center justify-center gap-2 mt-8 ${
-                loading ? 'opacity-50 cursor-not-allowed' : 'hover:from-primary-600 hover:to-secondary-700 hover:shadow-2xl hover:scale-105'
+              className={`w-full px-8 py-4 bg-blue-700 text-white font-bold rounded-2xl shadow-xl transition-all flex items-center justify-center gap-2 mt-8 ${
+                loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-800 hover:shadow-2xl hover:scale-105'
               }`}
             >
               {loading ? (
@@ -138,7 +131,7 @@ const Login = () => {
           <div className="mt-8 text-center pt-6 border-t border-gray-200 dark:border-gray-700">
             <p className="text-gray-600 dark:text-gray-400">
               {t('login.noAccount')}{' '}
-              <Link to="/register" className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-bold transition-colors">
+              <Link to="/register" className="text-blue-700 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-bold transition-colors">
                 {t('login.register')}
               </Link>
             </p>
