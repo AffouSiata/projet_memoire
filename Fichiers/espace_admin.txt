@@ -152,17 +152,3 @@ patient: mariam  ,  mariam@gmail.com ,   guervar234#
         cidy  ,  cidy@gmail.com ,   mamad090#
         trabi  ,  trabi@gmail.com ,   trabi432@#
 
-
-
-
-
-
-❯ 1. Bleu hôpital classique
-     Bleu moyen professionnel - blue-600 (#2563eb)
-  2. Bleu foncé médical
-     Bleu foncé sérieux - blue-700 (#1d4ed8)
-  3. Bleu cyan médical
-     Bleu cyan moderne - cyan-600 (#0891b2)
-  4. Bleu indigo profond
-     Indigo professionnel - indigo-600 (#4f46e5)
-  5. Type something.
