@@ -1,0 +1,35 @@
+plusieurs pages pour chaque type d'utilisateur :
+
+Chaque utilisateur a un rôle : PATIENT, MEDECIN ou ADMIN. Les endpoints de l'API sont protégés selon les rôles.
+
+Par exemple, seul un médecin peut accéder à `/api/medecins/patients`. Si un patient essaie d'y accéder, il reçoit une erreur 403 (Forbidden).
+
+On utilise des "guards" dans NestJS pour vérifier ça. Avant de traiter une requête, le guard vérifie :
+1. Que l'utilisateur est connecté (token valide)
+2. Que son rôle correspond à ce qui est requis pour cet endpoint
+
+
+
+
+
+
+ N° | Titre du tableau | Page |
+|----|-----------------|------|
+| Tableau 1 | Comparaison des solutions existantes | |
+| Tableau 2 | Besoins fonctionnels par acteur | |
+| Tableau 3 | Besoins non fonctionnels | |
+| Tableau 4 | Description des cas d'utilisation - Patient | |
+| Tableau 5 | Description des cas d'utilisation - Médecin | |
+| Tableau 6 | Description des cas d'utilisation - Administrateur | |
+| Tableau 7 | Dictionnaire de données | |
+| Tableau 8 | Technologies utilisées - Backend | |
+| Tableau 9 | Technologies utilisées - Frontend | |
+| Tableau 10 | Endpoints de l'API REST | |
+| Tableau 11 | Résultats des tests fonctionnels | | 
+
+
+
+La manipulation de données de santé impose des mesures de sécurité strictes :
+
+Confirmation de rendez-vous par le médecin
+ Authentification

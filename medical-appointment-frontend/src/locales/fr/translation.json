@@ -1,0 +1,1283 @@
+{
+  "common": {
+    "welcome": "Bienvenue",
+    "loading": "Chargement...",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "close": "Fermer",
+    "confirm": "Confirmer",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "logout": "Déconnexion",
+    "confirmLogout": "Confirmer la déconnexion",
+    "logoutButton": "Se déconnecter",
+    "logoutMessage": "Êtes-vous sûr de vouloir vous déconnecter ? Vous serez redirigé vers la page de connexion."
+  },
+  "nav": {
+    "dashboard": "Tableau de bord",
+    "appointments": "Rendez-vous",
+    "patients": "Mes Patients",
+    "medicalNotes": "Notes Médicales",
+    "timeSlots": "Créneaux Horaires",
+    "newAppointment": "Nouveau rendez-vous",
+    "history": "Historique",
+    "notifications": "Notifications",
+    "profile": "Profil",
+    "settings": "Paramètres"
+  },
+  "dashboard": {
+    "title": "Tableau de bord",
+    "subtitle": "Vue d'ensemble de vos activités",
+    "appointmentQuestion": "Avez-vous pris rendez-vous ce mois-ci?",
+    "healthMessage": "Prenez soin de votre santé en planifiant vos consultations régulières",
+    "upcomingAppointments": "Rendez-vous à venir",
+    "recentActivity": "Activité récente",
+    "nextAppointment": "Prochain RDV",
+    "totalAppointments": "Total RDV",
+    "healthScore": "Score santé",
+    "noData": "Aucune donnée",
+    "noRecentConsultation": "Aucune consultation récente",
+    "noNews": "Aucune nouvelle",
+    "none": "Aucun",
+    "appointments": "Rendez-vous",
+    "stats": {
+      "totalAppointments": "Total rendez-vous",
+      "pending": "En attente",
+      "confirmed": "Confirmés",
+      "cancelled": "Annulés",
+      "nextAppointment": "Prochain RDV",
+      "upcoming": "RDV à venir",
+      "completed": "RDV complétés",
+      "finished": "Terminés"
+    },
+    "noAppointments": "Aucun rendez-vous à venir",
+    "viewAll": "Voir tout",
+    "quickActions": "Actions rapides",
+    "bookAppointment": "Prendre un rendez-vous",
+    "viewHistory": "Voir l'historique",
+    "date": "Date",
+    "time": "Heure",
+    "day": "Journée",
+    "notifications": "Notifications",
+    "noNewNotifications": "Aucune nouvelle",
+    "excellentDay": "Excellente journée à vous!",
+    "monthlyChart": "RDV par mois",
+    "specialtyChart": "Répartition par spécialité",
+    "recentConsultations": "Vos Dernières Consultations",
+    "nextCheckup": "Prochain Check-Up",
+    "generalPractitioner": "Médecin généraliste",
+    "healthTip": "Conseil du jour",
+    "newNotifications": "nouvelle",
+    "newNotificationsPlural": "nouvelles",
+    "healthMessages": {
+      "excellent": "Excellent suivi médical!",
+      "good": "Bon suivi, continuez ainsi",
+      "improve": "Prenez soin de vous"
+    },
+    "healthTips": [
+      "💧 Buvez au moins 1,5L d'eau par jour pour rester bien hydraté.",
+      "🚶‍♂️ 30 minutes de marche quotidienne améliorent votre santé cardiovasculaire.",
+      "🥗 Privilégiez les fruits et légumes frais pour un apport en vitamines optimal.",
+      "😴 Un sommeil de 7 à 8h par nuit renforce votre système immunitaire.",
+      "🧘‍♀️ Prenez 10 minutes par jour pour méditer et réduire le stress.",
+      "🏃‍♂️ L'activité physique régulière améliore votre bien-être général.",
+      "🌞 Exposez-vous au soleil 15 minutes par jour pour la vitamine D.",
+      "📱 Limitez le temps d'écran avant de dormir pour un meilleur sommeil.",
+      "🍎 Mangez au moins 5 portions de fruits et légumes par jour.",
+      "🧠 Restez actif mentalement avec des puzzles ou de la lecture."
+    ]
+  },
+  "settings": {
+    "title": "Paramètres",
+    "subtitle": "Personnalisez votre expérience",
+    "language": {
+      "title": "Langue",
+      "description": "Choisissez votre langue préférée",
+      "french": "Français",
+      "english": "English",
+      "arabic": "العربية"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "description": "Gérez vos préférences de notifications",
+      "email": "Notifications par email",
+      "emailDesc": "Recevoir des notifications par email",
+      "sms": "Notifications par SMS",
+      "smsDesc": "Recevoir des notifications par SMS",
+      "reminders": "Rappels de rendez-vous",
+      "remindersDesc": "Recevoir des rappels avant vos rendez-vous",
+      "newAppointments": "Nouveaux rendez-vous",
+      "newAppointmentsDesc": "Être notifié des nouveaux rendez-vous pris",
+      "cancellations": "Annulations",
+      "cancellationsDesc": "Être notifié en cas d'annulation de rendez-vous",
+      "promotional": "Emails promotionnels",
+      "promotionalDesc": "Recevoir des offres et promotions"
+    },
+    "appearance": {
+      "title": "Apparence",
+      "description": "Personnalisez l'apparence de l'application",
+      "darkMode": "Mode sombre",
+      "darkModeDesc": "Activer le thème sombre"
+    },
+    "availability": {
+      "title": "Disponibilité",
+      "description": "Gérez vos horaires et disponibilités",
+      "consultationDuration": "Durée de consultation",
+      "pauseBetween": "Pause entre consultations",
+      "workingDays": "Jours ouvrés",
+      "noteTitle": "Note importante",
+      "noteMessage": "Pour configurer vos créneaux horaires détaillés, rendez-vous dans la section \"Créneaux Horaires\" du menu principal.",
+      "duration": {
+        "15min": "15 minutes",
+        "20min": "20 minutes",
+        "30min": "30 minutes",
+        "45min": "45 minutes",
+        "1hour": "1 heure"
+      },
+      "pause": {
+        "none": "Aucune pause",
+        "5min": "5 minutes",
+        "10min": "10 minutes",
+        "15min": "15 minutes"
+      }
+    },
+    "security": {
+      "title": "Sécurité",
+      "description": "Renforcez la sécurité de votre compte",
+      "twoFactor": "Authentification à deux facteurs",
+      "twoFactorDesc": "Ajouter une couche de sécurité supplémentaire",
+      "biometric": "Authentification biométrique",
+      "biometricDesc": "Utiliser votre empreinte digitale ou Face ID",
+      "tip": "Conseil de sécurité",
+      "tipDesc": "Pour protéger votre compte, nous vous recommandons d'activer l'authentification à deux facteurs et de changer régulièrement votre mot de passe."
+    },
+    "saveChanges": "Enregistrer les modifications",
+    "saveButton": "Enregistrer les paramètres",
+    "saving": "Enregistrement...",
+    "saved": "Paramètres enregistrés avec succès!",
+    "saveSuccess": "Paramètres enregistrés avec succès!",
+    "error": "Erreur",
+    "loadError": "Impossible de charger les paramètres",
+    "saveError": "Impossible de sauvegarder les paramètres",
+    "professionalTip": "Conseil professionnel",
+    "professionalTipMessage": "Configurez correctement vos préférences de notification et vos horaires de disponibilité pour une meilleure gestion de votre cabinet."
+  },
+  "appointments": {
+    "title": "Mes rendez-vous",
+    "newAppointment": "Nouveau rendez-vous",
+    "upcoming": "À venir",
+    "past": "Passés",
+    "cancelled": "Annulés",
+    "status": {
+      "confirmed": "Confirmé",
+      "pending": "En attente",
+      "cancelled": "Annulé",
+      "completed": "Terminé"
+    },
+    "date": "Date",
+    "time": "Heure",
+    "doctor": "Médecin",
+    "specialty": "Spécialité",
+    "reason": "Motif",
+    "actions": "Actions",
+    "cancel": "Annuler le rendez-vous",
+    "reschedule": "Reprogrammer",
+    "details": "Détails",
+    "noAppointments": "Aucun rendez-vous trouvé"
+  },
+  "booking": {
+    "title": "Prendre un rendez-vous",
+    "newAppointment": "Nouveau RDV",
+    "subtitle": "Trouvez rapidement un créneau disponible avec nos médecins experts",
+    "selectDoctor": "Sélectionner un médecin",
+    "selectDate": "Choisir une date",
+    "selectTime": "Choisir un horaire",
+    "reason": "Motif de consultation",
+    "reasonPlaceholder": "Décrivez brièvement le motif de votre visite",
+    "confirm": "Confirmer le rendez-vous",
+    "success": "Rendez-vous confirmé avec succès!",
+    "error": "Erreur lors de la prise de rendez-vous",
+    "years": "ans",
+    "steps": {
+      "specialty": "Spécialité",
+      "doctor": "Médecin",
+      "dateTime": "Date & Heure",
+      "step": "Étape"
+    },
+    "specialties": {
+      "title": "Choisissez une spécialité",
+      "description": "Sélectionnez le type de consultation dont vous avez besoin",
+      "cardiology": "Cardiologie",
+      "pediatrics": "Pédiatrie",
+      "dermatology": "Dermatologie",
+      "neurology": "Neurologie",
+      "ophthalmology": "Ophtalmologie",
+      "dentistry": "Dentisterie",
+      "popular": "Populaire",
+      "selected": "Sélectionné"
+    },
+    "doctors": {
+      "title": "Choisissez votre médecin",
+      "available": "médecins disponibles en",
+      "experience": "d'expérience",
+      "selected": "Sélectionné"
+    },
+    "dateTime": {
+      "title": "Choisissez une date et une heure",
+      "description": "Sélectionnez un créneau disponible",
+      "selectDate": "Sélectionnez une date",
+      "availableSlots": "Horaires disponibles",
+      "days": {
+        "sun": "Di",
+        "mon": "Lu",
+        "tue": "Ma",
+        "wed": "Me",
+        "thu": "Je",
+        "fri": "Ve",
+        "sat": "Sa"
+      }
+    },
+    "navigation": {
+      "previous": "Précédent",
+      "next": "Suivant",
+      "confirm": "Confirmer le rendez-vous",
+      "creating": "Création..."
+    },
+    "successModal": {
+      "title": "Rendez-vous confirmé !",
+      "message": "Votre rendez-vous a été créé avec succès. Vous recevrez une notification de confirmation par email.",
+      "button": "Voir mes rendez-vous"
+    },
+    "errors": {
+      "sessionExpired": "Votre session a expiré. Veuillez vous reconnecter.",
+      "createError": "Erreur lors de la création du rendez-vous. Veuillez réessayer.",
+      "loadDoctorsError": "Erreur lors du chargement des médecins"
+    }
+  },
+  "profile": {
+    "title": "Mon profil",
+    "personalInfo": "Informations personnelles",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "email": "Email",
+    "phone": "Téléphone",
+    "dateOfBirth": "Date de naissance",
+    "address": "Adresse",
+    "city": "Ville",
+    "postalCode": "Code postal",
+    "medicalInfo": "Informations médicales",
+    "bloodType": "Groupe sanguin",
+    "allergies": "Allergies",
+    "medications": "Médicaments",
+    "editProfile": "Modifier le profil",
+    "saveChanges": "Enregistrer",
+    "changePassword": "Changer le mot de passe"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "markAllRead": "Tout marquer comme lu",
+    "noNotifications": "Aucune notification",
+    "types": {
+      "appointment": "Rendez-vous",
+      "reminder": "Rappel",
+      "system": "Système",
+      "message": "Message"
+    }
+  },
+  "specialties": {
+    "cardiology": "Cardiologie",
+    "pediatrics": "Pédiatrie",
+    "dermatology": "Dermatologie",
+    "ophthalmology": "Ophtalmologie",
+    "orthopedics": "Orthopédie",
+    "neurology": "Neurologie"
+  },
+  "mockData": {
+    "notes": {
+      "routine": "Consultation de routine. Tension artérielle normale.",
+      "vaccine": "Vaccin administré. Prochaine dose dans 3 mois.",
+      "cancelled": "Annulé par le patient.",
+      "ecg": "ECG effectué. Résultats normaux."
+    }
+  },
+  "history": {
+    "title": "Historique des Rendez-vous",
+    "yourAppointments": "Vos Consultations",
+    "subtitle": "Consultez l'historique complet de vos rendez-vous médicaux",
+    "reason": "Motif",
+    "viewMode": {
+      "timeline": "Timeline",
+      "cards": "Cartes"
+    },
+    "stats": {
+      "total": "Total",
+      "completed": "Complétés",
+      "upcoming": "À venir",
+      "cancelled": "Annulés"
+    },
+    "filters": {
+      "all": "Tous",
+      "upcoming": "À venir",
+      "completed": "Complétés",
+      "cancelled": "Annulés"
+    },
+    "search": {
+      "placeholder": "Rechercher par médecin ou spécialité...",
+      "filters": "Filtres",
+      "statusLabel": "Statut",
+      "specialtyLabel": "Filtrer par spécialité",
+      "allSpecialties": "Toutes les spécialités"
+    },
+    "status": {
+      "all": "Tous",
+      "upcoming": "À venir",
+      "completed": "Complété",
+      "cancelled": "Annulé",
+      "unknown": "Inconnu"
+    },
+    "results": {
+      "count": "{{count}} résultat(s)"
+    },
+    "pagination": {
+      "showing": "Affichage",
+      "of": "sur",
+      "results": "résultats",
+      "previous": "Précédent",
+      "next": "Suivant"
+    },
+    "actions": {
+      "downloadPrescription": "Ordonnance",
+      "viewDetails": "Détails",
+      "details": "Détails",
+      "confirm": "Confirmer",
+      "cancel": "Annuler",
+      "close": "Fermer",
+      "download": "Télécharger",
+      "modify": "Modifier"
+    },
+    "empty": {
+      "title": "Aucun rendez-vous",
+      "noAppointments": "Vous n'avez pas encore de rendez-vous",
+      "noResults": "Aucun rendez-vous ne correspond à vos critères de recherche",
+      "noFilterResults": "Aucun rendez-vous ne correspond à ce filtre",
+      "message": "Essayez de modifier vos filtres de recherche",
+      "resetFilters": "Réinitialiser les filtres",
+      "viewAll": "Voir tous les rendez-vous"
+    },
+    "detailsModal": {
+      "title": "Détails du rendez-vous",
+      "date": "Date",
+      "time": "Heure",
+      "reason": "Motif de consultation",
+      "consultationNotes": "Notes de consultation",
+      "prescriptionAvailable": "Ordonnance disponible",
+      "prescriptionClick": "Cliquez pour télécharger"
+    },
+    "confirmModal": {
+      "title": "Rendez-vous confirmé !",
+      "message": "Votre rendez-vous avec {{doctor}} a été confirmé."
+    },
+    "alerts": {
+      "downloadPrescription": "Téléchargement de l'ordonnance du {{date}}",
+      "cancelConfirm": "Voulez-vous vraiment annuler ce rendez-vous ?",
+      "cancelSuccess": "Rendez-vous annulé avec succès"
+    }
+  },
+  "login": {
+    "title": "Medical Appointment",
+    "subtitle": "Connectez-vous à votre compte",
+    "email": "Email",
+    "emailPlaceholder": "votre-email@exemple.com",
+    "password": "Mot de passe",
+    "passwordPlaceholder": "••••••••",
+    "loginButton": "Se connecter",
+    "loggingIn": "Connexion...",
+    "noAccount": "Pas encore de compte?",
+    "register": "S'inscrire",
+    "testAccounts": "Comptes de test:",
+    "testPassword": "Mot de passe: password123",
+    "errorConnection": "Erreur de connexion"
+  },
+  "medecin": {
+    "dashboard": {
+      "title": "Dr. {{name}}",
+      "activityOverview": "Vue d'ensemble de votre activité",
+      "activityDescription": "Consultez vos rendez-vous, gérez vos patients et suivez votre activité médicale.",
+      "viewAppointments": "Voir les rendez-vous",
+      "myPatients": "Mes patients",
+      "todayAppointments": "Rendez-vous aujourd'hui",
+      "today": "Aujourd'hui",
+      "upcoming": "À venir",
+      "upcomingLabel": "À venir",
+      "patientsFollowed": "Patients suivis",
+      "patientsLabel": "Patients",
+      "pending": "En attente",
+      "pendingLabel": "En attente",
+      "todaySchedule": "Rendez-vous du jour",
+      "noAppointmentsToday": "Aucun rendez-vous aujourd'hui",
+      "loadError": "Erreur chargement données",
+      "appointmentsByMonth": "Rendez-vous par mois",
+      "appointmentsCount": "rendez-vous",
+      "noData": "Aucune donnée",
+      "monthPlanning": "Planning du mois",
+      "displayed": "affichés",
+      "moreAppointments": "autres rendez-vous",
+      "noAppointmentsThisMonth": "Aucun rendez-vous ce mois-ci",
+      "planningFree": "Votre planning est libre",
+      "calendar": "Calendrier",
+      "aiAssistant": "Assistant AI",
+      "smartSuggestions": "Suggestions intelligentes",
+      "statusConfirmed": "Confirmés",
+      "statusPending": "En attente",
+      "statusCancelled": "Annulés",
+      "inactivePatientsMsg": "{{count}} patients n'ont pas consulté depuis 3 mois",
+      "pendingConfirmation": "{{count}} rendez-vous en attente de confirmation",
+      "followUpReminder": "Prévoir rappels pour consultations de suivi"
+    },
+    "appointments": {
+      "badge": "Gestion des Rendez-vous",
+      "title": "Mes Rendez-vous",
+      "subtitle": "Gérez vos consultations et suivez l'état de vos rendez-vous",
+      "export": "Exporter",
+      "searchPlaceholder": "Rechercher par patient, motif...",
+      "stats": {
+        "total": "Total",
+        "totalLabel": "Rendez-vous",
+        "confirmed": "Confirmés",
+        "confirmedLabel": "Validés",
+        "pending": "En attente",
+        "pendingLabel": "À confirmer",
+        "cancelled": "Annulés",
+        "cancelledLabel": "Abandonnés"
+      },
+      "filters": {
+        "allStatuses": "Tous les statuts",
+        "confirmed": "Confirmés",
+        "pending": "En attente",
+        "cancelled": "Annulés",
+        "allDates": "Toutes les dates",
+        "today": "Aujourd'hui",
+        "thisWeek": "Cette semaine",
+        "thisMonth": "Ce mois",
+        "past": "Passés"
+      },
+      "resultsFound": "{{count}} rendez-vous trouvé",
+      "resultsFound_plural": "{{count}} rendez-vous trouvés",
+      "page": "Page",
+      "of": "sur",
+      "showing": "Affichage",
+      "outOf": "sur",
+      "previous": "Précédent",
+      "next": "Suivant",
+      "statusConfirmed": "Confirmé",
+      "statusPending": "En attente",
+      "statusCancelled": "Annulé",
+      "consultation": "Consultation",
+      "confirm": "Confirmer",
+      "cancel": "Annuler",
+      "details": "Détails",
+      "viewDetails": "Voir les détails",
+      "noAppointments": "Aucun rendez-vous trouvé",
+      "tryModifyFilters": "Essayez de modifier vos filtres de recherche",
+      "modal": {
+        "badge": "Rendez-vous",
+        "title": "Détails de la consultation",
+        "subtitle": "Informations complètes du rendez-vous médical",
+        "patientInfo": "Informations Patient",
+        "appointmentDetails": "Détails du Rendez-vous",
+        "date": "Date",
+        "time": "Heure",
+        "status": "Statut",
+        "reason": "Motif",
+        "notProvided": "Non renseigné",
+        "generalConsultation": "Consultation générale",
+        "close": "Fermer"
+      },
+      "errors": {
+        "loadingError": "Erreur chargement rendez-vous:",
+        "confirmError": "Erreur confirmation:",
+        "cancelError": "Erreur annulation:"
+      }
+    },
+    "patients": {
+      "badge": "Gestion des Patients",
+      "title": "Mes Patients",
+      "subtitle": "Consultez et gérez vos patients",
+      "stats": {
+        "total": "Total patients",
+        "totalLabel": "Dans votre base",
+        "recents": "Récents (30j)",
+        "recentsLabel": "Actifs",
+        "chronic": "Chroniques",
+        "chronicLabel": "Suivi régulier",
+        "inactive": "Inactifs (90j+)",
+        "inactiveLabel": "À recontacter"
+      },
+      "searchPlaceholder": "Rechercher un patient (nom, prénom, email)...",
+      "filters": {
+        "all": "Tous les patients",
+        "recent": "Récents (30j)",
+        "chronic": "Chroniques (3+ RDV)"
+      },
+      "resultsFound": "{{count}} patient trouvé",
+      "resultsFound_plural": "{{count}} patients trouvés",
+      "consultations": "{{count}} consultation",
+      "consultations_plural": "{{count}} consultations",
+      "lastVisit": "Dernier suivi",
+      "never": "Jamais",
+      "nextAppointment": "Prochain RDV",
+      "phone": "Téléphone",
+      "email": "Email",
+      "notProvided": "Non renseigné",
+      "viewRecord": "Voir la fiche",
+      "noPatients": "Aucun patient trouvé",
+      "tryModifyFilters": "Essayez de modifier vos filtres de recherche",
+      "modal": {
+        "badge": "Fiche Patient",
+        "patientSince": "Patient depuis",
+        "totalConsultations": "Total consultations",
+        "confirmed": "Confirmés",
+        "lastVisit": "Dernier suivi",
+        "contactInfo": "Informations de contact",
+        "birthDate": "Date de naissance",
+        "gender": "Genre",
+        "appointmentHistory": "Historique des rendez-vous",
+        "consultation": "Consultation",
+        "statusConfirmed": "Confirmé",
+        "statusPending": "En attente",
+        "statusCancelled": "Annulé",
+        "noAppointments": "Aucun rendez-vous enregistré",
+        "historyWillAppear": "L'historique apparaîtra ici"
+      },
+      "errors": {
+        "loadingError": "Erreur chargement patients:"
+      }
+    },
+    "notes": {
+      "badge": "Dossiers Médicaux",
+      "title": "Notes Médicales",
+      "subtitle": "Gérez vos observations et notes de consultation",
+      "newNote": "Nouvelle note",
+      "stats": {
+        "total": "Total notes",
+        "totalLabel": "Toutes périodes",
+        "active": "Notes actives",
+        "activeLabel": "En consultation",
+        "archived": "Archivées",
+        "archivedLabel": "Historique",
+        "withAttachments": "Avec P.J.",
+        "withAttachmentsLabel": "Fichiers joints"
+      },
+      "searchPlaceholder": "🔍 Rechercher une note, un patient...",
+      "filters": {
+        "allStatuses": "📋 Tous les statuts",
+        "active": "✅ Actives",
+        "archived": "📦 Archivées"
+      },
+      "resultsFound": "{{count}} note trouvée",
+      "resultsFound_plural": "{{count}} notes trouvées",
+      "attachments": "{{count}} pièce jointe",
+      "attachments_plural": "{{count}} pièces jointes",
+      "statusActive": "✅ Note Active",
+      "statusArchived": "📦 Note Archivée",
+      "archivedBadge": "Archivée",
+      "details": "Détails",
+      "archive": "Archiver",
+      "delete": "Supprimer",
+      "noNotes": "Aucune note trouvée",
+      "createFirstNote": "Créez votre première note médicale pour commencer",
+      "createModal": {
+        "title": "Nouvelle note médicale",
+        "subtitle": "Créer une observation pour un patient",
+        "patient": "Patient",
+        "selectPatient": "👤 Sélectionnez un patient",
+        "observation": "Observation médicale",
+        "observationPlaceholder": "📝 Décrivez vos observations, diagnostics, prescriptions...",
+        "cancel": "Annuler",
+        "create": "Créer la note"
+      },
+      "detailsModal": {
+        "title": "Détails de la note",
+        "subtitle": "Informations complètes",
+        "patient": "Patient",
+        "observation": "Observation médicale",
+        "date": "Date",
+        "doctor": "Médecin",
+        "attachments": "Pièces jointes ({{count}})",
+        "close": "Fermer"
+      },
+      "deleteModal": {
+        "title": "Supprimer la note ?",
+        "message": "Êtes-vous sûr de vouloir supprimer cette note médicale pour {{patient}} ? Cette action est irréversible.",
+        "confirm": "Supprimer",
+        "cancel": "Annuler"
+      },
+      "errors": {
+        "loading": "Erreur chargement notes:",
+        "creating": "Erreur création note:",
+        "deleting": "Erreur suppression note:",
+        "archiving": "Erreur archivage note:"
+      }
+    },
+    "notifications": {
+      "badge": "Notifications",
+      "title": "Centre de Notifications",
+      "emoji": "🔔",
+      "subtitle": "Restez informé de votre activité médicale en temps réel",
+      "stats": {
+        "totalLabel": "Total",
+        "totalPlural": "notifications",
+        "totalSingular": "notification",
+        "unreadLabel": "Non lues",
+        "unreadPlural": "nouvelles",
+        "unreadSingular": "nouvelle",
+        "todayLabel": "Aujourd'hui"
+      },
+      "quickAction": "Action rapide",
+      "markAllAsRead": "Tout marquer comme lu",
+      "filterTitle": "Filtrer par catégorie",
+      "filterSubtitle": "Sélectionnez un type de notification",
+      "filters": {
+        "all": "Toutes",
+        "unread": "Non lues",
+        "reminder": "Rappels",
+        "confirmation": "Confirmations",
+        "cancellation": "Annulations",
+        "recommendation": "Recommandations"
+      },
+      "resultsPlural": "résultats",
+      "resultsSingular": "résultat",
+      "empty": {
+        "title": "Aucune notification",
+        "message": "Vous êtes à jour !"
+      },
+      "notification": {
+        "new": "NOUVEAU",
+        "markAsRead": "Marquer comme lu",
+        "delete": "Supprimer"
+      },
+      "pagination": {
+        "showing": "Affichage",
+        "to": "-",
+        "of": "sur",
+        "previous": "← Précédent",
+        "next": "Suivant →"
+      },
+      "timeAgo": {
+        "justNow": "À l'instant",
+        "hoursAgo": "Il y a {{hours}}h",
+        "yesterday": "Hier"
+      },
+      "stats_display": "Affichage",
+      "stats_remaining": "restant",
+      "stats_remainingPlural": "restants"
+    },
+    "creneaux": {
+      "badge": "Gestion des Disponibilités",
+      "title": "Créneaux Horaires",
+      "subtitle": "Définissez vos disponibilités pour les rendez-vous",
+      "newSlot": "Nouveau créneau",
+      "stats": {
+        "total": "Total créneaux",
+        "totalLabel": "Toutes les semaines",
+        "active": "Actifs",
+        "activeLabel": "Disponibles",
+        "inactive": "Inactifs",
+        "inactiveLabel": "Non disponibles"
+      },
+      "days": {
+        "monday": "Lundi",
+        "tuesday": "Mardi",
+        "wednesday": "Mercredi",
+        "thursday": "Jeudi",
+        "friday": "Vendredi",
+        "saturday": "Samedi",
+        "sunday": "Dimanche"
+      },
+      "empty": {
+        "title": "Aucun créneau horaire",
+        "message": "Vous n'avez pas encore défini vos disponibilités. Commencez par créer votre premier créneau horaire pour permettre aux patients de prendre rendez-vous.",
+        "button": "Créer mon premier créneau",
+        "tip": "Astuce",
+        "tipMessage": "Définissez vos horaires de consultation par jour de la semaine. Vous pourrez les activer ou désactiver à tout moment selon vos disponibilités."
+      },
+      "slotsList": {
+        "dayLabel": "créneau",
+        "dayLabelPlural": "créneaux",
+        "noSlots": "Aucun créneau défini pour ce jour"
+      },
+      "buttons": {
+        "active": "Actif",
+        "inactive": "Inactif",
+        "delete": "Supprimer"
+      },
+      "createModal": {
+        "badge": "Nouveau Créneau",
+        "title": "Nouveau créneau",
+        "subtitle": "Ajouter une disponibilité",
+        "day": "Jour de la semaine",
+        "startTime": "Heure début",
+        "endTime": "Heure fin",
+        "cancel": "Annuler",
+        "create": "Créer le créneau"
+      },
+      "deleteModal": {
+        "title": "Supprimer le créneau ?",
+        "message": "Êtes-vous sûr de vouloir supprimer ce créneau ?",
+        "warning": "Cette action est irréversible",
+        "cancel": "Annuler",
+        "confirm": "Supprimer"
+      },
+      "errorModal": {
+        "title": "Créneau invalide",
+        "duplicate": "Ce créneau existe déjà ! Un créneau avec le même jour et la même heure de début est déjà enregistré.",
+        "overlap": "Ce créneau chevauche un autre ! L'horaire que vous avez choisi se superpose avec un créneau existant.",
+        "default": "Ce créneau existe déjà ou chevauche un autre créneau. Veuillez choisir un autre horaire ou un autre jour.",
+        "solutions": "Solutions :",
+        "solution1": "Choisissez un autre jour de la semaine",
+        "solution2": "Sélectionnez une heure de début différente",
+        "solution3": "Vérifiez les créneaux existants pour ce jour",
+        "understood": "J'ai compris"
+      }
+    },
+    "profile": {
+      "badge": "Mon Profil",
+      "greeting": "Bonjour Dr. {{name}}",
+      "greeting_emoji": "👨‍⚕️",
+      "description": "Gérez vos informations professionnelles et votre cabinet",
+      "specialty_label": "Spécialité",
+      "edit_button": "Modifier profil",
+      "action_label": "Action",
+      "loading": "Chargement...",
+      "save_success": "Profil mis à jour avec succès!",
+      "save_error": "Impossible de sauvegarder le profil",
+      "password_error": "Les mots de passe ne correspondent pas",
+      "password_min_length": "Le mot de passe doit contenir au moins 6 caractères",
+      "password_change_success": "Mot de passe modifié avec succès!",
+      "password_change_error": "Impossible de changer le mot de passe",
+      "online": "En ligne",
+      "first_name": "Prénom",
+      "last_name": "Nom",
+      "email": "Email",
+      "phone": "Téléphone",
+      "specialty": "Spécialité",
+      "office_address": "Adresse du cabinet",
+      "not_provided": "Non renseignée",
+      "not_filled": "-",
+      "cancel_button": "Annuler",
+      "save_button": "Enregistrer",
+      "saving": "Enregistrement...",
+      "security_title": "Sécurité",
+      "change_password_button": "Changer mon mot de passe",
+      "professional_summary": "Résumé Professionnel",
+      "next_appointment": "Prochain rendez-vous",
+      "no_upcoming_appointment": "Aucun rendez-vous prévu",
+      "this_month": "Ce mois-ci",
+      "appointments_label": "rendez-vous",
+      "my_patients": "Mes patients",
+      "patients_active": "patients actifs",
+      "password_modal_title": "Changer le mot de passe",
+      "current_password": "Mot de passe actuel",
+      "new_password": "Nouveau mot de passe",
+      "confirm_new_password": "Confirmer le nouveau mot de passe",
+      "confirm_button": "Confirmer"
+    }
+  },
+  "admin": {
+    "nav": {
+      "patients": "Patients",
+      "doctors": "Médecins",
+      "appointments": "Rendez-vous",
+      "statistics": "Statistiques"
+    },
+    "dashboard": {
+      "title": "Administration",
+      "subtitle": "Vue d'ensemble de la plateforme",
+      "totalPatients": "Total Patients",
+      "totalDoctors": "Total Médecins",
+      "appointments": "Rendez-vous",
+      "active": "actifs",
+      "cancelled": "annulés",
+      "cancellationRate": "Taux annulation: {{rate}}%",
+      "appointmentsByStatus": "Rendez-vous par statut",
+      "appointmentsPerMonth": "Rendez-vous par mois",
+      "topDoctors": "Top Médecins",
+      "appointmentsCount": "{{count}} RDV",
+      "loadError": "Erreur chargement stats",
+      "doctorPrefix": "Dr.",
+      "excellent": "Excellent",
+      "good": "Bon",
+      "needsImprovement": "À améliorer",
+      "noUpcomingAppointments": "Aucun rendez-vous à venir",
+      "operational": "Opérationnel",
+      "satisfaction": "Satisfaction",
+      "statusCancelled": "Annulés",
+      "statusConfirmed": "Confirmés",
+      "statusPending": "En attente",
+      "systemStatus": "État du système",
+      "upcomingAppointments": "Prochains rendez-vous",
+      "viewAllAppointments": "Voir tous les rendez-vous"
+    },
+    "patients": {
+      "title": "Gestion des Patients",
+      "subtitle": "{{count}} patients enregistrés",
+      "management": "Gestion des Patients",
+      "searchPlaceholder": "Rechercher par nom, prénom ou email...",
+      "searchPlaceholder2": "Rechercher un patient...",
+      "all": "Tous",
+      "active": "Actifs",
+      "inactive": "Inactifs",
+      "noPatients": "Aucun patient trouvé",
+      "noResults": "Aucun résultat trouvé",
+      "showing": "Affichage de {{start}} à {{end}} sur {{total}} patients",
+      "activate": "Activer",
+      "deactivate": "Désactiver",
+      "confirmActivate": "Activer ce patient ?",
+      "confirmDeactivate": "Désactiver ce patient ?",
+      "confirmActivateTitle": "Confirmer l'activation",
+      "confirmDeactivateTitle": "Confirmer la désactivation",
+      "stats": {
+        "totalPatients": "Total patients"
+      },
+      "pagination": {
+        "previous": "Précédent",
+        "next": "Suivant"
+      },
+      "table": {
+        "patient": "Patient",
+        "contact": "Contact",
+        "appointments": "Rendez-vous",
+        "registered": "Inscription",
+        "registeredOn": "Inscrit le",
+        "status": "Statut",
+        "actions": "Actions",
+        "activeStatus": "Actif",
+        "inactiveStatus": "Inactif",
+        "details": "Détails"
+      }
+    },
+    "medecins": {
+      "title": "Gestion des Médecins",
+      "subtitle": "{{count}} médecins enregistrés",
+      "management": "Gestion des Médecins",
+      "searchPlaceholder": "Rechercher par nom, prénom ou email...",
+      "allSpecialties": "Toutes les spécialités",
+      "all": "Tous",
+      "active": "Actifs",
+      "inactive": "Inactifs",
+      "noMedecins": "Aucun médecin trouvé",
+      "noResults": "Aucun résultat trouvé",
+      "noPending": "Aucune demande en attente",
+      "noPendingDesc": "Toutes les demandes de médecins ont été traitées",
+      "showing": "Affichage de {{start}} à {{end}} sur {{total}} médecins",
+      "activate": "Activer",
+      "deactivate": "Désactiver",
+      "approve": "Approuver",
+      "reject": "Rejeter",
+      "details": "Détails",
+      "confirmActivate": "Activer ce médecin ?",
+      "confirmDeactivate": "Désactiver ce médecin ?",
+      "confirmActivateTitle": "Confirmer l'activation",
+      "confirmDeactivateTitle": "Confirmer la désactivation",
+      "pendingStatus": "En attente de validation",
+      "registeredOn": "Inscrit le",
+      "approvalSuccess": "Médecin approuvé",
+      "approvalError": "Erreur d'approbation",
+      "approvalMessageSuccess": "Le médecin a été approuvé avec succès",
+      "approvalMessageError": "Erreur lors de l'approbation du médecin",
+      "rejectionSuccess": "Médecin rejeté",
+      "rejectionError": "Erreur de rejet",
+      "rejectionMessageSuccess": "Le médecin a été rejeté",
+      "rejectionMessageError": "Erreur lors du rejet du médecin",
+      "activateSuccess": "Médecin activé",
+      "deactivateSuccess": "Médecin désactivé",
+      "activateMessage": "Le médecin a été activé avec succès",
+      "deactivateMessage": "Le médecin a été désactivé avec succès",
+      "statusUpdateError": "Erreur de mise à jour",
+      "statusUpdateMessageError": "Erreur lors de la mise à jour du statut",
+      "stats": {
+        "totalDoctors": "Total médecins"
+      },
+      "tabs": {
+        "all": "Tous les médecins",
+        "pending": "En attente d'approbation"
+      },
+      "pagination": {
+        "previous": "Précédent",
+        "next": "Suivant"
+      },
+      "table": {
+        "doctor": "Médecin",
+        "specialty": "Spécialité",
+        "contact": "Contact",
+        "appointments": "Rendez-vous",
+        "registered": "Inscription",
+        "status": "Statut",
+        "actions": "Actions",
+        "activeStatus": "Actif",
+        "inactiveStatus": "Inactif",
+        "unspecified": "Non spécifiée"
+      },
+      "detailsModal": {
+        "active": "Actif",
+        "inactive": "Inactif",
+        "appointments": "Rendez-vous",
+        "dateOfBirth": "Date de naissance",
+        "email": "Email",
+        "medicalOffice": "Cabinet médical",
+        "memberSince": "Membre depuis",
+        "phone": "Téléphone",
+        "registeredSince": "Inscrit depuis",
+        "totalConsultations": "Total consultations",
+        "yearsOld": "ans"
+      }
+    },
+    "rendezvous": {
+      "title": "Gestion des Rendez-vous",
+      "subtitle": "{{count}} rendez-vous au total",
+      "totalAppointments": "Total des rendez-vous",
+      "noRendezVous": "Aucun rendez-vous trouvé",
+      "noResults": "Aucun résultat trouvé",
+      "showing": "Affichage de {{start}} à {{end}} sur {{total}} rendez-vous",
+      "details": "Détails",
+      "changeStatus": "Changer statut",
+      "detailsTitle": "Détails du rendez-vous",
+      "detailsSubtitle": "Informations complètes du rendez-vous",
+      "changeStatusTitle": "Modifier le statut",
+      "stats": {
+        "total": "Total",
+        "confirmed": "Confirmés",
+        "pending": "En attente",
+        "cancelled": "Annulés"
+      },
+      "filters": {
+        "all": "Tous",
+        "confirmed": "Confirmés",
+        "pending": "En attente",
+        "cancelled": "Annulés"
+      },
+      "status": {
+        "confirmed": "Confirmé",
+        "pending": "En attente",
+        "cancelled": "Annulé"
+      },
+      "table": {
+        "date": "Date",
+        "patient": "Patient",
+        "doctor": "Médecin",
+        "reason": "Motif",
+        "status": "Statut",
+        "actions": "Actions"
+      }
+    },
+    "notifications": {
+      "title": "Notifications",
+      "subtitle": "Centre de notifications administrateur",
+      "noNotifications": "Aucune notification",
+      "noNotificationsMessage": "Vous n'avez pas de notifications pour le moment",
+      "actions": {
+        "markAllRead": "Tout marquer comme lu",
+        "markAsRead": "Marquer comme lu",
+        "markAsUnread": "Marquer comme non lu",
+        "deleteRead": "Supprimer les lues"
+      },
+      "filters": {
+        "all": "Toutes",
+        "appointments": "Rendez-vous",
+        "cancellations": "Annulations",
+        "alerts": "Alertes",
+        "info": "Informations"
+      },
+      "types": {
+        "appointment": "Rendez-vous",
+        "cancellation": "Annulation",
+        "alert": "Alerte",
+        "info": "Information",
+        "notification": "Notification"
+      },
+      "priority": {
+        "urgent": "Urgent",
+        "high": "Haute",
+        "normal": "Normale",
+        "low": "Basse"
+      },
+      "timeAgo": {
+        "justNow": "À l'instant",
+        "minutesAgo": "Il y a {{minutes}} min",
+        "hoursAgo": "Il y a {{hours}}h",
+        "yesterday": "Hier",
+        "daysAgo": "Il y a {{days}} jours"
+      }
+    },
+    "parametres": {
+      "title": "Paramètres",
+      "subtitle": "Configuration de la plateforme",
+      "loading": "Chargement...",
+      "save": "Enregistrer",
+      "saving": "Enregistrement...",
+      "saved": "Paramètres enregistrés avec succès !",
+      "error": "Erreur lors de l'enregistrement",
+      "language": {
+        "title": "Langue",
+        "description": "Langue de l'interface administrateur"
+      },
+      "appearance": {
+        "title": "Apparence",
+        "description": "Personnalisez l'apparence de l'interface",
+        "darkMode": "Mode sombre",
+        "darkModeDesc": "Activer le thème sombre pour l'interface"
+      },
+      "notifications": {
+        "title": "Notifications",
+        "description": "Gérez vos préférences de notifications",
+        "email": "Notifications par email",
+        "emailDesc": "Recevoir les notifications par email",
+        "sms": "Notifications SMS",
+        "smsDesc": "Recevoir les notifications par SMS",
+        "push": "Notifications push",
+        "pushDesc": "Recevoir les notifications push"
+      },
+      "medicalSpecialties": {
+        "title": "Spécialités médicales",
+        "description": "Gérez les spécialités disponibles sur la plateforme",
+        "count": "{{count}} spécialités",
+        "add": "Ajouter",
+        "delete": "Supprimer",
+        "reset": "Réinitialiser",
+        "resetTitle": "Réinitialiser les spécialités",
+        "newPlaceholder": "Nouvelle spécialité...",
+        "noSpecialties": "Aucune spécialité définie"
+      },
+      "audit": {
+        "title": "Journal d'audit",
+        "description": "Historique des actions sur la plateforme",
+        "last24h": "Dernières 24h",
+        "viewAll": "Voir tout",
+        "noLogs": "Aucune entrée dans le journal",
+        "modalTitle": "Journal d'audit complet",
+        "modalSubtitle": "Historique détaillé des actions",
+        "status": {
+          "success": "Succès",
+          "failed": "Échec",
+          "warning": "Attention",
+          "info": "Info"
+        },
+        "summary": {
+          "success": "Réussies",
+          "failed": "Échecs",
+          "warnings": "Alertes"
+        }
+      }
+    },
+    "statistics": {
+      "title": "Statistiques",
+      "subtitle": "Vue d'ensemble",
+      "analytics": "Analyses"
+    },
+    "statistiques": {
+      "kpi": {
+        "totalAppointments": "Total Rendez-vous",
+        "activePatients": "Patients Actifs",
+        "successRate": "Taux de Succès",
+        "totalRevenue": "Revenus Totaux"
+      }
+    }
+  },
+  "layout": {
+    "patientSpace": "Espace Patient",
+    "online": "En ligne"
+  },
+  "months": {
+    "january": "Janvier",
+    "february": "Février",
+    "march": "Mars",
+    "april": "Avril",
+    "may": "Mai",
+    "june": "Juin",
+    "july": "Juillet",
+    "august": "Août",
+    "september": "Septembre",
+    "october": "Octobre",
+    "november": "Novembre",
+    "december": "Décembre",
+    "full": {
+      "jan": "Janvier",
+      "feb": "Février",
+      "mar": "Mars",
+      "apr": "Avril",
+      "may": "Mai",
+      "jun": "Juin",
+      "jul": "Juillet",
+      "aug": "Août",
+      "sep": "Septembre",
+      "oct": "Octobre",
+      "nov": "Novembre",
+      "dec": "Décembre"
+    },
+    "short": {
+      "jan": "Jan",
+      "feb": "Fév",
+      "mar": "Mar",
+      "apr": "Avr",
+      "may": "Mai",
+      "jun": "Jun",
+      "jul": "Jul",
+      "aug": "Aoû",
+      "sep": "Sep",
+      "oct": "Oct",
+      "nov": "Nov",
+      "dec": "Déc"
+    }
+  },
+  "days": {
+    "monday": "Lundi",
+    "tuesday": "Mardi",
+    "wednesday": "Mercredi",
+    "thursday": "Jeudi",
+    "friday": "Vendredi",
+    "saturday": "Samedi",
+    "sunday": "Dimanche",
+    "short": {
+      "sun": "D",
+      "mon": "L",
+      "tue": "M",
+      "wed": "M",
+      "thu": "J",
+      "fri": "V",
+      "sat": "S"
+    }
+  },
+  "profile": {
+    "title": "Mon profil",
+    "edit": "Modifier",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "saving": "Enregistrement...",
+    "saveSuccess": "Profil mis à jour avec succès!",
+    "years": "ans",
+    "group": "Groupe",
+    "active": "Actif",
+    "personalInfo": "Informations personnelles",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "email": "Email",
+    "phone": "Téléphone",
+    "birthDate": "Date de naissance",
+    "address": "Adresse",
+    "postalCode": "Code postal",
+    "city": "Ville",
+    "medicalInfo": "Informations médicales",
+    "bloodType": "Groupe sanguin",
+    "allergies": "Allergies",
+    "medicalConditions": "Conditions médicales",
+    "emergencyContact": "Contact d'urgence",
+    "contactName": "Nom du contact",
+    "contactPhone": "Téléphone",
+    "contactRelation": "Relation",
+    "notProvided": "Non renseigné"
+  },
+  "notificationsMockData": {
+    "appointmentConfirmed": {
+      "title": "Rendez-vous confirmé",
+      "message": "Votre rendez-vous avec Dr. Martin a été confirmé pour le 15 Mars 2025 à 14h30."
+    },
+    "appointmentReminder": {
+      "title": "Rappel de rendez-vous",
+      "message": "N'oubliez pas votre rendez-vous demain à 10h00 avec Dr. Dubois."
+    },
+    "systemUpdate": {
+      "title": "Mise à jour du système",
+      "message": "Une nouvelle version de l'application est disponible avec des améliorations de performance."
+    },
+    "appointmentCancelled": {
+      "title": "Rendez-vous annulé",
+      "message": "Votre rendez-vous du 12 Mars a été annulé par le médecin. Veuillez reprendre un nouveau rendez-vous."
+    },
+    "newAvailability": {
+      "title": "Nouvelle disponibilité",
+      "message": "Dr. Laurent a de nouvelles disponibilités ce mois-ci. Consultez son calendrier."
+    }
+  },
+  "notifications": {
+    "title": "Notifications",
+    "newNotifications": "{{count}} nouvelle notification",
+    "newNotifications_plural": "{{count}} nouvelles notifications",
+    "allRead": "Toutes les notifications sont lues",
+    "markAllRead": "Tout marquer comme lu",
+    "filterBy": "Filtrer par:",
+    "filters": {
+      "all": "Toutes",
+      "unread": "Non lues",
+      "appointment": "Rendez-vous",
+      "reminder": "Rappels",
+      "system": "Système"
+    },
+    "empty": {
+      "title": "Aucune notification",
+      "message": "Vous n'avez pas de notifications pour le moment."
+    },
+    "markAsRead": "Marquer comme lu",
+    "delete": "Supprimer",
+    "showing": "Affichage de",
+    "notification": "notification",
+    "notifications_plural": "notifications",
+    "unreadCount": "non lue",
+    "unreadCount_plural": "non lues",
+    "timeAgo": {
+      "justNow": "À l'instant",
+      "hoursAgo": "Il y a {{hours}}h",
+      "yesterday": "Hier"
+    }
+  },
+  "register": {
+    "welcomeSubtitle": "Rejoignez notre plateforme de santé",
+    "patientRole": "Patient",
+    "patientDescription": "Prenez rendez-vous facilement avec nos médecins",
+    "patientFeature1": "Prise de rendez-vous en ligne",
+    "patientFeature2": "Historique des consultations",
+    "patientFeature3": "Rappels automatiques",
+    "doctorRole": "Médecin",
+    "doctorDescription": "Gérez votre cabinet et vos patients efficacement",
+    "doctorFeature1": "Gestion des rendez-vous",
+    "doctorFeature2": "Suivi des patients",
+    "doctorFeature3": "Notes médicales sécurisées",
+    "doctorVerificationNotice": "Vérification professionnelle requise",
+    "submit": "Continuer",
+    "alreadyHaveAccount": "Vous avez déjà un compte ?",
+    "loginLink": "Se connecter",
+    "formTitle": "Créer votre compte",
+    "patientFormSubtitle": "Remplissez vos informations personnelles",
+    "doctorFormSubtitle": "Remplissez vos informations professionnelles",
+    "lastName": "Nom",
+    "lastNamePlaceholder": "Votre nom",
+    "firstName": "Prénom",
+    "firstNamePlaceholder": "Votre prénom",
+    "email": "Email",
+    "emailPlaceholder": "votre-email@exemple.com",
+    "phone": "Téléphone",
+    "phonePlaceholder": "+225 XX XX XX XX XX",
+    "professionalInfo": "Informations professionnelles",
+    "specialty": "Spécialité",
+    "selectSpecialty": "Sélectionnez votre spécialité",
+    "registrationNumber": "Numéro d'ordre",
+    "registrationNumberPlaceholder": "Ex: 12345",
+    "registrationNumberHelp": "Numéro d'inscription à l'Ordre des Médecins",
+    "verificationTitle": "Vérification requise",
+    "verificationMessage": "Votre inscription sera vérifiée par notre équipe avant activation de votre compte.",
+    "password": "Mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "back": "Retour",
+    "submitting": "Inscription en cours...",
+    "passwordMismatch": "Les mots de passe ne correspondent pas",
+    "passwordTooShort": "Le mot de passe doit contenir au moins 6 caractères",
+    "specialtyRequired": "Veuillez sélectionner une spécialité",
+    "numeroOrdreRequired": "Le numéro d'ordre doit contenir au moins 5 caractères",
+    "errorRegistration": "Erreur lors de l'inscription",
+    "pendingApprovalTitle": "Inscription en attente",
+    "successTitle": "Inscription réussie !",
+    "doctorPendingInfo": "Votre compte sera activé après vérification par l'administrateur",
+    "goToLogin": "Aller à la connexion"
+  }
+}

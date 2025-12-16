@@ -1,0 +1,234 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Enums
+enum Role {
+  PATIENT
+  MEDECIN
+  ADMIN
+}
+
+enum StatutRendezVous {
+  CONFIRME
+  EN_ATTENTE
+  ANNULE
+}
+
+enum TypeNotification {
+  RAPPEL
+  CONFIRMATION
+  ANNULATION
+  CHANGEMENT_HORAIRE
+  RECOMMANDATION
+}
+
+enum StatutNote {
+  ACTIF
+  ARCHIVE
+}
+
+enum Theme {
+  CLAIR
+  SOMBRE
+}
+
+enum JourSemaine {
+  LUNDI
+  MARDI
+  MERCREDI
+  JEUDI
+  VENDREDI
+  SAMEDI
+  DIMANCHE
+}
+
+enum StatutValidation {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+// Model User (table principale avec tous les utilisateurs)
+model User {
+  id              String    @id @default(uuid())
+  nom             String
+  prenom          String
+  email           String    @unique
+  motDePasse      String
+  role            Role
+  telephone       String
+  dateNaissance   DateTime?
+  adresse         String?
+  isActive        Boolean   @default(true)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  // Relations selon le rôle
+  // Si PATIENT
+  rendezvousPatient      RendezVous[]  @relation("PatientRendezVous")
+  notesMedicalesPatient  NoteMedicale[] @relation("PatientNotes")
+  preferencesNotifEmail  Boolean       @default(true)
+  preferencesNotifSms    Boolean       @default(true)
+  preferencesNotifPush   Boolean       @default(true)
+  preferencesRappels     Boolean       @default(true)
+  preferencesPromotions  Boolean       @default(false)
+  theme                  Theme         @default(CLAIR)
+  couleurAccent          String        @default("#3b82f6")
+  langue                 String        @default("fr")
+  twoFactorAuth          Boolean       @default(false)
+  biometricAuth          Boolean       @default(false)
+
+  // Si MEDECIN
+  rendezvousMedecin      RendezVous[]   @relation("MedecinRendezVous")
+  notesMedicalesMedecin  NoteMedicale[] @relation("MedecinNotes")
+  specialite             String?
+  numeroOrdre            String?        // Numéro d'ordre des médecins
+  timeslots              TimeSlot[]
+  indisponibilites       MedecinIndisponibilite[] @relation("MedecinIndisponibilites")
+  statutValidation       StatutValidation? @default(PENDING)
+
+  // Notifications (pour tous les rôles)
+  notifications          Notification[] @relation("UserNotifications")
+
+  // Audit logs
+  auditLogs              AuditLog[]
+
+  // Token de refresh
+  refreshToken           String?
+
+  @@index([email])
+  @@index([role])
+  @@index([statutValidation])
+  @@index([isActive])
+  @@index([specialite])
+  @@index([role, statutValidation, isActive]) // Index composite pour requêtes médecins
+}
+
+// Model RendezVous
+model RendezVous {
+  id          String            @id @default(uuid())
+  patientId   String
+  medecinId   String
+  date        DateTime
+  statut      StatutRendezVous  @default(EN_ATTENTE)
+  motif       String
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+
+  // Relations
+  patient     User              @relation("PatientRendezVous", fields: [patientId], references: [id], onDelete: Cascade)
+  medecin     User              @relation("MedecinRendezVous", fields: [medecinId], references: [id], onDelete: Cascade)
+
+  @@index([patientId])
+  @@index([medecinId])
+  @@index([date])
+  @@index([statut])
+}
+
+// Model Notification
+model Notification {
+  id          String             @id @default(uuid())
+  userId      String
+  type        TypeNotification
+  titre       String
+  description String
+  lue         Boolean            @default(false)
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+
+  // Relation avec User
+  user        User               @relation("UserNotifications", fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([lue])
+  @@index([createdAt])
+}
+
+// Model NoteMedicale
+model NoteMedicale {
+  id              String      @id @default(uuid())
+  medecinId       String
+  patientId       String
+  contenu         String
+  statut          StatutNote  @default(ACTIF)
+  piecesJointes   String[]    // Array de chemins de fichiers
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  // Relations
+  medecin         User        @relation("MedecinNotes", fields: [medecinId], references: [id], onDelete: Cascade)
+  patient         User        @relation("PatientNotes", fields: [patientId], references: [id], onDelete: Cascade)
+
+  @@index([medecinId])
+  @@index([patientId])
+  @@index([statut])
+}
+
+// Model TimeSlot (créneaux disponibles pour les médecins)
+model TimeSlot {
+  id          String       @id @default(uuid())
+  medecinId   String
+  jour        JourSemaine
+  heureDebut  String       // Format "HH:mm" ex: "09:00"
+  heureFin    String       // Format "HH:mm" ex: "09:30"
+  isAvailable Boolean      @default(true)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  // Relations
+  medecin     User         @relation(fields: [medecinId], references: [id], onDelete: Cascade)
+
+  @@unique([medecinId, jour, heureDebut])
+  @@index([medecinId])
+  @@index([jour])
+}
+
+// Model MedecinIndisponibilite (jours où le médecin n'est pas disponible)
+model MedecinIndisponibilite {
+  id          String   @id @default(uuid())
+  medecinId   String
+  date        DateTime // Date spécifique d'indisponibilité (format: YYYY-MM-DD)
+  raison      String?  // Raison: "Congé", "Formation", "Jour férié", etc.
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  medecin     User     @relation("MedecinIndisponibilites", fields: [medecinId], references: [id], onDelete: Cascade)
+
+  @@unique([medecinId, date])
+  @@index([medecinId])
+  @@index([date])
+}
+
+// Model AuditLog (Journaux d'accès et d'audit)
+model AuditLog {
+  id        String   @id @default(uuid())
+  userId    String?
+  userName  String   // Nom complet de l'utilisateur
+  userRole  String?  // Role de l'utilisateur
+  action    String   // Action effectuée
+  entity    String?  // Type d'entité (User, RendezVous, etc.)
+  entityId  String?  // ID de l'entité concernée
+  ip        String?  // Adresse IP
+  userAgent String?  // Navigateur/Appareil
+  status    String   // success, failed, warning
+  metadata  Json?    // Données supplémentaires
+  createdAt DateTime @default(now())
+
+  // Relations
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([action])
+  @@index([status])
+  @@index([createdAt])
+}
