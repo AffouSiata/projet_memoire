@@ -3,11 +3,14 @@ FROM node:20-alpine AS frontend-builder
 
 WORKDIR /app/frontend
 
+# Increase Node memory limit
+ENV NODE_OPTIONS=--max_old_space_size=2048
+
 # Copy frontend package files
 COPY medical-appointment-frontend/package*.json ./
 
-# Install frontend dependencies
-RUN npm ci
+# Install frontend dependencies (use npm install instead of npm ci for flexibility)
+RUN npm install --legacy-peer-deps
 
 # Copy frontend source
 COPY medical-appointment-frontend/ ./
@@ -20,12 +23,15 @@ FROM node:20-alpine AS backend-builder
 
 WORKDIR /app/backend
 
+# Install Python and build tools for bcrypt
+RUN apk add --no-cache python3 make g++
+
 # Copy backend package files
 COPY medical-appointment-api/package*.json ./
 COPY medical-appointment-api/prisma ./prisma/
 
 # Install backend dependencies
-RUN npm ci
+RUN npm install --legacy-peer-deps
 
 # Copy backend source
 COPY medical-appointment-api/ ./
@@ -41,12 +47,15 @@ FROM node:20-alpine AS production
 
 WORKDIR /app
 
+# Install Python and build tools for bcrypt (needed at runtime for some native modules)
+RUN apk add --no-cache python3 make g++
+
 # Copy backend package files
 COPY medical-appointment-api/package*.json ./
 COPY medical-appointment-api/prisma ./prisma/
 
 # Install only production dependencies
-RUN npm ci --only=production
+RUN npm install --only=production --legacy-peer-deps
 
 # Generate Prisma Client
 RUN npx prisma generate
