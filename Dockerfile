@@ -36,8 +36,8 @@ RUN npm install --legacy-peer-deps
 # Copy backend source
 COPY medical-appointment-api/ ./
 
-# Generate Prisma Client
-RUN npx prisma generate
+# Generate Prisma Client with specific version
+RUN npx prisma@5.22.0 generate
 
 # Build backend
 RUN npm run build
@@ -57,8 +57,8 @@ COPY medical-appointment-api/prisma ./prisma/
 # Install only production dependencies
 RUN npm install --only=production --legacy-peer-deps
 
-# Generate Prisma Client
-RUN npx prisma generate
+# Generate Prisma Client with specific version
+RUN npx prisma@5.22.0 generate
 
 # Copy built backend from builder
 COPY --from=backend-builder /app/backend/dist ./dist
@@ -73,4 +73,4 @@ RUN mkdir -p uploads
 EXPOSE 3000
 
 # Start application (run migrations then start server)
-CMD ["sh", "-c", "npx prisma migrate deploy && node dist/main"]
+CMD ["sh", "-c", "npx prisma@5.22.0 migrate deploy && node dist/main"]
