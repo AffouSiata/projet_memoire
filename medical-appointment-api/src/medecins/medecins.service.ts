@@ -231,7 +231,7 @@ export class MedecinsService {
           updateRendezVousDto.date ? new Date(updateRendezVousDto.date) : rendezvous.date,
           rendezvous.motif,
           rendezvous.patient.preferencesNotifEmail ?? true,
-          rendezvous.patient.preferencesNotifSms ?? false,
+          rendezvous.patient.preferencesNotifSms ?? true,
         );
       } catch (error) {
         console.error('Erreur lors de l\'envoi de la notification de confirmation:', error);
