@@ -63,8 +63,8 @@ RUN npx prisma@5.22.0 generate
 # Copy built backend from builder
 COPY --from=backend-builder /app/backend/dist ./dist
 
-# Copy built frontend from frontend-builder
-COPY --from=frontend-builder /app/frontend/build ./public
+# Copy built frontend from frontend-builder (to dist/public for NestJS static serving)
+COPY --from=frontend-builder /app/frontend/build ./dist/public
 
 # Create uploads directory
 RUN mkdir -p uploads
