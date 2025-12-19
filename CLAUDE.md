@@ -54,6 +54,7 @@ npx prisma studio                            # GUI database viewer
 ### Frontend (medical-appointment-frontend)
 ```bash
 npm start                  # Start dev server (port 3000)
+npm run dev                # Alternative alias for npm start
 npm run build              # Build for production
 npm test                   # Run tests
 ```
@@ -127,10 +128,11 @@ npm test                   # Run tests
 - **Axios** with interceptors for API calls
 
 **Key Patterns:**
-- **AuthContext** - Global auth state, auto-loads user language preference from database
-- **ThemeContext** - Light/dark mode switching
+- **AuthContext** (`context/AuthContext.jsx`) - Global auth state, auto-loads user language preference from database
+- **ThemeContext** (`context/ThemeContext.js`) - Light/dark mode switching
+- **NotificationContext** (`context/NotificationContext.jsx`) - Real-time notification state management
 - **Role-Specific Layouts** - PatientLayout, MedecinLayout, AdminLayout in `components/layout/`
-- **API Service Layer** - `services/` directory with authService, patientService, medecinService, adminService
+- **API Service Layer** - `services/` directory with authService, patientService, medecinService, adminService, translationService
 - **Token Management** - Auto-refresh on 401 errors, redirects to login on failure
 
 **API Integration:**
@@ -310,6 +312,10 @@ kill -9 <PID>              # Kill process if needed
 **Backend**: Use `npx prisma studio` for database inspection, decode JWT at jwt.io, check console logs from `npm run start:dev`
 
 **Frontend**: Check localStorage tokens (Application tab), verify Authorization headers in Network tab, use React DevTools for context/state inspection
+
+## Prisma Version Note
+
+The project uses Prisma version 5.22.0 (pinned in package.json). This specific version is required for Render deployment compatibility. Do not upgrade without testing deployment.
 
 ## Deployment
 
