@@ -8,14 +8,11 @@ import { getErrorMessage } from '../../utils/errorHandler';
 import {
   CogIcon,
   BellIcon,
-  ShieldCheckIcon,
   MoonIcon,
   SunIcon,
   GlobeAltIcon,
   EnvelopeIcon,
   DevicePhoneMobileIcon,
-  LockClosedIcon,
-  KeyIcon,
   CheckCircleIcon,
   ExclamationCircleIcon,
 } from '@heroicons/react/24/outline';
@@ -43,6 +40,7 @@ const Settings = () => {
 
   useEffect(() => {
     loadSettings();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Synchroniser l'état du toggle avec le thème réel du ThemeContext au chargement
@@ -82,8 +80,6 @@ const Settings = () => {
       const user = response.data;
 
       const isDark = user.theme === 'SOMBRE';
-
-      const userLanguage = user.langue || 'fr';
 
       setSettings({
         emailNotifications: user.preferencesNotifEmail,
@@ -273,12 +269,6 @@ const Settings = () => {
           description: t('settings.notifications.remindersDesc'),
           icon: BellIcon,
         },
-        {
-          id: 'promotionalEmails',
-          label: t('settings.notifications.promotional'),
-          description: t('settings.notifications.promotionalDesc'),
-          icon: EnvelopeIcon,
-        },
       ],
     },
     {
@@ -293,27 +283,6 @@ const Settings = () => {
           label: t('settings.appearance.darkMode'),
           description: t('settings.appearance.darkModeDesc'),
           icon: MoonIcon,
-        },
-      ],
-    },
-    {
-      id: 'security',
-      title: t('settings.security.title'),
-      icon: ShieldCheckIcon,
-      gradient: 'blue-500',
-      description: t('settings.security.description'),
-      settings: [
-        {
-          id: 'twoFactorAuth',
-          label: t('settings.security.twoFactor'),
-          description: t('settings.security.twoFactorDesc'),
-          icon: KeyIcon,
-        },
-        {
-          id: 'biometricAuth',
-          label: t('settings.security.biometric'),
-          description: t('settings.security.biometricDesc'),
-          icon: LockClosedIcon,
         },
       ],
     },
@@ -530,19 +499,6 @@ const Settings = () => {
             </div>
           </div>
 
-          <div className="relative bg-blue-500/10 dark:bg-blue-950/20 backdrop-blur-xl rounded-2xl p-6 border border-blue-200/50 dark:border-blue-900/50 shadow-lg animate-slide-up" style={{ animationDelay: '600ms' }}>
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center shadow-lg flex-shrink-0">
-                <ShieldCheckIcon className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h4 className="font-bold text-slate-800 dark:text-white mb-1">{t('settings.security.tip')}</h4>
-                <p className="text-sm text-slate-600 dark:text-gray-300 leading-relaxed">
-                  {t('settings.security.tipDesc')}
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </PatientLayout>

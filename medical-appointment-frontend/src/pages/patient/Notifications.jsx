@@ -53,7 +53,7 @@ const PatientNotifications = () => {
           darkText: 'dark:text-blue-400',
           border: 'border-blue-200',
           darkBorder: 'dark:border-blue-800',
-          label: 'Confirmation'
+          label: t('patientNotifications.types.confirmation')
         };
       case 'ANNULATION':
         return {
@@ -65,7 +65,7 @@ const PatientNotifications = () => {
           darkText: 'dark:text-red-400',
           border: 'border-red-200',
           darkBorder: 'dark:border-red-800',
-          label: 'Annulation'
+          label: t('patientNotifications.types.cancellation')
         };
       case 'RAPPEL':
         return {
@@ -77,7 +77,7 @@ const PatientNotifications = () => {
           darkText: 'dark:text-orange-400',
           border: 'border-orange-200',
           darkBorder: 'dark:border-orange-800',
-          label: 'Rappel'
+          label: t('patientNotifications.types.reminder')
         };
       case 'CHANGEMENT_HORAIRE':
         return {
@@ -89,7 +89,7 @@ const PatientNotifications = () => {
           darkText: 'dark:text-amber-400',
           border: 'border-amber-200',
           darkBorder: 'dark:border-amber-800',
-          label: 'Changement'
+          label: t('patientNotifications.types.change')
         };
       case 'RECOMMANDATION':
         return {
@@ -101,7 +101,7 @@ const PatientNotifications = () => {
           darkText: 'dark:text-blue-400',
           border: 'border-blue-200',
           darkBorder: 'dark:border-blue-900',
-          label: 'Information'
+          label: t('patientNotifications.types.info')
         };
       default:
         return {
@@ -113,7 +113,7 @@ const PatientNotifications = () => {
           darkText: 'dark:text-gray-400',
           border: 'border-gray-200',
           darkBorder: 'dark:border-gray-800',
-          label: 'Notification'
+          label: t('patientNotifications.types.notification')
         };
     }
   };
@@ -121,24 +121,24 @@ const PatientNotifications = () => {
   const getPriorityStyle = (priority) => {
     switch (priority) {
       case 'urgent':
-        return { bg: 'bg-red-500', text: 'text-red-500', label: 'Urgent', pulse: true };
+        return { bg: 'bg-red-500', text: 'text-red-500', label: t('patientNotifications.priority.urgent'), pulse: true };
       case 'high':
-        return { bg: 'bg-orange-500', text: 'text-orange-500', label: 'Important', pulse: false };
+        return { bg: 'bg-orange-500', text: 'text-orange-500', label: t('patientNotifications.priority.high'), pulse: false };
       case 'normal':
-        return { bg: 'bg-blue-500', text: 'text-blue-500', label: 'Normal', pulse: false };
+        return { bg: 'bg-blue-500', text: 'text-blue-500', label: t('patientNotifications.priority.normal'), pulse: false };
       case 'low':
-        return { bg: 'bg-gray-500', text: 'text-gray-500', label: 'Faible', pulse: false };
+        return { bg: 'bg-gray-500', text: 'text-gray-500', label: t('patientNotifications.priority.low'), pulse: false };
       default:
-        return { bg: 'bg-gray-500', text: 'text-gray-500', label: 'Normal', pulse: false };
+        return { bg: 'bg-gray-500', text: 'text-gray-500', label: t('patientNotifications.priority.normal'), pulse: false };
     }
   };
 
   const filterTypes = [
-    { value: 'ALL', label: 'Toutes', icon: BellIcon, count: notifications.length },
-    { value: 'CONFIRMATION', label: 'Confirmations', icon: CheckCircleIcon, count: notifications.filter(n => n.type === 'CONFIRMATION').length },
-    { value: 'ANNULATION', label: 'Annulations', icon: XCircleIcon, count: notifications.filter(n => n.type === 'ANNULATION').length },
-    { value: 'RAPPEL', label: 'Rappels', icon: ExclamationTriangleIcon, count: notifications.filter(n => n.type === 'RAPPEL').length },
-    { value: 'RECOMMANDATION', label: 'Infos', icon: InformationCircleIcon, count: notifications.filter(n => n.type === 'RECOMMANDATION').length },
+    { value: 'ALL', label: t('patientNotifications.filters.all'), icon: BellIcon, count: notifications.length },
+    { value: 'CONFIRMATION', label: t('patientNotifications.filters.confirmations'), icon: CheckCircleIcon, count: notifications.filter(n => n.type === 'CONFIRMATION').length },
+    { value: 'ANNULATION', label: t('patientNotifications.filters.cancellations'), icon: XCircleIcon, count: notifications.filter(n => n.type === 'ANNULATION').length },
+    { value: 'RAPPEL', label: t('patientNotifications.filters.reminders'), icon: ExclamationTriangleIcon, count: notifications.filter(n => n.type === 'RAPPEL').length },
+    { value: 'RECOMMANDATION', label: t('patientNotifications.filters.info'), icon: InformationCircleIcon, count: notifications.filter(n => n.type === 'RECOMMANDATION').length },
   ];
 
   const filteredNotifications = filterType === 'ALL'
@@ -182,11 +182,11 @@ const PatientNotifications = () => {
   const getTimeAgo = (date) => {
     const seconds = Math.floor((new Date() - date) / 1000);
 
-    if (seconds < 60) return 'À l\'instant';
-    if (seconds < 3600) return `Il y a ${Math.floor(seconds / 60)} min`;
-    if (seconds < 86400) return `Il y a ${Math.floor(seconds / 3600)}h`;
-    if (seconds < 172800) return 'Hier';
-    return `Il y a ${Math.floor(seconds / 86400)} jours`;
+    if (seconds < 60) return t('patientNotifications.timeAgo.justNow');
+    if (seconds < 3600) return t('patientNotifications.timeAgo.minutesAgo', { minutes: Math.floor(seconds / 60) });
+    if (seconds < 86400) return t('patientNotifications.timeAgo.hoursAgo', { hours: Math.floor(seconds / 3600) });
+    if (seconds < 172800) return t('patientNotifications.timeAgo.yesterday');
+    return t('patientNotifications.timeAgo.daysAgo', { days: Math.floor(seconds / 86400) });
   };
 
   return (
@@ -219,12 +219,12 @@ const PatientNotifications = () => {
                   <div>
                     <div className="flex items-center gap-2 mb-1">
                       <h1 className="text-4xl font-bold text-blue-500 dark:text-blue-400">
-                        Notifications
+                        {t('patientNotifications.title')}
                       </h1>
                       <SparklesIcon className="w-6 h-6 text-blue-500 animate-pulse" />
                     </div>
                     <p className="text-slate-600 dark:text-white font-medium">
-                      Vos notifications personnelles
+                      {t('patientNotifications.subtitle')}
                     </p>
                   </div>
                 </div>
@@ -236,7 +236,7 @@ const PatientNotifications = () => {
                     <div className="relative flex items-center gap-3">
                       <CalendarIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
                       <div>
-                        <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">Date</p>
+                        <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{t('patientNotifications.date')}</p>
                         <p className="text-sm font-bold text-gray-900 dark:text-white">
                           {formatDate(currentTime, dateFormats.short)}
                         </p>
@@ -248,7 +248,7 @@ const PatientNotifications = () => {
                     <div className="relative flex items-center gap-3">
                       <ClockIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
                       <div>
-                        <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">Heure</p>
+                        <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{t('patientNotifications.time')}</p>
                         <p className="text-sm font-bold text-gray-900 dark:text-white font-mono">
                           {currentTime.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}
                         </p>
@@ -305,7 +305,7 @@ const PatientNotifications = () => {
               className="flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <CheckCircleIcon className="w-5 h-5" />
-              Tout marquer comme lu
+              {t('patientNotifications.markAllAsRead')}
             </button>
             <button
               onClick={deleteAllRead}
@@ -313,7 +313,7 @@ const PatientNotifications = () => {
               className="flex items-center gap-2 px-6 py-3 bg-red-500 hover:bg-red-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <TrashIcon className="w-5 h-5" />
-              Supprimer les lues ({notifications.filter(n => n.lue).length})
+              {t('patientNotifications.deleteRead')} ({notifications.filter(n => n.lue).length})
             </button>
           </div>
 
@@ -323,8 +323,8 @@ const PatientNotifications = () => {
               <div className="relative animate-scale-in">
                 <div className="bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl shadow-lg p-12 text-center border border-white/50 dark:border-gray-700/50">
                   <BellIcon className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Aucune notification</h3>
-                  <p className="text-gray-600 dark:text-gray-400">Vous n'avez aucune notification pour le moment</p>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{t('patientNotifications.empty.title')}</h3>
+                  <p className="text-gray-600 dark:text-gray-400">{t('patientNotifications.empty.message')}</p>
                 </div>
               </div>
             ) : (

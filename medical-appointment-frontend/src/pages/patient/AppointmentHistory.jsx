@@ -515,7 +515,7 @@ const AppointmentHistory = () => {
           <div className="mb-4 flex items-center gap-2 text-gray-600 dark:text-white animate-scale-in" style={{ animationDelay: '0.3s' }}>
             <FireIcon className="w-5 h-5 text-blue-500" />
             <span className="font-semibold">
-              {filteredAppointments.length} {filteredAppointments.length > 1 ? 'résultats' : 'résultat'}
+              {filteredAppointments.length} {filteredAppointments.length > 1 ? t('history.results.plural') : t('history.results.singular')}
             </span>
           </div>
 
@@ -584,7 +584,7 @@ const AppointmentHistory = () => {
                                 {appointment.motif && (
                                   <div className="mt-3 p-3 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700/50 dark:to-gray-700/30 rounded-xl border border-gray-200 dark:border-gray-600">
                                     <p className="text-sm text-gray-700 dark:text-gray-200">
-                                      <span className="font-bold text-blue-700 dark:text-blue-400">Motif:</span> {appointment.motif}
+                                      <span className="font-bold text-blue-700 dark:text-blue-400">{t('history.reason')}:</span> {appointment.motif}
                                     </p>
                                   </div>
                                 )}
@@ -605,13 +605,13 @@ const AppointmentHistory = () => {
                                 {appointment.status === 'upcoming' && (
                                   <div className="flex flex-col gap-2">
                                     <div className="px-4 py-2 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-xl text-sm text-amber-700 dark:text-amber-300">
-                                      ⏳ En attente de confirmation du médecin
+                                      ⏳ {t('history.waitingConfirmation')}
                                     </div>
                                     <button
                                       onClick={() => handleCancelClick(appointment)}
                                       className="px-4 py-2 bg-red-500 text-white rounded-xl hover:bg-red-600 transition-all hover:scale-105 text-sm font-bold shadow-lg"
                                     >
-                                      ✕ Annuler
+                                      ✕ {t('history.actions.cancel')}
                                     </button>
                                   </div>
                                 )}
@@ -622,7 +622,7 @@ const AppointmentHistory = () => {
                                       onClick={() => handleCancelClick(appointment)}
                                       className="px-4 py-2 bg-red-500 text-white rounded-xl hover:bg-red-600 transition-all hover:scale-105 text-sm font-bold shadow-lg"
                                     >
-                                      ✕ Annuler
+                                      ✕ {t('history.actions.cancel')}
                                     </button>
                                   </div>
                                 )}
@@ -632,7 +632,7 @@ const AppointmentHistory = () => {
                                     onClick={() => handleViewDetails(appointment)}
                                     className="px-6 py-2 bg-blue-500 text-white rounded-xl hover:bg-blue-700 transition-all hover:scale-105 font-bold shadow-lg"
                                   >
-                                    Détails →
+                                    {t('history.actions.details')} →
                                   </button>
                                 )}
                               </div>
@@ -649,7 +649,7 @@ const AppointmentHistory = () => {
               {totalPages > 1 && (
                 <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 animate-scale-in" style={{ animationDelay: '0.5s' }}>
                   <div className="text-sm text-gray-600 dark:text-white">
-                    Affichage <span className="font-bold">{startIndex + 1}</span> - <span className="font-bold">{Math.min(endIndex, filteredAppointments.length)}</span> sur <span className="font-bold">{filteredAppointments.length}</span>
+                    {t('history.pagination.showing')} <span className="font-bold">{startIndex + 1}</span> - <span className="font-bold">{Math.min(endIndex, filteredAppointments.length)}</span> {t('history.pagination.of')} <span className="font-bold">{filteredAppointments.length}</span>
                   </div>
 
                   <div className="flex items-center gap-2">
@@ -662,7 +662,7 @@ const AppointmentHistory = () => {
                           : 'bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm text-gray-700 dark:text-white hover:bg-blue-50 dark:hover:bg-gray-700 hover:scale-105 shadow-md hover:shadow-lg border border-white/20 dark:border-gray-700/50'
                       }`}
                     >
-                      ← Précédent
+                      ← {t('history.pagination.previous')}
                     </button>
 
                     <div className="flex items-center gap-2">
@@ -705,7 +705,7 @@ const AppointmentHistory = () => {
                           : 'bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm text-gray-700 dark:text-white hover:bg-blue-50 dark:hover:bg-gray-700 hover:scale-105 shadow-md hover:shadow-lg border border-white/20 dark:border-gray-700/50'
                       }`}
                     >
-                      Suivant →
+                      {t('history.pagination.next')} →
                     </button>
                   </div>
                 </div>
@@ -739,7 +739,7 @@ const AppointmentHistory = () => {
                   }}
                   className="px-6 py-3 bg-blue-500 text-white rounded-2xl hover:scale-105 hover:shadow-xl transition-all font-bold"
                 >
-                  Réinitialiser les filtres
+                  {t('history.resetFilters')}
                 </button>
               )}
             </div>
@@ -772,10 +772,10 @@ const AppointmentHistory = () => {
                 </div>
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                    Détails du RDV
+                    {t('history.modal.title')}
                   </h2>
                   <p className="text-xs text-gray-500 dark:text-gray-400">
-                    Informations complètes
+                    {t('history.modal.subtitle')}
                   </p>
                 </div>
               </div>
@@ -806,7 +806,7 @@ const AppointmentHistory = () => {
                     <UserIcon className="w-6 h-6 text-white" />
                   </div>
                   <p className="text-xs font-bold text-blue-800 dark:text-blue-400 uppercase tracking-wider">
-                    Médecin
+                    {t('history.modal.doctor')}
                   </p>
                 </div>
                 <p className="text-xl font-bold text-gray-900 dark:text-white mb-1">
@@ -824,7 +824,7 @@ const AppointmentHistory = () => {
                     <CalendarIcon className="w-6 h-6 text-white" />
                   </div>
                   <p className="text-xs font-bold text-blue-800 dark:text-blue-400 uppercase tracking-wider">
-                    Date et Heure
+                    {t('history.modal.dateTime')}
                   </p>
                 </div>
                 <div className="space-y-2">
@@ -866,7 +866,7 @@ const AppointmentHistory = () => {
                 }}
                 className="w-full px-6 py-3.5 bg-blue-700 hover:bg-blue-800 text-white rounded-2xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
               >
-                Fermer
+                {t('history.modal.close')}
               </button>
             </div>
           </div>

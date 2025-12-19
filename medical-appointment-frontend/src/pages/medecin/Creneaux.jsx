@@ -24,6 +24,7 @@ const MedecinCreneaux = () => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [slotToDelete, setSlotToDelete] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
+  const [joursOuvres, setJoursOuvres] = useState(['LUNDI', 'MARDI', 'MERCREDI', 'JEUDI', 'VENDREDI']);
   const [formData, setFormData] = useState({
     jour: 'LUNDI',
     heureDebut: '09:00',
@@ -31,19 +32,51 @@ const MedecinCreneaux = () => {
     isAvailable: true,
   });
 
-  const jours = [
-    { value: 'LUNDI', label: t('medecin.creneaux.days.monday') },
-    { value: 'MARDI', label: t('medecin.creneaux.days.tuesday') },
-    { value: 'MERCREDI', label: t('medecin.creneaux.days.wednesday') },
-    { value: 'JEUDI', label: t('medecin.creneaux.days.thursday') },
-    { value: 'VENDREDI', label: t('medecin.creneaux.days.friday') },
-    { value: 'SAMEDI', label: t('medecin.creneaux.days.saturday') },
-    { value: 'DIMANCHE', label: t('medecin.creneaux.days.sunday') },
+  // Fonction helper pour s'assurer que t() retourne une chaîne
+  const safeT = (key, fallback = '') => {
+    const result = t(key);
+    return typeof result === 'string' ? result : fallback;
+  };
+
+  // Tous les jours disponibles avec leurs labels
+  const allJours = [
+    { value: 'LUNDI', label: safeT('medecin.creneaux.days.monday', 'Lundi') },
+    { value: 'MARDI', label: safeT('medecin.creneaux.days.tuesday', 'Mardi') },
+    { value: 'MERCREDI', label: safeT('medecin.creneaux.days.wednesday', 'Mercredi') },
+    { value: 'JEUDI', label: safeT('medecin.creneaux.days.thursday', 'Jeudi') },
+    { value: 'VENDREDI', label: safeT('medecin.creneaux.days.friday', 'Vendredi') },
+    { value: 'SAMEDI', label: safeT('medecin.creneaux.days.saturday', 'Samedi') },
+    { value: 'DIMANCHE', label: safeT('medecin.creneaux.days.sunday', 'Dimanche') },
   ];
 
+  // Filtrer pour n'afficher que les jours ouvrés sélectionnés dans les paramètres
+  const jours = allJours.filter(jour => joursOuvres.includes(jour.value));
+
   useEffect(() => {
+    loadSettings();
     loadTimeSlots();
   }, []);
+
+  // Charger les jours ouvrés depuis localStorage
+  const loadSettings = () => {
+    try {
+      const savedJoursOuvres = localStorage.getItem('joursOuvres');
+      if (savedJoursOuvres) {
+        const parsed = JSON.parse(savedJoursOuvres);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setJoursOuvres(parsed);
+          // Mettre à jour le jour par défaut du formulaire
+          setFormData(prev => ({
+            ...prev,
+            jour: parsed[0] || 'LUNDI'
+          }));
+        }
+      }
+    } catch (error) {
+      console.error('Erreur chargement paramètres:', error);
+      // Garder les jours par défaut en cas d'erreur
+    }
+  };
 
   const loadTimeSlots = async () => {
     try {
@@ -55,8 +88,31 @@ const MedecinCreneaux = () => {
       const data = response.data?.data || response.data || [];
       console.log('📦 Data extraite:', data);
 
-      // S'assurer que data est bien un tableau
-      const slotsArray = Array.isArray(data) ? data : [];
+      // S'assurer que data est bien un tableau et pas un objet d'erreur
+      let slotsArray = [];
+      if (Array.isArray(data)) {
+        // Filtrer pour ne garder que les objets valides avec id, jour, heureDebut, heureFin
+        slotsArray = data.filter(item =>
+          item &&
+          typeof item === 'object' &&
+          item.id &&
+          typeof item.jour === 'string' &&
+          typeof item.heureDebut === 'string' &&
+          typeof item.heureFin === 'string' &&
+          !item.error &&
+          !item.statusCode
+        );
+      } else if (data && typeof data === 'object' && !data.error && !data.statusCode && !data.message) {
+        // Si c'est un objet mais pas une erreur, c'est peut-être un format différent
+        const values = Object.values(data).flat();
+        slotsArray = values.filter(item =>
+          item &&
+          typeof item === 'object' &&
+          item.id &&
+          typeof item.jour === 'string' &&
+          typeof item.heureDebut === 'string'
+        );
+      }
       console.log('✅ Créneaux chargés:', slotsArray.length, 'créneaux');
       setTimeSlots(slotsArray);
     } catch (error) {
@@ -74,6 +130,11 @@ const MedecinCreneaux = () => {
       const response = await medecinService.createTimeSlot(formData);
       console.log('✅ Créneau créé:', response.data);
 
+      // Vérifier si la réponse contient une erreur
+      if (response.data?.error || response.data?.statusCode) {
+        throw new Error(response.data?.message || 'Erreur lors de la création');
+      }
+
       await loadTimeSlots();
       setShowCreateModal(false);
       setFormData({ jour: 'LUNDI', heureDebut: '09:00', heureFin: '09:30', isAvailable: true });
@@ -81,18 +142,30 @@ const MedecinCreneaux = () => {
       console.error('❌ Erreur création créneau:', error);
 
       // Déterminer le message d'erreur approprié
-      const errorMsg = error.response?.data?.message || error.message || '';
-      const errorMsgStr = typeof errorMsg === 'string' ? errorMsg : String(errorMsg);
-      const errorMsgLower = errorMsgStr.toLowerCase();
+      let errorMsg = '';
+      if (error.response?.data?.message) {
+        errorMsg = Array.isArray(error.response.data.message)
+          ? error.response.data.message.join(', ')
+          : String(error.response.data.message);
+      } else if (error.message) {
+        errorMsg = String(error.message);
+      }
+      const errorMsgLower = errorMsg.toLowerCase();
 
-      if (errorMsgLower.includes('unique') || errorMsgLower.includes('already exists')) {
-        setErrorMessage(t('medecin.creneaux.errorModal.duplicate'));
+      // S'assurer que le message d'erreur est une chaîne
+      let finalErrorMessage = '';
+      if (errorMsgLower.includes('unique') || errorMsgLower.includes('already exists') || errorMsgLower.includes('existe déjà')) {
+        const translated = t('medecin.creneaux.errorModal.duplicate');
+        finalErrorMessage = typeof translated === 'string' ? translated : 'Ce créneau existe déjà pour ce jour et cette heure.';
       } else if (errorMsgLower.includes('chevauche') || errorMsgLower.includes('overlap')) {
-        setErrorMessage(t('medecin.creneaux.errorModal.overlap'));
+        const translated = t('medecin.creneaux.errorModal.overlap');
+        finalErrorMessage = typeof translated === 'string' ? translated : 'Ce créneau chevauche un créneau existant.';
       } else {
-        setErrorMessage(t('medecin.creneaux.errorModal.default'));
+        const translated = t('medecin.creneaux.errorModal.default');
+        finalErrorMessage = typeof translated === 'string' ? translated : 'Une erreur est survenue lors de la création du créneau.';
       }
 
+      setErrorMessage(finalErrorMessage);
       setShowErrorModal(true);
     }
   };
@@ -317,7 +390,7 @@ const MedecinCreneaux = () => {
                             <div className="flex items-center gap-2">
                               <ClockIcon className={`w-4 h-4 ${slot.isAvailable ? 'text-green-600 dark:text-green-400' : 'text-gray-500 dark:text-gray-400'}`} />
                               <span className={`text-sm font-bold ${slot.isAvailable ? 'text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400'}`}>
-                                {slot.heureDebut} - {slot.heureFin}
+                                {typeof slot.heureDebut === 'string' ? slot.heureDebut : ''} - {typeof slot.heureFin === 'string' ? slot.heureFin : ''}
                               </span>
                             </div>
                           </div>
@@ -331,7 +404,7 @@ const MedecinCreneaux = () => {
                                   : 'bg-gray-400 hover:bg-gray-500 text-white'
                               }`}
                             >
-                              {slot.isAvailable ? t('medecin.creneaux.buttons.active') : t('medecin.creneaux.buttons.inactive')}
+                              {slot.isAvailable ? safeT('medecin.creneaux.buttons.active', 'Actif') : safeT('medecin.creneaux.buttons.inactive', 'Inactif')}
                             </button>
                             <button
                               onClick={() => handleDeleteClick(slot)}
@@ -382,7 +455,7 @@ const MedecinCreneaux = () => {
               {/* Message d'erreur */}
               <div className="bg-red-50 dark:bg-red-900/20 rounded-2xl p-4 mb-6 border-2 border-red-200 dark:border-red-800">
                 <p className="text-gray-700 dark:text-gray-300 text-center leading-relaxed">
-                  {errorMessage}
+                  {typeof errorMessage === 'string' ? errorMessage : 'Une erreur est survenue'}
                 </p>
               </div>
 
@@ -445,10 +518,10 @@ const MedecinCreneaux = () => {
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm font-bold text-gray-900 dark:text-white">
-                        {slotToDelete.jour}
+                        {typeof slotToDelete.jour === 'string' ? slotToDelete.jour : ''}
                       </p>
                       <p className="text-lg font-bold text-red-600 dark:text-red-400">
-                        {slotToDelete.heureDebut} - {slotToDelete.heureFin}
+                        {typeof slotToDelete.heureDebut === 'string' ? slotToDelete.heureDebut : ''} - {typeof slotToDelete.heureFin === 'string' ? slotToDelete.heureFin : ''}
                       </p>
                     </div>
                     <ClockIcon className="w-8 h-8 text-red-500" />

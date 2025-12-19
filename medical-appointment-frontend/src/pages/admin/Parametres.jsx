@@ -72,7 +72,6 @@ const AdminParametres = () => {
     // Notifications
     emailNotifications: true,
     smsNotifications: false,
-    pushNotifications: true,
 
     // Appearance
     darkMode: false,
@@ -194,7 +193,6 @@ const AdminParametres = () => {
         ...prev,
         emailNotifications: userData.preferencesNotifEmail ?? true,
         smsNotifications: userData.preferencesNotifSms ?? false,
-        pushNotifications: true,
         darkMode: isDark,
         language: i18n.language, // Utiliser i18n comme source de vérité
       }));
@@ -214,7 +212,6 @@ const AdminParametres = () => {
         ...prev,
         emailNotifications: userData.preferencesNotifEmail ?? true,
         smsNotifications: userData.preferencesNotifSms ?? false,
-        pushNotifications: true,
         darkMode: isDark,
         language: userLanguage,
       }));
@@ -421,12 +418,6 @@ const AdminParametres = () => {
           label: t('admin.parametres.notifications.sms'),
           description: t('admin.parametres.notifications.smsDesc'),
           icon: DevicePhoneMobileIcon,
-        },
-        {
-          id: 'pushNotifications',
-          label: t('admin.parametres.notifications.push'),
-          description: t('admin.parametres.notifications.pushDesc'),
-          icon: BellIcon,
         },
       ],
     },

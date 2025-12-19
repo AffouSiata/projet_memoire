@@ -20,6 +20,8 @@ import {
   InformationCircleIcon,
   UserIcon,
   CakeIcon,
+  TrashIcon,
+  ExclamationTriangleIcon,
 } from '@heroicons/react/24/outline';
 import { useDateFormatter, dateFormats } from '../../hooks/useDateFormatter';
 
@@ -35,7 +37,9 @@ const AdminPatients = () => {
   const [totalPatients, setTotalPatients] = useState(0);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showDetailsModal, setShowDetailsModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedPatient, setSelectedPatient] = useState(null);
+  const [isDeleting, setIsDeleting] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [stats, setStats] = useState({
     total: 0,
@@ -99,6 +103,26 @@ const AdminPatients = () => {
   const handleShowDetails = (patient) => {
     setSelectedPatient(patient);
     setShowDetailsModal(true);
+  };
+
+  const handleDeletePatient = (patient) => {
+    setSelectedPatient(patient);
+    setShowDeleteModal(true);
+  };
+
+  const confirmDeletePatient = async () => {
+    if (!selectedPatient) return;
+    setIsDeleting(true);
+    try {
+      await adminService.deletePatient(selectedPatient.id);
+      setShowDeleteModal(false);
+      setSelectedPatient(null);
+      loadPatients();
+    } catch (error) {
+      console.error('Erreur lors de la suppression du patient:', error);
+    } finally {
+      setIsDeleting(false);
+    }
   };
 
   const confirmToggleStatus = async () => {
@@ -370,33 +394,40 @@ const AdminPatients = () => {
                       </div>
 
                       {/* Action Buttons */}
-                      <div className="grid grid-cols-2 gap-2">
+                      <div className="grid grid-cols-3 gap-2">
                         <button
                           onClick={() => handleToggleStatus(patient)}
-                          className={`flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-bold transition-all hover:scale-105 shadow-lg ${
+                          className={`flex items-center justify-center gap-1 px-3 py-3 rounded-xl font-bold transition-all hover:scale-105 shadow-lg text-sm ${
                             patient.isActive
-                              ? 'bg-red-500 hover:bg-red-600 text-white'
+                              ? 'bg-orange-500 hover:bg-orange-600 text-white'
                               : 'bg-blue-700 hover:bg-blue-800 text-white'
                           }`}
                         >
                           {patient.isActive ? (
                             <>
                               <XCircleIcon className="w-4 h-4" />
-                              {t('admin.patients.deactivate')}
+                              <span className="hidden sm:inline">{t('admin.patients.deactivate')}</span>
                             </>
                           ) : (
                             <>
                               <CheckCircleIcon className="w-4 h-4" />
-                              {t('admin.patients.activate')}
+                              <span className="hidden sm:inline">{t('admin.patients.activate')}</span>
                             </>
                           )}
                         </button>
                         <button
                           onClick={() => handleShowDetails(patient)}
-                          className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-bold transition-all hover:scale-105 border-2 border-blue-500 text-blue-700 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/20"
+                          className="flex items-center justify-center gap-1 px-3 py-3 rounded-xl font-bold transition-all hover:scale-105 border-2 border-blue-500 text-blue-700 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/20 text-sm"
                         >
                           <EyeIcon className="w-4 h-4" />
-                          <span>{t('admin.patients.table.details')}</span>
+                          <span className="hidden sm:inline">{t('admin.patients.table.details')}</span>
+                        </button>
+                        <button
+                          onClick={() => handleDeletePatient(patient)}
+                          className="flex items-center justify-center gap-1 px-3 py-3 rounded-xl font-bold transition-all hover:scale-105 bg-red-500 hover:bg-red-600 text-white shadow-lg text-sm"
+                        >
+                          <TrashIcon className="w-4 h-4" />
+                          <span className="hidden sm:inline">{t('common.delete')}</span>
                         </button>
                       </div>
                     </div>
@@ -680,6 +711,71 @@ const AdminPatients = () => {
                 <XCircleIcon className="w-5 h-5" />
                 <span>{t('common.close')}</span>
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Delete Confirmation Modal */}
+      {showDeleteModal && selectedPatient && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 animate-fade-in">
+          <div
+            className="absolute inset-0 bg-black/70 backdrop-blur-lg"
+            onClick={() => !isDeleting && setShowDeleteModal(false)}
+          ></div>
+
+          <div className="relative animate-scale-in">
+            <div className="absolute -inset-1 bg-red-500 rounded-3xl blur-xl opacity-75"></div>
+            <div className="relative bg-white/95 dark:bg-gray-800/95 backdrop-blur-2xl rounded-3xl shadow-2xl p-8 max-w-md w-full border-2 border-gray-200/50 dark:border-gray-700/50">
+              <div className="text-center mb-8">
+                <div className="relative inline-block mb-6">
+                  <div className="absolute -inset-2 bg-red-500 rounded-2xl blur-xl opacity-50"></div>
+                  <div className="relative w-20 h-20 bg-red-500 rounded-2xl flex items-center justify-center shadow-xl">
+                    <ExclamationTriangleIcon className="w-10 h-10 text-white" />
+                  </div>
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                  Supprimer le patient ?
+                </h3>
+                <p className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-1">
+                  {selectedPatient.prenom} {selectedPatient.nom}
+                </p>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                  {selectedPatient.email}
+                </p>
+                <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl p-4">
+                  <p className="text-sm text-red-700 dark:text-red-300">
+                    ⚠️ Cette action est irréversible. Toutes les données du patient (rendez-vous, notifications, notes médicales) seront définitivement supprimées.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setShowDeleteModal(false)}
+                  disabled={isDeleting}
+                  className="flex-1 px-6 py-3.5 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-white font-bold rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-all hover:scale-105 disabled:opacity-50"
+                >
+                  {t('common.cancel')}
+                </button>
+                <button
+                  onClick={confirmDeletePatient}
+                  disabled={isDeleting}
+                  className="flex-1 px-6 py-3.5 font-bold rounded-xl text-white shadow-xl transition-all hover:scale-105 bg-red-500 hover:bg-red-600 disabled:opacity-50 flex items-center justify-center gap-2"
+                >
+                  {isDeleting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      Suppression...
+                    </>
+                  ) : (
+                    <>
+                      <TrashIcon className="w-5 h-5" />
+                      {t('common.delete')}
+                    </>
+                  )}
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -136,7 +136,13 @@ export class MedecinsService {
     // Vérifier que le rendez-vous appartient au médecin
     const rendezvous = await this.prisma.rendezVous.findUnique({
       where: { id: rendezVousId },
-      include: {
+      select: {
+        id: true,
+        medecinId: true,
+        patientId: true,
+        date: true,
+        motif: true,
+        statut: true,
         patient: {
           select: {
             id: true,

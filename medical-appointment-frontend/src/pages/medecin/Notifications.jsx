@@ -21,120 +21,133 @@ import {
 import { BellIcon as BellIconSolid } from '@heroicons/react/24/solid';
 
 const MedecinNotifications = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { formatDate } = useDateFormatter();
 
   const [notifications, setNotifications] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [filter, setFilter] = useState('TOUS');
 
+  // Fonction helper pour s'assurer que t() retourne une chaîne
+  const safeT = (key, fallback = '') => {
+    const result = t(key);
+    return typeof result === 'string' ? result : fallback;
+  };
+
+  // Fonction pour générer les notifications mock avec traductions
+  const getMockNotifications = () => [
+    {
+      id: 1,
+      type: 'CONFIRMATION',
+      titre: safeT('medecin.notifications.mockData.confirmation1.title', 'Nouveau rendez-vous confirmé'),
+      message: safeT('medecin.notifications.mockData.confirmation1.message', 'Marie Yao a confirmé son rendez-vous'),
+      lue: false,
+      createdAt: new Date().toISOString(),
+    },
+    {
+      id: 2,
+      type: 'RAPPEL',
+      titre: safeT('medecin.notifications.mockData.reminder1.title', 'Rappel de rendez-vous'),
+      message: safeT('medecin.notifications.mockData.reminder1.message', 'Rendez-vous avec Kouassi Bamba demain'),
+      lue: false,
+      createdAt: new Date(Date.now() - 3600000).toISOString(),
+    },
+    {
+      id: 3,
+      type: 'ANNULATION',
+      titre: safeT('medecin.notifications.mockData.cancellation1.title', 'Rendez-vous annulé'),
+      message: safeT('medecin.notifications.mockData.cancellation1.message', 'Fatou Diallo a annulé son rendez-vous'),
+      lue: true,
+      createdAt: new Date(Date.now() - 7200000).toISOString(),
+    },
+    {
+      id: 4,
+      type: 'CHANGEMENT_HORAIRE',
+      titre: safeT('medecin.notifications.mockData.scheduleChange1.title', 'Demande de modification'),
+      message: safeT('medecin.notifications.mockData.scheduleChange1.message', 'Jean Kouadio souhaite modifier son rendez-vous'),
+      lue: false,
+      createdAt: new Date(Date.now() - 86400000).toISOString(),
+    },
+    {
+      id: 5,
+      type: 'RECOMMANDATION',
+      titre: safeT('medecin.notifications.mockData.recommendation1.title', 'Suivi patient recommandé'),
+      message: safeT('medecin.notifications.mockData.recommendation1.message', 'Il est temps de contacter vos patients inactifs'),
+      lue: true,
+      createdAt: new Date(Date.now() - 172800000).toISOString(),
+    },
+    {
+      id: 6,
+      type: 'CONFIRMATION',
+      titre: safeT('medecin.notifications.mockData.confirmation2.title', 'Rendez-vous confirmé'),
+      message: safeT('medecin.notifications.mockData.confirmation2.message', 'Sophie Kone a confirmé son rendez-vous'),
+      lue: false,
+      createdAt: new Date(Date.now() - 259200000).toISOString(),
+    },
+    {
+      id: 7,
+      type: 'RAPPEL',
+      titre: safeT('medecin.notifications.mockData.reminder2.title', 'Consultation de suivi'),
+      message: safeT('medecin.notifications.mockData.reminder2.message', 'N\'oubliez pas la consultation de suivi'),
+      lue: true,
+      createdAt: new Date(Date.now() - 345600000).toISOString(),
+    },
+    {
+      id: 8,
+      type: 'CHANGEMENT_HORAIRE',
+      titre: safeT('medecin.notifications.mockData.scheduleChange2.title', 'Changement d\'horaire demandé'),
+      message: safeT('medecin.notifications.mockData.scheduleChange2.message', 'Aminata Diop souhaite décaler son rendez-vous'),
+      lue: false,
+      createdAt: new Date(Date.now() - 432000000).toISOString(),
+    },
+    {
+      id: 9,
+      type: 'ANNULATION',
+      titre: safeT('medecin.notifications.mockData.cancellation2.title', 'Annulation de dernière minute'),
+      message: safeT('medecin.notifications.mockData.cancellation2.message', 'Yao Kofi a annulé son rendez-vous'),
+      lue: true,
+      createdAt: new Date(Date.now() - 518400000).toISOString(),
+    },
+    {
+      id: 10,
+      type: 'CONFIRMATION',
+      titre: safeT('medecin.notifications.mockData.confirmation3.title', 'Nouveau patient inscrit'),
+      message: safeT('medecin.notifications.mockData.confirmation3.message', 'Ibrahim Touré a pris rendez-vous'),
+      lue: false,
+      createdAt: new Date(Date.now() - 604800000).toISOString(),
+    },
+    {
+      id: 11,
+      type: 'RECOMMANDATION',
+      titre: safeT('medecin.notifications.mockData.recommendation2.title', 'Résultats d\'examens disponibles'),
+      message: safeT('medecin.notifications.mockData.recommendation2.message', 'Les résultats d\'examens sont disponibles'),
+      lue: true,
+      createdAt: new Date(Date.now() - 691200000).toISOString(),
+    },
+    {
+      id: 12,
+      type: 'RAPPEL',
+      titre: safeT('medecin.notifications.mockData.reminder3.title', 'Rendez-vous cette semaine'),
+      message: safeT('medecin.notifications.mockData.reminder3.message', 'Vous avez 8 rendez-vous programmés'),
+      lue: true,
+      createdAt: new Date(Date.now() - 777600000).toISOString(),
+    },
+  ];
+
   useEffect(() => {
     loadNotifications();
   }, []);
 
+  // Recharger les notifications quand la langue change
+  useEffect(() => {
+    if (!isLoading) {
+      setNotifications(getMockNotifications());
+    }
+  }, [i18n.language]);
+
   const loadNotifications = async () => {
     try {
-      // Pour l'instant, créons des notifications fictives car l'API n'est pas encore connectée
-      const mockNotifications = [
-        {
-          id: 1,
-          type: 'CONFIRMATION',
-          titre: 'Nouveau rendez-vous confirmé',
-          message: 'Marie Yao a confirmé son rendez-vous du 18 nov. à 14:00',
-          lue: false,
-          createdAt: new Date().toISOString(),
-        },
-        {
-          id: 2,
-          type: 'RAPPEL',
-          titre: 'Rappel de rendez-vous',
-          message: 'Rendez-vous avec Kouassi Bamba demain à 10:00',
-          lue: false,
-          createdAt: new Date(Date.now() - 3600000).toISOString(),
-        },
-        {
-          id: 3,
-          type: 'ANNULATION',
-          titre: 'Rendez-vous annulé',
-          message: 'Fatou Diallo a annulé son rendez-vous du 20 nov.',
-          lue: true,
-          createdAt: new Date(Date.now() - 7200000).toISOString(),
-        },
-        {
-          id: 4,
-          type: 'CHANGEMENT_HORAIRE',
-          titre: 'Demande de modification',
-          message: 'Jean Kouadio souhaite modifier son rendez-vous',
-          lue: false,
-          createdAt: new Date(Date.now() - 86400000).toISOString(),
-        },
-        {
-          id: 5,
-          type: 'RECOMMANDATION',
-          titre: 'Suivi patient recommandé',
-          message: 'Il est temps de contacter vos patients inactifs',
-          lue: true,
-          createdAt: new Date(Date.now() - 172800000).toISOString(),
-        },
-        {
-          id: 6,
-          type: 'CONFIRMATION',
-          titre: 'Rendez-vous confirmé',
-          message: 'Sophie Kone a confirmé son rendez-vous du 19 nov. à 09:30',
-          lue: false,
-          createdAt: new Date(Date.now() - 259200000).toISOString(),
-        },
-        {
-          id: 7,
-          type: 'RAPPEL',
-          titre: 'Consultation de suivi',
-          message: 'N\'oubliez pas la consultation de suivi avec Michel Traore aujourd\'hui',
-          lue: true,
-          createdAt: new Date(Date.now() - 345600000).toISOString(),
-        },
-        {
-          id: 8,
-          type: 'CHANGEMENT_HORAIRE',
-          titre: 'Changement d\'horaire demandé',
-          message: 'Aminata Diop souhaite décaler son rendez-vous à 15h',
-          lue: false,
-          createdAt: new Date(Date.now() - 432000000).toISOString(),
-        },
-        {
-          id: 9,
-          type: 'ANNULATION',
-          titre: 'Annulation de dernière minute',
-          message: 'Yao Kofi a annulé son rendez-vous prévu pour demain',
-          lue: true,
-          createdAt: new Date(Date.now() - 518400000).toISOString(),
-        },
-        {
-          id: 10,
-          type: 'CONFIRMATION',
-          titre: 'Nouveau patient inscrit',
-          message: 'Ibrahim Touré a pris rendez-vous pour le 22 nov. à 11:00',
-          lue: false,
-          createdAt: new Date(Date.now() - 604800000).toISOString(),
-        },
-        {
-          id: 11,
-          type: 'RECOMMANDATION',
-          titre: 'Résultats d\'examens disponibles',
-          message: 'Les résultats d\'examens de 3 patients sont maintenant disponibles',
-          lue: true,
-          createdAt: new Date(Date.now() - 691200000).toISOString(),
-        },
-        {
-          id: 12,
-          type: 'RAPPEL',
-          titre: 'Rendez-vous cette semaine',
-          message: 'Vous avez 8 rendez-vous programmés cette semaine',
-          lue: true,
-          createdAt: new Date(Date.now() - 777600000).toISOString(),
-        },
-      ];
-
-      setNotifications(mockNotifications);
+      setNotifications(getMockNotifications());
     } catch (error) {
       console.error('Erreur chargement notifications:', error);
     } finally {

@@ -384,4 +384,73 @@ export class NotificationsService {
       `Vous avez activé le compte de Dr. ${medecinName} (${specialite}). Le médecin a été notifié par email.`,
     );
   }
+
+  // Envoyer une notification au médecin pour une nouvelle demande de rendez-vous
+  async sendNewAppointmentRequestToDoctor(
+    medecinId: string,
+    medecinEmail: string,
+    medecinName: string,
+    patientName: string,
+    date: Date,
+    motif: string,
+    sendEmail: boolean,
+  ) {
+    // Créer la notification en base
+    await this.createNotification(
+      medecinId,
+      TypeNotification.CONFIRMATION,
+      'Nouvelle demande de rendez-vous',
+      `${patientName} a demandé un rendez-vous pour le ${new Date(date).toLocaleDateString('fr-FR')} à ${new Date(date).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}. Motif: ${motif}`,
+    );
+
+    // Envoyer email si activé
+    if (sendEmail) {
+      const subject = 'Nouvelle demande de rendez-vous';
+      const html = `
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <style>
+              body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+              .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+              .header { background-color: #3b82f6; color: white; padding: 20px; text-align: center; }
+              .content { background-color: #f9fafb; padding: 20px; }
+              .footer { text-align: center; padding: 20px; font-size: 12px; color: #6b7280; }
+              .button { display: inline-block; padding: 12px 24px; background-color: #3b82f6; color: white; text-decoration: none; border-radius: 6px; margin-top: 20px; }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <div class="header">
+                <h1>📅 Nouvelle demande de rendez-vous</h1>
+              </div>
+              <div class="content">
+                <p>Bonjour Dr. ${medecinName},</p>
+                <p>Vous avez reçu une nouvelle demande de rendez-vous :</p>
+                <ul>
+                  <li><strong>Patient:</strong> ${patientName}</li>
+                  <li><strong>Date:</strong> ${new Date(date).toLocaleDateString('fr-FR', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}</li>
+                  <li><strong>Heure:</strong> ${new Date(date).toLocaleTimeString('fr-FR', {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                  })}</li>
+                  <li><strong>Motif:</strong> ${motif}</li>
+                </ul>
+                <p>Veuillez vous connecter à votre espace médecin pour confirmer ou refuser ce rendez-vous.</p>
+              </div>
+              <div class="footer">
+                <p>Cet email a été envoyé automatiquement, merci de ne pas y répondre.</p>
+              </div>
+            </div>
+          </body>
+        </html>
+      `;
+      await this.emailService.sendEmail(medecinEmail, subject, html);
+    }
+  }
 }

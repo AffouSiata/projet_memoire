@@ -63,6 +63,20 @@ const Settings = () => {
 
       const userLanguage = user.langue || 'fr';
 
+      // Charger les jours ouvrés depuis localStorage ou utiliser les valeurs par défaut
+      let savedJoursOuvres = ['LUNDI', 'MARDI', 'MERCREDI', 'JEUDI', 'VENDREDI'];
+      try {
+        const stored = localStorage.getItem('joursOuvres');
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            savedJoursOuvres = parsed;
+          }
+        }
+      } catch (e) {
+        console.error('Erreur lecture joursOuvres:', e);
+      }
+
       setSettings({
         emailNotifications: user.preferencesNotifEmail ?? true,
         smsNotifications: user.preferencesNotifSms ?? false,
@@ -73,7 +87,7 @@ const Settings = () => {
         language: userLanguage,
         dureeConsultation: 30,
         pauseEntreConsultations: 5,
-        joursOuvres: ['LUNDI', 'MARDI', 'MERCREDI', 'JEUDI', 'VENDREDI'],
+        joursOuvres: savedJoursOuvres,
       });
 
       // Appliquer la langue immédiatement dans toute l'application
@@ -138,16 +152,33 @@ const Settings = () => {
       console.log('✅ Langue changée et sauvegardée:', lang);
     } catch (error) {
       console.error('❌ Erreur lors du changement de langue:', error);
+      // S'assurer que le message d'erreur est une chaîne
+      let errorMsg = error.response?.data?.message;
+      if (typeof errorMsg !== 'string') {
+        if (Array.isArray(errorMsg)) {
+          errorMsg = errorMsg.join(', ');
+        } else {
+          errorMsg = 'Erreur lors du changement de langue';
+        }
+      }
+      setError(errorMsg);
     }
   };
 
   const handleDayToggle = (day) => {
-    setSettings(prev => ({
-      ...prev,
-      joursOuvres: prev.joursOuvres.includes(day)
+    setSettings(prev => {
+      const newJoursOuvres = prev.joursOuvres.includes(day)
         ? prev.joursOuvres.filter(d => d !== day)
-        : [...prev.joursOuvres, day]
-    }));
+        : [...prev.joursOuvres, day];
+
+      // Sauvegarder immédiatement dans localStorage
+      localStorage.setItem('joursOuvres', JSON.stringify(newJoursOuvres));
+
+      return {
+        ...prev,
+        joursOuvres: newJoursOuvres
+      };
+    });
   };
 
   const handleSave = async () => {
@@ -184,7 +215,18 @@ const Settings = () => {
       setTimeout(() => setSaveSuccess(false), 3000);
     } catch (err) {
       console.error('Erreur lors de la sauvegarde des paramètres:', err);
-      setError(err.response?.data?.message || 'Impossible de sauvegarder les paramètres');
+      // S'assurer que le message d'erreur est une chaîne
+      let errorMsg = err.response?.data?.message;
+      if (typeof errorMsg !== 'string') {
+        if (Array.isArray(errorMsg)) {
+          errorMsg = errorMsg.join(', ');
+        } else if (errorMsg && typeof errorMsg === 'object') {
+          errorMsg = JSON.stringify(errorMsg);
+        } else {
+          errorMsg = 'Impossible de sauvegarder les paramètres';
+        }
+      }
+      setError(errorMsg);
       setIsSaving(false);
     }
   };
@@ -273,7 +315,6 @@ const Settings = () => {
   const languages = [
     { code: 'fr', name: 'Français', flag: '🇫🇷' },
     { code: 'en', name: 'English', flag: '🇬🇧' },
-    { code: 'ar', name: 'العربية', flag: '🇲🇦' },
   ];
 
   const jours = [
@@ -316,7 +357,9 @@ const Settings = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-slate-800 dark:text-white mb-1">{t('settings.error')}</h4>
-                  <p className="text-sm text-slate-600 dark:text-gray-300 leading-relaxed">{error}</p>
+                  <p className="text-sm text-slate-600 dark:text-gray-300 leading-relaxed">
+                    {typeof error === 'string' ? error : 'Une erreur est survenue'}
+                  </p>
                 </div>
               </div>
             </div>
@@ -358,7 +401,7 @@ const Settings = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-2 gap-4">
                   {languages.map((lang, index) => {
                     const currentLang = i18n.language || settings.language;
                     const isActive = currentLang === lang.code || currentLang?.startsWith(lang.code);

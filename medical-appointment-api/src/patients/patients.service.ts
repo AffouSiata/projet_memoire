@@ -200,6 +200,14 @@ export class PatientsService {
     // Vérifier si le médecin existe
     const medecin = await this.prisma.user.findUnique({
       where: { id: createRendezVousDto.medecinId },
+      select: {
+        id: true,
+        nom: true,
+        prenom: true,
+        email: true,
+        role: true,
+        preferencesNotifEmail: true,
+      },
     });
 
     if (!medecin || medecin.role !== 'MEDECIN') {
@@ -246,8 +254,7 @@ export class PatientsService {
       },
     });
 
-    // Créer une notification en base de données (mais pas d'email/SMS)
-    // L'email/SMS sera envoyé uniquement quand le médecin confirme le rendez-vous
+    // Créer une notification pour le patient
     try {
       await this.notificationsService.createNotification(
         patient.id,
@@ -256,8 +263,22 @@ export class PatientsService {
         `Votre demande de rendez-vous avec Dr. ${medecin.prenom} ${medecin.nom} pour le ${appointmentDate.toLocaleDateString('fr-FR')} a été reçue et est en attente de confirmation.`,
       );
     } catch (error) {
-      // Ne pas bloquer la création du rendez-vous si l'envoi de notification échoue
-      console.error('Erreur lors de l\'envoi de la notification:', error);
+      console.error('Erreur lors de l\'envoi de la notification au patient:', error);
+    }
+
+    // Envoyer une notification et un email au médecin
+    try {
+      await this.notificationsService.sendNewAppointmentRequestToDoctor(
+        medecin.id,
+        medecin.email,
+        `${medecin.prenom} ${medecin.nom}`,
+        `${patient.prenom} ${patient.nom}`,
+        appointmentDate,
+        createRendezVousDto.motif,
+        medecin.preferencesNotifEmail ?? true,
+      );
+    } catch (error) {
+      console.error('Erreur lors de l\'envoi de la notification au médecin:', error);
     }
 
     return rendezvous;

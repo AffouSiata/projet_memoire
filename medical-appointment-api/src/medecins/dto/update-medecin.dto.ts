@@ -1,4 +1,5 @@
-import { IsString, IsOptional } from 'class-validator';
+import { IsString, IsOptional, IsBoolean, IsEnum } from 'class-validator';
+import { Theme } from '@prisma/client';
 
 export class UpdateMedecinDto {
   @IsOptional()
@@ -20,4 +21,24 @@ export class UpdateMedecinDto {
   @IsOptional()
   @IsString()
   specialite?: string;
+
+  @IsOptional()
+  @IsString()
+  langue?: string;
+
+  @IsOptional()
+  @IsEnum(Theme)
+  theme?: Theme;
+
+  @IsOptional()
+  @IsBoolean()
+  preferencesNotifEmail?: boolean;
+
+  @IsOptional()
+  @IsBoolean()
+  preferencesNotifSms?: boolean;
+
+  @IsOptional()
+  @IsBoolean()
+  preferencesRappelRdv?: boolean;
 }

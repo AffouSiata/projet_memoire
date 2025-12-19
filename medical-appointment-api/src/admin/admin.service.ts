@@ -101,6 +101,45 @@ export class AdminService {
     return updated;
   }
 
+  // DELETE /admin/patients/:id
+  async deletePatient(patientId: string) {
+    const patient = await this.prisma.user.findUnique({
+      where: { id: patientId },
+    });
+
+    if (!patient || patient.role !== Role.PATIENT) {
+      throw new NotFoundException('Patient non trouvé');
+    }
+
+    // Supprimer toutes les données liées au patient
+    await this.prisma.$transaction(async (prisma) => {
+      // Supprimer les notifications du patient
+      await prisma.notification.deleteMany({
+        where: { userId: patientId },
+      });
+
+      // Supprimer les rendez-vous du patient
+      await prisma.rendezVous.deleteMany({
+        where: { patientId },
+      });
+
+      // Supprimer les notes médicales du patient
+      await prisma.noteMedicale.deleteMany({
+        where: { patientId },
+      });
+
+      // Supprimer le patient
+      await prisma.user.delete({
+        where: { id: patientId },
+      });
+    });
+
+    return {
+      message: 'Patient supprimé avec succès',
+      deletedId: patientId,
+    };
+  }
+
   // GET /admin/medecins
   async getMedecins(filters?: {
     search?: string;
@@ -255,6 +294,55 @@ export class AdminService {
     }
 
     return updated;
+  }
+
+  // DELETE /admin/medecins/:id
+  async deleteMedecin(medecinId: string) {
+    const medecin = await this.prisma.user.findUnique({
+      where: { id: medecinId },
+    });
+
+    if (!medecin || medecin.role !== Role.MEDECIN) {
+      throw new NotFoundException('Médecin non trouvé');
+    }
+
+    // Supprimer toutes les données liées au médecin
+    await this.prisma.$transaction(async (prisma) => {
+      // Supprimer les notifications du médecin
+      await prisma.notification.deleteMany({
+        where: { userId: medecinId },
+      });
+
+      // Supprimer les créneaux horaires du médecin
+      await prisma.timeSlot.deleteMany({
+        where: { medecinId },
+      });
+
+      // Supprimer les indisponibilités du médecin
+      await prisma.medecinIndisponibilite.deleteMany({
+        where: { medecinId },
+      });
+
+      // Supprimer les notes médicales créées par le médecin
+      await prisma.noteMedicale.deleteMany({
+        where: { medecinId },
+      });
+
+      // Supprimer les rendez-vous du médecin
+      await prisma.rendezVous.deleteMany({
+        where: { medecinId },
+      });
+
+      // Supprimer le médecin
+      await prisma.user.delete({
+        where: { id: medecinId },
+      });
+    });
+
+    return {
+      message: 'Médecin supprimé avec succès',
+      deletedId: medecinId,
+    };
   }
 
   // PATCH /admin/medecins/:id/approve

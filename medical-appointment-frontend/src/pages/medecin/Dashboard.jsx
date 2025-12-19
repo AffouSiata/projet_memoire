@@ -253,7 +253,7 @@ const MedecinDashboard = () => {
                     {/* Badge "Espace Médecin" */}
                     <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary-50 dark:bg-secondary-900/30 rounded-full mb-4">
                       <div className="w-2 h-2 bg-secondary-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs font-semibold text-secondary-700 dark:text-secondary-400 uppercase tracking-wider">Espace Médecin</span>
+                      <span className="text-xs font-semibold text-secondary-700 dark:text-secondary-400 uppercase tracking-wider">{t('medecin.dashboard.doctorSpace')}</span>
                     </div>
 
                     {/* Titre principal avec animation */}
@@ -315,10 +315,10 @@ const MedecinDashboard = () => {
                         <div className="w-8 h-8 bg-secondary-500 rounded-full flex items-center justify-center">
                           <LightBulbIcon className="w-5 h-5 text-white" />
                         </div>
-                        <p className="text-xs font-bold text-secondary-700 dark:text-secondary-400 uppercase tracking-wider">Conseil du jour</p>
+                        <p className="text-xs font-bold text-secondary-700 dark:text-secondary-400 uppercase tracking-wider">{t('medecin.dashboard.tipOfDay')}</p>
                       </div>
                       <p className="text-sm text-gray-700 dark:text-gray-300 font-medium">
-                        💡 Vérifiez régulièrement vos créneaux horaires pour optimiser vos consultations
+                        💡 {t('medecin.dashboard.tipMessage')}
                       </p>
                     </div>
                   </div>
@@ -495,7 +495,7 @@ const MedecinDashboard = () => {
                   className="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-md animate-scale-in"
                   style={{ animationDelay: '0.7s' }}
                 >
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Répartition par statut</h3>
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">{t('medecin.dashboard.statusByDistribution')}</h3>
                   {statusData.length > 0 ? (
                     <ResponsiveContainer width="100%" height={240}>
                       <PieChart>
@@ -762,7 +762,7 @@ const MedecinDashboard = () => {
                               ? 'bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-400'
                               : 'bg-orange-100 dark:bg-orange-900/50 text-orange-700 dark:text-orange-400'
                           }`}>
-                            {appt.statut === 'CONFIRME' ? 'Confirmé' : 'En attente'}
+                            {appt.statut === 'CONFIRME' ? t('medecin.dashboard.confirmed') : t('medecin.dashboard.pendingStatus')}
                           </span>
                         </div>
                       </div>
@@ -858,19 +858,19 @@ const MedecinDashboard = () => {
                   <div className="grid grid-cols-2 gap-2 text-xs">
                     <div className="flex items-center gap-2">
                       <div className="w-3 h-3 bg-green-100 dark:bg-green-900/30 rounded"></div>
-                      <span className="text-gray-600 dark:text-gray-400">Confirmé</span>
+                      <span className="text-gray-600 dark:text-gray-400">{t('medecin.dashboard.legend.confirmed')}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-3 h-3 bg-blue-100 dark:bg-blue-900/30 rounded"></div>
-                      <span className="text-gray-600 dark:text-gray-400">En attente</span>
+                      <span className="text-gray-600 dark:text-gray-400">{t('medecin.dashboard.legend.pending')}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-3 h-3 bg-orange-100 dark:bg-orange-900/30 rounded"></div>
-                      <span className="text-gray-600 dark:text-gray-400">Presque complet</span>
+                      <span className="text-gray-600 dark:text-gray-400">{t('medecin.dashboard.legend.almostFull')}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-3 h-3 bg-red-100 dark:bg-red-900/30 rounded"></div>
-                      <span className="text-gray-600 dark:text-gray-400">Annulé</span>
+                      <span className="text-gray-600 dark:text-gray-400">{t('medecin.dashboard.legend.cancelled')}</span>
                     </div>
                   </div>
                 </div>
@@ -916,7 +916,7 @@ const MedecinDashboard = () => {
                 {/* Mini score santé visuel */}
                 <div className="mt-4 pt-4 border-t border-purple-200 dark:border-purple-800">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Score activité</span>
+                    <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">{t('medecin.dashboard.activityScore')}</span>
                     <div className="flex items-center gap-2">
                       <div className="w-24 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
                         <div
@@ -939,7 +939,7 @@ const MedecinDashboard = () => {
               >
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
                   <SparklesIcon className="w-5 h-5 text-secondary-500 dark:text-secondary-400" />
-                  Accès rapides
+                  {t('medecin.dashboard.quickAccess')}
                 </h3>
                 <div className="space-y-3">
                   <button
@@ -950,8 +950,8 @@ const MedecinDashboard = () => {
                       <CalendarIcon className="w-5 h-5 text-white" />
                     </div>
                     <div className="text-left flex-1">
-                      <p className="font-semibold text-gray-900 dark:text-white">Rendez-vous</p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">Gérer le planning</p>
+                      <p className="font-semibold text-gray-900 dark:text-white">{t('medecin.dashboard.appointments')}</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">{t('medecin.dashboard.managePlanning')}</p>
                     </div>
                   </button>
 
@@ -963,8 +963,8 @@ const MedecinDashboard = () => {
                       <UsersIcon className="w-5 h-5 text-white" />
                     </div>
                     <div className="text-left flex-1">
-                      <p className="font-semibold text-gray-900 dark:text-white">Mes Patients</p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">Liste et dossiers</p>
+                      <p className="font-semibold text-gray-900 dark:text-white">{t('medecin.dashboard.patientsListLabel')}</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">{t('medecin.dashboard.patientsAndRecords')}</p>
                     </div>
                   </button>
 
@@ -976,8 +976,8 @@ const MedecinDashboard = () => {
                       <DocumentTextIcon className="w-5 h-5 text-white" />
                     </div>
                     <div className="text-left flex-1">
-                      <p className="font-semibold text-gray-900 dark:text-white">Notes Médicales</p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">Consulter et créer</p>
+                      <p className="font-semibold text-gray-900 dark:text-white">{t('medecin.dashboard.medicalNotes')}</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">{t('medecin.dashboard.viewAndCreate')}</p>
                     </div>
                   </button>
                 </div>

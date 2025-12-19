@@ -4,10 +4,12 @@ const adminService = {
   // Patients
   getPatients: (params) => api.get('/admin/patients', { params }),
   updatePatient: (id, data) => api.patch(`/admin/patients/${id}`, data),
+  deletePatient: (id) => api.delete(`/admin/patients/${id}`),
 
   // Médecins
   getMedecins: (params) => api.get('/admin/medecins', { params }),
   updateMedecin: (id, data) => api.patch(`/admin/medecins/${id}`, data),
+  deleteMedecin: (id) => api.delete(`/admin/medecins/${id}`),
   approveMedecin: (id) => api.patch(`/admin/medecins/${id}/approve`),
   rejectMedecin: (id) => api.patch(`/admin/medecins/${id}/reject`),
 

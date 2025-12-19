@@ -13,7 +13,12 @@
     "logout": "Déconnexion",
     "confirmLogout": "Confirmer la déconnexion",
     "logoutButton": "Se déconnecter",
-    "logoutMessage": "Êtes-vous sûr de vouloir vous déconnecter ? Vous serez redirigé vers la page de connexion."
+    "logoutMessage": "Êtes-vous sûr de vouloir vous déconnecter ? Vous serez redirigé vers la page de connexion.",
+    "dr": "Dr.",
+    "doctor": "Médecin",
+    "consultation": "Consultation",
+    "understood": "Compris",
+    "ok": "OK"
   },
   "nav": {
     "dashboard": "Tableau de bord",
@@ -307,6 +312,9 @@
     "yourAppointments": "Vos Consultations",
     "subtitle": "Consultez l'historique complet de vos rendez-vous médicaux",
     "reason": "Motif",
+    "waitingConfirmation": "En attente de confirmation",
+    "resetFilters": "Réinitialiser les filtres",
+    "consultationReason": "Motif de consultation",
     "viewMode": {
       "timeline": "Timeline",
       "cards": "Cartes"
@@ -332,13 +340,16 @@
     },
     "status": {
       "all": "Tous",
-      "upcoming": "À venir",
+      "upcoming": "En attente",
+      "confirmed": "Confirmé",
       "completed": "Complété",
       "cancelled": "Annulé",
       "unknown": "Inconnu"
     },
     "results": {
-      "count": "{{count}} résultat(s)"
+      "count": "{{count}} résultat(s)",
+      "singular": "résultat",
+      "plural": "résultats"
     },
     "pagination": {
       "showing": "Affichage",
@@ -375,6 +386,13 @@
       "prescriptionAvailable": "Ordonnance disponible",
       "prescriptionClick": "Cliquez pour télécharger"
     },
+    "modal": {
+      "title": "Détails du RDV",
+      "subtitle": "Informations complètes",
+      "doctor": "Médecin",
+      "dateTime": "Date et Heure",
+      "close": "Fermer"
+    },
     "confirmModal": {
       "title": "Rendez-vous confirmé !",
       "message": "Votre rendez-vous avec {{doctor}} a été confirmé."
@@ -382,7 +400,15 @@
     "alerts": {
       "downloadPrescription": "Téléchargement de l'ordonnance du {{date}}",
       "cancelConfirm": "Voulez-vous vraiment annuler ce rendez-vous ?",
-      "cancelSuccess": "Rendez-vous annulé avec succès"
+      "cancelSuccess": "Rendez-vous annulé avec succès",
+      "cancelConfirmTitle": "Annuler le rendez-vous ?",
+      "cancelConfirmMessage": "Voulez-vous vraiment annuler votre rendez-vous avec Dr. {{doctor}} prévu le {{date}} ?",
+      "cancelButton": "Oui, annuler",
+      "keepButton": "Non, garder",
+      "cancelSuccessTitle": "Rendez-vous annulé",
+      "cancelSuccessMessage": "Votre rendez-vous a été annulé avec succès.",
+      "downloadTitle": "Téléchargement",
+      "downloadingPrescription": "Téléchargement de l'ordonnance du {{date}} en cours..."
     }
   },
   "login": {
@@ -403,6 +429,7 @@
   "medecin": {
     "dashboard": {
       "title": "Dr. {{name}}",
+      "doctorSpace": "Espace Médecin",
       "activityOverview": "Vue d'ensemble de votre activité",
       "activityDescription": "Consultez vos rendez-vous, gérez vos patients et suivez votre activité médicale.",
       "viewAppointments": "Voir les rendez-vous",
@@ -434,7 +461,26 @@
       "statusCancelled": "Annulés",
       "inactivePatientsMsg": "{{count}} patients n'ont pas consulté depuis 3 mois",
       "pendingConfirmation": "{{count}} rendez-vous en attente de confirmation",
-      "followUpReminder": "Prévoir rappels pour consultations de suivi"
+      "followUpReminder": "Prévoir rappels pour consultations de suivi",
+      "tipOfDay": "Conseil du jour",
+      "tipMessage": "Vérifiez régulièrement vos créneaux horaires pour optimiser vos consultations",
+      "statusByDistribution": "Répartition par statut",
+      "confirmed": "Confirmé",
+      "pendingStatus": "En attente",
+      "legend": {
+        "confirmed": "Confirmé",
+        "pending": "En attente",
+        "almostFull": "Presque complet",
+        "cancelled": "Annulé"
+      },
+      "activityScore": "Score activité",
+      "quickAccess": "Accès rapides",
+      "appointments": "Rendez-vous",
+      "managePlanning": "Gérer le planning",
+      "patientsListLabel": "Mes Patients",
+      "patientsAndRecords": "Liste et dossiers",
+      "medicalNotes": "Notes Médicales",
+      "viewAndCreate": "Consulter et créer"
     },
     "appointments": {
       "badge": "Gestion des Rendez-vous",
@@ -672,7 +718,57 @@
       },
       "stats_display": "Affichage",
       "stats_remaining": "restant",
-      "stats_remainingPlural": "restants"
+      "stats_remainingPlural": "restants",
+      "mockData": {
+        "confirmation1": {
+          "title": "Nouveau rendez-vous confirmé",
+          "message": "Marie Yao a confirmé son rendez-vous du 18 nov. à 14:00"
+        },
+        "reminder1": {
+          "title": "Rappel de rendez-vous",
+          "message": "Rendez-vous avec Kouassi Bamba demain à 10:00"
+        },
+        "cancellation1": {
+          "title": "Rendez-vous annulé",
+          "message": "Fatou Diallo a annulé son rendez-vous du 20 nov."
+        },
+        "scheduleChange1": {
+          "title": "Demande de modification",
+          "message": "Jean Kouadio souhaite modifier son rendez-vous"
+        },
+        "recommendation1": {
+          "title": "Suivi patient recommandé",
+          "message": "Il est temps de contacter vos patients inactifs"
+        },
+        "confirmation2": {
+          "title": "Rendez-vous confirmé",
+          "message": "Sophie Kone a confirmé son rendez-vous du 19 nov. à 09:30"
+        },
+        "reminder2": {
+          "title": "Consultation de suivi",
+          "message": "N'oubliez pas la consultation de suivi avec Michel Traore aujourd'hui"
+        },
+        "scheduleChange2": {
+          "title": "Changement d'horaire demandé",
+          "message": "Aminata Diop souhaite décaler son rendez-vous à 15h"
+        },
+        "cancellation2": {
+          "title": "Annulation de dernière minute",
+          "message": "Yao Kofi a annulé son rendez-vous prévu pour demain"
+        },
+        "confirmation3": {
+          "title": "Nouveau patient inscrit",
+          "message": "Ibrahim Touré a pris rendez-vous pour le 22 nov. à 11:00"
+        },
+        "recommendation2": {
+          "title": "Résultats d'examens disponibles",
+          "message": "Les résultats d'examens de 3 patients sont maintenant disponibles"
+        },
+        "reminder3": {
+          "title": "Rendez-vous cette semaine",
+          "message": "Vous avez 8 rendez-vous programmés cette semaine"
+        }
+      }
     },
     "creneaux": {
       "badge": "Gestion des Disponibilités",
@@ -1087,7 +1183,11 @@
   },
   "layout": {
     "patientSpace": "Espace Patient",
-    "online": "En ligne"
+    "medecinSpace": "Espace Médecin",
+    "adminSpace": "Administration",
+    "online": "En ligne",
+    "sessionEnded": "Session terminée",
+    "redirectMessage": "Vous serez redirigé vers la page de connexion"
   },
   "months": {
     "january": "Janvier",
@@ -1229,6 +1329,46 @@
       "justNow": "À l'instant",
       "hoursAgo": "Il y a {{hours}}h",
       "yesterday": "Hier"
+    }
+  },
+  "patientNotifications": {
+    "title": "Notifications",
+    "subtitle": "Vos notifications personnelles",
+    "date": "Date",
+    "time": "Heure",
+    "markAllAsRead": "Tout marquer comme lu",
+    "deleteRead": "Supprimer les lues",
+    "types": {
+      "confirmation": "Confirmation",
+      "cancellation": "Annulation",
+      "reminder": "Rappel",
+      "change": "Changement",
+      "info": "Information",
+      "notification": "Notification"
+    },
+    "priority": {
+      "urgent": "Urgent",
+      "high": "Important",
+      "normal": "Normal",
+      "low": "Faible"
+    },
+    "filters": {
+      "all": "Toutes",
+      "confirmations": "Confirmations",
+      "cancellations": "Annulations",
+      "reminders": "Rappels",
+      "info": "Infos"
+    },
+    "empty": {
+      "title": "Aucune notification",
+      "message": "Vous n'avez aucune notification pour le moment"
+    },
+    "timeAgo": {
+      "justNow": "À l'instant",
+      "minutesAgo": "Il y a {{minutes}} min",
+      "hoursAgo": "Il y a {{hours}}h",
+      "yesterday": "Hier",
+      "daysAgo": "Il y a {{days}} jours"
     }
   },
   "register": {

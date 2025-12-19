@@ -13,7 +13,12 @@
     "logout": "Logout",
     "confirmLogout": "Confirm logout",
     "logoutButton": "Log out",
-    "logoutMessage": "Are you sure you want to log out? You will be redirected to the login page."
+    "logoutMessage": "Are you sure you want to log out? You will be redirected to the login page.",
+    "dr": "Dr.",
+    "doctor": "Doctor",
+    "consultation": "Consultation",
+    "understood": "Understood",
+    "ok": "OK"
   },
   "nav": {
     "dashboard": "Dashboard",
@@ -307,6 +312,9 @@
     "subtitle": "View all your past and upcoming appointments",
     "yourAppointments": "Your Consultations",
     "reason": "Reason",
+    "waitingConfirmation": "Waiting for confirmation",
+    "resetFilters": "Reset filters",
+    "consultationReason": "Reason for consultation",
     "viewMode": {
       "timeline": "Timeline",
       "cards": "Cards"
@@ -326,7 +334,8 @@
     },
     "status": {
       "all": "All",
-      "upcoming": "Upcoming",
+      "upcoming": "Pending",
+      "confirmed": "Confirmed",
       "completed": "Completed",
       "cancelled": "Cancelled",
       "unknown": "Unknown"
@@ -346,7 +355,9 @@
     },
     "results": {
       "count": "{{count}} appointment found",
-      "count_plural": "{{count}} appointments found"
+      "count_plural": "{{count}} appointments found",
+      "singular": "result",
+      "plural": "results"
     },
     "actions": {
       "downloadPrescription": "Download prescription",
@@ -376,6 +387,13 @@
       "prescriptionAvailable": "Prescription available",
       "prescriptionClick": "Click to download"
     },
+    "modal": {
+      "title": "Appointment Details",
+      "subtitle": "Complete information",
+      "doctor": "Doctor",
+      "dateTime": "Date and Time",
+      "close": "Close"
+    },
     "confirmModal": {
       "title": "Appointment confirmed!",
       "message": "Your appointment with {{doctor}} has been confirmed."
@@ -383,7 +401,15 @@
     "alerts": {
       "downloadPrescription": "Downloading prescription for appointment on {{date}}",
       "cancelConfirm": "Are you sure you want to cancel this appointment?",
-      "cancelSuccess": "Appointment cancelled for {{date}}"
+      "cancelSuccess": "Appointment cancelled for {{date}}",
+      "cancelConfirmTitle": "Cancel appointment?",
+      "cancelConfirmMessage": "Are you sure you want to cancel your appointment with Dr. {{doctor}} scheduled for {{date}}?",
+      "cancelButton": "Yes, cancel",
+      "keepButton": "No, keep",
+      "cancelSuccessTitle": "Appointment cancelled",
+      "cancelSuccessMessage": "Your appointment has been cancelled successfully.",
+      "downloadTitle": "Download",
+      "downloadingPrescription": "Downloading prescription from {{date}}..."
     }
   },
   "login": {
@@ -404,6 +430,7 @@
   "medecin": {
     "dashboard": {
       "title": "Dr. {{name}}",
+      "doctorSpace": "Doctor Space",
       "activityOverview": "Activity Overview",
       "activityDescription": "View your appointments, manage your patients, and track your medical activity.",
       "viewAppointments": "View appointments",
@@ -435,7 +462,26 @@
       "statusCancelled": "Cancelled",
       "inactivePatientsMsg": "{{count}} patients haven't consulted in 3 months",
       "pendingConfirmation": "{{count}} appointments pending confirmation",
-      "followUpReminder": "Schedule reminders for follow-up consultations"
+      "followUpReminder": "Schedule reminders for follow-up consultations",
+      "tipOfDay": "Tip of the day",
+      "tipMessage": "Check your time slots regularly to optimize your consultations",
+      "statusByDistribution": "Distribution by status",
+      "confirmed": "Confirmed",
+      "pendingStatus": "Pending",
+      "legend": {
+        "confirmed": "Confirmed",
+        "pending": "Pending",
+        "almostFull": "Almost full",
+        "cancelled": "Cancelled"
+      },
+      "activityScore": "Activity score",
+      "quickAccess": "Quick access",
+      "appointments": "Appointments",
+      "managePlanning": "Manage schedule",
+      "patientsListLabel": "My Patients",
+      "patientsAndRecords": "List and records",
+      "medicalNotes": "Medical Notes",
+      "viewAndCreate": "View and create"
     },
     "appointments": {
       "badge": "Appointment Management",
@@ -673,7 +719,57 @@
       },
       "stats_display": "Display",
       "stats_remaining": "remaining",
-      "stats_remainingPlural": "remaining"
+      "stats_remainingPlural": "remaining",
+      "mockData": {
+        "confirmation1": {
+          "title": "New appointment confirmed",
+          "message": "Marie Yao confirmed her appointment on Nov 18 at 2:00 PM"
+        },
+        "reminder1": {
+          "title": "Appointment reminder",
+          "message": "Appointment with Kouassi Bamba tomorrow at 10:00 AM"
+        },
+        "cancellation1": {
+          "title": "Appointment cancelled",
+          "message": "Fatou Diallo cancelled her appointment on Nov 20"
+        },
+        "scheduleChange1": {
+          "title": "Modification request",
+          "message": "Jean Kouadio wants to modify his appointment"
+        },
+        "recommendation1": {
+          "title": "Patient follow-up recommended",
+          "message": "It's time to contact your inactive patients"
+        },
+        "confirmation2": {
+          "title": "Appointment confirmed",
+          "message": "Sophie Kone confirmed her appointment on Nov 19 at 9:30 AM"
+        },
+        "reminder2": {
+          "title": "Follow-up consultation",
+          "message": "Don't forget the follow-up consultation with Michel Traore today"
+        },
+        "scheduleChange2": {
+          "title": "Schedule change requested",
+          "message": "Aminata Diop wants to reschedule her appointment to 3:00 PM"
+        },
+        "cancellation2": {
+          "title": "Last minute cancellation",
+          "message": "Yao Kofi cancelled his appointment scheduled for tomorrow"
+        },
+        "confirmation3": {
+          "title": "New patient registered",
+          "message": "Ibrahim Touré booked an appointment for Nov 22 at 11:00 AM"
+        },
+        "recommendation2": {
+          "title": "Test results available",
+          "message": "Test results for 3 patients are now available"
+        },
+        "reminder3": {
+          "title": "Appointments this week",
+          "message": "You have 8 appointments scheduled this week"
+        }
+      }
     },
     "creneaux": {
       "badge": "Availability Management",
@@ -1088,7 +1184,11 @@
   },
   "layout": {
     "patientSpace": "Patient Space",
-    "online": "Online"
+    "medecinSpace": "Doctor Space",
+    "adminSpace": "Administration",
+    "online": "Online",
+    "sessionEnded": "Session ended",
+    "redirectMessage": "You will be redirected to the login page"
   },
   "months": {
     "january": "January",
@@ -1148,6 +1248,46 @@
       "thu": "T",
       "fri": "F",
       "sat": "S"
+    }
+  },
+  "patientNotifications": {
+    "title": "Notifications",
+    "subtitle": "Your personal notifications",
+    "date": "Date",
+    "time": "Time",
+    "markAllAsRead": "Mark all as read",
+    "deleteRead": "Delete read",
+    "types": {
+      "confirmation": "Confirmation",
+      "cancellation": "Cancellation",
+      "reminder": "Reminder",
+      "change": "Change",
+      "info": "Information",
+      "notification": "Notification"
+    },
+    "priority": {
+      "urgent": "Urgent",
+      "high": "Important",
+      "normal": "Normal",
+      "low": "Low"
+    },
+    "filters": {
+      "all": "All",
+      "confirmations": "Confirmations",
+      "cancellations": "Cancellations",
+      "reminders": "Reminders",
+      "info": "Info"
+    },
+    "empty": {
+      "title": "No notification",
+      "message": "You don't have any notifications at the moment"
+    },
+    "timeAgo": {
+      "justNow": "Just now",
+      "minutesAgo": "{{minutes}} min ago",
+      "hoursAgo": "{{hours}}h ago",
+      "yesterday": "Yesterday",
+      "daysAgo": "{{days}} days ago"
     }
   },
   "profile": {

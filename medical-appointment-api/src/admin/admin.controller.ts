@@ -1,7 +1,9 @@
 import {
   Controller,
   Get,
+  Post,
   Patch,
+  Delete,
   Param,
   Body,
   Query,
@@ -18,12 +20,16 @@ import { UpdateUserStatusDto } from './dto/update-user-status.dto';
 import { UpdateAdminProfileDto } from './dto/update-admin-profile.dto';
 import { UpdateRendezVousDto } from '../medecins/dto/update-rendezvous.dto';
 import { Role, StatutRendezVous } from '@prisma/client';
+import { ReminderService } from '../notifications/reminder.service';
 
 @Controller('admin')
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Roles(Role.ADMIN)
 export class AdminController {
-  constructor(private readonly adminService: AdminService) {}
+  constructor(
+    private readonly adminService: AdminService,
+    private readonly reminderService: ReminderService,
+  ) {}
 
   @Get('patients')
   async getPatients(
@@ -41,6 +47,11 @@ export class AdminController {
     @Body() updateStatusDto: UpdateUserStatusDto,
   ) {
     return this.adminService.updatePatientStatus(patientId, updateStatusDto);
+  }
+
+  @Delete('patients/:id')
+  async deletePatient(@Param('id') patientId: string) {
+    return this.adminService.deletePatient(patientId);
   }
 
   @Get('medecins')
@@ -69,6 +80,11 @@ export class AdminController {
     @CurrentUser() admin: any,
   ) {
     return this.adminService.updateMedecinStatus(medecinId, updateStatusDto, admin.id);
+  }
+
+  @Delete('medecins/:id')
+  async deleteMedecin(@Param('id') medecinId: string) {
+    return this.adminService.deleteMedecin(medecinId);
   }
 
   @Patch('medecins/:id/approve')
@@ -158,5 +174,17 @@ export class AdminController {
     @Query('status') status?: string,
   ) {
     return this.adminService.getAuditLogs({ limit, page, status });
+  }
+
+  // Endpoint pour déclencher manuellement les rappels (pour tests)
+  @Post('reminders/trigger')
+  async triggerReminders() {
+    return this.reminderService.triggerReminders();
+  }
+
+  // Endpoint pour envoyer un rappel pour un RDV spécifique
+  @Post('reminders/:appointmentId')
+  async sendReminderForAppointment(@Param('appointmentId') appointmentId: string) {
+    return this.reminderService.sendReminderForAppointment(appointmentId);
   }
 }
