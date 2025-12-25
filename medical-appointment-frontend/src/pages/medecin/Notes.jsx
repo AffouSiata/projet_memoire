@@ -5,6 +5,7 @@ import { useAuth } from '../../context/AuthContext';
 import MedecinLayout from '../../components/layout/MedecinLayout';
 import medecinService from '../../services/medecinService';
 import { useDateFormatter, dateFormats, timeFormats } from '../../hooks/useDateFormatter';
+import { validateRequired, validateNoteContent } from '../../utils/validators';
 import {
   DocumentTextIcon,
   MagnifyingGlassIcon,
@@ -43,6 +44,7 @@ const MedecinNotes = () => {
     contenu: '',
     statut: 'ACTIF',
   });
+  const [formErrors, setFormErrors] = useState({});
 
   useEffect(() => {
     loadData();
@@ -88,13 +90,39 @@ const MedecinNotes = () => {
     avecPJ: notes.filter(n => n.piecesJointes && n.piecesJointes.length > 0).length,
   };
 
+  const handleFormChange = (field, value) => {
+    setFormData({ ...formData, [field]: value });
+    if (formErrors[field]) {
+      setFormErrors({ ...formErrors, [field]: '' });
+    }
+  };
+
+  const validateForm = () => {
+    const errors = {};
+
+    const patientResult = validateRequired(formData.patientId, 'Le patient');
+    if (!patientResult.valid) errors.patientId = patientResult.message;
+
+    const contentResult = validateNoteContent(formData.contenu);
+    if (!contentResult.valid) errors.contenu = contentResult.message;
+
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
   const handleCreate = async (e) => {
     e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
     try {
       await medecinService.createNote(formData);
       loadData();
       setShowCreateModal(false);
       setFormData({ patientId: '', contenu: '', statut: 'ACTIF' });
+      setFormErrors({});
     } catch (error) {
       console.error(t('medecin.notes.errors.creating'), error);
     }
@@ -463,10 +491,13 @@ const MedecinNotes = () => {
                   {t('medecin.notes.createModal.patient')}
                 </label>
                 <select
-                  required
                   value={formData.patientId}
-                  onChange={(e) => setFormData({ ...formData, patientId: e.target.value })}
-                  className="w-full px-4 py-4 bg-gray-50 dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-2xl focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500 text-gray-900 dark:text-white font-medium transition-all duration-300"
+                  onChange={(e) => handleFormChange('patientId', e.target.value)}
+                  className={`w-full px-4 py-4 bg-gray-50 dark:bg-gray-700 border-2 rounded-2xl focus:outline-none focus:ring-2 focus:border-secondary-500 text-gray-900 dark:text-white font-medium transition-all duration-300 ${
+                    formErrors.patientId
+                      ? 'border-red-500 focus:ring-red-500/20'
+                      : 'border-gray-200 dark:border-gray-600 focus:ring-secondary-500'
+                  }`}
                 >
                   <option value="">{t('medecin.notes.createModal.selectPatient')}</option>
                   {patients.map(patient => (
@@ -475,6 +506,12 @@ const MedecinNotes = () => {
                     </option>
                   ))}
                 </select>
+                {formErrors.patientId && (
+                  <p className="mt-1.5 text-sm text-red-600 dark:text-red-400 flex items-center gap-1">
+                    <span className="inline-block w-1 h-1 bg-red-500 rounded-full"></span>
+                    {formErrors.patientId}
+                  </p>
+                )}
               </div>
 
               {/* Contenu */}
@@ -484,13 +521,25 @@ const MedecinNotes = () => {
                   {t('medecin.notes.createModal.observation')}
                 </label>
                 <textarea
-                  required
                   rows={10}
                   value={formData.contenu}
-                  onChange={(e) => setFormData({ ...formData, contenu: e.target.value })}
+                  onChange={(e) => handleFormChange('contenu', e.target.value)}
                   placeholder={t('medecin.notes.createModal.observationPlaceholder')}
-                  className="w-full px-4 py-4 bg-gray-50 dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-2xl focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500 text-gray-900 dark:text-white resize-none font-medium transition-all duration-300"
+                  className={`w-full px-4 py-4 bg-gray-50 dark:bg-gray-700 border-2 rounded-2xl focus:outline-none focus:ring-2 focus:border-secondary-500 text-gray-900 dark:text-white resize-none font-medium transition-all duration-300 ${
+                    formErrors.contenu
+                      ? 'border-red-500 focus:ring-red-500/20'
+                      : 'border-gray-200 dark:border-gray-600 focus:ring-secondary-500'
+                  }`}
                 ></textarea>
+                {formErrors.contenu && (
+                  <p className="mt-1.5 text-sm text-red-600 dark:text-red-400 flex items-center gap-1">
+                    <span className="inline-block w-1 h-1 bg-red-500 rounded-full"></span>
+                    {formErrors.contenu}
+                  </p>
+                )}
+                <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+                  {formData.contenu.length}/5000 caractères (minimum 10)
+                </p>
               </div>
 
               {/* Actions */}

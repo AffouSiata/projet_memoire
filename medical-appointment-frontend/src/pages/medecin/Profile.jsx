@@ -4,6 +4,15 @@ import { useAuth } from '../../context/AuthContext';
 import MedecinLayout from '../../components/layout/MedecinLayout';
 import medecinService from '../../services/medecinService';
 import {
+  validateName,
+  validateEmail,
+  validatePhone,
+  validateAddress,
+  validatePassword,
+  validatePasswordMatch,
+  validateRequired
+} from '../../utils/validators';
+import {
   UserIcon,
   EnvelopeIcon,
   PhoneIcon,
@@ -48,6 +57,9 @@ const Profile = () => {
     newPassword: '',
     confirmPassword: '',
   });
+
+  const [fieldErrors, setFieldErrors] = useState({});
+  const [passwordErrors, setPasswordErrors] = useState({});
 
   useEffect(() => {
     loadProfile();
@@ -111,7 +123,40 @@ const Profile = () => {
     }
   };
 
+  const validateProfileForm = () => {
+    const errors = {};
+
+    const prenomResult = validateName(profileData.prenom, 'Le prénom');
+    if (!prenomResult.valid) errors.prenom = prenomResult.message;
+
+    const nomResult = validateName(profileData.nom, 'Le nom');
+    if (!nomResult.valid) errors.nom = nomResult.message;
+
+    const emailResult = validateEmail(profileData.email);
+    if (!emailResult.valid) errors.email = emailResult.message;
+
+    const phoneResult = validatePhone(profileData.telephone);
+    if (!phoneResult.valid) errors.telephone = phoneResult.message;
+
+    const addressResult = validateAddress(profileData.adresse);
+    if (!addressResult.valid) errors.adresse = addressResult.message;
+
+    setFieldErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const handleFieldChange = (field, value) => {
+    setProfileData({ ...profileData, [field]: value });
+    if (fieldErrors[field]) {
+      setFieldErrors({ ...fieldErrors, [field]: '' });
+    }
+  };
+
   const handleSave = async () => {
+    if (!validateProfileForm()) {
+      return;
+    }
+
     try {
       setIsSaving(true);
       setError('');
@@ -121,6 +166,7 @@ const Profile = () => {
 
       setSuccess(t('medecin.profile.save_success'));
       setIsEditing(false);
+      setFieldErrors({});
       setTimeout(() => setSuccess(''), 3000);
     } catch (err) {
       console.error('Erreur lors de la sauvegarde:', err);
@@ -130,18 +176,35 @@ const Profile = () => {
     }
   };
 
+  const validatePasswordForm = () => {
+    const errors = {};
+
+    const currentResult = validateRequired(passwordData.currentPassword, 'Le mot de passe actuel');
+    if (!currentResult.valid) errors.currentPassword = currentResult.message;
+
+    const newResult = validatePassword(passwordData.newPassword);
+    if (!newResult.valid) errors.newPassword = newResult.message;
+
+    const confirmResult = validatePasswordMatch(passwordData.newPassword, passwordData.confirmPassword);
+    if (!confirmResult.valid) errors.confirmPassword = confirmResult.message;
+
+    setPasswordErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const handlePasswordInputChange = (field, value) => {
+    setPasswordData({ ...passwordData, [field]: value });
+    if (passwordErrors[field]) {
+      setPasswordErrors({ ...passwordErrors, [field]: '' });
+    }
+  };
+
   const handlePasswordChange = async () => {
+    if (!validatePasswordForm()) {
+      return;
+    }
+
     try {
-      if (passwordData.newPassword !== passwordData.confirmPassword) {
-        setError(t('medecin.profile.password_error'));
-        return;
-      }
-
-      if (passwordData.newPassword.length < 6) {
-        setError(t('medecin.profile.password_min_length'));
-        return;
-      }
-
       setIsSaving(true);
       setError('');
       setSuccess('');
@@ -155,6 +218,7 @@ const Profile = () => {
       setSuccess(t('medecin.profile.password_change_success'));
       setShowPasswordModal(false);
       setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
+      setPasswordErrors({});
       setTimeout(() => setSuccess(''), 3000);
     } catch (err) {
       console.error('Erreur lors du changement de mot de passe:', err);
@@ -319,12 +383,24 @@ const Profile = () => {
                     {t('medecin.profile.first_name')}
                   </label>
                   {isEditing ? (
-                    <input
-                      type="text"
-                      value={profileData.prenom}
-                      onChange={(e) => setProfileData({ ...profileData, prenom: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-secondary-500 focus:border-transparent"
-                    />
+                    <>
+                      <input
+                        type="text"
+                        value={profileData.prenom}
+                        onChange={(e) => handleFieldChange('prenom', e.target.value)}
+                        className={`w-full px-4 py-3 rounded-xl border bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:border-transparent ${
+                          fieldErrors.prenom
+                            ? 'border-red-500 focus:ring-red-500/20'
+                            : 'border-gray-300 dark:border-gray-600 focus:ring-secondary-500'
+                        }`}
+                      />
+                      {fieldErrors.prenom && (
+                        <p className="mt-1.5 text-sm text-red-600 dark:text-red-400 flex items-center gap-1">
+                          <span className="inline-block w-1 h-1 bg-red-500 rounded-full"></span>
+                          {fieldErrors.prenom}
+                        </p>
+                      )}
+                    </>
                   ) : (
                     <div className="px-4 py-3 bg-gray-50 dark:bg-gray-700 rounded-xl text-gray-900 dark:text-white">
                       {profileData.prenom || t('medecin.profile.not_filled')}
@@ -337,12 +413,24 @@ const Profile = () => {
                     {t('medecin.profile.last_name')}
                   </label>
                   {isEditing ? (
-                    <input
-                      type="text"
-                      value={profileData.nom}
-                      onChange={(e) => setProfileData({ ...profileData, nom: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-secondary-500 focus:border-transparent"
-                    />
+                    <>
+                      <input
+                        type="text"
+                        value={profileData.nom}
+                        onChange={(e) => handleFieldChange('nom', e.target.value)}
+                        className={`w-full px-4 py-3 rounded-xl border bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:border-transparent ${
+                          fieldErrors.nom
+                            ? 'border-red-500 focus:ring-red-500/20'
+                            : 'border-gray-300 dark:border-gray-600 focus:ring-secondary-500'
+                        }`}
+                      />
+                      {fieldErrors.nom && (
+                        <p className="mt-1.5 text-sm text-red-600 dark:text-red-400 flex items-center gap-1">
+                          <span className="inline-block w-1 h-1 bg-red-500 rounded-full"></span>
+                          {fieldErrors.nom}
+                        </p>
+                      )}
+                    </>
                   ) : (
                     <div className="px-4 py-3 bg-gray-50 dark:bg-gray-700 rounded-xl text-gray-900 dark:text-white">
                       {profileData.nom || t('medecin.profile.not_filled')}
@@ -356,12 +444,24 @@ const Profile = () => {
                     {t('medecin.profile.email')}
                   </label>
                   {isEditing ? (
-                    <input
-                      type="email"
-                      value={profileData.email}
-                      onChange={(e) => setProfileData({ ...profileData, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-secondary-500 focus:border-transparent"
-                    />
+                    <>
+                      <input
+                        type="email"
+                        value={profileData.email}
+                        onChange={(e) => handleFieldChange('email', e.target.value)}
+                        className={`w-full px-4 py-3 rounded-xl border bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:border-transparent ${
+                          fieldErrors.email
+                            ? 'border-red-500 focus:ring-red-500/20'
+                            : 'border-gray-300 dark:border-gray-600 focus:ring-secondary-500'
+                        }`}
+                      />
+                      {fieldErrors.email && (
+                        <p className="mt-1.5 text-sm text-red-600 dark:text-red-400 flex items-center gap-1">
+                          <span className="inline-block w-1 h-1 bg-red-500 rounded-full"></span>
+                          {fieldErrors.email}
+                        </p>
+                      )}
+                    </>
                   ) : (
                     <div className="px-4 py-3 bg-gray-50 dark:bg-gray-700 rounded-xl text-gray-900 dark:text-white">
                       {profileData.email || t('medecin.profile.not_filled')}
@@ -375,12 +475,24 @@ const Profile = () => {
                     {t('medecin.profile.phone')}
                   </label>
                   {isEditing ? (
-                    <input
-                      type="tel"
-                      value={profileData.telephone}
-                      onChange={(e) => setProfileData({ ...profileData, telephone: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-secondary-500 focus:border-transparent"
-                    />
+                    <>
+                      <input
+                        type="tel"
+                        value={profileData.telephone}
+                        onChange={(e) => handleFieldChange('telephone', e.target.value)}
+                        className={`w-full px-4 py-3 rounded-xl border bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:border-transparent ${
+                          fieldErrors.telephone
+                            ? 'border-red-500 focus:ring-red-500/20'
+                            : 'border-gray-300 dark:border-gray-600 focus:ring-secondary-500'
+                        }`}
+                      />
+                      {fieldErrors.telephone && (
+                        <p className="mt-1.5 text-sm text-red-600 dark:text-red-400 flex items-center gap-1">
+                          <span className="inline-block w-1 h-1 bg-red-500 rounded-full"></span>
+                          {fieldErrors.telephone}
+                        </p>
+                      )}
+                    </>
                   ) : (
                     <div className="px-4 py-3 bg-gray-50 dark:bg-gray-700 rounded-xl text-gray-900 dark:text-white">
                       {profileData.telephone || t('medecin.profile.not_filled')}
@@ -397,7 +509,7 @@ const Profile = () => {
                     <input
                       type="text"
                       value={profileData.specialite}
-                      onChange={(e) => setProfileData({ ...profileData, specialite: e.target.value })}
+                      onChange={(e) => handleFieldChange('specialite', e.target.value)}
                       className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-secondary-500 focus:border-transparent"
                     />
                   ) : (
@@ -413,12 +525,24 @@ const Profile = () => {
                     {t('medecin.profile.office_address')}
                   </label>
                   {isEditing ? (
-                    <input
-                      type="text"
-                      value={profileData.adresse}
-                      onChange={(e) => setProfileData({ ...profileData, adresse: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-secondary-500 focus:border-transparent"
-                    />
+                    <>
+                      <input
+                        type="text"
+                        value={profileData.adresse}
+                        onChange={(e) => handleFieldChange('adresse', e.target.value)}
+                        className={`w-full px-4 py-3 rounded-xl border bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:border-transparent ${
+                          fieldErrors.adresse
+                            ? 'border-red-500 focus:ring-red-500/20'
+                            : 'border-gray-300 dark:border-gray-600 focus:ring-secondary-500'
+                        }`}
+                      />
+                      {fieldErrors.adresse && (
+                        <p className="mt-1.5 text-sm text-red-600 dark:text-red-400 flex items-center gap-1">
+                          <span className="inline-block w-1 h-1 bg-red-500 rounded-full"></span>
+                          {fieldErrors.adresse}
+                        </p>
+                      )}
+                    </>
                   ) : (
                     <div className="px-4 py-3 bg-gray-50 dark:bg-gray-700 rounded-xl text-gray-900 dark:text-white">
                       {profileData.adresse || t('medecin.profile.not_filled')}
@@ -553,9 +677,19 @@ const Profile = () => {
                 <input
                   type="password"
                   value={passwordData.currentPassword}
-                  onChange={(e) => setPasswordData({ ...passwordData, currentPassword: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-secondary-500 focus:border-transparent"
+                  onChange={(e) => handlePasswordInputChange('currentPassword', e.target.value)}
+                  className={`w-full px-4 py-3 rounded-xl border bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:border-transparent ${
+                    passwordErrors.currentPassword
+                      ? 'border-red-500 focus:ring-red-500/20'
+                      : 'border-gray-300 dark:border-gray-600 focus:ring-secondary-500'
+                  }`}
                 />
+                {passwordErrors.currentPassword && (
+                  <p className="mt-1.5 text-sm text-red-600 dark:text-red-400 flex items-center gap-1">
+                    <span className="inline-block w-1 h-1 bg-red-500 rounded-full"></span>
+                    {passwordErrors.currentPassword}
+                  </p>
+                )}
               </div>
 
               <div>
@@ -565,9 +699,19 @@ const Profile = () => {
                 <input
                   type="password"
                   value={passwordData.newPassword}
-                  onChange={(e) => setPasswordData({ ...passwordData, newPassword: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-secondary-500 focus:border-transparent"
+                  onChange={(e) => handlePasswordInputChange('newPassword', e.target.value)}
+                  className={`w-full px-4 py-3 rounded-xl border bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:border-transparent ${
+                    passwordErrors.newPassword
+                      ? 'border-red-500 focus:ring-red-500/20'
+                      : 'border-gray-300 dark:border-gray-600 focus:ring-secondary-500'
+                  }`}
                 />
+                {passwordErrors.newPassword && (
+                  <p className="mt-1.5 text-sm text-red-600 dark:text-red-400 flex items-center gap-1">
+                    <span className="inline-block w-1 h-1 bg-red-500 rounded-full"></span>
+                    {passwordErrors.newPassword}
+                  </p>
+                )}
               </div>
 
               <div>
@@ -577,9 +721,19 @@ const Profile = () => {
                 <input
                   type="password"
                   value={passwordData.confirmPassword}
-                  onChange={(e) => setPasswordData({ ...passwordData, confirmPassword: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-secondary-500 focus:border-transparent"
+                  onChange={(e) => handlePasswordInputChange('confirmPassword', e.target.value)}
+                  className={`w-full px-4 py-3 rounded-xl border bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:border-transparent ${
+                    passwordErrors.confirmPassword
+                      ? 'border-red-500 focus:ring-red-500/20'
+                      : 'border-gray-300 dark:border-gray-600 focus:ring-secondary-500'
+                  }`}
                 />
+                {passwordErrors.confirmPassword && (
+                  <p className="mt-1.5 text-sm text-red-600 dark:text-red-400 flex items-center gap-1">
+                    <span className="inline-block w-1 h-1 bg-red-500 rounded-full"></span>
+                    {passwordErrors.confirmPassword}
+                  </p>
+                )}
               </div>
             </div>
 

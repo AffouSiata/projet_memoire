@@ -4,6 +4,16 @@ import PatientLayout from '../../components/layout/PatientLayout';
 import patientService from '../../services/patientService';
 import { getErrorMessage } from '../../utils/errorHandler';
 import {
+  validateName,
+  validateEmail,
+  validatePhone,
+  validateDateOfBirth,
+  validateAddress,
+  validatePassword,
+  validatePasswordMatch,
+  validateRequired
+} from '../../utils/validators';
+import {
   UserIcon,
   EnvelopeIcon,
   PhoneIcon,
@@ -97,6 +107,9 @@ const Profile = () => {
     confirmPassword: '',
   });
 
+  const [editErrors, setEditErrors] = useState({});
+  const [passwordErrors, setPasswordErrors] = useState({});
+
   useEffect(() => {
     loadProfile();
   }, []);
@@ -176,7 +189,43 @@ const Profile = () => {
     }
   };
 
+  const validateEditForm = () => {
+    const errors = {};
+
+    const prenomResult = validateName(editData.prenom, 'Le prénom');
+    if (!prenomResult.valid) errors.prenom = prenomResult.message;
+
+    const nomResult = validateName(editData.nom, 'Le nom');
+    if (!nomResult.valid) errors.nom = nomResult.message;
+
+    const emailResult = validateEmail(editData.email);
+    if (!emailResult.valid) errors.email = emailResult.message;
+
+    const phoneResult = validatePhone(editData.telephone);
+    if (!phoneResult.valid) errors.telephone = phoneResult.message;
+
+    const dobResult = validateDateOfBirth(editData.dateNaissance);
+    if (!dobResult.valid) errors.dateNaissance = dobResult.message;
+
+    const addressResult = validateAddress(editData.adresse);
+    if (!addressResult.valid) errors.adresse = addressResult.message;
+
+    setEditErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const handleEditChange = (field, value) => {
+    setEditData({ ...editData, [field]: value });
+    if (editErrors[field]) {
+      setEditErrors({ ...editErrors, [field]: '' });
+    }
+  };
+
   const handleEditProfile = async () => {
+    if (!validateEditForm()) {
+      return;
+    }
+
     try {
       setIsSaving(true);
       setError('');
@@ -187,6 +236,7 @@ const Profile = () => {
       setProfileData(editData);
       setSuccess('Profil mis à jour avec succès !');
       setShowEditModal(false);
+      setEditErrors({});
       setTimeout(() => setSuccess(''), 3000);
     } catch (err) {
       console.error('Erreur lors de la sauvegarde:', err);
@@ -196,18 +246,35 @@ const Profile = () => {
     }
   };
 
+  const validatePasswordForm = () => {
+    const errors = {};
+
+    const currentResult = validateRequired(passwordData.currentPassword, 'Le mot de passe actuel');
+    if (!currentResult.valid) errors.currentPassword = currentResult.message;
+
+    const newResult = validatePassword(passwordData.newPassword);
+    if (!newResult.valid) errors.newPassword = newResult.message;
+
+    const confirmResult = validatePasswordMatch(passwordData.newPassword, passwordData.confirmPassword);
+    if (!confirmResult.valid) errors.confirmPassword = confirmResult.message;
+
+    setPasswordErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const handlePasswordInputChange = (field, value) => {
+    setPasswordData({ ...passwordData, [field]: value });
+    if (passwordErrors[field]) {
+      setPasswordErrors({ ...passwordErrors, [field]: '' });
+    }
+  };
+
   const handlePasswordChange = async () => {
+    if (!validatePasswordForm()) {
+      return;
+    }
+
     try {
-      if (passwordData.newPassword !== passwordData.confirmPassword) {
-        setError('Les mots de passe ne correspondent pas');
-        return;
-      }
-
-      if (passwordData.newPassword.length < 6) {
-        setError('Le mot de passe doit contenir au moins 6 caractères');
-        return;
-      }
-
       setIsSaving(true);
       setError('');
       setSuccess('');
@@ -220,6 +287,7 @@ const Profile = () => {
       setSuccess('Mot de passe modifié avec succès !');
       setShowPasswordModal(false);
       setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
+      setPasswordErrors({});
       setTimeout(() => setSuccess(''), 3000);
     } catch (err) {
       console.error('Erreur lors du changement de mot de passe:', err);
@@ -836,35 +904,40 @@ const Profile = () => {
               <FormInput
                 label="Prénom"
                 value={editData.prenom}
-                onChange={(e) => setEditData({ ...editData, prenom: e.target.value })}
+                onChange={(e) => handleEditChange('prenom', e.target.value)}
                 icon={<UserIcon className="w-5 h-5 text-gray-400" />}
+                error={editErrors.prenom}
               />
               <FormInput
                 label="Nom"
                 value={editData.nom}
-                onChange={(e) => setEditData({ ...editData, nom: e.target.value })}
+                onChange={(e) => handleEditChange('nom', e.target.value)}
                 icon={<UserIcon className="w-5 h-5 text-gray-400" />}
+                error={editErrors.nom}
               />
               <FormInput
                 label="Email"
                 type="email"
                 value={editData.email}
-                onChange={(e) => setEditData({ ...editData, email: e.target.value })}
+                onChange={(e) => handleEditChange('email', e.target.value)}
                 icon={<EnvelopeIcon className="w-5 h-5 text-gray-400" />}
+                error={editErrors.email}
               />
               <FormInput
                 label="Téléphone"
                 type="tel"
                 value={editData.telephone}
-                onChange={(e) => setEditData({ ...editData, telephone: e.target.value })}
+                onChange={(e) => handleEditChange('telephone', e.target.value)}
                 icon={<PhoneIcon className="w-5 h-5 text-gray-400" />}
+                error={editErrors.telephone}
               />
               <FormInput
                 label="Date de naissance"
                 type="date"
                 value={editData.dateNaissance}
-                onChange={(e) => setEditData({ ...editData, dateNaissance: e.target.value })}
+                onChange={(e) => handleEditChange('dateNaissance', e.target.value)}
                 icon={<CalendarIcon className="w-5 h-5 text-gray-400" />}
+                error={editErrors.dateNaissance}
               />
               <div>
                 <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
@@ -895,8 +968,9 @@ const Profile = () => {
                 <FormInput
                   label="Adresse"
                   value={editData.adresse}
-                  onChange={(e) => setEditData({ ...editData, adresse: e.target.value })}
+                  onChange={(e) => handleEditChange('adresse', e.target.value)}
                   icon={<MapPinIcon className="w-5 h-5 text-gray-400" />}
+                  error={editErrors.adresse}
                 />
               </div>
             </div>
@@ -962,25 +1036,28 @@ const Profile = () => {
                 label="Mot de passe actuel"
                 type="password"
                 value={passwordData.currentPassword}
-                onChange={(e) => setPasswordData({ ...passwordData, currentPassword: e.target.value })}
+                onChange={(e) => handlePasswordInputChange('currentPassword', e.target.value)}
                 icon={<LockClosedIcon className="w-5 h-5 text-gray-400" />}
                 placeholder="••••••••"
+                error={passwordErrors.currentPassword}
               />
               <FormInput
                 label="Nouveau mot de passe"
                 type="password"
                 value={passwordData.newPassword}
-                onChange={(e) => setPasswordData({ ...passwordData, newPassword: e.target.value })}
+                onChange={(e) => handlePasswordInputChange('newPassword', e.target.value)}
                 icon={<LockClosedIcon className="w-5 h-5 text-gray-400" />}
                 placeholder="••••••••"
+                error={passwordErrors.newPassword}
               />
               <FormInput
                 label="Confirmer le nouveau mot de passe"
                 type="password"
                 value={passwordData.confirmPassword}
-                onChange={(e) => setPasswordData({ ...passwordData, confirmPassword: e.target.value })}
+                onChange={(e) => handlePasswordInputChange('confirmPassword', e.target.value)}
                 icon={<LockClosedIcon className="w-5 h-5 text-gray-400" />}
                 placeholder="••••••••"
+                error={passwordErrors.confirmPassword}
               />
             </div>
 
@@ -1188,7 +1265,7 @@ const InfoItem = ({ icon, label, value, iconBg, iconColor }) => (
   </div>
 );
 
-const FormInput = ({ label, type = 'text', value, onChange, icon, placeholder }) => (
+const FormInput = ({ label, type = 'text', value, onChange, icon, placeholder, error }) => (
   <div>
     <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
       {label}
@@ -1202,9 +1279,19 @@ const FormInput = ({ label, type = 'text', value, onChange, icon, placeholder })
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="w-full pl-11 pr-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+        className={`w-full pl-11 pr-4 py-3 rounded-xl border-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 transition-all ${
+          error
+            ? 'border-red-500 focus:ring-red-500/20 focus:border-red-500'
+            : 'border-gray-200 dark:border-gray-600 focus:ring-blue-500 focus:border-blue-500'
+        }`}
       />
     </div>
+    {error && (
+      <p className="mt-1.5 text-sm text-red-600 dark:text-red-400 flex items-center gap-1">
+        <span className="inline-block w-1 h-1 bg-red-500 rounded-full"></span>
+        {error}
+      </p>
+    )}
   </div>
 );
 

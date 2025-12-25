@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../context/AuthContext';
 import MedecinLayout from '../../components/layout/MedecinLayout';
 import medecinService from '../../services/medecinService';
+import { validateTimeSlot } from '../../utils/validators';
 import {
   ClockIcon,
   PlusIcon,
@@ -31,6 +32,7 @@ const MedecinCreneaux = () => {
     heureFin: '09:30',
     isAvailable: true,
   });
+  const [formErrors, setFormErrors] = useState({});
 
   // Fonction helper pour s'assurer que t() retourne une chaîne
   const safeT = (key, fallback = '') => {
@@ -123,8 +125,32 @@ const MedecinCreneaux = () => {
     }
   };
 
+  const handleFormChange = (field, value) => {
+    setFormData({ ...formData, [field]: value });
+    if (formErrors.timeSlot) {
+      setFormErrors({});
+    }
+  };
+
+  const validateForm = () => {
+    const errors = {};
+
+    const timeSlotResult = validateTimeSlot(formData.heureDebut, formData.heureFin);
+    if (!timeSlotResult.valid) {
+      errors.timeSlot = timeSlotResult.message;
+    }
+
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
   const handleCreate = async (e) => {
     e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
     try {
       console.log('🆕 Création du créneau:', formData);
       const response = await medecinService.createTimeSlot(formData);
@@ -612,8 +638,12 @@ const MedecinCreneaux = () => {
                     type="time"
                     required
                     value={formData.heureDebut}
-                    onChange={(e) => setFormData({ ...formData, heureDebut: e.target.value })}
-                    className="w-full px-4 py-4 bg-gray-50 dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-2xl focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500 text-gray-900 dark:text-white font-medium transition-all duration-300"
+                    onChange={(e) => handleFormChange('heureDebut', e.target.value)}
+                    className={`w-full px-4 py-4 bg-gray-50 dark:bg-gray-700 border-2 rounded-2xl focus:outline-none focus:ring-2 focus:border-secondary-500 text-gray-900 dark:text-white font-medium transition-all duration-300 ${
+                      formErrors.timeSlot
+                        ? 'border-red-500 focus:ring-red-500/20'
+                        : 'border-gray-200 dark:border-gray-600 focus:ring-secondary-500'
+                    }`}
                   />
                 </div>
 
@@ -626,11 +656,25 @@ const MedecinCreneaux = () => {
                     type="time"
                     required
                     value={formData.heureFin}
-                    onChange={(e) => setFormData({ ...formData, heureFin: e.target.value })}
-                    className="w-full px-4 py-4 bg-gray-50 dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-2xl focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500 text-gray-900 dark:text-white font-medium transition-all duration-300"
+                    onChange={(e) => handleFormChange('heureFin', e.target.value)}
+                    className={`w-full px-4 py-4 bg-gray-50 dark:bg-gray-700 border-2 rounded-2xl focus:outline-none focus:ring-2 focus:border-secondary-500 text-gray-900 dark:text-white font-medium transition-all duration-300 ${
+                      formErrors.timeSlot
+                        ? 'border-red-500 focus:ring-red-500/20'
+                        : 'border-gray-200 dark:border-gray-600 focus:ring-secondary-500'
+                    }`}
                   />
                 </div>
               </div>
+
+              {/* Erreur de validation */}
+              {formErrors.timeSlot && (
+                <div className="bg-red-50 dark:bg-red-900/20 rounded-xl p-3 border border-red-200 dark:border-red-800">
+                  <p className="text-sm text-red-600 dark:text-red-400 flex items-center gap-2">
+                    <ExclamationTriangleIcon className="w-4 h-4" />
+                    {formErrors.timeSlot}
+                  </p>
+                </div>
+              )}
 
               {/* Actions */}
               <div className="flex justify-end gap-3 pt-4">

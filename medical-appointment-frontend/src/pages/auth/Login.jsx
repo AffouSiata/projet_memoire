@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../context/AuthContext';
 import { getErrorMessage } from '../../utils/errorHandler';
+import { validateEmail, validatePassword } from '../../utils/validators';
 import {
   EnvelopeIcon,
   LockClosedIcon,
@@ -14,17 +15,45 @@ const Login = () => {
   const { t } = useTranslation();
   const [formData, setFormData] = useState({ email: '', motDePasse: '' });
   const [error, setError] = useState('');
+  const [fieldErrors, setFieldErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    // Effacer l'erreur du champ quand l'utilisateur tape
+    if (fieldErrors[name]) {
+      setFieldErrors({ ...fieldErrors, [name]: '' });
+    }
+  };
+
+  const validateForm = () => {
+    const errors = {};
+
+    const emailResult = validateEmail(formData.email);
+    if (!emailResult.valid) {
+      errors.email = emailResult.message;
+    }
+
+    const passwordResult = validatePassword(formData.motDePasse);
+    if (!passwordResult.valid) {
+      errors.motDePasse = passwordResult.message;
+    }
+
+    setFieldErrors(errors);
+    return Object.keys(errors).length === 0;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+
+    if (!validateForm()) {
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -83,9 +112,18 @@ const Login = () => {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder={t('login.emailPlaceholder')}
-                required
-                className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500"
+                className={`w-full px-4 py-3.5 border-2 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-4 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500 ${
+                  fieldErrors.email
+                    ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20'
+                    : 'border-gray-200 dark:border-gray-600 focus:border-blue-500 focus:ring-blue-500/20'
+                }`}
               />
+              {fieldErrors.email && (
+                <p className="mt-1.5 text-sm text-red-600 dark:text-red-400 flex items-center gap-1">
+                  <span className="inline-block w-1 h-1 bg-red-500 rounded-full"></span>
+                  {fieldErrors.email}
+                </p>
+              )}
             </div>
 
             {/* Password */}
@@ -100,9 +138,18 @@ const Login = () => {
                 value={formData.motDePasse}
                 onChange={handleChange}
                 placeholder={t('login.passwordPlaceholder')}
-                required
-                className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500"
+                className={`w-full px-4 py-3.5 border-2 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-4 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500 ${
+                  fieldErrors.motDePasse
+                    ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20'
+                    : 'border-gray-200 dark:border-gray-600 focus:border-blue-500 focus:ring-blue-500/20'
+                }`}
               />
+              {fieldErrors.motDePasse && (
+                <p className="mt-1.5 text-sm text-red-600 dark:text-red-400 flex items-center gap-1">
+                  <span className="inline-block w-1 h-1 bg-red-500 rounded-full"></span>
+                  {fieldErrors.motDePasse}
+                </p>
+              )}
             </div>
 
             {/* Submit Button */}

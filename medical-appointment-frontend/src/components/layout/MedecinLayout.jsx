@@ -352,10 +352,10 @@ const MedecinLayout = ({ children }) => {
                   </div>
                   <div>
                     <h4 className="font-bold text-red-900 dark:text-red-100 mb-1">
-                      Session terminée
+                      {safeT('layout.sessionEnded', 'Session terminée')}
                     </h4>
                     <p className="text-sm text-red-700 dark:text-red-300">
-                      Vous serez redirigé vers la page de connexion
+                      {safeT('layout.redirectMessage', 'Vous serez redirigé vers la page de connexion')}
                     </p>
                   </div>
                 </div>

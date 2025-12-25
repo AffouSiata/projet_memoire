@@ -4,6 +4,15 @@ import { useTranslation } from 'react-i18next';
 import authService from '../../services/authService';
 import { getErrorMessage } from '../../utils/errorHandler';
 import {
+  validateEmail,
+  validatePassword,
+  validatePasswordMatch,
+  validateName,
+  validatePhone,
+  validateNumeroOrdre,
+  validateRequired
+} from '../../utils/validators';
+import {
   UserCircleIcon,
   UserGroupIcon,
   EnvelopeIcon,
@@ -36,6 +45,7 @@ const Register = () => {
     numeroOrdre: '',
   });
   const [error, setError] = useState('');
+  const [fieldErrors, setFieldErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
@@ -58,7 +68,12 @@ const Register = () => {
   });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    // Effacer l'erreur du champ quand l'utilisateur tape
+    if (fieldErrors[name]) {
+      setFieldErrors({ ...fieldErrors, [name]: '' });
+    }
   };
 
   const handleRoleSelection = (selectedRole) => {
@@ -66,35 +81,55 @@ const Register = () => {
     setStep(2);
   };
 
+  const validateForm = () => {
+    const errors = {};
+
+    // Validation du nom
+    const nomResult = validateName(formData.nom, 'Le nom');
+    if (!nomResult.valid) errors.nom = nomResult.message;
+
+    // Validation du prénom
+    const prenomResult = validateName(formData.prenom, 'Le prénom');
+    if (!prenomResult.valid) errors.prenom = prenomResult.message;
+
+    // Validation de l'email
+    const emailResult = validateEmail(formData.email);
+    if (!emailResult.valid) errors.email = emailResult.message;
+
+    // Validation du téléphone
+    const phoneResult = validatePhone(formData.telephone);
+    if (!phoneResult.valid) errors.telephone = phoneResult.message;
+
+    // Validation du mot de passe
+    const passwordResult = validatePassword(formData.motDePasse);
+    if (!passwordResult.valid) errors.motDePasse = passwordResult.message;
+
+    // Validation de la confirmation du mot de passe
+    const confirmResult = validatePasswordMatch(formData.motDePasse, formData.confirmPassword);
+    if (!confirmResult.valid) errors.confirmPassword = confirmResult.message;
+
+    // Validations spécifiques aux médecins
+    if (role === 'MEDECIN') {
+      const specialiteResult = validateRequired(formData.specialite, 'La spécialité');
+      if (!specialiteResult.valid) errors.specialite = specialiteResult.message;
+
+      const numeroOrdreResult = validateNumeroOrdre(formData.numeroOrdre);
+      if (!numeroOrdreResult.valid) errors.numeroOrdre = numeroOrdreResult.message;
+    }
+
+    setFieldErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+
+    if (!validateForm()) {
+      return;
+    }
+
     setLoading(true);
-
-    if (formData.motDePasse !== formData.confirmPassword) {
-      setError(t('register.passwordMismatch'));
-      setLoading(false);
-      return;
-    }
-
-    if (formData.motDePasse.length < 6) {
-      setError(t('register.passwordTooShort'));
-      setLoading(false);
-      return;
-    }
-
-    if (role === 'MEDECIN') {
-      if (!formData.specialite) {
-        setError(t('register.specialtyRequired'));
-        setLoading(false);
-        return;
-      }
-      if (!formData.numeroOrdre || formData.numeroOrdre.length < 5) {
-        setError(t('register.numeroOrdreRequired'));
-        setLoading(false);
-        return;
-      }
-    }
 
     try {
       const registrationData = {
@@ -363,10 +398,19 @@ const Register = () => {
                   name="nom"
                   value={formData.nom}
                   onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500"
+                  className={`w-full px-4 py-3.5 border-2 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-4 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500 ${
+                    fieldErrors.nom
+                      ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20'
+                      : 'border-gray-200 dark:border-gray-600 focus:border-blue-500 focus:ring-blue-500/20'
+                  }`}
                   placeholder={t('register.lastNamePlaceholder')}
                 />
+                {fieldErrors.nom && (
+                  <p className="mt-1.5 text-sm text-red-600 dark:text-red-400 flex items-center gap-1">
+                    <span className="inline-block w-1 h-1 bg-red-500 rounded-full"></span>
+                    {fieldErrors.nom}
+                  </p>
+                )}
               </div>
               <div className="group">
                 <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
@@ -377,10 +421,19 @@ const Register = () => {
                   name="prenom"
                   value={formData.prenom}
                   onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500"
+                  className={`w-full px-4 py-3.5 border-2 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-4 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500 ${
+                    fieldErrors.prenom
+                      ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20'
+                      : 'border-gray-200 dark:border-gray-600 focus:border-blue-500 focus:ring-blue-500/20'
+                  }`}
                   placeholder={t('register.firstNamePlaceholder')}
                 />
+                {fieldErrors.prenom && (
+                  <p className="mt-1.5 text-sm text-red-600 dark:text-red-400 flex items-center gap-1">
+                    <span className="inline-block w-1 h-1 bg-red-500 rounded-full"></span>
+                    {fieldErrors.prenom}
+                  </p>
+                )}
               </div>
             </div>
 
@@ -395,10 +448,19 @@ const Register = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                required
-                className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500"
+                className={`w-full px-4 py-3.5 border-2 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-4 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500 ${
+                  fieldErrors.email
+                    ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20'
+                    : 'border-gray-200 dark:border-gray-600 focus:border-blue-500 focus:ring-blue-500/20'
+                }`}
                 placeholder={t('register.emailPlaceholder')}
               />
+              {fieldErrors.email && (
+                <p className="mt-1.5 text-sm text-red-600 dark:text-red-400 flex items-center gap-1">
+                  <span className="inline-block w-1 h-1 bg-red-500 rounded-full"></span>
+                  {fieldErrors.email}
+                </p>
+              )}
             </div>
 
             {/* Téléphone */}
@@ -412,10 +474,19 @@ const Register = () => {
                 name="telephone"
                 value={formData.telephone}
                 onChange={handleChange}
-                required
-                className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500"
+                className={`w-full px-4 py-3.5 border-2 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-4 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500 ${
+                  fieldErrors.telephone
+                    ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20'
+                    : 'border-gray-200 dark:border-gray-600 focus:border-blue-500 focus:ring-blue-500/20'
+                }`}
                 placeholder={t('register.phonePlaceholder')}
               />
+              {fieldErrors.telephone && (
+                <p className="mt-1.5 text-sm text-red-600 dark:text-red-400 flex items-center gap-1">
+                  <span className="inline-block w-1 h-1 bg-red-500 rounded-full"></span>
+                  {fieldErrors.telephone}
+                </p>
+              )}
             </div>
 
             {/* Champs médecin */}
@@ -439,8 +510,11 @@ const Register = () => {
                       name="specialite"
                       value={formData.specialite}
                       onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all group-hover:border-gray-300 dark:group-hover:border-gray-500"
+                      className={`w-full px-4 py-3.5 border-2 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-4 transition-all group-hover:border-gray-300 dark:group-hover:border-gray-500 ${
+                        fieldErrors.specialite
+                          ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20'
+                          : 'border-gray-200 dark:border-gray-600 focus:border-blue-500 focus:ring-blue-500/20'
+                      }`}
                     >
                       <option value="">{t('register.selectSpecialty')}</option>
                       {specialties.map((specialty, index) => (
@@ -449,6 +523,12 @@ const Register = () => {
                         </option>
                       ))}
                     </select>
+                    {fieldErrors.specialite && (
+                      <p className="mt-1.5 text-sm text-red-600 dark:text-red-400 flex items-center gap-1">
+                        <span className="inline-block w-1 h-1 bg-red-500 rounded-full"></span>
+                        {fieldErrors.specialite}
+                      </p>
+                    )}
                   </div>
 
                   {/* Numéro d'ordre */}
@@ -462,14 +542,24 @@ const Register = () => {
                       name="numeroOrdre"
                       value={formData.numeroOrdre}
                       onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500"
+                      className={`w-full px-4 py-3.5 border-2 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-4 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500 ${
+                        fieldErrors.numeroOrdre
+                          ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20'
+                          : 'border-gray-200 dark:border-gray-600 focus:border-blue-500 focus:ring-blue-500/20'
+                      }`}
                       placeholder={t('register.registrationNumberPlaceholder')}
                     />
-                    <p className="mt-2 text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1">
-                      <DocumentTextIcon className="w-3 h-3" />
-                      {t('register.registrationNumberHelp')}
-                    </p>
+                    {fieldErrors.numeroOrdre ? (
+                      <p className="mt-1.5 text-sm text-red-600 dark:text-red-400 flex items-center gap-1">
+                        <span className="inline-block w-1 h-1 bg-red-500 rounded-full"></span>
+                        {fieldErrors.numeroOrdre}
+                      </p>
+                    ) : (
+                      <p className="mt-2 text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1">
+                        <DocumentTextIcon className="w-3 h-3" />
+                        {t('register.registrationNumberHelp')}
+                      </p>
+                    )}
                   </div>
 
                   {/* Info box */}
@@ -502,11 +592,19 @@ const Register = () => {
                   name="motDePasse"
                   value={formData.motDePasse}
                   onChange={handleChange}
-                  required
-                  minLength={6}
-                  className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500"
+                  className={`w-full px-4 py-3.5 border-2 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-4 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500 ${
+                    fieldErrors.motDePasse
+                      ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20'
+                      : 'border-gray-200 dark:border-gray-600 focus:border-blue-500 focus:ring-blue-500/20'
+                  }`}
                   placeholder="••••••••"
                 />
+                {fieldErrors.motDePasse && (
+                  <p className="mt-1.5 text-sm text-red-600 dark:text-red-400 flex items-center gap-1">
+                    <span className="inline-block w-1 h-1 bg-red-500 rounded-full"></span>
+                    {fieldErrors.motDePasse}
+                  </p>
+                )}
               </div>
               <div className="group">
                 <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2 flex items-center gap-2">
@@ -518,11 +616,19 @@ const Register = () => {
                   name="confirmPassword"
                   value={formData.confirmPassword}
                   onChange={handleChange}
-                  required
-                  minLength={6}
-                  className="w-full px-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500"
+                  className={`w-full px-4 py-3.5 border-2 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-4 transition-all placeholder-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-500 ${
+                    fieldErrors.confirmPassword
+                      ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20'
+                      : 'border-gray-200 dark:border-gray-600 focus:border-blue-500 focus:ring-blue-500/20'
+                  }`}
                   placeholder="••••••••"
                 />
+                {fieldErrors.confirmPassword && (
+                  <p className="mt-1.5 text-sm text-red-600 dark:text-red-400 flex items-center gap-1">
+                    <span className="inline-block w-1 h-1 bg-red-500 rounded-full"></span>
+                    {fieldErrors.confirmPassword}
+                  </p>
+                )}
               </div>
             </div>
 
