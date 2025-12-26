@@ -40,6 +40,10 @@ export const NotificationProvider = ({ children }) => {
   const loadNotifications = useCallback(async () => {
     if (!user) return;
 
+    // Vérifier si le token existe avant de faire la requête
+    const token = localStorage.getItem('accessToken');
+    if (!token) return;
+
     const service = getNotificationService();
     if (!service) return;
 
@@ -68,7 +72,10 @@ export const NotificationProvider = ({ children }) => {
       previousCountRef.current = unread;
       setUnreadCount(unread);
     } catch (error) {
-      console.error('Erreur lors du chargement des notifications:', error);
+      // Ne pas logger les erreurs 401 (gérées par l'intercepteur axios)
+      if (error.response?.status !== 401) {
+        console.error('Erreur lors du chargement des notifications:', error);
+      }
     }
   }, [user, getNotificationService]);
 
