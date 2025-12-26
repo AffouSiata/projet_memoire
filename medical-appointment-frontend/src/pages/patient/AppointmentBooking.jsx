@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../context/AuthContext';
 import PatientLayout from '../../components/layout/PatientLayout';
 import patientService from '../../services/patientService';
-import axios from 'axios';
+import api from '../../services/api';
 import {
   CalendarIcon,
   ClockIcon,
@@ -102,12 +102,7 @@ const AppointmentBooking = () => {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const token = localStorage.getItem('accessToken');
-        const response = await axios.get('http://localhost:3002/api/patients/medecins', {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        });
+        const response = await api.get('/patients/medecins');
 
         // Transformer les données pour correspondre au format attendu
         const transformedDoctors = response.data.map(doc => ({
@@ -224,8 +219,8 @@ const AppointmentBooking = () => {
 
         // Vérifier d'abord si le médecin est indisponible à cette date
         const dateString = selectedDate.toISOString().split('T')[0]; // Format YYYY-MM-DD
-        const unavailabilityResponse = await axios.get(
-          `http://localhost:3002/api/timeslots/${selectedDoctor}`,
+        const unavailabilityResponse = await api.get(
+          `/timeslots/${selectedDoctor}`,
           {
             params: { date: dateString }
           }
@@ -269,14 +264,7 @@ const AppointmentBooking = () => {
 
         // Récupérer les rendez-vous déjà pris pour ce médecin à cette date
         try {
-          const appointmentsResponse = await axios.get(
-            'http://localhost:3002/api/patients/rendezvous',
-            {
-              headers: {
-                Authorization: `Bearer ${localStorage.getItem('accessToken')}`
-              }
-            }
-          );
+          const appointmentsResponse = await api.get('/patients/rendezvous');
 
           const allAppointments = appointmentsResponse.data.data || [];
 
@@ -345,9 +333,6 @@ const AppointmentBooking = () => {
     setIsSubmitting(true);
 
     try {
-      const token = localStorage.getItem('accessToken');
-      const selectedDoctorData = doctors.find(d => d.id === selectedDoctor);
-      const selectedSpecialtyData = specialties.find(s => s.id === selectedSpecialty);
 
       // Créer une date complète pour le rendez-vous
       // selectedDate is already a Date object with the correct day/month/year
@@ -366,19 +351,11 @@ const AppointmentBooking = () => {
         medecinId: selectedDoctor
       });
 
-      const response = await axios.post(
-        'http://localhost:3002/api/patients/rendezvous',
-        {
-          medecinId: selectedDoctor,
-          date: appointmentDate.toISOString(),
-          motif: 'Consultation'
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        }
-      );
+      const response = await api.post('/patients/rendezvous', {
+        medecinId: selectedDoctor,
+        date: appointmentDate.toISOString(),
+        motif: 'Consultation'
+      });
 
       setIsSubmitting(false);
 
