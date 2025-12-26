@@ -355,7 +355,7 @@ const AppointmentBooking = () => {
         medecinId: selectedDoctor,
         date: appointmentDate.toISOString(),
         motif: 'Consultation'
-      });
+      }, { timeout: 60000 }); // 60s timeout (envoi notifications)
 
       setIsSubmitting(false);
 
