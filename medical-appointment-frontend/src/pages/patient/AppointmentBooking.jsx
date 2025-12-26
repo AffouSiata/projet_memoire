@@ -362,7 +362,11 @@ const AppointmentBooking = () => {
       // Afficher le modal de succès
       setShowSuccessModal(true);
     } catch (error) {
-      console.error('Erreur lors de la création du rendez-vous:', error);
+      console.error('Erreur lors de la création du rendez-vous:', {
+        status: error.response?.status,
+        data: error.response?.data,
+        message: error.message
+      });
       setIsSubmitting(false);
 
       // Si erreur 401, le token a expiré - rediriger vers login
@@ -376,7 +380,15 @@ const AppointmentBooking = () => {
       } else {
         // Récupérer le message d'erreur du backend s'il existe
         const backendMessage = error.response?.data?.message;
-        const errorMsg = backendMessage || t('booking.errors.createError') || 'Une erreur est survenue lors de la création du rendez-vous. Veuillez réessayer.';
+        // Si le message est un objet ou un tableau, le convertir en string
+        let errorMsg;
+        if (typeof backendMessage === 'object') {
+          errorMsg = Array.isArray(backendMessage)
+            ? backendMessage.join(', ')
+            : JSON.stringify(backendMessage);
+        } else {
+          errorMsg = backendMessage || t('booking.errors.createError') || 'Une erreur est survenue lors de la création du rendez-vous. Veuillez réessayer.';
+        }
         setErrorMessage(errorMsg);
         setShowErrorModal(true);
       }
