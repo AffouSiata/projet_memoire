@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import MedecinLayout from '../../components/layout/MedecinLayout';
 import { useDateFormatter, dateFormats } from '../../hooks/useDateFormatter';
+import medecinService from '../../services/medecinService';
 import {
   BellIcon,
   CalendarIcon,
@@ -34,106 +35,6 @@ const MedecinNotifications = () => {
     return typeof result === 'string' ? result : fallback;
   };
 
-  // Fonction pour générer les notifications mock avec traductions
-  const getMockNotifications = () => [
-    {
-      id: 1,
-      type: 'CONFIRMATION',
-      titre: safeT('medecin.notifications.mockData.confirmation1.title', 'Nouveau rendez-vous confirmé'),
-      message: safeT('medecin.notifications.mockData.confirmation1.message', 'Marie Yao a confirmé son rendez-vous'),
-      lue: false,
-      createdAt: new Date().toISOString(),
-    },
-    {
-      id: 2,
-      type: 'RAPPEL',
-      titre: safeT('medecin.notifications.mockData.reminder1.title', 'Rappel de rendez-vous'),
-      message: safeT('medecin.notifications.mockData.reminder1.message', 'Rendez-vous avec Kouassi Bamba demain'),
-      lue: false,
-      createdAt: new Date(Date.now() - 3600000).toISOString(),
-    },
-    {
-      id: 3,
-      type: 'ANNULATION',
-      titre: safeT('medecin.notifications.mockData.cancellation1.title', 'Rendez-vous annulé'),
-      message: safeT('medecin.notifications.mockData.cancellation1.message', 'Fatou Diallo a annulé son rendez-vous'),
-      lue: true,
-      createdAt: new Date(Date.now() - 7200000).toISOString(),
-    },
-    {
-      id: 4,
-      type: 'CHANGEMENT_HORAIRE',
-      titre: safeT('medecin.notifications.mockData.scheduleChange1.title', 'Demande de modification'),
-      message: safeT('medecin.notifications.mockData.scheduleChange1.message', 'Jean Kouadio souhaite modifier son rendez-vous'),
-      lue: false,
-      createdAt: new Date(Date.now() - 86400000).toISOString(),
-    },
-    {
-      id: 5,
-      type: 'RECOMMANDATION',
-      titre: safeT('medecin.notifications.mockData.recommendation1.title', 'Suivi patient recommandé'),
-      message: safeT('medecin.notifications.mockData.recommendation1.message', 'Il est temps de contacter vos patients inactifs'),
-      lue: true,
-      createdAt: new Date(Date.now() - 172800000).toISOString(),
-    },
-    {
-      id: 6,
-      type: 'CONFIRMATION',
-      titre: safeT('medecin.notifications.mockData.confirmation2.title', 'Rendez-vous confirmé'),
-      message: safeT('medecin.notifications.mockData.confirmation2.message', 'Sophie Kone a confirmé son rendez-vous'),
-      lue: false,
-      createdAt: new Date(Date.now() - 259200000).toISOString(),
-    },
-    {
-      id: 7,
-      type: 'RAPPEL',
-      titre: safeT('medecin.notifications.mockData.reminder2.title', 'Consultation de suivi'),
-      message: safeT('medecin.notifications.mockData.reminder2.message', 'N\'oubliez pas la consultation de suivi'),
-      lue: true,
-      createdAt: new Date(Date.now() - 345600000).toISOString(),
-    },
-    {
-      id: 8,
-      type: 'CHANGEMENT_HORAIRE',
-      titre: safeT('medecin.notifications.mockData.scheduleChange2.title', 'Changement d\'horaire demandé'),
-      message: safeT('medecin.notifications.mockData.scheduleChange2.message', 'Aminata Diop souhaite décaler son rendez-vous'),
-      lue: false,
-      createdAt: new Date(Date.now() - 432000000).toISOString(),
-    },
-    {
-      id: 9,
-      type: 'ANNULATION',
-      titre: safeT('medecin.notifications.mockData.cancellation2.title', 'Annulation de dernière minute'),
-      message: safeT('medecin.notifications.mockData.cancellation2.message', 'Yao Kofi a annulé son rendez-vous'),
-      lue: true,
-      createdAt: new Date(Date.now() - 518400000).toISOString(),
-    },
-    {
-      id: 10,
-      type: 'CONFIRMATION',
-      titre: safeT('medecin.notifications.mockData.confirmation3.title', 'Nouveau patient inscrit'),
-      message: safeT('medecin.notifications.mockData.confirmation3.message', 'Ibrahim Touré a pris rendez-vous'),
-      lue: false,
-      createdAt: new Date(Date.now() - 604800000).toISOString(),
-    },
-    {
-      id: 11,
-      type: 'RECOMMANDATION',
-      titre: safeT('medecin.notifications.mockData.recommendation2.title', 'Résultats d\'examens disponibles'),
-      message: safeT('medecin.notifications.mockData.recommendation2.message', 'Les résultats d\'examens sont disponibles'),
-      lue: true,
-      createdAt: new Date(Date.now() - 691200000).toISOString(),
-    },
-    {
-      id: 12,
-      type: 'RAPPEL',
-      titre: safeT('medecin.notifications.mockData.reminder3.title', 'Rendez-vous cette semaine'),
-      message: safeT('medecin.notifications.mockData.reminder3.message', 'Vous avez 8 rendez-vous programmés'),
-      lue: true,
-      createdAt: new Date(Date.now() - 777600000).toISOString(),
-    },
-  ];
-
   useEffect(() => {
     loadNotifications();
   }, []);
@@ -141,15 +42,28 @@ const MedecinNotifications = () => {
   // Recharger les notifications quand la langue change
   useEffect(() => {
     if (!isLoading) {
-      setNotifications(getMockNotifications());
+      loadNotifications();
     }
   }, [i18n.language]);
 
   const loadNotifications = async () => {
     try {
-      setNotifications(getMockNotifications());
+      setIsLoading(true);
+      const response = await medecinService.getNotifications();
+      const notificationsData = response.data?.data || response.data || [];
+      // Transformer les données pour avoir le bon format
+      const formattedNotifications = notificationsData.map(notif => ({
+        id: notif.id,
+        type: notif.type || 'CONFIRMATION',
+        titre: notif.titre || notif.title || 'Notification',
+        message: notif.message || notif.contenu || '',
+        lue: notif.lue || false,
+        createdAt: notif.createdAt || new Date().toISOString(),
+      }));
+      setNotifications(formattedNotifications);
     } catch (error) {
       console.error('Erreur chargement notifications:', error);
+      setNotifications([]);
     } finally {
       setIsLoading(false);
     }
@@ -183,20 +97,43 @@ const MedecinNotifications = () => {
   }).length;
 
   // Marquer comme lu
-  const handleMarkAsRead = (notifId) => {
-    setNotifications(notifications.map(n =>
-      n.id === notifId ? { ...n, lue: true } : n
-    ));
+  const handleMarkAsRead = async (notifId) => {
+    try {
+      await medecinService.markNotificationAsRead(notifId);
+      setNotifications(notifications.map(n =>
+        n.id === notifId ? { ...n, lue: true } : n
+      ));
+    } catch (error) {
+      console.error('Erreur lors du marquage de la notification:', error);
+      // Mettre à jour localement quand même pour une meilleure UX
+      setNotifications(notifications.map(n =>
+        n.id === notifId ? { ...n, lue: true } : n
+      ));
+    }
   };
 
   // Marquer tout comme lu
-  const handleMarkAllAsRead = () => {
-    setNotifications(notifications.map(n => ({ ...n, lue: true })));
+  const handleMarkAllAsRead = async () => {
+    try {
+      await medecinService.markAllNotificationsAsRead();
+      setNotifications(notifications.map(n => ({ ...n, lue: true })));
+    } catch (error) {
+      console.error('Erreur lors du marquage des notifications:', error);
+      // Mettre à jour localement quand même pour une meilleure UX
+      setNotifications(notifications.map(n => ({ ...n, lue: true })));
+    }
   };
 
   // Supprimer une notification
-  const handleDelete = (notifId) => {
-    setNotifications(notifications.filter(n => n.id !== notifId));
+  const handleDelete = async (notifId) => {
+    try {
+      // Mettre à jour localement immédiatement pour une meilleure UX
+      setNotifications(notifications.filter(n => n.id !== notifId));
+      // Note: Si vous avez un endpoint de suppression, l'appeler ici
+      // await medecinService.deleteNotification(notifId);
+    } catch (error) {
+      console.error('Erreur lors de la suppression:', error);
+    }
   };
 
   // Icône par type avec gradient pour version patient

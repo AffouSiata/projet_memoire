@@ -27,6 +27,8 @@ const medecinService = {
 
   // Notifications
   getNotifications: (params) => api.get('/medecins/notifications', { params }),
+  markNotificationAsRead: (notificationId) => api.patch('/medecins/notifications/mark-as-read', { notificationIds: [notificationId] }),
+  markAllNotificationsAsRead: () => api.patch('/medecins/notifications/mark-as-read', {}),
   markNotificationsAsRead: (notificationIds) => api.patch('/medecins/notifications/mark-as-read', { notificationIds }),
 
   // Indisponibilités
