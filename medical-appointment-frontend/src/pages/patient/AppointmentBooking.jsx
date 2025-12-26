@@ -379,16 +379,24 @@ const AppointmentBooking = () => {
         }, 2000);
       } else {
         // Récupérer le message d'erreur du backend s'il existe
-        const backendMessage = error.response?.data?.message;
-        // Si le message est un objet ou un tableau, le convertir en string
+        const responseData = error.response?.data;
         let errorMsg;
-        if (typeof backendMessage === 'object') {
-          errorMsg = Array.isArray(backendMessage)
-            ? backendMessage.join(', ')
-            : JSON.stringify(backendMessage);
+
+        // Extraire le message d'erreur proprement
+        if (responseData?.message) {
+          // Si message est une string, l'utiliser directement
+          if (typeof responseData.message === 'string') {
+            errorMsg = responseData.message;
+          } else if (Array.isArray(responseData.message)) {
+            // Si c'est un tableau de messages de validation
+            errorMsg = responseData.message.join(', ');
+          } else {
+            errorMsg = t('booking.errors.createError') || 'Une erreur est survenue lors de la création du rendez-vous.';
+          }
         } else {
-          errorMsg = backendMessage || t('booking.errors.createError') || 'Une erreur est survenue lors de la création du rendez-vous. Veuillez réessayer.';
+          errorMsg = t('booking.errors.createError') || 'Une erreur est survenue lors de la création du rendez-vous.';
         }
+
         setErrorMessage(errorMsg);
         setShowErrorModal(true);
       }
