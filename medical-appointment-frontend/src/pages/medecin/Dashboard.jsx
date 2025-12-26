@@ -229,7 +229,7 @@ const MedecinDashboard = () => {
 
   return (
     <MedecinLayout>
-      <div className="min-h-screen bg-[#F7F9FC] dark:bg-gray-900 p-8 relative overflow-hidden">
+      <div className="min-h-screen bg-[#F7F9FC] dark:bg-gray-900 p-4 sm:p-6 lg:p-8 relative overflow-hidden">
         {/* Blobs animés en arrière-plan - couleurs LARANA */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-72 h-72 bg-secondary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
@@ -247,7 +247,7 @@ const MedecinDashboard = () => {
 
               {/* Contenu principal */}
               <div className="relative z-10">
-                <div className="flex items-start justify-between">
+                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
                   {/* Section gauche - Message de bienvenue */}
                   <div className="flex-1">
                     {/* Badge "Espace Médecin" */}
@@ -257,50 +257,50 @@ const MedecinDashboard = () => {
                     </div>
 
                     {/* Titre principal avec animation */}
-                    <h1 className="text-4xl font-bold mb-3 text-gray-900 dark:text-white leading-tight">
-                      {t('common.welcome')} Dr. {user?.prenom} {user?.nom} 👨‍⚕️
+                    <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 text-gray-900 dark:text-white leading-tight">
+                      {t('common.welcome')} Dr. {user?.prenom} 👨‍⚕️
                     </h1>
 
-                    <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 font-medium">
+                    <p className="text-base lg:text-lg text-gray-600 dark:text-gray-300 mb-6 font-medium">
                       {user?.specialite}
                     </p>
 
                     {/* Informations date/heure dans des mini-cartes */}
-                    <div className="flex items-center gap-4">
+                    <div className="flex flex-wrap items-center gap-3">
                       {/* Carte Date */}
-                      <div className="flex items-center gap-3 px-5 py-3 bg-white/60 dark:bg-gray-700/60 rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
-                        <div className="w-10 h-10 bg-secondary-100 dark:bg-secondary-900/50 rounded-xl flex items-center justify-center">
-                          <CalendarIcon className="w-5 h-5 text-secondary-600 dark:text-secondary-400" />
+                      <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-2 sm:py-3 bg-white/60 dark:bg-gray-700/60 rounded-xl sm:rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-secondary-100 dark:bg-secondary-900/50 rounded-lg sm:rounded-xl flex items-center justify-center">
+                          <CalendarIcon className="w-4 h-4 sm:w-5 sm:h-5 text-secondary-600 dark:text-secondary-400" />
                         </div>
                         <div>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{t('dashboard.date')}</p>
-                          <p className="text-sm font-bold text-gray-900 dark:text-white">
+                          <p className="text-xs text-gray-500 dark:text-gray-400 font-medium hidden sm:block">{t('dashboard.date')}</p>
+                          <p className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white">
                             {formatDate(currentTime, dateFormats.medium)}
                           </p>
                         </div>
                       </div>
 
                       {/* Carte Heure en temps réel */}
-                      <div className="flex items-center gap-3 px-5 py-3 bg-white/60 dark:bg-gray-700/60 rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
-                        <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900/50 rounded-xl flex items-center justify-center">
-                          <ClockIcon className="w-5 h-5 text-primary-600 dark:text-primary-400" />
+                      <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-2 sm:py-3 bg-white/60 dark:bg-gray-700/60 rounded-xl sm:rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-primary-100 dark:bg-primary-900/50 rounded-lg sm:rounded-xl flex items-center justify-center">
+                          <ClockIcon className="w-4 h-4 sm:w-5 sm:h-5 text-primary-600 dark:text-primary-400" />
                         </div>
                         <div>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{t('dashboard.time')}</p>
-                          <p className="text-sm font-bold text-gray-900 dark:text-white font-mono">
+                          <p className="text-xs text-gray-500 dark:text-gray-400 font-medium hidden sm:block">{t('dashboard.time')}</p>
+                          <p className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white font-mono">
                             {formatTime(currentTime, timeFormats.full)}
                           </p>
                         </div>
                       </div>
 
-                      {/* Carte Jour de la semaine */}
-                      <div className="flex items-center gap-3 px-5 py-3 bg-white/60 dark:bg-gray-700/60 rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
-                        <div className="w-10 h-10 bg-secondary-100 dark:bg-secondary-900/50 rounded-xl flex items-center justify-center">
-                          <SparklesIcon className="w-5 h-5 text-secondary-600 dark:text-secondary-400" />
+                      {/* Carte Jour de la semaine - masquée sur très petit écran */}
+                      <div className="hidden sm:flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-2 sm:py-3 bg-white/60 dark:bg-gray-700/60 rounded-xl sm:rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-secondary-100 dark:bg-secondary-900/50 rounded-lg sm:rounded-xl flex items-center justify-center">
+                          <SparklesIcon className="w-4 h-4 sm:w-5 sm:h-5 text-secondary-600 dark:text-secondary-400" />
                         </div>
                         <div>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{t('dashboard.day')}</p>
-                          <p className="text-sm font-bold text-gray-900 dark:text-white capitalize">
+                          <p className="text-xs text-gray-500 dark:text-gray-400 font-medium hidden sm:block">{t('dashboard.day')}</p>
+                          <p className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white capitalize">
                             {formatDate(currentTime, dateFormats.weekday)}
                           </p>
                         </div>
@@ -308,8 +308,8 @@ const MedecinDashboard = () => {
                     </div>
                   </div>
 
-                  {/* Section droite - Widget conseil santé */}
-                  <div className="flex flex-col items-end gap-3">
+                  {/* Section droite - Widget conseil santé - masqué sur mobile */}
+                  <div className="hidden lg:flex flex-col items-end gap-3">
                     <div className="px-6 py-4 bg-gradient-to-r from-secondary-50 to-primary-50 dark:from-secondary-900/30 dark:to-primary-900/30 rounded-2xl border border-secondary-100 dark:border-secondary-800 shadow-lg">
                       <div className="flex items-center gap-3 mb-2">
                         <div className="w-8 h-8 bg-secondary-500 rounded-full flex items-center justify-center">
@@ -363,23 +363,23 @@ const MedecinDashboard = () => {
 
                 <div className="relative z-10">
                   <div className="flex items-center gap-2 mb-4">
-                    <SparklesIcon className="w-6 h-6 animate-pulse-soft" />
-                    <h2 className="text-2xl font-bold">{t('medecin.dashboard.activityOverview')}</h2>
+                    <SparklesIcon className="w-5 h-5 sm:w-6 sm:h-6 animate-pulse-soft" />
+                    <h2 className="text-lg sm:text-xl lg:text-2xl font-bold">{t('medecin.dashboard.activityOverview')}</h2>
                   </div>
-                  <p className="text-white/90 mb-6 text-lg">
+                  <p className="text-white/90 mb-4 sm:mb-6 text-sm sm:text-base lg:text-lg">
                     {t('medecin.dashboard.activityDescription')}
                   </p>
-                  <div className="flex gap-4">
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                     <button
                       onClick={() => navigate('/medecin/appointments')}
-                      className="bg-white text-secondary-600 px-6 py-3 rounded-2xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center gap-2"
+                      className="bg-white text-secondary-600 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base"
                     >
                       {t('medecin.dashboard.viewAppointments')}
-                      <ArrowRightIcon className="w-5 h-5" />
+                      <ArrowRightIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                     </button>
                     <button
                       onClick={() => navigate('/medecin/patients')}
-                      className="glass-strong text-white px-6 py-3 rounded-2xl font-semibold hover:bg-white/30 transition-all duration-300"
+                      className="glass-strong text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl font-semibold hover:bg-white/30 transition-all duration-300 text-sm sm:text-base"
                     >
                       {t('medecin.dashboard.myPatients')}
                     </button>
@@ -388,7 +388,7 @@ const MedecinDashboard = () => {
               </div>
 
               {/* 4 cartes stats horizontales */}
-              <div className="grid grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
                 {/* Rendez-vous aujourd'hui */}
                 <div
                   className="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-md hover:shadow-xl hover:scale-105 hover:-rotate-1 transition-all duration-300 animate-scale-in"
@@ -451,7 +451,7 @@ const MedecinDashboard = () => {
               </div>
 
               {/* Graphiques statistiques */}
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 {/* Graphique en BARRES - Rendez-vous par mois */}
                 <div
                   className="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-md animate-scale-in"

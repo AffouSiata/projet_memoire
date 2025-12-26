@@ -283,7 +283,7 @@ const PatientDashboard = () => {
 
               {/* Contenu principal */}
               <div className="relative z-10">
-                <div className="flex items-start justify-between">
+                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
                   {/* Section gauche - Message de bienvenue */}
                   <div className="flex-1">
                     {/* Badge "Dashboard" */}
@@ -293,50 +293,50 @@ const PatientDashboard = () => {
                     </div>
 
                     {/* Titre principal avec animation */}
-                    <h1 className="text-4xl font-bold mb-3 text-gray-900 dark:text-white leading-tight">
-                      {safeT('common.welcome')} {user?.prenom} {user?.nom} 👋
+                    <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 text-gray-900 dark:text-white leading-tight">
+                      {safeT('common.welcome')} {user?.prenom} 👋
                     </h1>
 
-                    <p className="text-lg text-gray-600 dark:text-white mb-6 font-medium">
+                    <p className="text-base lg:text-lg text-gray-600 dark:text-white mb-6 font-medium">
                       {safeT('dashboard.subtitle')}
                     </p>
 
                     {/* Informations date/heure dans des mini-cartes */}
-                    <div className="flex items-center gap-4">
+                    <div className="flex flex-wrap items-center gap-3">
                       {/* Carte Date */}
-                      <div className="flex items-center gap-3 px-5 py-3 bg-white/60 dark:bg-gray-700/60 rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
-                        <div className="w-10 h-10 bg-blue-100 dark:bg-blue-950/50 rounded-xl flex items-center justify-center">
-                          <CalendarIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
+                      <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-2 sm:py-3 bg-white/60 dark:bg-gray-700/60 rounded-xl sm:rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-100 dark:bg-blue-950/50 rounded-lg sm:rounded-xl flex items-center justify-center">
+                          <CalendarIcon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-700 dark:text-blue-400" />
                         </div>
                         <div>
-                          <p className="text-xs text-gray-500 dark:text-white font-medium">{safeT('dashboard.date')}</p>
-                          <p className="text-sm font-bold text-gray-900 dark:text-white">
+                          <p className="text-xs text-gray-500 dark:text-white font-medium hidden sm:block">{safeT('dashboard.date')}</p>
+                          <p className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white">
                             {formatDate(currentTime, dateFormats.medium)}
                           </p>
                         </div>
                       </div>
 
                       {/* Carte Heure en temps réel */}
-                      <div className="flex items-center gap-3 px-5 py-3 bg-white/60 dark:bg-gray-700/60 rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
-                        <div className="w-10 h-10 bg-blue-100 dark:bg-blue-950/50 rounded-xl flex items-center justify-center">
-                          <ClockIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
+                      <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-2 sm:py-3 bg-white/60 dark:bg-gray-700/60 rounded-xl sm:rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-100 dark:bg-blue-950/50 rounded-lg sm:rounded-xl flex items-center justify-center">
+                          <ClockIcon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-700 dark:text-blue-400" />
                         </div>
                         <div>
-                          <p className="text-xs text-gray-500 dark:text-white font-medium">{safeT('dashboard.time')}</p>
-                          <p className="text-sm font-bold text-gray-900 dark:text-white font-mono">
+                          <p className="text-xs text-gray-500 dark:text-white font-medium hidden sm:block">{safeT('dashboard.time')}</p>
+                          <p className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white font-mono">
                             {formatTime(currentTime, timeFormats.full)}
                           </p>
                         </div>
                       </div>
 
-                      {/* Carte Jour de la semaine */}
-                      <div className="flex items-center gap-3 px-5 py-3 bg-white/60 dark:bg-gray-700/60 rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
-                        <div className="w-10 h-10 bg-blue-100 dark:bg-blue-950/50 rounded-xl flex items-center justify-center">
-                          <SparklesIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
+                      {/* Carte Jour de la semaine - masquée sur très petit écran */}
+                      <div className="hidden sm:flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-2 sm:py-3 bg-white/60 dark:bg-gray-700/60 rounded-xl sm:rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-100 dark:bg-blue-950/50 rounded-lg sm:rounded-xl flex items-center justify-center">
+                          <SparklesIcon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-700 dark:text-blue-400" />
                         </div>
                         <div>
-                          <p className="text-xs text-gray-500 dark:text-white font-medium">{safeT('dashboard.day')}</p>
-                          <p className="text-sm font-bold text-gray-900 dark:text-white capitalize">
+                          <p className="text-xs text-gray-500 dark:text-white font-medium hidden sm:block">{safeT('dashboard.day')}</p>
+                          <p className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white capitalize">
                             {formatDate(currentTime, dateFormats.weekday)}
                           </p>
                         </div>
@@ -345,32 +345,32 @@ const PatientDashboard = () => {
                   </div>
 
                   {/* Section droite - Notifications stylisées */}
-                  <div className="flex flex-col items-end gap-3">
+                  <div className="flex flex-row lg:flex-col items-center lg:items-end gap-3">
                     {/* Bouton notifications premium */}
                     <button
                       onClick={() => navigate('/patient/notifications')}
-                      className="relative group"
+                      className="relative group flex-1 lg:flex-none"
                     >
                       {/* Effet glow en arrière-plan */}
                       <div className="absolute inset-0 bg-blue-400 rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
 
                       {/* Bouton principal */}
-                      <div className="relative flex items-center gap-3 px-6 py-4 bg-white dark:bg-gray-700 rounded-2xl border-2 border-gray-100 dark:border-gray-600 shadow-lg hover:shadow-xl hover:border-blue-200 dark:hover:border-blue-700 transition-all duration-300 hover:scale-105">
+                      <div className="relative flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 sm:py-4 bg-white dark:bg-gray-700 rounded-xl sm:rounded-2xl border-2 border-gray-100 dark:border-gray-600 shadow-lg hover:shadow-xl hover:border-blue-200 dark:hover:border-blue-700 transition-all duration-300">
                         <div className="relative">
-                          <BellIcon className="w-6 h-6 text-gray-600 dark:text-white group-hover:text-blue-700 transition-colors" />
+                          <BellIcon className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600 dark:text-white group-hover:text-blue-700 transition-colors" />
                           {/* Badge rouge animé avec effet de pulsation */}
                           {notifications.filter(n => !n.lue).length > 0 && (
                             <>
-                              <div className="absolute -top-1 -right-1 w-6 h-6 bg-red-500 rounded-full animate-ping opacity-75"></div>
-                              <span className="absolute -top-1 -right-1 w-6 h-6 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center shadow-lg">
+                              <div className="absolute -top-1 -right-1 w-5 h-5 sm:w-6 sm:h-6 bg-red-500 rounded-full animate-ping opacity-75"></div>
+                              <span className="absolute -top-1 -right-1 w-5 h-5 sm:w-6 sm:h-6 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center shadow-lg">
                                 {notifications.filter(n => !n.lue).length}
                               </span>
                             </>
                           )}
                         </div>
                         <div className="text-left">
-                          <p className="text-xs text-gray-500 dark:text-white font-medium">{safeT('dashboard.notifications')}</p>
-                          <p className="text-sm font-bold text-gray-900 dark:text-white">
+                          <p className="text-xs text-gray-500 dark:text-white font-medium hidden sm:block">{safeT('dashboard.notifications')}</p>
+                          <p className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white">
                             {notifications.filter(n => !n.lue).length > 0
                               ? `${notifications.filter(n => !n.lue).length} ${notifications.filter(n => !n.lue).length > 1 ? safeT('dashboard.newNotificationsPlural', 'nouvelles') : safeT('dashboard.newNotifications', 'nouvelle')}`
                               : safeT('dashboard.noNewNotifications', 'Aucune notification')}
@@ -379,8 +379,8 @@ const PatientDashboard = () => {
                       </div>
                     </button>
 
-                    {/* Message d'encouragement dynamique */}
-                    <div className="px-4 py-2 bg-blue-50/50 dark:bg-blue-950/20 rounded-xl border border-blue-100 dark:border-blue-900">
+                    {/* Message d'encouragement dynamique - masqué sur mobile */}
+                    <div className="hidden lg:block px-4 py-2 bg-blue-50/50 dark:bg-blue-950/20 rounded-xl border border-blue-100 dark:border-blue-900">
                       <p className="text-xs text-blue-800 dark:text-blue-300 font-medium">
                         ✨ {safeT('dashboard.excellentDay')}
                       </p>
@@ -433,23 +433,23 @@ const PatientDashboard = () => {
 
                 <div className="relative z-10">
                   <div className="flex items-center gap-2 mb-4">
-                    <SparklesIcon className="w-6 h-6 animate-pulse-soft" />
-                    <h2 className="text-2xl font-bold">{safeT('dashboard.appointmentQuestion')}</h2>
+                    <SparklesIcon className="w-5 h-5 sm:w-6 sm:h-6 animate-pulse-soft" />
+                    <h2 className="text-lg sm:text-xl lg:text-2xl font-bold">{safeT('dashboard.appointmentQuestion')}</h2>
                   </div>
-                  <p className="text-white/90 mb-6 text-lg">
+                  <p className="text-white/90 mb-4 sm:mb-6 text-sm sm:text-base lg:text-lg">
                     {safeT('dashboard.healthMessage')}
                   </p>
-                  <div className="flex gap-4">
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                     <button
                       onClick={() => navigate('/patient/appointment')}
-                      className="bg-blue-700 text-white px-6 py-3 rounded-2xl font-semibold hover:shadow-lg hover:scale-105 hover:bg-blue-800 transition-all duration-300 flex items-center gap-2"
+                      className="bg-blue-700 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl font-semibold hover:shadow-lg hover:scale-105 hover:bg-blue-800 transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base"
                     >
                       {safeT('dashboard.bookAppointment')}
-                      <ArrowRightIcon className="w-5 h-5" />
+                      <ArrowRightIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                     </button>
                     <button
                       onClick={() => navigate('/patient/history')}
-                      className="glass-strong text-white px-6 py-3 rounded-2xl font-semibold hover:bg-white/30 transition-all duration-300"
+                      className="glass-strong text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl font-semibold hover:bg-white/30 transition-all duration-300 text-sm sm:text-base"
                     >
                       {safeT('dashboard.viewHistory')}
                     </button>
@@ -512,7 +512,7 @@ const PatientDashboard = () => {
               </div>
 
               {/* Graphiques */}
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 {/* Graphique en BARRES */}
                 <div
                   className="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-md animate-scale-in"

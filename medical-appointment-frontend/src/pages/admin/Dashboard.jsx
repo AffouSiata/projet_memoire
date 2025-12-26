@@ -387,7 +387,7 @@ const AdminDashboard = () => {
 
   return (
     <AdminLayout>
-      <div className="min-h-screen bg-[#F7F9FC] dark:bg-gray-900 py-8 px-4 relative overflow-hidden">
+      <div className="min-h-screen bg-[#F7F9FC] dark:bg-gray-900 py-4 sm:py-6 lg:py-8 px-3 sm:px-4 relative overflow-hidden">
         {/* Blobs animés en arrière-plan - couleurs turquoise */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
@@ -405,7 +405,7 @@ const AdminDashboard = () => {
 
               {/* Contenu principal */}
               <div className="relative z-10">
-                <div className="flex items-start justify-between">
+                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
                   {/* Section gauche - Message de bienvenue */}
                   <div className="flex-1">
                     {/* Badge "Dashboard Admin" */}
@@ -417,50 +417,50 @@ const AdminDashboard = () => {
                     </div>
 
                     {/* Titre principal avec animation */}
-                    <h1 className="text-4xl font-bold mb-3 text-gray-900 dark:text-white leading-tight">
-                      {t('common.welcome')} {user?.prenom} {user?.nom} 👋
+                    <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 text-gray-900 dark:text-white leading-tight">
+                      {t('common.welcome')} {user?.prenom} 👋
                     </h1>
 
-                    <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 font-medium">
+                    <p className="text-base lg:text-lg text-gray-600 dark:text-gray-300 mb-6 font-medium">
                       {t('admin.dashboard.subtitle')}
                     </p>
 
                     {/* Informations date/heure dans des mini-cartes */}
-                    <div className="flex items-center gap-4 flex-wrap">
+                    <div className="flex flex-wrap items-center gap-3">
                       {/* Carte Date */}
-                      <div className="flex items-center gap-3 px-5 py-3 bg-white/60 dark:bg-gray-700/60 rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
-                        <div className="w-10 h-10 bg-blue-100 dark:bg-blue-950/50 rounded-xl flex items-center justify-center">
-                          <CalendarIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
+                      <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-2 sm:py-3 bg-white/60 dark:bg-gray-700/60 rounded-xl sm:rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-100 dark:bg-blue-950/50 rounded-lg sm:rounded-xl flex items-center justify-center">
+                          <CalendarIcon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-700 dark:text-blue-400" />
                         </div>
                         <div>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{t('dashboard.date')}</p>
-                          <p className="text-sm font-bold text-gray-900 dark:text-white">
+                          <p className="text-xs text-gray-500 dark:text-gray-400 font-medium hidden sm:block">{t('dashboard.date')}</p>
+                          <p className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white">
                             {formatDate(currentTime, dateFormats.medium)}
                           </p>
                         </div>
                       </div>
 
                       {/* Carte Heure en temps réel */}
-                      <div className="flex items-center gap-3 px-5 py-3 bg-white/60 dark:bg-gray-700/60 rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
-                        <div className="w-10 h-10 bg-blue-100 dark:bg-blue-950/50 rounded-xl flex items-center justify-center">
-                          <ClockIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
+                      <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-2 sm:py-3 bg-white/60 dark:bg-gray-700/60 rounded-xl sm:rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-100 dark:bg-blue-950/50 rounded-lg sm:rounded-xl flex items-center justify-center">
+                          <ClockIcon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-700 dark:text-blue-400" />
                         </div>
                         <div>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{t('dashboard.time')}</p>
-                          <p className="text-sm font-bold text-gray-900 dark:text-white font-mono">
+                          <p className="text-xs text-gray-500 dark:text-gray-400 font-medium hidden sm:block">{t('dashboard.time')}</p>
+                          <p className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white font-mono">
                             {formatTime(currentTime, timeFormats.full)}
                           </p>
                         </div>
                       </div>
 
-                      {/* Carte Jour de la semaine */}
-                      <div className="flex items-center gap-3 px-5 py-3 bg-white/60 dark:bg-gray-700/60 rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
-                        <div className="w-10 h-10 bg-blue-100 dark:bg-blue-950/50 rounded-xl flex items-center justify-center">
-                          <SparklesIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
+                      {/* Carte Jour de la semaine - masquée sur très petit écran */}
+                      <div className="hidden sm:flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-2 sm:py-3 bg-white/60 dark:bg-gray-700/60 rounded-xl sm:rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-100 dark:bg-blue-950/50 rounded-lg sm:rounded-xl flex items-center justify-center">
+                          <SparklesIcon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-700 dark:text-blue-400" />
                         </div>
                         <div>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{t('dashboard.day')}</p>
-                          <p className="text-sm font-bold text-gray-900 dark:text-white capitalize">
+                          <p className="text-xs text-gray-500 dark:text-gray-400 font-medium hidden sm:block">{t('dashboard.day')}</p>
+                          <p className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white capitalize">
                             {formatDate(currentTime, dateFormats.weekday)}
                           </p>
                         </div>
@@ -468,8 +468,8 @@ const AdminDashboard = () => {
                     </div>
                   </div>
 
-                  {/* Section droite - Système de santé */}
-                  <div className="flex flex-col items-end gap-3">
+                  {/* Section droite - Système de santé - masqué sur mobile */}
+                  <div className="hidden lg:flex flex-col items-end gap-3">
                     <div className="relative group">
                       <div className="absolute inset-0 bg-blue-500 rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
                       <div className="relative px-6 py-4 bg-blue-700 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
@@ -492,18 +492,18 @@ const AdminDashboard = () => {
           <div className="max-w-[97%] mx-auto">
           {/* Statistiques principales - 4 cartes */}
           {stats && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-6 sm:mb-8">
               {/* Card Patients */}
               <div className="group animate-scale-in" style={{ animationDelay: '100ms' }}>
-                <div className="relative h-full bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl p-6 shadow-lg border border-white/20 dark:border-gray-700/50 hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 overflow-hidden">
+                <div className="relative h-full bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-lg border border-white/20 dark:border-gray-700/50 hover:shadow-2xl transition-all duration-500 overflow-hidden">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-blue-200/30 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
 
                   <div className="relative z-10">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="w-14 h-14 bg-blue-700 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
-                        <UsersIcon className="w-7 h-7 text-white" />
+                    <div className="flex items-center justify-between mb-3 sm:mb-4">
+                      <div className="w-10 h-10 sm:w-14 sm:h-14 bg-blue-700 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg">
+                        <UsersIcon className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
                       </div>
-                      <div className="flex items-center gap-1 px-3 py-1 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+                      <div className="hidden sm:flex items-center gap-1 px-3 py-1 bg-blue-100 dark:bg-blue-900/30 rounded-full">
                         <ArrowTrendingUpIcon className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                         <span className="text-xs font-bold text-blue-600 dark:text-blue-400">
                           {stats.utilisateurs?.patients?.actifs || 0}
@@ -512,10 +512,10 @@ const AdminDashboard = () => {
                     </div>
 
                     <div>
-                      <p className="text-sm text-gray-600 dark:text-gray-400 font-medium mb-2">
+                      <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-medium mb-1 sm:mb-2">
                         {t('admin.dashboard.totalPatients')}
                       </p>
-                      <p className="text-4xl font-bold text-gray-900 dark:text-white mb-1">
+                      <p className="text-2xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-1">
                         {stats.utilisateurs?.patients?.total || 0}
                       </p>
                       <p className="text-xs text-blue-600 dark:text-blue-400 font-semibold">
@@ -528,15 +528,15 @@ const AdminDashboard = () => {
 
               {/* Card Médecins */}
               <div className="group animate-scale-in" style={{ animationDelay: '200ms' }}>
-                <div className="relative h-full bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl p-6 shadow-lg border border-white/20 dark:border-gray-700/50 hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 overflow-hidden">
+                <div className="relative h-full bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-lg border border-white/20 dark:border-gray-700/50 hover:shadow-2xl transition-all duration-500 overflow-hidden">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-blue-200/30 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
 
                   <div className="relative z-10">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="w-14 h-14 bg-blue-700 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
-                        <UserGroupIcon className="w-7 h-7 text-white" />
+                    <div className="flex items-center justify-between mb-3 sm:mb-4">
+                      <div className="w-10 h-10 sm:w-14 sm:h-14 bg-blue-700 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg">
+                        <UserGroupIcon className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
                       </div>
-                      <div className="flex items-center gap-1 px-3 py-1 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+                      <div className="hidden sm:flex items-center gap-1 px-3 py-1 bg-blue-100 dark:bg-blue-900/30 rounded-full">
                         <ArrowTrendingUpIcon className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                         <span className="text-xs font-bold text-blue-600 dark:text-blue-400">
                           {stats.utilisateurs?.medecins?.actifs || 0}
@@ -545,10 +545,10 @@ const AdminDashboard = () => {
                     </div>
 
                     <div>
-                      <p className="text-sm text-gray-600 dark:text-gray-400 font-medium mb-2">
+                      <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-medium mb-1 sm:mb-2">
                         {t('admin.dashboard.totalDoctors')}
                       </p>
-                      <p className="text-4xl font-bold text-gray-900 dark:text-white mb-1">
+                      <p className="text-2xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-1">
                         {stats.utilisateurs?.medecins?.total || 0}
                       </p>
                       <p className="text-xs text-blue-600 dark:text-blue-400 font-semibold">
@@ -561,25 +561,25 @@ const AdminDashboard = () => {
 
               {/* Card Rendez-vous */}
               <div className="group animate-scale-in" style={{ animationDelay: '300ms' }}>
-                <div className="relative h-full bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl p-6 shadow-lg border border-white/20 dark:border-gray-700/50 hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 overflow-hidden">
+                <div className="relative h-full bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-lg border border-white/20 dark:border-gray-700/50 hover:shadow-2xl transition-all duration-500 overflow-hidden">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-blue-200/30 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
 
                   <div className="relative z-10">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="w-14 h-14 bg-blue-700 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
-                        <CalendarIcon className="w-7 h-7 text-white" />
+                    <div className="flex items-center justify-between mb-3 sm:mb-4">
+                      <div className="w-10 h-10 sm:w-14 sm:h-14 bg-blue-700 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg">
+                        <CalendarIcon className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
                       </div>
-                      <div className="flex items-center gap-1 px-3 py-1 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+                      <div className="hidden sm:flex items-center gap-1 px-3 py-1 bg-blue-100 dark:bg-blue-900/30 rounded-full">
                         <CheckCircleIcon className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                         <span className="text-xs font-bold text-blue-600 dark:text-blue-400">+12%</span>
                       </div>
                     </div>
 
                     <div>
-                      <p className="text-sm text-gray-600 dark:text-gray-400 font-medium mb-2">
+                      <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-medium mb-1 sm:mb-2">
                         {t('admin.dashboard.appointments')}
                       </p>
-                      <p className="text-4xl font-bold text-gray-900 dark:text-white mb-1">
+                      <p className="text-2xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-1">
                         {stats.rendezVous?.total || 0}
                       </p>
                       <p className="text-xs text-red-600 dark:text-red-400 font-semibold">
@@ -592,21 +592,21 @@ const AdminDashboard = () => {
 
               {/* Card Taux de satisfaction */}
               <div className="group animate-scale-in" style={{ animationDelay: '400ms' }}>
-                <div className="relative h-full bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl p-6 shadow-lg border border-white/20 dark:border-gray-700/50 hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 overflow-hidden">
+                <div className="relative h-full bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-lg border border-white/20 dark:border-gray-700/50 hover:shadow-2xl transition-all duration-500 overflow-hidden">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-blue-200/30 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
 
                   <div className="relative z-10">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="w-14 h-14 bg-blue-700 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
-                        <ChartBarIcon className="w-7 h-7 text-white" />
+                    <div className="flex items-center justify-between mb-3 sm:mb-4">
+                      <div className="w-10 h-10 sm:w-14 sm:h-14 bg-blue-700 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg">
+                        <ChartBarIcon className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
                       </div>
                     </div>
 
                     <div>
-                      <p className="text-sm text-gray-600 dark:text-gray-400 font-medium mb-2">
+                      <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-medium mb-1 sm:mb-2">
                         {t('admin.dashboard.satisfaction')}
                       </p>
-                      <p className="text-4xl font-bold text-gray-900 dark:text-white mb-1">
+                      <p className="text-2xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-1">
                         {satisfactionRate}%
                       </p>
                       <p className={`text-xs font-semibold ${
@@ -631,7 +631,7 @@ const AdminDashboard = () => {
 
           {/* Graphiques - 2 colonnes */}
           {stats && (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
               {/* Graphique en barres - Rendez-vous par mois */}
               <div className="animate-slide-up" style={{ animationDelay: '500ms' }}>
                 <div className="relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl p-6 shadow-lg border border-white/20 dark:border-gray-700/50 overflow-hidden">
@@ -715,7 +715,7 @@ const AdminDashboard = () => {
 
           {/* Section inférieure - 2 colonnes */}
           {stats && (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
               {/* Top Médecins */}
               <div className="animate-slide-up" style={{ animationDelay: '700ms' }}>
                 <div className="relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl p-6 shadow-lg border border-white/20 dark:border-gray-700/50 overflow-hidden">
