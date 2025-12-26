@@ -36,7 +36,7 @@ api.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
-    // Si erreur 401 et pas déjà retryé, tenter de refresh le token
+    // Si erreur 401 (Unauthorized) et pas déjà retryé, tenter de refresh le token
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
 
@@ -52,6 +52,9 @@ api.interceptors.response.use(
 
           originalRequest.headers.Authorization = `Bearer ${accessToken}`;
           return api(originalRequest);
+        } else {
+          // Pas de refresh token, rediriger vers login
+          throw new Error('No refresh token');
         }
       } catch (refreshError) {
         // Si le refresh échoue, déconnecter l'utilisateur
@@ -61,6 +64,11 @@ api.interceptors.response.use(
         window.location.href = '/login';
         return Promise.reject(refreshError);
       }
+    }
+
+    // Si pas de réponse (erreur réseau) ou si le token n'existe pas
+    if (!error.response && !localStorage.getItem('accessToken')) {
+      window.location.href = '/login';
     }
 
     return Promise.reject(error);
