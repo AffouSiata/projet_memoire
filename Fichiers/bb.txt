@@ -816,40 +816,6 @@ Objectif : permettre à l’administrateur de gérer patients, médecins, rendez
 
 
 
-jai un probeme au niveau de ládmin quand je veux approuver un medecin il me met une page blanche et rien ne se passe pouvez vous maider svp
-quelles sont les partie de mon projet qui font appel a localhost 3002
 
 
 
-
-
-envoie ça à claude: "mon projet est en ligne mais lorsque je me connecte en tant que patient et je veux prendre rdv, aucune spécialité, ni medecin ne s'affiche "
-
-La mise en page a été forcée avant le chargement complet de la page. Si les feuilles de style ne sont pas encore chargées, cela peut provoquer un flash de contenu non stylisé. node.js:409:1
-Content script loaded. content.js:1:9
-Un AudioContext n’a pas pu démarrer automatiquement. Il doit être créé ou repris après un geste de l’utilisateur sur la page. main.3f1c9837.js:2:374613
-🏥 Spécialités avec médecins approuvés: 0 / 9 main.3f1c9837.js:2:885534
-📋 Spécialités disponibles: 
-Array []
-main.3f1c9837.js:2:885633
-🏥 Spécialités avec médecins approuvés: 0 / 9 main.3f1c9837.js:2:885534
-📋 Spécialités disponibles: 
-Array []
-main.3f1c9837.js:2:885633
-Blocage d’une requête multiorigine (Cross-Origin Request) : la politique « Same Origin » ne permet pas de consulter la ressource distante située sur http://localhost:3002/api/patients/medecins. Raison : échec de la requête CORS. Code d’état : (null). 2
-Erreur lors du chargement des médecins: 
-Object { message: "Network Error", name: "AxiosError", code: "ERR_NETWORK", config: {…}, request: XMLHttpRequest, event: error, stack: "", … }
-main.3f1c9837.js:2:882611
-🏥 Spécialités avec médecins approuvés: 0 / 9 main.3f1c9837.js:2:885534
-📋 Spécialités disponibles: 
-Array []
-main.3f1c9837.js:2:885633
-XHRGET
-https://projet-memoire-aiuy.onrender.com/api/patients/notifications
-[HTTP/3 401  439ms]
-
-ne modifie rien  explique moi le probleme
-
-
-
-sur mobile mon projet nést pas reponsive pour les 3 dashboard
