@@ -10,7 +10,7 @@ const API_URL = process.env.NODE_ENV === 'production'
 // Instance Axios avec configuration
 const api = axios.create({
   baseURL: API_URL,
-  timeout: 5000, // Timeout de 5 secondes pour des réponses rapides
+  timeout: 20000, // Timeout de 20 secondes (Render free tier peut être lent au démarrage)
   headers: {
     'Content-Type': 'application/json',
   },
