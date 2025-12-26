@@ -64,6 +64,12 @@ export class EmailService {
   }
 
   async sendEmail(to: string, subject: string, html: string) {
+    // Vérifier si le transporter est initialisé
+    if (!this.transporter) {
+      this.logger.warn(`Email non envoyé (transporter non initialisé): ${subject} -> ${to}`);
+      return { success: false, error: 'Email service not initialized' };
+    }
+
     try {
       const info = await this.transporter.sendMail({
         from: this.configService.get<string>('EMAIL_FROM') || 'noreply@medical.com',
