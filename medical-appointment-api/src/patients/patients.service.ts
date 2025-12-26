@@ -254,32 +254,36 @@ export class PatientsService {
       },
     });
 
-    // Créer une notification pour le patient
-    try {
-      await this.notificationsService.createNotification(
-        patient.id,
-        'CONFIRMATION',
-        'Demande de rendez-vous reçue',
-        `Votre demande de rendez-vous avec Dr. ${medecin.prenom} ${medecin.nom} pour le ${appointmentDate.toLocaleDateString('fr-FR')} a été reçue et est en attente de confirmation.`,
-      );
-    } catch (error) {
-      console.error('Erreur lors de l\'envoi de la notification au patient:', error);
-    }
+    // Envoyer les notifications en arrière-plan (non-bloquant)
+    // Le rendez-vous est retourné immédiatement, les notifications sont envoyées après
+    setImmediate(async () => {
+      // Créer une notification pour le patient
+      try {
+        await this.notificationsService.createNotification(
+          patient.id,
+          'CONFIRMATION',
+          'Demande de rendez-vous reçue',
+          `Votre demande de rendez-vous avec Dr. ${medecin.prenom} ${medecin.nom} pour le ${appointmentDate.toLocaleDateString('fr-FR')} a été reçue et est en attente de confirmation.`,
+        );
+      } catch (error) {
+        console.error('Erreur lors de l\'envoi de la notification au patient:', error);
+      }
 
-    // Envoyer une notification et un email au médecin
-    try {
-      await this.notificationsService.sendNewAppointmentRequestToDoctor(
-        medecin.id,
-        medecin.email,
-        `${medecin.prenom} ${medecin.nom}`,
-        `${patient.prenom} ${patient.nom}`,
-        appointmentDate,
-        createRendezVousDto.motif,
-        medecin.preferencesNotifEmail ?? true,
-      );
-    } catch (error) {
-      console.error('Erreur lors de l\'envoi de la notification au médecin:', error);
-    }
+      // Envoyer une notification et un email au médecin
+      try {
+        await this.notificationsService.sendNewAppointmentRequestToDoctor(
+          medecin.id,
+          medecin.email,
+          `${medecin.prenom} ${medecin.nom}`,
+          `${patient.prenom} ${patient.nom}`,
+          appointmentDate,
+          createRendezVousDto.motif,
+          medecin.preferencesNotifEmail ?? true,
+        );
+      } catch (error) {
+        console.error('Erreur lors de l\'envoi de la notification au médecin:', error);
+      }
+    });
 
     return rendezvous;
   }

@@ -379,22 +379,29 @@ export class AdminService {
       },
     });
 
-    // Envoyer une notification complète au médecin (base de données + email + SMS)
-    await this.notificationsService.sendAccountApproval(
-      updated.id,
-      `${updated.prenom} ${updated.nom}`,
-      updated.email,
-      updated.telephone || '',
-      updated.preferencesNotifEmail ?? true,
-      updated.preferencesNotifSms ?? false,
-    );
+    // Envoyer les notifications en arrière-plan (non-bloquant)
+    setImmediate(async () => {
+      try {
+        // Envoyer une notification complète au médecin (base de données + email + SMS)
+        await this.notificationsService.sendAccountApproval(
+          updated.id,
+          `${updated.prenom} ${updated.nom}`,
+          updated.email,
+          updated.telephone || '',
+          updated.preferencesNotifEmail ?? true,
+          updated.preferencesNotifSms ?? false,
+        );
 
-    // Créer une notification pour l'admin
-    await this.notificationsService.createAdminNotificationForApproval(
-      adminId,
-      `${updated.prenom} ${updated.nom}`,
-      updated.specialite || 'Non spécifiée',
-    );
+        // Créer une notification pour l'admin
+        await this.notificationsService.createAdminNotificationForApproval(
+          adminId,
+          `${updated.prenom} ${updated.nom}`,
+          updated.specialite || 'Non spécifiée',
+        );
+      } catch (error) {
+        console.error('Erreur lors de l\'envoi des notifications d\'approbation:', error);
+      }
+    });
 
     return {
       message: 'Médecin approuvé avec succès',
@@ -444,22 +451,29 @@ export class AdminService {
       },
     });
 
-    // Envoyer une notification complète au médecin (base de données + email + SMS)
-    await this.notificationsService.sendAccountRejection(
-      updated.id,
-      `${updated.prenom} ${updated.nom}`,
-      updated.email,
-      updated.telephone || '',
-      updated.preferencesNotifEmail ?? true,
-      updated.preferencesNotifSms ?? false,
-    );
+    // Envoyer les notifications en arrière-plan (non-bloquant)
+    setImmediate(async () => {
+      try {
+        // Envoyer une notification complète au médecin (base de données + email + SMS)
+        await this.notificationsService.sendAccountRejection(
+          updated.id,
+          `${updated.prenom} ${updated.nom}`,
+          updated.email,
+          updated.telephone || '',
+          updated.preferencesNotifEmail ?? true,
+          updated.preferencesNotifSms ?? false,
+        );
 
-    // Créer une notification pour l'admin
-    await this.notificationsService.createAdminNotificationForRejection(
-      adminId,
-      `${updated.prenom} ${updated.nom}`,
-      updated.specialite || 'Non spécifiée',
-    );
+        // Créer une notification pour l'admin
+        await this.notificationsService.createAdminNotificationForRejection(
+          adminId,
+          `${updated.prenom} ${updated.nom}`,
+          updated.specialite || 'Non spécifiée',
+        );
+      } catch (error) {
+        console.error('Erreur lors de l\'envoi des notifications de rejet:', error);
+      }
+    });
 
     return {
       message: 'Demande du médecin rejetée',
