@@ -172,14 +172,27 @@ const AdminMedecins = () => {
         message: response.data?.message || t('admin.medecins.approvalMessageSuccess'),
       });
     } catch (error) {
-      console.error('Erreur lors de l\'approbation du médecin:', error);
+      console.error('Erreur lors de l\'approbation du médecin:', {
+        status: error.response?.status,
+        data: error.response?.data
+      });
+
+      // Extraire le message d'erreur proprement
+      const responseData = error.response?.data;
+      let errorMsg = t('admin.medecins.approvalMessageError');
+
+      if (responseData?.message) {
+        errorMsg = typeof responseData.message === 'string'
+          ? responseData.message
+          : t('admin.medecins.approvalMessageError');
+      }
 
       // Afficher notification d'erreur
       setAlertModal({
         isOpen: true,
         type: 'error',
         title: t('admin.medecins.approvalError') || 'Erreur',
-        message: error.response?.data?.message || t('admin.medecins.approvalMessageError'),
+        message: errorMsg,
       });
     }
   };
