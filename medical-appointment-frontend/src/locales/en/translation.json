@@ -18,7 +18,8 @@
     "doctor": "Doctor",
     "consultation": "Consultation",
     "understood": "Understood",
-    "ok": "OK"
+    "ok": "OK",
+    "error": "Error"
   },
   "nav": {
     "dashboard": "Dashboard",

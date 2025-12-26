@@ -18,7 +18,8 @@
     "doctor": "Médecin",
     "consultation": "Consultation",
     "understood": "Compris",
-    "ok": "OK"
+    "ok": "OK",
+    "error": "Erreur"
   },
   "nav": {
     "dashboard": "Tableau de bord",

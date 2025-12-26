@@ -374,7 +374,10 @@ const AppointmentBooking = () => {
           navigate('/login');
         }, 2000);
       } else {
-        setErrorMessage(t('booking.errors.createError') || 'Une erreur est survenue lors de la création du rendez-vous. Veuillez réessayer.');
+        // Récupérer le message d'erreur du backend s'il existe
+        const backendMessage = error.response?.data?.message;
+        const errorMsg = backendMessage || t('booking.errors.createError') || 'Une erreur est survenue lors de la création du rendez-vous. Veuillez réessayer.';
+        setErrorMessage(errorMsg);
         setShowErrorModal(true);
       }
     }
