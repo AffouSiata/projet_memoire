@@ -10,8 +10,8 @@ const adminService = {
   getMedecins: (params) => api.get('/admin/medecins', { params }),
   updateMedecin: (id, data) => api.patch(`/admin/medecins/${id}`, data),
   deleteMedecin: (id) => api.delete(`/admin/medecins/${id}`),
-  approveMedecin: (id) => api.patch(`/admin/medecins/${id}/approve`),
-  rejectMedecin: (id) => api.patch(`/admin/medecins/${id}/reject`),
+  approveMedecin: (id) => api.patch(`/admin/medecins/${id}/approve`, {}, { timeout: 60000 }), // 60s timeout (envoi email/SMS)
+  rejectMedecin: (id) => api.patch(`/admin/medecins/${id}/reject`, {}, { timeout: 60000 }), // 60s timeout
 
   // Rendez-vous
   getAppointments: (params) => api.get('/admin/rendezvous', { params }),
