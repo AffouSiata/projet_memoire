@@ -220,16 +220,16 @@ const AdminNotifications = () => {
         <div className="relative max-w-6xl mx-auto space-y-8">
           {/* Header */}
           <div className="relative group animate-scale-in">
-            <div className="absolute inset-0 bg-blue-500/20 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl shadow-2xl p-8 border border-white/50 dark:border-gray-700/50">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
+            <div className="absolute inset-0 bg-blue-500/20 rounded-2xl sm:rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="relative bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-6 lg:p-8 border border-white/50 dark:border-gray-700/50">
+              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 lg:gap-6">
+                <div className="flex items-center gap-3 sm:gap-4">
                   <div className="relative">
-                    <div className="absolute inset-0 bg-blue-500 rounded-2xl blur-lg opacity-75 animate-pulse-soft"></div>
-                    <div className="relative w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center shadow-xl">
-                      <BellIcon className="w-8 h-8 text-white" />
+                    <div className="absolute inset-0 bg-blue-500 rounded-xl sm:rounded-2xl blur-lg opacity-75 animate-pulse-soft"></div>
+                    <div className="relative w-12 h-12 sm:w-16 sm:h-16 bg-blue-500 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl">
+                      <BellIcon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                       {unreadCount > 0 && (
-                        <div className="absolute -top-1 -right-1 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center border-2 border-white dark:border-gray-800 animate-pulse">
+                        <div className="absolute -top-1 -right-1 w-5 h-5 sm:w-6 sm:h-6 bg-red-500 rounded-full flex items-center justify-center border-2 border-white dark:border-gray-800 animate-pulse">
                           <span className="text-xs font-bold text-white">{unreadCount}</span>
                         </div>
                       )}
@@ -237,38 +237,36 @@ const AdminNotifications = () => {
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <h1 className="text-4xl font-bold text-blue-500 dark:text-blue-400">
+                      <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-blue-500 dark:text-blue-400">
                         {t('admin.notifications.title')}
                       </h1>
-                      <SparklesIcon className="w-6 h-6 text-blue-500 animate-pulse" />
+                      <SparklesIcon className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500 animate-pulse" />
                     </div>
-                    <p className="text-slate-600 dark:text-white font-medium">
+                    <p className="text-sm sm:text-base text-slate-600 dark:text-white font-medium">
                       {t('admin.notifications.subtitle')}
                     </p>
                   </div>
                 </div>
 
                 {/* Date & Time */}
-                <div className="flex gap-3">
-                  <div className="group/card relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl px-5 py-3 shadow-lg border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl transition-all hover:scale-105">
-                    <div className="absolute inset-0 bg-blue-700/10 rounded-2xl opacity-0 group-hover/card:opacity-100 transition-opacity"></div>
-                    <div className="relative flex items-center gap-3">
-                      <CalendarIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
+                <div className="flex flex-wrap gap-2 sm:gap-3">
+                  <div className="group/card relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-xl sm:rounded-2xl px-3 sm:px-5 py-2 sm:py-3 shadow-lg border border-gray-200/50 dark:border-gray-700/50">
+                    <div className="relative flex items-center gap-2 sm:gap-3">
+                      <CalendarIcon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-700 dark:text-blue-400" />
                       <div>
-                        <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{t('dashboard.date')}</p>
-                        <p className="text-sm font-bold text-gray-900 dark:text-white">
+                        <p className="text-xs text-gray-500 dark:text-gray-400 font-medium hidden sm:block">{t('dashboard.date')}</p>
+                        <p className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white">
                           {formatDate(currentTime, dateFormats.short)}
                         </p>
                       </div>
                     </div>
                   </div>
-                  <div className="group/card relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl px-5 py-3 shadow-lg border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl transition-all hover:scale-105">
-                    <div className="absolute inset-0 bg-blue-700/10 rounded-2xl opacity-0 group-hover/card:opacity-100 transition-opacity"></div>
-                    <div className="relative flex items-center gap-3">
-                      <ClockIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
+                  <div className="group/card relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-xl sm:rounded-2xl px-3 sm:px-5 py-2 sm:py-3 shadow-lg border border-gray-200/50 dark:border-gray-700/50">
+                    <div className="relative flex items-center gap-2 sm:gap-3">
+                      <ClockIcon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-700 dark:text-blue-400" />
                       <div>
-                        <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{t('dashboard.time')}</p>
-                        <p className="text-sm font-bold text-gray-900 dark:text-white font-mono">
+                        <p className="text-xs text-gray-500 dark:text-gray-400 font-medium hidden sm:block">{t('dashboard.time')}</p>
+                        <p className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white font-mono">
                           {currentTime.toLocaleTimeString(i18n.language === 'fr' ? 'fr-FR' : 'en-US', { hour: '2-digit', minute: '2-digit' })}
                         </p>
                       </div>
@@ -317,22 +315,24 @@ const AdminNotifications = () => {
           </div>
 
           {/* Actions Bar */}
-          <div className="relative animate-slide-up flex gap-3" style={{ animationDelay: '200ms' }}>
+          <div className="relative animate-slide-up flex flex-wrap gap-2 sm:gap-3" style={{ animationDelay: '200ms' }}>
             <button
               onClick={markAllAsRead}
               disabled={unreadCount === 0}
-              className="flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
             >
-              <CheckCircleIcon className="w-5 h-5" />
-              {t('admin.notifications.actions.markAllRead')}
+              <CheckCircleIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span className="hidden sm:inline">{t('admin.notifications.actions.markAllRead')}</span>
+              <span className="sm:hidden">Tout lu</span>
             </button>
             <button
               onClick={deleteAllRead}
               disabled={notifications.filter(n => n.read).length === 0}
-              className="flex items-center gap-2 px-6 py-3 bg-red-500 hover:bg-red-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-red-500 hover:bg-red-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
             >
-              <TrashIcon className="w-5 h-5" />
-              {t('admin.notifications.actions.deleteRead')}
+              <TrashIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span className="hidden sm:inline">{t('admin.notifications.actions.deleteRead')}</span>
+              <span className="sm:hidden">Suppr. lues</span>
             </button>
           </div>
 

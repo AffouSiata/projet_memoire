@@ -172,7 +172,7 @@ const AdminPatients = () => {
               <div className="absolute bottom-0 left-0 w-72 h-72 bg-blue-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
 
               <div className="relative z-10">
-                <div className="flex items-start justify-between">
+                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
                   {/* Section gauche */}
                   <div className="flex-1">
                     {/* Badge */}
@@ -183,35 +183,35 @@ const AdminPatients = () => {
                       </span>
                     </div>
 
-                    <h1 className="text-4xl font-bold mb-3 text-gray-900 dark:text-white leading-tight">
+                    <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 text-gray-900 dark:text-white leading-tight">
                       {t('admin.patients.title')}
                     </h1>
 
-                    <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 font-medium">
+                    <p className="text-base lg:text-lg text-gray-600 dark:text-gray-300 mb-6 font-medium">
                       {t('admin.patients.subtitle', { count: stats.total })}
                     </p>
 
                     {/* Mini-cartes date/heure */}
-                    <div className="flex items-center gap-4">
-                      <div className="flex items-center gap-3 px-5 py-3 bg-white/60 dark:bg-gray-700/60 rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
-                        <div className="w-10 h-10 bg-blue-100 dark:bg-blue-950/50 rounded-xl flex items-center justify-center">
-                          <CalendarIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
+                    <div className="flex flex-wrap items-center gap-3">
+                      <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-2 sm:py-3 bg-white/60 dark:bg-gray-700/60 rounded-xl sm:rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-100 dark:bg-blue-950/50 rounded-lg sm:rounded-xl flex items-center justify-center">
+                          <CalendarIcon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-700 dark:text-blue-400" />
                         </div>
                         <div>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{t('dashboard.date')}</p>
-                          <p className="text-sm font-bold text-gray-900 dark:text-white">
+                          <p className="text-xs text-gray-500 dark:text-gray-400 font-medium hidden sm:block">{t('dashboard.date')}</p>
+                          <p className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white">
                             {formatDate(currentTime, dateFormats.medium)}
                           </p>
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-3 px-5 py-3 bg-white/60 dark:bg-gray-700/60 rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
-                        <div className="w-10 h-10 bg-blue-100 dark:bg-blue-950/50 rounded-xl flex items-center justify-center">
-                          <ClockIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
+                      <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-2 sm:py-3 bg-white/60 dark:bg-gray-700/60 rounded-xl sm:rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-100 dark:bg-blue-950/50 rounded-lg sm:rounded-xl flex items-center justify-center">
+                          <ClockIcon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-700 dark:text-blue-400" />
                         </div>
                         <div>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{t('dashboard.time')}</p>
-                          <p className="text-sm font-bold text-gray-900 dark:text-white font-mono">
+                          <p className="text-xs text-gray-500 dark:text-gray-400 font-medium hidden sm:block">{t('dashboard.time')}</p>
+                          <p className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white font-mono">
                             {currentTime.toLocaleTimeString('fr-FR')}
                           </p>
                         </div>
@@ -220,15 +220,15 @@ const AdminPatients = () => {
                   </div>
 
                   {/* Section droite - Stats */}
-                  <div className="flex flex-col items-end gap-3">
+                  <div className="flex flex-col items-start lg:items-end gap-3">
                     <div className="relative group">
                       <div className="absolute inset-0 bg-blue-500 rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
-                      <div className="relative px-6 py-4 bg-blue-700 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                      <div className="relative px-4 sm:px-6 py-3 sm:py-4 bg-blue-700 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                         <div className="flex items-center gap-3">
-                          <UsersIcon className="w-6 h-6 text-white" />
+                          <UsersIcon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                           <div className="text-left">
                             <p className="text-xs text-white/80 font-medium">{t('admin.patients.stats.totalPatients')}</p>
-                            <p className="text-2xl font-bold text-white">{stats.total}</p>
+                            <p className="text-xl sm:text-2xl font-bold text-white">{stats.total}</p>
                           </div>
                         </div>
                       </div>
@@ -242,11 +242,11 @@ const AdminPatients = () => {
           {/* Contenu principal - Rétréci et centré */}
           <div className="max-w-[97%] mx-auto">
           {/* Search & Filters */}
-          <div className="mb-8 animate-slide-up" style={{ animationDelay: '400ms' }}>
-            <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl p-6 shadow-xl border border-gray-200/50 dark:border-gray-700/50">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
+          <div className="mb-6 sm:mb-8 animate-slide-up" style={{ animationDelay: '400ms' }}>
+            <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-xl border border-gray-200/50 dark:border-gray-700/50">
+              <div className="flex flex-col gap-4">
                 {/* Search */}
-                <div className="lg:col-span-8">
+                <div className="w-full">
                   <div className="relative">
                     <input
                       type="text"
@@ -254,17 +254,17 @@ const AdminPatients = () => {
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
                       onKeyPress={handleKeyPress}
-                      className="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white/70 dark:bg-gray-700/70 text-gray-900 dark:text-white placeholder-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                      className="w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-3.5 border-2 border-gray-200 dark:border-gray-600 rounded-xl bg-white/70 dark:bg-gray-700/70 text-gray-900 dark:text-white placeholder-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all text-sm sm:text-base"
                     />
-                    <MagnifyingGlassIcon className="w-5 h-5 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2" />
+                    <MagnifyingGlassIcon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 absolute left-3 sm:left-4 top-1/2 -translate-y-1/2" />
                   </div>
                 </div>
 
                 {/* Status Filters */}
-                <div className="lg:col-span-4 flex gap-2">
+                <div className="flex gap-2 overflow-x-auto pb-1">
                   <button
                     onClick={() => { setFilterStatus('ALL'); setCurrentPage(1); }}
-                    className={`flex-1 px-4 py-3 rounded-xl font-semibold transition-all ${
+                    className={`flex-1 min-w-[80px] px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl font-semibold transition-all text-sm sm:text-base whitespace-nowrap ${
                       filterStatus === 'ALL'
                         ? 'bg-blue-500 text-white shadow-lg scale-105'
                         : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
@@ -274,7 +274,7 @@ const AdminPatients = () => {
                   </button>
                   <button
                     onClick={() => { setFilterStatus('ACTIVE'); setCurrentPage(1); }}
-                    className={`flex-1 px-4 py-3 rounded-xl font-semibold transition-all ${
+                    className={`flex-1 min-w-[80px] px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl font-semibold transition-all text-sm sm:text-base whitespace-nowrap ${
                       filterStatus === 'ACTIVE'
                         ? 'bg-blue-500 text-white shadow-lg scale-105'
                         : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
@@ -284,7 +284,7 @@ const AdminPatients = () => {
                   </button>
                   <button
                     onClick={() => { setFilterStatus('INACTIVE'); setCurrentPage(1); }}
-                    className={`flex-1 px-4 py-3 rounded-xl font-semibold transition-all ${
+                    className={`flex-1 min-w-[80px] px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl font-semibold transition-all text-sm sm:text-base whitespace-nowrap ${
                       filterStatus === 'INACTIVE'
                         ? 'bg-red-500 text-white shadow-lg scale-105'
                         : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'

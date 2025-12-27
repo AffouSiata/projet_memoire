@@ -344,7 +344,7 @@ const AdminRendezVous = () => {
               <div className="absolute bottom-0 left-0 w-72 h-72 bg-blue-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
 
               <div className="relative z-10">
-                <div className="flex items-start justify-between">
+                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
                   {/* Section gauche */}
                   <div className="flex-1">
                     {/* Badge */}
@@ -355,35 +355,35 @@ const AdminRendezVous = () => {
                       </span>
                     </div>
 
-                    <h1 className="text-4xl font-bold mb-3 text-gray-900 dark:text-white leading-tight">
+                    <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 text-gray-900 dark:text-white leading-tight">
                       {t('admin.rendezvous.title')}
                     </h1>
 
-                    <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 font-medium">
+                    <p className="text-base lg:text-lg text-gray-600 dark:text-gray-300 mb-6 font-medium">
                       {t('admin.rendezvous.subtitle', { count: totalRendezVous })}
                     </p>
 
                     {/* Mini-cartes date/heure */}
-                    <div className="flex items-center gap-4">
-                      <div className="flex items-center gap-3 px-5 py-3 bg-white/60 dark:bg-gray-700/60 rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
-                        <div className="w-10 h-10 bg-blue-100 dark:bg-blue-950/50 rounded-xl flex items-center justify-center">
-                          <CalendarIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
+                    <div className="flex flex-wrap items-center gap-3">
+                      <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-2 sm:py-3 bg-white/60 dark:bg-gray-700/60 rounded-xl sm:rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-100 dark:bg-blue-950/50 rounded-lg sm:rounded-xl flex items-center justify-center">
+                          <CalendarIcon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-700 dark:text-blue-400" />
                         </div>
                         <div>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{t('dashboard.date')}</p>
-                          <p className="text-sm font-bold text-gray-900 dark:text-white">
+                          <p className="text-xs text-gray-500 dark:text-gray-400 font-medium hidden sm:block">{t('dashboard.date')}</p>
+                          <p className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white">
                             {formatDate(currentTime, dateFormats.medium)}
                           </p>
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-3 px-5 py-3 bg-white/60 dark:bg-gray-700/60 rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
-                        <div className="w-10 h-10 bg-blue-100 dark:bg-blue-950/50 rounded-xl flex items-center justify-center">
-                          <ClockIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
+                      <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-2 sm:py-3 bg-white/60 dark:bg-gray-700/60 rounded-xl sm:rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-100 dark:bg-blue-950/50 rounded-lg sm:rounded-xl flex items-center justify-center">
+                          <ClockIcon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-700 dark:text-blue-400" />
                         </div>
                         <div>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{t('dashboard.time')}</p>
-                          <p className="text-sm font-bold text-gray-900 dark:text-white font-mono">
+                          <p className="text-xs text-gray-500 dark:text-gray-400 font-medium hidden sm:block">{t('dashboard.time')}</p>
+                          <p className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white font-mono">
                             {currentTime.toLocaleTimeString(i18n.language === 'fr' ? 'fr-FR' : 'en-US')}
                           </p>
                         </div>
@@ -392,15 +392,15 @@ const AdminRendezVous = () => {
                   </div>
 
                   {/* Section droite - Stats */}
-                  <div className="flex flex-col items-end gap-3">
+                  <div className="flex flex-col items-start lg:items-end gap-3">
                     <div className="relative group">
                       <div className="absolute inset-0 bg-blue-500 rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
-                      <div className="relative px-6 py-4 bg-blue-700 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                      <div className="relative px-4 sm:px-6 py-3 sm:py-4 bg-blue-700 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                         <div className="flex items-center gap-3">
-                          <CalendarIcon className="w-6 h-6 text-white" />
+                          <CalendarIcon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                           <div className="text-left">
                             <p className="text-xs text-white/80 font-medium">{t('admin.rendezvous.totalAppointments')}</p>
-                            <p className="text-2xl font-bold text-white">{totalRendezVous}</p>
+                            <p className="text-xl sm:text-2xl font-bold text-white">{totalRendezVous}</p>
                           </div>
                         </div>
                       </div>
@@ -414,12 +414,12 @@ const AdminRendezVous = () => {
           {/* Contenu principal - Rétréci et centré */}
           <div className="max-w-[97%] mx-auto">
           {/* Filters */}
-          <div className="mb-8 animate-slide-up" style={{ animationDelay: '100ms' }}>
-            <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl p-6 shadow-xl border border-gray-200/50 dark:border-gray-700/50">
-              <div className="flex gap-3">
+          <div className="mb-6 sm:mb-8 animate-slide-up" style={{ animationDelay: '100ms' }}>
+            <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-xl border border-gray-200/50 dark:border-gray-700/50">
+              <div className="flex flex-wrap gap-2 sm:gap-3">
                 <button
                   onClick={() => { setFilterStatus(''); setCurrentPage(1); }}
-                  className={`flex-1 px-6 py-3.5 rounded-xl font-semibold transition-all ${
+                  className={`flex-1 min-w-[70px] px-3 sm:px-6 py-2.5 sm:py-3.5 rounded-xl font-semibold transition-all text-sm sm:text-base ${
                     filterStatus === ''
                       ? 'bg-blue-500 text-white shadow-lg scale-105'
                       : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
@@ -429,33 +429,36 @@ const AdminRendezVous = () => {
                 </button>
                 <button
                   onClick={() => { setFilterStatus('CONFIRME'); setCurrentPage(1); }}
-                  className={`flex-1 px-6 py-3.5 rounded-xl font-semibold transition-all ${
+                  className={`flex-1 min-w-[70px] px-3 sm:px-6 py-2.5 sm:py-3.5 rounded-xl font-semibold transition-all text-sm sm:text-base ${
                     filterStatus === 'CONFIRME'
                       ? 'bg-blue-500 text-white shadow-lg scale-105'
                       : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                   }`}
                 >
-                  {t('admin.rendezvous.filters.confirmed')}
+                  <span className="hidden sm:inline">{t('admin.rendezvous.filters.confirmed')}</span>
+                  <span className="sm:hidden">Conf.</span>
                 </button>
                 <button
                   onClick={() => { setFilterStatus('EN_ATTENTE'); setCurrentPage(1); }}
-                  className={`flex-1 px-6 py-3.5 rounded-xl font-semibold transition-all ${
+                  className={`flex-1 min-w-[70px] px-3 sm:px-6 py-2.5 sm:py-3.5 rounded-xl font-semibold transition-all text-sm sm:text-base ${
                     filterStatus === 'EN_ATTENTE'
                       ? 'bg-yellow-500 text-white shadow-lg scale-105'
                       : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                   }`}
                 >
-                  {t('admin.rendezvous.filters.pending')}
+                  <span className="hidden sm:inline">{t('admin.rendezvous.filters.pending')}</span>
+                  <span className="sm:hidden">Att.</span>
                 </button>
                 <button
                   onClick={() => { setFilterStatus('ANNULE'); setCurrentPage(1); }}
-                  className={`flex-1 px-6 py-3.5 rounded-xl font-semibold transition-all ${
+                  className={`flex-1 min-w-[70px] px-3 sm:px-6 py-2.5 sm:py-3.5 rounded-xl font-semibold transition-all text-sm sm:text-base ${
                     filterStatus === 'ANNULE'
                       ? 'bg-red-500 text-white shadow-lg scale-105'
                       : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                   }`}
                 >
-                  {t('admin.rendezvous.filters.cancelled')}
+                  <span className="hidden sm:inline">{t('admin.rendezvous.filters.cancelled')}</span>
+                  <span className="sm:hidden">Ann.</span>
                 </button>
               </div>
             </div>
@@ -588,8 +591,8 @@ const AdminRendezVous = () => {
 
                 {/* Pagination */}
                 {totalPages > 1 && (
-                <div className="flex items-center justify-between px-6 py-4 border-t border-gray-200 dark:border-gray-700">
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 px-4 sm:px-6 py-4 border-t border-gray-200 dark:border-gray-700">
+                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 text-center sm:text-left">
                     {t('admin.rendezvous.showing', {
                       start: (currentPage - 1) * limit + 1,
                       end: Math.min(currentPage * limit, totalRendezVous),
@@ -597,13 +600,13 @@ const AdminRendezVous = () => {
                     })}
                   </p>
 
-                  <div className="flex gap-2">
+                  <div className="flex gap-1 sm:gap-2">
                     <button
                       onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
                       disabled={currentPage === 1}
-                      className="px-4 py-2 rounded-lg bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                      className="px-2 sm:px-4 py-2 rounded-lg bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
                     >
-                      <ChevronLeftIcon className="w-5 h-5" />
+                      <ChevronLeftIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                     </button>
 
                     {[...Array(totalPages)].map((_, index) => {
@@ -617,7 +620,7 @@ const AdminRendezVous = () => {
                           <button
                             key={page}
                             onClick={() => setCurrentPage(page)}
-                            className={`px-4 py-2 rounded-lg transition-all ${
+                            className={`px-3 sm:px-4 py-2 rounded-lg transition-all text-sm sm:text-base ${
                               currentPage === page
                                 ? 'bg-blue-700 text-white shadow-lg scale-110'
                                 : 'bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-600'
@@ -630,7 +633,7 @@ const AdminRendezVous = () => {
                         (page === currentPage - 2 && currentPage > 3) ||
                         (page === currentPage + 2 && currentPage < totalPages - 2)
                       ) {
-                        return <span key={page} className="px-2 text-gray-400">...</span>;
+                        return <span key={page} className="px-1 sm:px-2 text-gray-400">...</span>;
                       }
                       return null;
                     })}
@@ -638,9 +641,9 @@ const AdminRendezVous = () => {
                     <button
                       onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
                       disabled={currentPage === totalPages}
-                      className="px-4 py-2 rounded-lg bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                      className="px-2 sm:px-4 py-2 rounded-lg bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
                     >
-                      <ChevronRightIcon className="w-5 h-5" />
+                      <ChevronRightIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                     </button>
                   </div>
                 </div>

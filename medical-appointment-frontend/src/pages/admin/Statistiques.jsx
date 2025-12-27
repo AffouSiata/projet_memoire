@@ -184,7 +184,7 @@ const AdminStatistiques = () => {
               <div className="absolute bottom-0 left-0 w-72 h-72 bg-blue-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
 
               <div className="relative z-10">
-                <div className="flex items-start justify-between">
+                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
                   {/* Section gauche */}
                   <div className="flex-1">
                     {/* Badge */}
@@ -195,35 +195,35 @@ const AdminStatistiques = () => {
                       </span>
                     </div>
 
-                    <h1 className="text-4xl font-bold mb-3 text-gray-900 dark:text-white leading-tight">
+                    <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 text-gray-900 dark:text-white leading-tight">
                       {safeT('admin.statistics.title', 'Statistiques')}
                     </h1>
 
-                    <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 font-medium">
+                    <p className="text-base lg:text-lg text-gray-600 dark:text-gray-300 mb-6 font-medium">
                       {safeT('admin.statistics.subtitle', 'Vue d\'ensemble')}
                     </p>
 
                     {/* Mini-cartes date/heure */}
-                    <div className="flex items-center gap-4">
-                      <div className="flex items-center gap-3 px-5 py-3 bg-white/60 dark:bg-gray-700/60 rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
-                        <div className="w-10 h-10 bg-blue-100 dark:bg-blue-950/50 rounded-xl flex items-center justify-center">
-                          <CalendarIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
+                    <div className="flex flex-wrap items-center gap-3">
+                      <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-2 sm:py-3 bg-white/60 dark:bg-gray-700/60 rounded-xl sm:rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-100 dark:bg-blue-950/50 rounded-lg sm:rounded-xl flex items-center justify-center">
+                          <CalendarIcon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-700 dark:text-blue-400" />
                         </div>
                         <div>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{safeT('dashboard.date', 'Date')}</p>
-                          <p className="text-sm font-bold text-gray-900 dark:text-white">
+                          <p className="text-xs text-gray-500 dark:text-gray-400 font-medium hidden sm:block">{safeT('dashboard.date', 'Date')}</p>
+                          <p className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white">
                             {formatDate(currentTime, dateFormats.medium)}
                           </p>
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-3 px-5 py-3 bg-white/60 dark:bg-gray-700/60 rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
-                        <div className="w-10 h-10 bg-blue-100 dark:bg-blue-950/50 rounded-xl flex items-center justify-center">
-                          <ClockIcon className="w-5 h-5 text-blue-700 dark:text-blue-400" />
+                      <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-2 sm:py-3 bg-white/60 dark:bg-gray-700/60 rounded-xl sm:rounded-2xl border border-gray-100 dark:border-gray-600 shadow-sm">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-100 dark:bg-blue-950/50 rounded-lg sm:rounded-xl flex items-center justify-center">
+                          <ClockIcon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-700 dark:text-blue-400" />
                         </div>
                         <div>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{safeT('dashboard.time', 'Heure')}</p>
-                          <p className="text-sm font-bold text-gray-900 dark:text-white font-mono">
+                          <p className="text-xs text-gray-500 dark:text-gray-400 font-medium hidden sm:block">{safeT('dashboard.time', 'Heure')}</p>
+                          <p className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white font-mono">
                             {currentTime.toLocaleTimeString('fr-FR')}
                           </p>
                         </div>
@@ -232,15 +232,15 @@ const AdminStatistiques = () => {
                   </div>
 
                   {/* Section droite - Stats */}
-                  <div className="flex flex-col items-end gap-3">
+                  <div className="flex flex-col items-start lg:items-end gap-3">
                     <div className="relative group">
                       <div className="absolute inset-0 bg-blue-500 rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
-                      <div className="relative px-6 py-4 bg-blue-700 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                      <div className="relative px-4 sm:px-6 py-3 sm:py-4 bg-blue-700 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                         <div className="flex items-center gap-3">
-                          <ChartBarIcon className="w-6 h-6 text-white" />
+                          <ChartBarIcon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                           <div className="text-left">
                             <p className="text-xs text-white/80 font-medium">Total Rendez-vous</p>
-                            <p className="text-2xl font-bold text-white">1,248</p>
+                            <p className="text-xl sm:text-2xl font-bold text-white">1,248</p>
                           </div>
                         </div>
                       </div>
@@ -255,23 +255,31 @@ const AdminStatistiques = () => {
           <div className="max-w-[97%] mx-auto">
 
           {/* Period Selector */}
-          <div className="mb-8 animate-slide-up" style={{ animationDelay: '400ms' }}>
-            <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl p-4 shadow-xl border border-gray-200/50 dark:border-gray-700/50">
-              <div className="flex gap-2">
+          <div className="mb-6 sm:mb-8 animate-slide-up" style={{ animationDelay: '400ms' }}>
+            <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-xl border border-gray-200/50 dark:border-gray-700/50">
+              <div className="flex flex-wrap gap-2">
                 {['today', 'week', 'month', 'year'].map((period) => (
                   <button
                     key={period}
                     onClick={() => setSelectedPeriod(period)}
-                    className={`flex-1 px-6 py-3 rounded-xl font-semibold transition-all ${
+                    className={`flex-1 min-w-[70px] px-3 sm:px-6 py-2.5 sm:py-3 rounded-xl font-semibold transition-all text-xs sm:text-base ${
                       selectedPeriod === period
                         ? 'bg-blue-700 text-white shadow-lg scale-105'
                         : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                     }`}
                   >
-                    {period === 'today' && "Aujourd'hui"}
-                    {period === 'week' && 'Cette Semaine'}
-                    {period === 'month' && 'Ce Mois'}
-                    {period === 'year' && 'Cette Année'}
+                    <span className="hidden sm:inline">
+                      {period === 'today' && "Aujourd'hui"}
+                      {period === 'week' && 'Cette Semaine'}
+                      {period === 'month' && 'Ce Mois'}
+                      {period === 'year' && 'Cette Année'}
+                    </span>
+                    <span className="sm:hidden">
+                      {period === 'today' && "Jour"}
+                      {period === 'week' && 'Sem.'}
+                      {period === 'month' && 'Mois'}
+                      {period === 'year' && 'An'}
+                    </span>
                   </button>
                 ))}
               </div>
