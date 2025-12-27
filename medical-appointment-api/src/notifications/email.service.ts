@@ -50,16 +50,23 @@ export class EmailService {
       }
     } else {
       // Utiliser les credentials configurés
+      const port = this.configService.get<number>('EMAIL_PORT') || 587;
+      const isSecure = port === 465; // SSL pour le port 465
+
       this.transporter = nodemailer.createTransport({
         host: this.configService.get<string>('EMAIL_HOST'),
-        port: this.configService.get<number>('EMAIL_PORT'),
-        secure: false,
+        port: port,
+        secure: isSecure,
         auth: {
           user: emailUser,
           pass: emailPassword,
         },
+        // Timeout plus long pour les hébergeurs cloud
+        connectionTimeout: 10000,
+        greetingTimeout: 10000,
+        socketTimeout: 15000,
       });
-      this.logger.log('Service email configuré avec les credentials SMTP');
+      this.logger.log(`Service email configuré avec les credentials SMTP (port: ${port}, secure: ${isSecure})`);
     }
   }
 
