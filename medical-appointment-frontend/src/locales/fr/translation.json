@@ -1186,6 +1186,7 @@
     "patientSpace": "Espace Patient",
     "medecinSpace": "Espace Médecin",
     "adminSpace": "Administration",
+    "administrator": "Administrateur",
     "online": "En ligne",
     "sessionEnded": "Session terminée",
     "redirectMessage": "Vous serez redirigé vers la page de connexion"

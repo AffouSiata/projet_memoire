@@ -1187,6 +1187,7 @@
     "patientSpace": "Patient Space",
     "medecinSpace": "Doctor Space",
     "adminSpace": "Administration",
+    "administrator": "Administrator",
     "online": "Online",
     "sessionEnded": "Session ended",
     "redirectMessage": "You will be redirected to the login page"
